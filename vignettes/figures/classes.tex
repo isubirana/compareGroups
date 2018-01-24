@@ -1,0 +1,89 @@
+\documentclass[12pt, landscape]{article}
+\usepackage[spanish]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage[a4paper,top=1cm,bottom=1cm,left=0.5cm,right=1cm]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{tikz} % paquete para flow-chart
+\usepackage{setspace}
+\usetikzlibrary{shapes,arrows} % paquete para dibujar clouds, elipse, etc.
+\pagestyle{empty}
+
+\begin{document}
+
+% Define block styles
+
+\tikzstyle{block} = [diamond, draw, fill=blue!20, 
+    text width=6cm, text centered, rounded corners, minimum height=7cm, node distance=9cm]
+\tikzstyle{cloud} = [draw, ellipse, fill=red!20, 
+	text width=3.5cm, text centered, minimum height=3cm, node distance=6.5cm]
+\tikzstyle{block2} = [rectangle, draw, fill=green!20, 
+    text width=5cm,  minimum height=3cm, node distance=4cm]
+\tikzstyle{block3} = [rectangle, draw, fill=green!20, 
+    text width=2cm,  minimum height=3cm, node distance=4cm]
+\tikzstyle{block4} = [rectangle, draw, fill=green!20, 
+    text width=2.5cm, text centered, minimum height=2cm, node distance=9cm]
+\tikzstyle{block5} = [rectangle, draw=none, fill=white!20, 
+    text width=6cm, text centered, minimum height=1cm, node distance=5cm]
+\tikzstyle{block6} = [rectangle, draw=none, fill=white!20, 
+    text width=6cm, minimum height=1cm, node distance=6cm]
+\tikzstyle{block7} = [rectangle, draw=none, fill=white!20, 
+    text width=3cm, anchor=west, minimum height=1cm, node distance=5cm]    
+
+\tikzstyle{line} = [draw, -latex', line width=4pt]
+\tikzstyle{line2} = [draw, -latex', line width=2pt]
+
+
+\begin{tikzpicture}[node distance = 1.5cm, auto]
+
+    % Place nodes                              
+    \node [block] (x1) {{\large \textbf{compareGroups}}};
+    \node [cloud,above of=x1] (x2) {\large \textbf{compareGroups}};
+    \node [block2, above of=x2]     (x3) {
+\begin{tabular}{l|l}
+\emph{displaying} &  \emph{modifying} \\ 
+\hline
+\hline
+print	   &	update		\\
+summary	   &	subset `['	\\
+plot	   &	rbind		\\
+\end{tabular}
+    };
+    \node [block, right of=x1] (x4) {{\large \textbf{createTable \\ \vspace{0.3cm} missingTable}}};    
+    \node [cloud,above of=x4] (x5) {\large \textbf{createTable}};    
+    \node [block3, above of=x5] (x6) {
+\begin{tabular}{l}
+update		\\
+subset `['	\\
+rbind		\\
+cbind		\\
+plot        \\
+\end{tabular}
+    };
+    \node [block, right of = x4] (x7) {{\large \textbf{export2: \\ \normalsize latex, csv, html, pdf, md, word, xls \\ \vspace{0.0cm} \large report}}};    
+    \node [block4, right of = x6]  (x8) {
+\begin{tabular}{l}
+print		\\
+summary		\\
+\end{tabular}
+};
+    \node [block5, below of=x1] (x9) {{\Large \textbf{Step 1: \\ Computations}}};
+    \node [block5, below of=x4] (x10) {{\Large \textbf{Step 2: \\ Construction}}};
+    \node [block5, below of=x7] (x11) {{\Large \textbf{Step 3: \\ Exportation}}};
+    \node [block7,left of=x1, rotate=90] (x13) {\Large \textbf{functions}};
+    \node [block7,left of=x2, rotate=90] (x14) {\Large \textbf{classes}};
+    \node [block7,left of=x3, rotate=90] (x15) {\Large \textbf{methods}};
+            
+    % Draw edges
+    \path [line,dashed] (x1) -- (x4);
+    \path [line,dashed] (x4) -- (x7);
+    \path [line] (x1) -- (x2);
+	\path [line2] (x2) -- (x3);
+	\path [line] (x2) -- (x4);
+	\path [line] (x4) -- (x5);
+	\path [line2] (x5) -- (x6);
+	\path [line] (x5) -- (x7);
+	\path [line2] (x5) -- (x8);
+
+\end{tikzpicture}
+
+\end{document}

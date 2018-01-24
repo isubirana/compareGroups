@@ -1,0 +1,21 @@
+citHeader("To cite compareGroups in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Building Bivariate Tables: The {compareGroups} Package for {R}",
+  author       = personList(as.person("Isaac Subirana"),
+                   as.person("H\\'ector Sanz"),
+                   as.person("Joan Vila")),
+  journal      = "Journal of Statistical Software",
+  year         = "2014",
+  volume       = "57",
+  number       = "12",
+  pages        = "1--16",
+  url          = "http://www.jstatsoft.org/v57/i12/",
+
+  textVersion  =
+  paste("Isaac Subirana, Hector Sanz, Joan Vila (2014).",
+        "Building Bivariate Tables: The compareGroups Package for R.",
+        "Journal of Statistical Software, 57(12), 1-16.",
+        "URL http://www.jstatsoft.org/v57/i12/.")
+)
+
