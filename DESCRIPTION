@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 3.3.3
-Date: 2018-01-18
+Version: 3.4
+Date: 2018-02-12
 Depends:
     R (>= 2.13.1),
     Hmisc,

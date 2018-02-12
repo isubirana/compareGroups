@@ -24,7 +24,7 @@ export2md(x, which.table="descr", nmax = TRUE, header.labels = c(),
 
  \item{caption}{character specifying the table caption for descriptives and available data table. If which.table='both' the first element of 'caption' will be assigned to descriptives table and the second to available data table. If it is set to "", no caption is inserted. Default value is NULL, which writes 'Summary descriptives table by groups of 'y'' for descriptives table and 'Available data by groups of 'y'' for the available data table. }
 
-  \item{\ldots}{currently ignored.}
+  \item{\ldots}{arguments passed to \code{\link[knitr]{kable}}.}
   
 }
 

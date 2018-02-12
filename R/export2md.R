@@ -91,6 +91,6 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     align <- c("l", rep("c", ncol(table2)))
     colnames(table2) <- table2[1, ]
     table2 <- table2[-1, ,drop=FALSE]
-    return(knitr::kable(table2, align = align, row.names = FALSE, caption=caption[2]))
+    return(knitr::kable(table2, align = align, row.names = FALSE, caption=caption[2], ...))
   }    
 }

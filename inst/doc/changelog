@@ -1,3 +1,5 @@
+v3.4
+-. export2md: "..." argument passes parameters to knitr function
 v3.3.3
 -. bug fixed for Hmisc::label in examples and vignette
 v3.3.2
