@@ -1,4 +1,5 @@
 export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, ...){
+  extras <- list(...)
   if (!inherits(x, "createTable")) 
     stop("x must be of class 'createTable'")
   if (inherits(x, "cbind.createTable")) 
@@ -54,8 +55,14 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       }
     }
     table1 <- rbind(table1[1:ii, ], aux)
-    table1[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
-    table1[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
+    
+    if (!is.null(extras$format) && extras$format=="latex"){
+      table1[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
+      table1[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
+    } else {
+      table1[, 1] <- sub("^    ", "\\quad\\quad\\quad\\quad", table1[, 1])
+      table1[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad", table1[, 1])
+    }    
     if (nrow(table1) > 1 && length(grep("^N=", trim(table1[2, 2])))) {
       wn <- grep("^N=", trim(table1[2, ]))
       nn <- paste(trim(table1[1, wn]), " ", trim(table1[2, wn]))
@@ -85,8 +92,13 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       }
     }
     table2 <- rbind(table2[1, ], aux)
-    table2[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
-    table2[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
+    if (!is.null(extras$format) && extras$format=="latex"){
+      table2[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
+      table2[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
+    } else {
+      table2[, 1] <- sub("^    ", "\\quad\\quad\\quad\\quad", table2[, 1])
+      table2[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "\\quad\\quad\\quad\\quad\\quad\\quad\\quad\\quad", table2[, 1])
+    }
     table2[1, 1] <- " "
     align <- c("l", rep("c", ncol(table2)))
     colnames(table2) <- table2[1, ]
