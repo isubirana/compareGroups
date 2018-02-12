@@ -66,7 +66,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     table1[1, 1] <- " "
     colnames(table1) <- table1[1, ]
     table1 <- table1[-1, , drop = FALSE]
-    return(knitr::kable(table1, align = align, row.names = FALSE, caption=caption[1]))
+    return(knitr::kable(table1, align = align, row.names = FALSE, caption=caption[1], ...))
   }      
   if (ww %in% c(2)){
     table2 <- prepare(x, nmax = nmax, c())[[2]]
