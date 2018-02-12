@@ -56,7 +56,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     }
     table1 <- rbind(table1[1:ii, ], aux)
     
-    if (!is.null(extras$format) && extras$format=="latex"){
+    if (!is.null(extras$format) && extras$format!="latex"){
       table1[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
       table1[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
     } else {
@@ -92,7 +92,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       }
     }
     table2 <- rbind(table2[1, ], aux)
-    if (!is.null(extras$format) && extras$format=="latex"){
+    if (!is.null(extras$format) && extras$format!="latex"){
       table2[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
       table2[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
     } else {
