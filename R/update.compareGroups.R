@@ -10,7 +10,6 @@ function (object, X., ..., evaluate = TRUE)
     if(inherits(object, "rbind.compareGroups"))
         stop("Update process does not work for rbind.compareGroups objects")
 
-
     call <- attr(object,"call")$call
     if (is.null(call)) 
         stop("need an object with call component")
@@ -27,7 +26,8 @@ function (object, X., ..., evaluate = TRUE)
             call <- as.call(call)
         }
     }
-    if (evaluate) 
-        eval(call, parent.frame())
-    else call
+    if (evaluate)
+      eval(call, parent.frame())
+    else 
+      call
 }

@@ -1,5 +1,19 @@
-v3.4
--. export2md: "..." argument passes parameters to knitr function
+v4.0.0
+- dates variables supported
+- compareGroups.default and compareGroups.formula unified in a single compareGroups function.
+- new strataTable function: to create stratified tables without having to use cbind.
+- package vignette improved.
+- new descrTable created. This function builds a descriptive table in one step.
+- Imports: kableExtra and chron added,  
+- Suggested: car removed
+- export2md: new arguments added (format, width, strip, first.strip, background, size and landscape)
+- compareGroups: new arguments added (chisq.test.B and chisq.test.seed)
+- table.i, createTable: checking OS to print +/- sign removed from table.i and passed to createTable. This speeds up the bivariate construction a lot.
+- compareGroups.default: '...' argument removed.
+v3.4.0
+-. compareGroups now handles tibble objects
+v3.3.4
+-. bug fixed when checking vignette
 v3.3.3
 -. bug fixed for Hmisc::label in examples and vignette
 v3.3.2

@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 3.4
-Date: 2018-02-12
+Version: 4.0.0
+Date: 2018-09-20
 Depends:
     R (>= 2.13.1),
     Hmisc,
@@ -15,10 +15,12 @@ Imports:
     tools,
     HardyWeinberg,
     rmarkdown,
-    knitr
+    knitr,
+    kableExtra,
+    methods,
+    chron
 Suggests:
     tcltk2,
-    car,
     shiny,
     shinyBS,
     shinyjs,
@@ -31,5 +33,5 @@ License: GPL (>=2)
 URL: http://www.comparegroups.eu
 LazyLoad: yes
 Encoding: latin1
-BuildVignettes: True
+BuildVignettes: true
 VignetteBuilder: knitr

@@ -1,7 +1,5 @@
 \name{compareGroups}
 \alias{compareGroups}
-\alias{compareGroups.default}
-\alias{compareGroups.formula}
 \alias{print.compareGroups}
 \alias{plot.compareGroups}
 \alias{update.compareGroups}
@@ -18,19 +16,27 @@ This function performs descriptives by groups for several variables. Depending o
 }
 
 \usage{
-compareGroups(X, ...)
-\method{compareGroups}{default}(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, 
-alpha = 0.05, min.dis = 5, max.ylev = 5, max.xlev = 10, include.label = TRUE, 
-Q1 = 0.25, Q3 = 0.75, simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, 
-ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, include.miss = FALSE, 
-oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, ...)
-\method{compareGroups}{formula}(X, data, subset, na.action=NULL, include.label=TRUE, ...)
-\method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, n.breaks = "Sturges", ...)
+compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, 
+  selec = NA, method = 1, timemax = NA, alpha = 0.05, min.dis = 5, max.ylev = 5, 
+  max.xlev = 10, include.label = TRUE, Q1 = 0.25, Q3 = 0.75, simplify = TRUE, 
+  ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
+  compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
+  chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+  Date.format = "d-mon-Y")
+\method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
+  n.breaks = "Sturges", perc = FALSE, ...)
 }
 
 \arguments{
 
-  \item{X}{either a data.frame or a matrix (then method 'compareGroups.default' is called), or a formula (then method 'compareGroups.formula' is called). When 'X' is a formula, it must be an object of class "formula" (or one that can be coerced to that class). Right side of ~ must have the terms in an additive way, and left side of ~ must contain the name of the grouping variable or can be left in blank (in this latter case descriptives for whole sample are calculated and no test is performed).}
+  \item{formula}{an object of class "formula" (or one that can be coerced to that class). Right side of ~ must have the terms in an additive way, and left side of ~ must contain the name of the grouping variable or can be left in blank (in this latter case descriptives for whole sample are calculated and no test is performed).}
+
+  \item{data}{an optional data frame, list or environment (or object coercible by 'as.data.frame' to a data frame) containing the variables in the model. If they are not found in 'data', the variables are taken from 'environment(formula)'.}
+  
+  \item{subset}{an optional vector specifying a subset of individuals to be used in the computation process. It is applied to all row-variables. 'subset' and 'selec' are added in the sense of '&' to be applied in every row-variable.}
+  
+  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats]{na.pass}}, which means no action. Value \code{\link[stats]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
+  
   
   \item{y}{a vector variable that distinguishes the groups. It must be either a numeric, character, factor or NULL. Default value is NULL which means that descriptives for whole sample are calculated and no test is performed.}
   
@@ -51,12 +57,6 @@ oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, ...)
 
   \item{max.xlev}{an integer indicating the maximum number of levels when the row-variable is a factor. If the row-variable is a factor (or converted to a factor if it is a character, for example) and contains more than 'max.xlev' levels, then it is removed from the analysis and a warning is printed. Default value is 10.}
     
-  \item{data}{an optional data frame, list or environment (or object coercible by 'as.data.frame' to a data frame) containing the variables in the model. If they are not found in 'data', the variables are taken from 'environment(formula)'.}
-  
-  \item{subset}{an optional vector specifying a subset of individuals to be used in the computation process. It is applied to all row-variables. 'subset' and 'selec' are added in the sense of '&' to be applied in every row-variable.}
-  
-  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats]{na.pass}}, which means no action. Value \code{\link[stats]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
-
   \item{include.label}{logical, indicating whether or not variable labels have to be shown in the results. Default value is TRUE}
 
   \item{Q1}{double between 0 and 1, indicating the quantile to be displayed as the first number inside the square brackets in the bivariate table. To compute the minimum just type 0. Default value is 0.25 which means the first quartile.}
@@ -80,7 +80,21 @@ oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, ...)
   \item{include.miss}{logical, indicating whether to treat missing values as a new category for categorical variables. Default value is FALSE.}   
   
   \item{oddsratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{oddsratio}}. Default value is "midp".}    
-
+  
+  \item{byrow}{logical. Percentage of categorical variables must be reported by rows. Default value is FALSE, which means that percentages are reported by columns (withing groups).}  
+  
+  \item{chisq.test.perm}{logical. It applies a permutation chi squared test (\code{\link[stats]{chisq.test}}) instead of an exact Fisher test (\code{\link[stats]{fisher.test}}). It only applies when expected count in some cells are lower than 5.}
+  
+  \item{chisq.test.B}{integer. Number of permutation when computing permuted chi squared test for categorical variables. Default value is 2000.}
+   
+  \item{chisq.test.seed}{integer or NULL. Seed when performing permuted chi squared test for categorical variables. Default value is NULL which sets no seed. It is important to introduce some number different from NULL in order to reproduce the results when permuted chi-squared test is performed.} 
+  
+  \item{Date.format}{character indicating how the dates are shown. Default is "d-mon-Y". See \code{\link[chron]{chron}} for more details.} 
+  
+  
+  
+Arguments passed to \code{plot} method.  
+  
   \item{x}{an object of class 'compareGroups'.}  
 
   \item{file}{a character string giving the name of the file. A bmp, jpg, png or tif file is saved with an appendix added to 'file' corresponding to the row-variable name. If 'onefile' argument is set to TRUE throught '...' argument of plot method function, a unique PDF file is saved named as [file].pdf. If it is missing, multiple devices are opened, one for each row-variable of 'x' object.}  
@@ -93,11 +107,9 @@ oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, ...)
 
   \item{n.breaks}{same as argument 'breaks' of \code{\link[graphics]{hist}}.} 
 
-  \item{chisq.test.perm}{logical. It applies a permutation chi squared test (\code{\link[stats]{chisq.test}}) instead of an exact Fisher test (\code{\link[stats]{fisher.test}}).}
-  
-  \item{byrow}{logical. Percentage of categorical variables must be reported by rows. Default value is FALSE, which means that percentages are reported by columns (withing groups).}
-  
-  \item{\dots}{further arguments passed to 'compareGroups.default' or other methods. For 'plot' method, '...' arguments are passed to \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}} if 'type' argument equals to 'pdf', 'bmp', 'jpg', 'png' or 'tif', respectively.}
+  \item{perc}{logical. Relative frequencies (in percentatges) instead of absolute frequencies are displayed in barplots for categorical variable.}  
+
+  \item{\dots}{For 'plot' method, '...' arguments are passed to \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}} if 'type' argument equals to 'pdf', 'bmp', 'jpg', 'png' or 'tif', respectively.}
 
 }
 
@@ -146,17 +158,17 @@ See examples for further illustration about all previous issues.
 
 \note{
 
-Arguments 'X', 'y' and 'Xext' from the \code{compareGroups.default} method are not recommended to be used. Use 'X', 'data' and 'subset' arguments from the \code{compareGroups.formula} method instead. \cr
-
 By default, the labels of the variables (row-variables and grouping variable) are displayed in the resulting tables. These labels are taken from the "label" attribute of each variable. And if this attribute is NULL, then the name of the variable is displayed, instead. 
-To label non-labeled variables, or to change their labels, use the function \code{\link[Hmisc]{label}}. \cr
+To label non-labeled variables, or to change their labels, use the function \code{\link[Hmisc]{label}}. Or change its "label" atribute directly.\cr
 
 There may be no equivalence between the intervals of the OR / HR and p-values. For example, when the response variable is binary and the row-variable is continuous, p-value is based on Mann-Whitney U test or t-test depending on whether row-variable is normal distributed or not, respectively, while the confidence interval is build using the Wald method (log(OR) -/+ 1.96*se). Or when the answer is of class 'Surv', p-value is computed with the logrank test, while confidence intervals are based on the Wald method (log(HR) -/+ 1.96*se). 
 Finally, when the response is binary and the row variable is categorical, the p-value is based on the chi-squared or Fisher test when appropriate, while confidence intervals are constructed from the median-unbiased estimation method (see \code{\link[epitools]{oddsratio}}). \cr
 
 Subjects selection criteria specified in 'selec' and 'subset' arguments are combined using '&' to be applied to every row-variable.\cr
 
-Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}}.
+Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}}.\cr
+
+Since version 4.0, date variables are supported. For this kind of variables only method==2 is applied, i.e. non-parametric tests for continuous variables are applied. However, the descriptive statistics (medians and quantiles) are displayed in date format instead of numeric format.
 
 }
 

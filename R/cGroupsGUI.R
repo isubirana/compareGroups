@@ -832,10 +832,10 @@ cGroupsGUI <- function(X){
           tmp.data <- x
           if(tcltk::tclvalue(type.var.valuex)=='factor'){  
               var.plot <- as.character(tcltk::tkget(tlist.factor.selection,0,"end"))
-              label.aux <- Hmisc::label(tmp.data[,var.plot])
+              label.aux <- attr(tmp.data[,var.plot],"label")
               variableF <- factor(tmp.data[,var.plot])
-              if (label.aux=="")   Hmisc::label(variableF) <- var.plot
-              if (label.aux!="")   Hmisc::label(variableF) <- label.aux
+              if (label.aux=="")   attr(variableF,"label") <- var.plot
+              if (label.aux!="")   attr(variableF,"label") <- label.aux
           }
           if(tcltk::tclvalue(type.var.valuex)=='none'){  
               variableF <- NULL

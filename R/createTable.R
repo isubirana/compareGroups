@@ -1,6 +1,14 @@
 createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE, show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio = FALSE, show.descr = TRUE, hide.no = NA, digits.ratio = NA, show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1,1), extra.labels = NA)
 {
   
+  os<-sessionInfo()$platform
+  locale<-sessionInfo()$locale
+  locale<-strsplit(locale,";")[[1]]
+  locale<-locale[grep("^LC_CTYPE",locale)]
+  locale<-sub("LC_CTYPE=","",locale)
+
+  spchar<-if (length(grep("linux",os))==0 || length(grep("UTF-8",locale))>0) TRUE else FALSE
+
   if (!is.na(extra.labels[1])){ 
     method <- sapply(x, function(x.i) paste(attr(x.i, "method"),collapse="-"))
     method <- ifelse(method=="continuous-normal", 1, ifelse(method=="continuous-non-normal", 2, 3))
@@ -66,7 +74,6 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
   } else 
     if (length(digits.ratio)==1)
       digits.ratio<-rep(digits.ratio,length(x))      
-      
 
   hide<-as.list(hide)
   if (!is.null(attr(hide,"names"))){
@@ -95,14 +102,14 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
   nr<-NULL
   k<-1
   for (i in 1:length(x)){
-    t.i<-t(table.i(x[[i]],hide.i=hide[[i]],digits=digits[i],digits.ratio=digits.ratio[i],type=type,varname=varnames[i],hide.no,digits.p=digits.p,sd.type=sd.type,q.type=q.type))
+    t.i<-t(table.i(x[[i]],hide.i=hide[[i]],digits=digits[i],digits.ratio=digits.ratio[i],type=type,varname=varnames[i],hide.no,digits.p=digits.p,sd.type=sd.type,q.type=q.type,spchar=spchar))
     nr<-c(nr,nrow(t.i))
     ans$descr<-rbind(ans$descr,t.i)
     s.i<-attr(x[[i]],"selec")
     s.i<-ifelse(is.na(s.i),"ALL",s.i)
     ans$avail<-rbind(ans$avail,c(x[[i]]$sam,paste(attr(x[[i]],"method"),collapse="-"),s.i,attr(x[[i]],"fact.ratio")))
   }
-  
+
   rownames(ans$avail)<-varnames
   nc<-ncol(ans$avail)
   colnames(ans$avail)[(nc-2):nc]<-c("method","select","Fact OR/HR")

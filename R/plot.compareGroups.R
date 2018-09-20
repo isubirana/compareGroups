@@ -1,4 +1,4 @@
-plot.compareGroups<-function(x, file, type = "pdf", bivar = FALSE, z = 1.5, n.breaks = "Sturges", ...){
+plot.compareGroups<-function(x, file, type = "pdf", bivar = FALSE, z = 1.5, n.breaks = "Sturges", perc = FALSE, ...){
 
   if (!inherits(x,"compareGroups"))
     stop("x must be of class 'compareGroups'")
@@ -38,7 +38,7 @@ plot.compareGroups<-function(x, file, type = "pdf", bivar = FALSE, z = 1.5, n.br
       if (!is.factor(x.var) & !inherits(x.var,"Surv"))
         norm.plot(x=x.var, file=file.i, var.label.x=var.labels[i], z=z, n.breaks=n.breaks,...)  
       if (is.factor(x.var))
-        bar.plot(x=x.var, file=file.i, var.label.x=var.labels[i],...)
+        bar.plot(x=x.var, file=file.i, var.label.x=var.labels[i], perc=perc, ...)
       if (inherits(x.var,"Surv"))
         KM.plot(x=x.var, file=file.i, var.label.x=var.labels[i],...)    
     } else {
@@ -53,7 +53,7 @@ plot.compareGroups<-function(x, file, type = "pdf", bivar = FALSE, z = 1.5, n.br
         if (!is.factor(x.var) & !inherits(x.var,"Surv"))
           box.plot(x=x.var, y=y, file=file.i, var.label.x=var.labels[i], var.label.y=attr(x,"yname"),...)    
         if (is.factor(x.var))
-          bar2.plot(x=x.var, y=y, file=file.i, var.label.x=var.labels[i], var.label.y=attr(x,"yname"),...)          
+          bar2.plot(x=x.var, y=y, file=file.i, var.label.x=var.labels[i], var.label.y=attr(x,"yname"), perc=perc, byrow=attr(x,"byrow"), ...)          
         if (inherits(x.var,"Surv"))
           KMg.plot(x=y, y=x.var, file=file.i, var.label.x=attr(x,"yname"), var.label.y=var.labels[i],...)          
       }

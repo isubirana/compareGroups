@@ -15,6 +15,7 @@ function(x, digits=3, ...) {
 
   method<-unlist(lapply(x, FUN=function(y) paste(attr(y,"method"),collapse=" ")))
   selec<-unlist(lapply(x, FUN=function(y) attr(y,"selec")))
+
   varnames<-names(x)
   sig.pval<-ifelse(pval<0.05,"**",ifelse(pval<0.1,"*",""))
   sig.pval<-ifelse(is.na(sig.pval),"",sig.pval)

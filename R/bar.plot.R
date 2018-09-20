@@ -1,5 +1,5 @@
 bar.plot <-
-function(x, file, var.label.x, ...)
+function(x, file, var.label.x, perc, ...)
 {
   x<-x[!is.na(x)]
   
@@ -24,7 +24,14 @@ function(x, file, var.label.x, ...)
         pdf(file,...)                             
   }
 
-  barplot(table(x),main=paste("Barplot of '",var.label.x,"'",sep=""),ylab="Freq",col="red")
+  pp <- table(x)
+  ylab <- "Freq (n)"
+  if (perc){
+    pp <- prop.table(pp)*100
+    ylab <- "Freq (%)"
+  }
+
+  barplot(pp,main=paste("Barplot of '",var.label.x,"'",sep=""),ylab=ylab,col="red")
 
   if (!is.null(file) && (length(grep("pdf$",file))==0 || !onefile))
     dev.off()

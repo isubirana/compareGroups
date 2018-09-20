@@ -1,4 +1,4 @@
-bar2.plot<-function(x, y, file, var.label.x, var.label.y, ...)     
+bar2.plot<-function(x, y, file, var.label.x, var.label.y, perc, byrow, ...)     
 {
 
   kk<-!is.na(x) & !is.na(y)
@@ -26,10 +26,26 @@ bar2.plot<-function(x, y, file, var.label.x, var.label.y, ...)
         pdf(file,...)                               
   }
     
-  tt <- table(x, y)
-  barplot(tt, beside=TRUE, main = paste("Barplot of '",var.label.x,"' by '",var.label.y,"'", sep=""),ylim=c(0,max(tt)*1.3),ylab="Freq",col=rainbow(nlevels(x))) 
-  legend("topleft",levels(x),fill=rainbow(nlevels(x)),bty="n")
+  pp <- table(x, y)
+  ylab <- "Freq (n)"
+  main <- paste("Barplot of '",var.label.x,"' by '",var.label.y,"'", sep="")  
+  if (byrow){
+    main <- paste("Barplot of '",var.label.y,"' by '",var.label.x,"'", sep="")
+    pp <- table(y, x)
+  }
+  if (perc){
+    pp <- prop.table(pp, margin=2)*100
+    ylab <- "Freq (%)"
+  }
 
+  if (byrow){
+    barplot(pp, beside=TRUE, main=main, ylim=c(0,max(pp)*1.3),ylab=ylab,col=rainbow(nlevels(y))) 
+    legend("topleft",levels(y),fill=rainbow(nlevels(y)),bty="n")
+  }else{
+    barplot(pp, beside=TRUE, main=main, ylim=c(0,max(pp)*1.3),ylab=ylab,col=rainbow(nlevels(x))) 
+    legend("topleft",levels(x),fill=rainbow(nlevels(x)),bty="n")
+  }
+  
   if (!is.null(file) && (length(grep("pdf$",file))==0 || !onefile))
     dev.off()
 

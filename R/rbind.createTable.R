@@ -39,7 +39,6 @@ rbind.createTable <- function(..., caption)
     
   out<-list()
   descr<-avail<-nr<-varnames<-NULL
-  Xlong<-NULL
   for (i in 1:length(args)){
     args.i<-args[[i]]
     if (!is.null(caption) && !is.null(attr(args.i,"caption"))){
@@ -49,10 +48,10 @@ rbind.createTable <- function(..., caption)
     descr<-rbind(descr,args.i[[1]])
     avail<-rbind(avail,args.i[[2]])
     nr<-c(nr,attr(args.i,"nr"))
-    Xlong<-cbind(Xlong,attr(args.i,"Xlong"))
     varnames<-c(varnames,attr(args.i,"varnames"))
-
   }
+  Xlong <- do.call(cbind, lapply(args, function(args.i) attr(args.i, "Xlong", exact=TRUE)))
+  
   out$descr<-descr
   out$avail<-avail
   attr(out,"nmax.pos")<-attr(args.i,"nmax.pos")

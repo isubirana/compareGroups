@@ -34,7 +34,6 @@ rbind.compareGroups<-function(..., caption)
   out<-list()
   nn<-varnames.orig<-character(0)
   k<-1
-  Xlong<-NULL
   for (i in 1:length(args)){    
     args.i<-args[[i]]
     if (!is.null(caption) && !is.null(attr(args.i,"caption")))
@@ -44,10 +43,11 @@ rbind.compareGroups<-function(..., caption)
       k<-k+1
     }
     nn<-c(nn,names(args.i))
-    Xlong<-cbind(Xlong,attr(args.i,"Xlong"))
     varnames.orig<-c(varnames.orig,attr(args.i,"varnames.orig"))
   }
   
+  Xlong <- as.data.frame(lapply(args, function(args.i) attr(args.i,"Xlong")))
+
   names(out)<-nn
   attr(out,"yname")<-attr(args[[1]],"yname")
   attr(out,"yname.orig")<-attr(args[[1]],"yname.orig")

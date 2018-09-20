@@ -1,23 +1,32 @@
 compare.i <-
-function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, chisq.test.perm, byrow) {
+function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
+         simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format) {
 
   x.orig <- x
   y.orig <- y
   
-  if (!inherits(x,"Surv") && !is.factor(x) && !is.na(method.i) && method.i==3)
-    x <- as.factor(x)
-    
+  if (!inherits(x,"Surv") && !is.factor(x) && !is.na(method.i) && method.i==3){
+    if (inherits(x, "Date") || inherits(x, "dates"))
+      x <- as.factor(chron(as.numeric(x), out.format=Date.format))
+    else
+      x <- as.factor(x)
+  }
+
   if (!inherits(x,"Surv") && !is.factor(x) && is.na(method.i) && length(unique(x))<min.dis){
     warning(paste("variable '",varname,"' converted to factor since few different values contained",sep=""))
-    x <- as.factor(x)
+    if (inherits(x, "Date") || inherits(x, "dates"))
+      x <- as.factor(chron(as.numeric(x), out.format=Date.format))
+    else
+      x <- as.factor(x)
   }    
   
   if (is.factor(x) && include.miss){
     if (any(is.na(x))){
       ll<-levels(x)
       x<-as.integer(x)
-      x<-ifelse(is.na(x),99999,x)
-      x<-factor(x,c(1:length(ll),99999),labels=c(ll,"'Missing'"))
+      x<-ifelse(is.na(x),999999999,x)
+      x<-factor(x,c(1:length(ll),999999999),labels=c(ll,"'Missing'"))
     }
   }
 
@@ -37,14 +46,14 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       ylong[is.na(select.eval)] <- NA
     }
   }
-  
+
   if (inherits(ylong,"Surv")) 
     ylong<-ylong[,2]
   if (inherits(xlong,"Surv"))
     xlong<-ifelse(is.na(xlong[,1]) | is.na(xlong[,2]), NA, xlong[,2])
   
   keep <- !is.na(x) & !is.na(y)
-  
+
   x <- x[keep]
   y <- y[keep]
   
@@ -99,6 +108,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
   if (!inherits(x,"Surv") && (is.factor(x) & length(levels(x))>max.xlev))
     stop(paste("too many values for variable '",varname,"'",sep=""))
 
+  ## no data
   if (NROW(x)==0){
     sam<-rep(0,ny+1)
     names(sam)<-c("[ALL]",levels(y))
@@ -123,7 +133,11 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
     }
     ans<-list(descriptive=nn, sam=sam, p.overall=NaN, p.trend=NaN, p.mul=p.mul)
     attr(ans, "method") <- "no-data" 
+    
+  ## some data  
   } else {
+    
+    ## x - factor
     if (is.factor(x)) {
       if (inherits(y,"Surv"))
         tt <- table(gy,x)
@@ -138,7 +152,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
         if (inherits(y,"Surv"))
           p.overall <- try(logrank.pval(x,y),silent=TRUE)
         else
-          p.overall <- chisq.test2(t(tt), chisq.test.perm)
+          p.overall <- try(chisq.test2(t(tt), chisq.test.perm, chisq.test.B, chisq.test.seed),silent=TRUE)
         if (inherits(p.overall,"try-error"))
           p.overall<-NaN
       } else
@@ -163,7 +177,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
         for (i in 1:(ny-1))
           for (j in (i+1):ny) {
             np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
-            p.ij<-try(chisq.test2(t(tt[c(i,j),]),chisq.test.perm),silent=TRUE)
+            p.ij<-try(chisq.test2(t(tt[c(i,j),]), chisq.test.perm, chisq.test.B, chisq.test.seed),silent=TRUE)
             if (inherits(p.ij,"try-error"))
               p.ij<-NaN
             pp<-c(pp,p.ij)
@@ -176,74 +190,67 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
       attr(ans, "method") <- "categorical" 
     } else {
-      if (!inherits(x,"Surv")){
-        x <- as.double(x)
-        if (method.i == 1){
-          if (inherits(y,"Surv"))
-            tt<-descrip(x, gy, method="param", Q1, Q3)
-          else
-            tt<-descrip(x, y, method="param", Q1, Q3)
-          if (ny<=2) {
-            if (groups){
-              if (inherits(y,"Surv"))
-                p.overall<-try(coef(summary(coxph(y~x)))[,'Pr(>|z|)'],silent=TRUE)  
-              else  
-                p.overall<-try(t.test(x~y)$p.value,silent=TRUE)
-              if (inherits(p.overall,"try-error"))
-                p.overall<-NaN
-            } else
-              p.overall<-NaN
-            p.trend<-p.overall
-            p.mul<-p.trend
-            if (ny==2){
-              if (inherits(y,"Surv"))
-                names(p.mul) <- paste("p.","No event"," vs ","Event",sep="")
-              else
-                names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[2],sep="")
-            } else
-              names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")        
-          } else {
-            p.overall<-try(anova(lm(x~y),lm(x~1))[2,"Pr(>F)"],silent=TRUE)
-            if (inherits(p.overall,"try-error"))
-              p.overall<-NaN
-            p.trend<-try(cor.test(x,as.integer(y))$p.value,silent=TRUE)
-            if (inherits(p.trend,"try-error"))
-              p.trend<-NaN 
-            if (is.na(p.trend))
-              p.trend <- NaN
-            if (p.corrected){
-              temp<-try(TukeyHSD(aov(x~y)),silent=TRUE)
-              p.mul <- rep(NaN, choose(ny,2))
-              names(p.mul)<-apply(combn2(levels(y)),2,function(nnn) paste(rev(nnn),collapse="-"))
-              if (!inherits(temp,"try-error")){
-                p.mul[rownames(temp$y)]<-temp[[1]][,4]
-              }        
-              names(p.mul) <- paste("p",apply(combn2(levels(y)),2,function(nnn) paste(nnn,collapse=" vs ")),sep=".") 
-            } else {
-              pp<-np<-NULL  
-              for (i in 1:(ny-1)){
-                for (j in (i+1):ny) {
-                  np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
-                  ss.ij<-y%in%c(levels(y)[i],levels(y)[j])
-                  p.ij<-try(t.test(x[ss.ij]~y[ss.ij])$p.value,silent=TRUE)
-                  if (inherits(p.ij,"try-error"))
-                    p.ij<-NaN            
-                pp<-c(pp,p.ij)
-                }
-              }
-              p.mul <- structure(pp,names=paste("p",np,sep="."))
+      
+      ## x - double
+      if (inherits(x,"Surv")){
+
+        ## x - survival
+        tt<-descripSurv(x, y, timemax.i)
+        p.overall<-try(logrank.pval(y,x),silent=TRUE)
+        if (inherits(p.overall,"try-error"))
+          p.overall <- NaN        
+        if (ny<=2){
+          p.trend <- p.overall
+          p.mul <- p.overall
+          if (ny==2){
+            names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[2],sep="")
+          } else
+            names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")       
+        } else {
+          p.trend<-try(summary(coxph(x~as.integer(y)))$sctest["pvalue"],silent=TRUE)
+          if (inherits(p.trend,"try-error"))
+            p.trend <- NaN        
+          if (is.na(p.trend))
+            p.trend <- NaN
+          pp<-np<-NULL
+          for (i in 1:(ny-1)){
+            for (j in (i+1):ny) {
+              np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
+              ss.ij<-y%in%c(levels(y)[i],levels(y)[j])
+              p.ij<-try(logrank.pval(y[ss.ij],x[ss.ij]),silent=TRUE)
+              if (inherits(p.ij,"try-error"))
+                p.ij<-NaN            
+            pp<-c(pp,p.ij)
             }
           }
-          ans<-list(descriptive=tt[,-1], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
-          attr(ans, "method") <- c("continuous", "normal") 
-        } else {
+          if (p.corrected)
+            p.mul <- structure(p.adjust(pp,"BH"),names=paste("p",np,sep="."))
+          else 
+            p.mul <- structure(pp,names=paste("p",np,sep="."))
+        }
+        ans<-list(descriptive=tt[,-1,drop=FALSE], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
+        attr(ans, "method") <- c("Surv",timemax.i) 
+        
+        
+        
+      } else {
+        
+        ## x - date (only method=2 is applied)
+        if (inherits(x, "Date") || inherits(x, "dates")){
+          
+          if (method.i!=2)
+            warning(paste("for variable",varname,"method 2 is applied since it is a date."))
+          
+          x <- as.numeric(x)
+          
           if (inherits(y,"Surv"))
             tt<-descrip(x, gy, method="no", Q1, Q3)
           else
-            tt<-descrip(x, y, method="no", Q1, Q3)        
+            tt<-descrip(x, y, method="no", Q1, Q3)   
+
           if (groups){
             if (inherits(y,"Surv"))
-              p.overall<-try(coef(summary(coxph(y~x)))[,'Pr(>|z|)'],silent=TRUE) 
+              p.overall<-try(coef(summary(coxph(y~as.numeric(x))))[,'Pr(>|z|)'],silent=TRUE) 
             else  
               p.overall<-try(kruskal.test(x~y)$p.value,silent=TRUE)
             if (inherits(p.overall,"try-error"))
@@ -281,45 +288,122 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
             else
               p.mul <- structure(pp,names=paste("p",np,sep="."))
           }
-          ans<-list(descriptive=tt[,-1], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
+          ans<-list(descriptive=as.character(chron(round(tt[,-1],0), out.format=Date.format)), 
+                    sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
           attr(ans, "method") <- c("continuous", "non-normal")
-        }
-      } else {
-        tt<-descripSurv(x, y, timemax.i)
-        p.overall<-try(logrank.pval(y,x),silent=TRUE)
-        if (inherits(p.overall,"try-error"))
-          p.overall <- NaN        
-        if (ny<=2){
-          p.trend <- p.overall
-          p.mul <- p.overall
-          if (ny==2){
-            names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[2],sep="")
-          } else
-            names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")       
+
         } else {
-          p.trend<-try(summary(coxph(x~as.integer(y)))$sctest["pvalue"],silent=TRUE)
-          if (inherits(p.trend,"try-error"))
-            p.trend <- NaN        
-          if (is.na(p.trend))
-            p.trend <- NaN
-          pp<-np<-NULL
-          for (i in 1:(ny-1)){
-            for (j in (i+1):ny) {
-              np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
-              ss.ij<-y%in%c(levels(y)[i],levels(y)[j])
-              p.ij<-try(logrank.pval(y[ss.ij],x[ss.ij]),silent=TRUE)
-              if (inherits(p.ij,"try-error"))
-                p.ij<-NaN            
-            pp<-c(pp,p.ij)
+          
+          ## x- numeric          
+          x <- as.double(x)
+          if (method.i == 1){
+            if (inherits(y,"Surv"))
+              tt<-descrip(x, gy, method="param", Q1, Q3)
+            else
+              tt<-descrip(x, y, method="param", Q1, Q3)
+            if (ny<=2) {
+              if (groups){
+                if (inherits(y,"Surv"))
+                  p.overall<-try(coef(summary(coxph(y~x)))[,'Pr(>|z|)'],silent=TRUE)  
+                else  
+                  p.overall<-try(t.test(x~y)$p.value,silent=TRUE)
+                if (inherits(p.overall,"try-error"))
+                  p.overall<-NaN
+              } else
+                p.overall<-NaN
+              p.trend<-p.overall
+              p.mul<-p.trend
+              if (ny==2){
+                if (inherits(y,"Surv"))
+                  names(p.mul) <- paste("p.","No event"," vs ","Event",sep="")
+                else
+                  names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[2],sep="")
+              } else
+                names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")        
+            } else {
+              p.overall<-try(anova(lm(x~y),lm(x~1))[2,"Pr(>F)"],silent=TRUE)
+              if (inherits(p.overall,"try-error"))
+                p.overall<-NaN
+              p.trend<-try(cor.test(x,as.integer(y))$p.value,silent=TRUE)
+              if (inherits(p.trend,"try-error"))
+                p.trend<-NaN 
+              if (is.na(p.trend))
+                p.trend <- NaN
+              if (p.corrected){
+                temp<-try(TukeyHSD(aov(x~y)),silent=TRUE)
+                p.mul <- rep(NaN, choose(ny,2))
+                names(p.mul)<-apply(combn2(levels(y)),2,function(nnn) paste(rev(nnn),collapse="-"))
+                if (!inherits(temp,"try-error")){
+                  p.mul[rownames(temp$y)]<-temp[[1]][,4]
+                }        
+                names(p.mul) <- paste("p",apply(combn2(levels(y)),2,function(nnn) paste(nnn,collapse=" vs ")),sep=".") 
+              } else {
+                pp<-np<-NULL  
+                for (i in 1:(ny-1)){
+                  for (j in (i+1):ny) {
+                    np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
+                    ss.ij<-y%in%c(levels(y)[i],levels(y)[j])
+                    p.ij<-try(t.test(x[ss.ij]~y[ss.ij])$p.value,silent=TRUE)
+                    if (inherits(p.ij,"try-error"))
+                      p.ij<-NaN            
+                  pp<-c(pp,p.ij)
+                  }
+                }
+                p.mul <- structure(pp,names=paste("p",np,sep="."))
+              }
             }
+            ans<-list(descriptive=tt[,-1], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
+            attr(ans, "method") <- c("continuous", "normal") 
+          } else {
+            if (inherits(y,"Surv"))
+              tt<-descrip(x, gy, method="no", Q1, Q3)
+            else
+              tt<-descrip(x, y, method="no", Q1, Q3)        
+            if (groups){
+              if (inherits(y,"Surv"))
+                p.overall<-try(coef(summary(coxph(y~x)))[,'Pr(>|z|)'],silent=TRUE) 
+              else  
+                p.overall<-try(kruskal.test(x~y)$p.value,silent=TRUE)
+              if (inherits(p.overall,"try-error"))
+                p.overall<-NaN
+            } else
+              p.overall<-NaN
+            if (ny<=2){
+              p.trend <- p.overall
+              p.mul <- p.overall
+              if (ny==2){
+                if (inherits(y,"Surv"))
+                  names(p.mul) <- paste("p.","No event"," vs ","Event",sep="")
+                else
+                  names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[2],sep="")
+              } else
+                names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")       
+            } else {
+              p.trend<-try(cor.test(x,as.integer(y),method="spearman")$p.value,silent=TRUE)
+              if (inherits(p.trend,"try-error"))
+                p.trend <- NaN        
+              if (is.na(p.trend))
+                p.trend <- NaN
+              pp<-np<-NULL
+              for (i in 1:(ny-1)){
+                for (j in (i+1):ny) {
+                  np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
+                  p.ij<-try(kruskal.test(x~y,subset=y%in%c(levels(y)[i],levels(y)[j]))$p.value,silent=TRUE)
+                  if (inherits(p.ij,"try-error"))
+                    p.ij<-NaN            
+                pp<-c(pp,p.ij)
+                }
+              }
+              if (p.corrected)
+                p.mul <- structure(p.adjust(pp,"BH"),names=paste("p",np,sep="."))
+              else
+                p.mul <- structure(pp,names=paste("p",np,sep="."))
+            }
+            ans<-list(descriptive=tt[,-1], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
+            attr(ans, "method") <- c("continuous", "non-normal")
           }
-          if (p.corrected)
-            p.mul <- structure(p.adjust(pp,"BH"),names=paste("p",np,sep="."))
-          else 
-            p.mul <- structure(pp,names=paste("p",np,sep="."))
         }
-        ans<-list(descriptive=tt[,-1,drop=FALSE], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
-        attr(ans, "method") <- c("Surv",timemax.i)      
+        
       }
     }
   }
@@ -431,6 +515,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
   attr(ans,"groups")<-groups
   attr(ans,"xlong")<-xlong
   attr(ans,"ylong")<-ylong
+  
   ans
 
 }

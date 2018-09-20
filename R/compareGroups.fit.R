@@ -1,18 +1,24 @@
-compareGroups.default <-
-function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha = 0.05, min.dis = 5, max.ylev = 5, max.xlev = 10, include.label = TRUE, Q1 = 0.25, Q3 = 0.75, simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, ...) {
+compareGroups.fit <-
+function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev, include.label, Q1, Q3, 
+         simplify, ref, ref.no, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format) {
 
    if (!is.null(Xext)){
     if (!is.matrix(Xext) & !is.data.frame(Xext))
       stop("Xext must be a matrix or a data.frame")
     if (is.matrix(Xext))
       Xext<-as.data.frame(X)      
-    if (! NROW(Xext) == NROW(Xext))
+    if (! NROW(Xext) == NROW(X))
       stop("Xext and X must have the same number of rows")
+   }  else {
+     Xext <- X
+     if (!is.null(y))
+       Xext <- cbind(Xext,y)
    }    
 
    if (!is.matrix(X) & !is.data.frame(X))
     stop("X must be a matrix or a data.frame")
-
+  
    if (Q1>1 | Q1<0)
     stop("Q1 must be between 0 and 1")
       
@@ -24,6 +30,7 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
 
    cl <- match.call()
    yname <- as.character(cl)[3]
+   
    
    if (is.null(y)){
     y<-rep(1,nrow(X))
@@ -39,6 +46,11 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
    
    nvars<-ncol(X)
    
+   # names/labels of X & y variables.
+   # if (!is.null(attr(y,"label",exact=TRUE)) & include.label)
+   yname<-attr(y,"label",exact=TRUE)
+   names.X <- sapply(X, attr, which="label",exact=TRUE)
+
    if (!inherits(substitute(selec),"logical")){
      selec.temp<-substitute(selec)
      selec<-list()
@@ -79,7 +91,7 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
    } else 
      if (length(method)==1) 
        method=rep(method,nvars)
-       
+
    if (!is.null(attr(timemax,"names"))){
     temp<-rep(NA,ncol(X))
     if (".else"%in%names(timemax)){
@@ -165,18 +177,6 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
    varnames.orig<-names(X)
    yname.orig<-yname
 
-   names.X<-names(X)
-   if (!is.null(attr(y,"label")) & include.label)
-     yname<-attr(y,"label")
-   nX <- lapply(X, function(x){
-    nn<-attr(x,"label")  
-    if (!is.null(nn) & include.label) 
-      nn
-    else
-      NA
-   })
-   names.X<-ifelse(is.na(nX),names.X,nX)
-   
    if (!inherits(y,"Surv") && is.character(y))
     y <- as.factor(y)
     
@@ -209,11 +209,17 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
 
    if (NROW(X)!=NROW(y))
     stop("data doesn't mach")
-
-   ans <- lapply(1:nvars, function(i) try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], Q1=Q1, Q3=Q3, groups=groups, simplify=simplify, Xext=Xext, ref=ref[i], fact.ratio=fact.ratio[i], ref.y=ref.y, p.corrected=p.corrected, compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, chisq.test.perm=chisq.test.perm, byrow=byrow),silent=TRUE))
+   
+   ans <- lapply(1:nvars, function(i){
+     # cat("------------",names(X)[i],"--------------\n\n")
+     ans.i <- try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], Q1=Q1, Q3=Q3, groups=groups, simplify=simplify, Xext=Xext, ref=ref[i], fact.ratio=fact.ratio[i], ref.y=ref.y, p.corrected=p.corrected, compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, chisq.test.seed=chisq.test.seed, Date.format=Date.format),silent=TRUE)
+     # if (inherits(ans.i, "try-error")) print(ans.i)
+     # cat("\n\n\n")
+     ans.i
+   })
    
    names(ans)<-names.X    
-   
+
    ww<-ii<-NULL
    for (i in 1:length(ans)){
     if (inherits(ans[[i]],"try-error"))
@@ -222,7 +228,7 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
       ii<-c(ii,i)
    }
    ans<-ans[ii]
-   
+
    if (length(ans)==0)
     stop("None variable can be computed")
     
@@ -231,12 +237,12 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
     varnames.orig<-varnames.orig[-ww]
    }
 
-   Xlong <- NULL
-   for (i in 1:length(ans))
-    Xlong <- cbind(Xlong, attr(ans[[i]],"xlong"))
-   colnames(Xlong) <- varnames.orig
+   Xlong <- as.data.frame(lapply(ans, function(x) attr(x, which="xlong", exact=TRUE)))
+   names(Xlong) <- varnames.orig
+
    ylong <- attr(ans[[1]],"ylong")
 
+   
    if (groups){
     attr(ans,"yname")<-yname
     attr(ans,"yname.orig")<-yname.orig
@@ -257,7 +263,9 @@ function(X, y = NULL, Xext = NULL, selec = NA, method = 1, timemax = NA, alpha =
    attr(ans,"method")<-method
    attr(ans,"Q1")<-Q1
    attr(ans,"Q3")<-Q3
+   attr(ans,"byrow")<-byrow
    class(ans)<-"compareGroups"
+   
    ans
    
 }

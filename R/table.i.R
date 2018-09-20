@@ -1,12 +1,5 @@
 table.i <-
-function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type){
-
-  os<-sessionInfo()$platform
-  locale<-sessionInfo()$locale
-  locale<-strsplit(locale,";")[[1]] 
-  locale<-locale[grep("^LC_CTYPE",locale)]        
-  locale<-sub("LC_CTYPE=","",locale)
-  spchar<-if (length(grep("linux",os))==0 || length(grep("UTF-8",locale))>0) TRUE else FALSE
+function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar){
 
   method<-attr(x,"method")
 
@@ -29,7 +22,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
 
   ci <- if(!is.null(or)) or else hr
   p.ratio <- attr(x,"p.ratio")
-
+  
   if (!is.null(ci)){
     rr <- apply(is.na(ci) & !is.nan(ci),1,any)
     ci <- ifelse(is.nan(ci),".",format2(ci,digits.ratio))
@@ -133,7 +126,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
   }
   if (method[1]=="continuous"){
     nn<-x$descriptive
-    nn<-format2(x$descriptive,digits)
+    if (is.numeric(x$descriptive)) nn<-format2(x$descriptive,digits) # to distinguish to dates.
     nn<-ifelse(is.na(nn),".",nn)
     if (method[2]=="normal"){
       if (sd.type==1)
@@ -174,7 +167,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     rownames(ans)[nrow(ans)]<-"N"
     colnames(ans)<-varname
   }
- 
+
   ans
 
 }

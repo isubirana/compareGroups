@@ -1,4 +1,5 @@
 importFrom(xtable, xtable)
+importFrom(chron, chron)
 importFrom(Hmisc, label, spss.get, rcorr.cens, mtitle, sys)
 importFrom(gdata, trim, remove.vars, rename.vars)
 importFrom(survival, Surv, survfit, survdiff, coxph)
@@ -11,18 +12,20 @@ importFrom(grDevices, bmp, dev.new, dev.off, grey.colors, jpeg, pdf, png, rainbo
 importFrom(graphics, abline, barplot, box, boxplot, hist, legend, lines, mtext, par, plot, points, text, title)
 importFrom(stats, TukeyHSD, anova, aov, as.formula, chisq.test, coef, confint, confint.default, cor, cor.test, dnorm, fisher.test, formula, glm, kruskal.test, lm, median, na.pass, p.adjust, pchisq, qqline, quantile, sd, shapiro.test, t.test, update)
 importFrom(utils, combn, read.csv, read.csv2, read.table, sessionInfo, write.table)
+importFrom(methods, formalArgs)
 import(SNPassoc)
+import(kableExtra)
 
 
 export(
 compareGroups,
-compareGroups.default,
-compareGroups.formula,
 summary.compareGroups,
 print.summary.compareGroups,
 varinfo,
 varinfo.compareGroups,
 createTable,
+descrTable,
+strataTable,
 print.createTable,
 summary.createTable,
 print.summary.createTable,
@@ -47,13 +50,11 @@ getResults
 )
 
 
-S3method("[",compareGroups) 
+S3method("[",compareGroups)
 S3method("[",createTable)
 S3method("[",rbind.compareGroups)
 S3method("[",rbind.createTable)
 S3method("[",cbind.createTable)
-S3method(compareGroups,default)      
-S3method(compareGroups,formula)      
 S3method(print,compareGroups) 
 S3method(plot,compareGroups)            
 S3method(plot,createTable)            

@@ -26,13 +26,11 @@ function (x, nmax, header.labels)
     for (i in 1:length(varnames)) {
         if (nr[i] == 1) {
             t.i <- desc[j, , drop = FALSE]
-        }
-        else {
+        } else {
             t.i <- rbind(rep(NA, ncol(desc)), desc[j:(j + nr[i] - 
                 1), , drop = FALSE])
             rownames(t.i)[1] <- paste(varnames[i], ":", sep = "")
-            rownames(t.i)[-1] <- sub(varnames[i], "", rownames(t.i)[-1], 
-                fixed = TRUE)
+            rownames(t.i)[-1] <- sub(varnames[i], "", rownames(t.i)[-1], fixed = TRUE)
             rownames(t.i)[-1] <- sub(": ", "    ", rownames(t.i)[-1])
             if (length(dd.pos) < ncol(t.i)) {
                 t.i[1, -dd.pos] <- t.i[2, -dd.pos]
@@ -107,6 +105,10 @@ function (x, nmax, header.labels)
     out <- list(table1 = table1, table2 = table2)
     if (!is.null(attr(x, "caption"))) attr(out, "cc") <- cc
     attr(out, "nmax") <- nmax
+    nr <- ifelse(nr>1, nr+1, nr)
+    nr <- cbind(nr, rep(0:1, length(nr))[1:length(nr)])
+    nr <- unlist(apply(nr, 1, function(x) rep(x[2],x[1])))
+    attr(out, "nr") <- nr
     out
 }
 

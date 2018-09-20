@@ -1,113 +1,142 @@
 ---
-title: "compareGroups 3.0: Descriptives by groups"
+title: 'compareGroups 4.0: Descriptives by groups'
 author: "Isaac Subirana, Joan Vila and Héctor Sanz"
+date: '`r Sys.Date()`'
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+package: "`compareGroups`"
 bibliography: compareGroups_vignette.bib
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{compareGroups 3.0: Descriptives by groups}
+vignette: |
+  %\VignetteIndexEntry{compareGroups 4.0: Descriptives by groups} 
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
+<!-- #TOC { -->
+<!--   position: fixed; -->
+<!--   left: 0px; -->
+<!--   top: 0px; -->
+<!--   font-size: 14px; -->
+<!--   font-weight: bold; -->
+<!--   overflow: hidden; -->
+<!--   max-width: 300px; -->
+<!--   max-height: 1500px; -->
+<!--   border: solid 2px black; -->
+<!-- } -->
+<!-- #TOC a { -->
+<!--   padding-right: 15px; -->
+<!-- } -->
+<!-- code.r pre{ -->
+<!--   width: 1500px; -->
+<!-- } -->
 
-<!--
-<style type="text/css">
-#TOC {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  font-size: 14px;
-  font-weight: bold;
-  overflow: hidden;
-  max-width: 300px;
-  max-height: 1500px;
-  border: solid 2px black;
-}
-#TOC a {
-  padding-right: 15px;
-}
-body{
-  font-size: 18px;
-  text-align: justify;
-  line-height: 150%;
-  width: 900px;
-  margin: auto;
-  margin-left: 50px;
-  background-color: #D1F0F0;
-}
-body p{
-  width: 900px;  
-}
-td, th{  /* Table  */
-   font-size: 16px;
-}
-h1 { /* Header 1 */
- font-size: 32px;
- width: 800px;
- color: DarkBlue;
-}
-h2 { /* Header 2 */
- font-size: 28px;
- color: DarkBlue;
-}
-h3 { /* Header 3 */
- font-size: 26px;
- color: DarkBlue;
- line-height: 150%;
-}
-h4 { /* Header 4 */
- font-size: 24px;
- color: DarkBlue;
- line-height: 150%;
-}
-code.r{
-  font-size: 14px;
-  color: black;
-}
-pre {
-  font-size: 14px;
-  color: blue;
-  background-color: rgb(220,220,220);
-  width: 1200px;  
+
+
+<!-- <style type="text/css"> -->
+<!-- body{ -->
+<!--   font-size: 14px; -->
+<!--   text-align: justify; -->
+<!--   line-height: 150%; -->
+<!--   width: 1000px; -->
+<!--   margin: auto; -->
+<!--   /*margin-left: 50px;*/ -->
+<!--   /*background-color: #D1F0F0;*/ -->
+<!-- } -->
+<!-- body p{ -->
+<!--   width: 900px;   -->
+<!-- } -->
+<!-- td, th{  /* Table  */ -->
+<!--    font-size: 16px; -->
+<!-- } -->
+<!-- h1 { /* Header 1 */ -->
+<!--  font-size: 28px; -->
+<!--  width: 800px; -->
+<!--  color: DarkBlue; -->
+<!-- } -->
+<!-- h2 { /* Header 2 */ -->
+<!--  font-size: 24px; -->
+<!--  color: DarkBlue; -->
+<!-- } -->
+<!-- h3 { /* Header 3 */ -->
+<!--  font-size: 22px; -->
+<!--  color: DarkBlue; -->
+<!--  line-height: 150%; -->
+<!-- } -->
+<!-- h4 { /* Header 4 */ -->
+<!--  font-size: 20px; -->
+<!--  color: DarkBlue; -->
+<!--  line-height: 150%; -->
+<!-- } -->
+<!-- .small-code pre code { -->
+<!--   font-size: 7.5pt; -->
+<!-- } -->
+<!-- </style> -->
+
+
+<style>
+.small-code pre code {
+  font-size: 6pt;
+  width: 1000px;
 }
 </style>
--->
-
-
 
 ```{r,echo=FALSE,results='hide',warning=FALSE,message=FALSE}
 library(knitr)
-knitr::opts_chunk$set(comment="", message=FALSE, warning=FALSE,fig.align="center",fig.height=10,fig.width=10,tidy=TRUE,tidy.opts=list(blank=FALSE, width.cutoff=900))
+knitr::opts_chunk$set(comment="", message=FALSE, warning=FALSE,fig.align="center",fig.height=10,fig.width=10,tidy=TRUE,tidy.opts=list(blank=FALSE, width.cutoff=1200))
+options(width=150)
+library(kableExtra)
 ```
 
 
 <p style="margin-top:50px"></p>
 
+
+**News**
+
+- `tibble` class data sets possibly imported by `haven`, `readxl`, `readr`, etc. or to be used by `tydiverse` and `dplyr` packages are supported.
+
+- new function called `descrTable` has been implemented to build descriptive tables in a single step.
+
+- `export2md` to export descriptive tables to R-markdown documents has been improved and now supports stratified tables for HTML.
+
+- new funciton called `strataTable` has been implemented to build descriptive tables by stratas (values or levels of a variable).
+
+- Date variables are treated as continuous-non normal, performing medians, quartiles and non-parametric tests, but now are printed dates.
+
+
+
 # Introduction
 
 The **`compareGroups`** package [@Subirana2014] allows users to create tables displaying results of univariate analyses, stratified or not by categorical variable groupings.
 
-Tables can easily be exported to CSV, LaTeX, HTML, PDF, Word or Excel.
+Tables can easily be exported to CSV, LaTeX, HTML, PDF, Word or Excel, or inserted in R-markdown files to generate reports automatically.
 
-This package can be used from the **`R`** prompt or from a user-friendly GUI.
+This package can be used from the **`R`** prompt or from a user-friendly graphical user interface for non-R familiarized users.
 
-Since version 3.0, a Web User Interface (WUI) has been implemented based on **`Shiny`** package [@Shiny] which makes the functionality even more friendly. Also, this can be used remotely from [**`compareGroups`** project webpage](http://www.comparegroups.eu/). See section 6 for more details.
-
-This document provides an overview of the usage of the **`compareGroups`** package.
-
-To load the package using the **`R`** prompt, enter:
+The **`compareGroups`** package is available on CRAN repository. To load the package using the **`R`** prompt, enter:
 
 ```{r, echo=TRUE}
 library(compareGroups)
 ```
 
 
-Once the package is loaded, non-R users can follow the GUI instructions in Section 5.
+This document provides an overview of the usage of the **`compareGroups`** package with a real examples, both using the R syntax and the graphical user interface. It is structure as follows: 
+
+- Introduction of the package ([section 2](#package)) and the data used as example ([section 3](#data)), 
+- Instructions to perform descriptive tables and exploration plots using R syntax are explained ([section 4](#syntax)), and  
+- Usage of graphical user interface based on tcl-tk ([section 5](#gui)) and based on Shiny ([section 6](#wui)) are shown.
 
 
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Design: classes and methods
+
+
+
+# Package structure: classes and methods {#package}
 
 
 The **`compareGroups`** package has three functions:
@@ -131,9 +160,17 @@ Figure 1 shows how the package is structured in terms of functions, classes and 
 
 
 <p style="margin-top:50px"></p>
+
+
+
+Since version 4.0, a new function called **`descrTable`** has been implemented which is a shortcut of `compareGroups`and `createTable`, i.e. step 1 and step 2 in a single step (see [section 4.2.5](#descrTable)). 
+
+<p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Data used as example
+
+# Data used as example {#data}
+
 
 To illustrate how this package works we sampled 85% data from the participants in [the PREDIMED study](http://www.predimed.org/) [@PREDIMED]. PREDIMED is a multicenter trial in Spain, were randomly assigned participants who were at high cardiovascular risk, but with no cardiovascular disease at enrolment, to one of three diets: a Mediterranean diet supplemented with extra-virgin olive oil (MedDiet+VOO), a Mediterranean diet supplemented with mixed nuts (MedDiet+Nuts), or a control diet (advice to reduce dietary fat). Participants received quarterly individual and group educational sessions and, depending on group assignment, free provision of extra-virgin olive oil, mixed nuts, or small non-food gifts. The primary end point was the rate of major cardiovascular events (myocardial infarction, stroke, or death from cardiovascular causes.
 
@@ -188,13 +225,13 @@ Note that variables _tmain_ and _tcv_ are created as time-to-death and time-to-c
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Using **`R`** syntax
+# Using syntax {#syntax}
 
 <p style="margin-top:50px"></p>
 
-## `compareGroups`
+## Computing descriptives
 
-This is the main function. It does all the calculus. It is needed to store results in an object. Later, applying the function `createTable` (Section 4.2) to this object will create tables of the analysis results.
+`compareGroups` is the main function which does all the calculus. It is needed to store results in an object. Later, applying the function `createTable` (Section 4.2) to this object will create tables of the analysis results.
 
 For example, to perform a univariate analysis with the _predimed_ data between _group_ ("response" variable) and all other variables ("explanatory" variables), this formula is required:
 
@@ -260,7 +297,7 @@ compareGroups(group ~ age + smoke + waist + hormo, data=predimed, selec = list(w
 
 A variable can appear twice in the formula, e.g.:
 
-```{r.echo=TRUE}
+```{r, echo=TRUE}
 compareGroups(group ~ age + sex + bmi + bmi + waist + hormo, data=predimed, selec = list(bmi.1=!is.na(hormo)))
 ```
 
@@ -304,8 +341,7 @@ According to Shapiro-Wilk test, stating the cutpoint at 0.01 level, "Hormone-rep
 All non factor variables are considered as continuous. Exception is made (by default) for those that have fewer than 5 different values. This threshold can be changed in the **min.dis** statement:
 
 ```{r, echo=TRUE}
-cuts<-"lo:55=1; 56:60=2; 61:65=3; 66:70=4; 71:75=5; 76:80=6; 81:hi=7"
-predimed$age7gr<-car::recode(predimed$age, cuts)
+predimed$age7gr<-as.integer(cut(predimed$age, breaks=c(-Inf,55,60,65,70,75,80,Inf), right=TRUE))
 compareGroups(group ~ age7gr, data=predimed, method = c(age7gr=NA))
 compareGroups(group ~ age7gr, data=predimed, method = c(age7gr=NA), min.dis=8)
 ```
@@ -313,7 +349,7 @@ compareGroups(group ~ age7gr, data=predimed, method = c(age7gr=NA), min.dis=8)
 To avoid errors the maximum categories for the response variable is set at 5 in this example (default value). If this variable has more than 5 different values, the function `compareGroups` returns an error message. For example:
 
 ```{r,eval=FALSE}
-compareGroups(age7gr ~ sex + bmi + waist , data=predimed))
+compareGroups(age7gr ~ sex + bmi + waist , data=predimed)
 ```
 
 <div style="color:red">
@@ -458,7 +494,7 @@ Nota that a "warning" message is shown and no p-values are calculated for "Smoki
 
 
 Applying the `summary` function to an object of class `createTable` will obtain a more detailed output:
-  
+
 ```{r, echo=TRUE}
 res<-compareGroups(group ~ age + sex + smoke + waist + hormo, method = c(waist=2), data=predimed)
 summary(res[c(1, 2, 4)])
@@ -469,20 +505,22 @@ Note that because only variables 1, 3 and 4 are selected, only results for Age, 
 
 <p style="margin-top:50px"></p>
 
+
 ### Plotting
 
-Variables can be plotted to see their distribution. Plots differ according to whether the variable is continuous or categorical. Plots can be seen on-screen or saved in different formats (BMP, JPG', PNG, TIF or PDF). To specify the format use the argument `type'. 
+Variables can be plotted to see their distribution. Plots differ according to whether the variable is continuous or categorical. Plots can be seen on-screen or saved in different formats (BMP, JPG', PNG, TIF or PDF). To specify the format use the argument `type'.
 
 ```{r, echo=TRUE}
 plot(res[c(1,2)], file="./figures/univar/", type="png")
 ```
+
 
 ![alt text](./figures/univar/age.png)
 ![alt text](./figures/univar/sex.png)
 
 
 Plots also can be done according to grouping variable. In this case only a boxplot is shown for continuous variables:
-  
+
 ```{r, echo=TRUE}
 plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 ```
@@ -496,14 +534,14 @@ plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 ### Updating
 
 The object from `compareGroups` can later be updated. For example:
-  
+
 ```{r}
 res<-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)
 res
 ```
 
 The object `res` is updated using:
-  
+
 
 ```{r, echo=TRUE, results='hide'}
 res<-update(res, . ~. - sex +  bmi + toevent, subset = sex=='Female', method = c(waist=2, tovent=2), selec = list(bmi=!is.na(hormo)))
@@ -539,7 +577,7 @@ When the response variable is binary, the Odds Ratio (OR) can be printed in the 
 
 
 * **`ref`:**  This statement can be used to change the reference category:
-  
+
 ```{r, echo=TRUE}
 res1<-compareGroups(htn ~ age + sex + bmi + smoke, data=predimed, ref=1)
 createTable(res1, show.ratio=TRUE)
@@ -547,7 +585,7 @@ createTable(res1, show.ratio=TRUE)
 
 
 Note that for categorical response variables the reference category is the first one in the statement:
-  
+
 
 ```{r, echo=TRUE}
 res2<-compareGroups(htn ~ age + sex + bmi + smoke, data=predimed, ref=c(smoke=1, sex=2))
@@ -559,7 +597,7 @@ Note that the reference category for Smoking status is the first and for Sex the
 
 
 * **`ref.no`:** Similarly to the `ref` statement, `ref.no` is used to state "no" as the reference category for all variables with this category:
-  
+
 ```{r, echo=TRUE}
 res<-compareGroups(htn ~ age + sex + bmi + hormo + hyperchol, data=predimed, ref.no='NO')
 createTable(res, show.ratio=TRUE)
@@ -569,7 +607,7 @@ Note: "no", "No" or "NO" will produce the same results; the coding is not case s
 
 
 * **`fact.ratio`**: By default OR or HR for continuous variables are calculated for each unit increase. It can be changed by the `fact.or` statement:
-  
+
 ```{r, echo=TRUE}
 res<-compareGroups(htn ~ age + bmi, data=predimed)
 createTable(res, show.ratio=TRUE)
@@ -587,8 +625,8 @@ Here the OR is for the increase of 10 years for Age and 2 units for "Body mass i
 
 
 
-* **`ref.y`:** By default when OR or HR are calculated, the reference category for the response variable is the first. The reference category could be changed using the `ref.y` statement:  
-  
+* **`ref.y`:** By default when OR or HR are calculated, the reference category for the response variable is the first. The reference category could be changed using the `ref.y` statement:
+
 ```{r, echo=TRUE}
 res<-compareGroups(htn ~ age + sex + bmi + hyperchol, data=predimed)
 createTable(res, show.ratio=TRUE)
@@ -649,9 +687,9 @@ plot(res[2], bivar=TRUE, file="./figures/bivar/", type="png")
 
 <p style="margin-top:50px"></p>
 
-## `createTable`
+## Performing the descritive table
 
-`createTable` function, applied to an object of `compareGroups` class, returns tables with descriptives that can be displayed on-screen or exported to CSV, LaTeX, HTML, Word or Excel.
+The `createTable` function, applied to an object of `compareGroups` class, returns tables with descriptives that can be displayed on-screen or exported to CSV, LaTeX, HTML, Word or Excel.
 
 
 ```{r,echo=TRUE}
@@ -660,16 +698,26 @@ restab<-createTable(res)
 ```
 
 Two tables are created with the `createTable` function: one with the descriptives and the other with the available data. The `print` method applied to an object of class `createTable` prints one or both tables on the **`R`** console:
-  
+
 ```{r, echo=TRUE}
 print(restab,which.table='descr')
 ```
 
 Note that the option "descr" prints descriptive tables.
 
-```{r, echo=TRUE}
+
+```{r, echo=TRUE, eval=FALSE}
 print(restab,which.table='avail')
 ```
+
+
+```{r, echo=FALSE}
+print(restab,which.table='avail')
+```
+
+
+
+
 
 While the option "avail" prints the available data, as well as methods and selections.
 
@@ -690,7 +738,7 @@ update(restab, hide = c(sex="Male"))
 Note that the percentage of males is hidden.
 
 * **`hide.no`:** Similarly, as explained above, if the category "no" is to be hidden for all variables:
-  
+
 ```{r}
 res<-compareGroups(group ~ age + sex + htn + diab, data=predimed)
 createTable(res, hide.no='no', hide = c(sex="Male"))
@@ -699,7 +747,7 @@ createTable(res, hide.no='no', hide = c(sex="Male"))
 Note: "no", "No" or "NO" will produce the same results; the coding is not case sensitive.
 
 * **`digits`:** The number of digits that appear in the results can be changed, e.g:
-  
+
 ```{r}
 createTable(res, digits= c(age=2, sex = 3))
 ```
@@ -708,7 +756,7 @@ Note that mean and standard deviation has two decimal places for age, while perc
 
 
 * **`type`:** By default categorical variables are summarized by frequencies and percentages. This can be changed by the `type` argument:
-  
+
 ```{r}
 createTable(res, type=1)
 ```
@@ -726,19 +774,19 @@ Value 2 or `NA` return the same results, i.e., the default option.
 
 
 * **`show.n`:** If option `show.n` is set to `TRUE` a column with available data for each variable appears in the results:
-  
+
 ```{r}
 createTable(res, show.n=TRUE)
 ```
 
 * **`show.descr`:** If argument `show.descr` is set to `FALSE` only p-values are displayed:
-  
+
 ```{r}
 createTable(res, show.descr=FALSE)
 ```
 
 * **`show.all`:** If `show.all` argument is set to `TRUE` a column is displayed with descriptives for all data:
-  
+
 ```{r}
 createTable(res, show.all=TRUE)
 ```
@@ -750,47 +798,61 @@ createTable(res, show.p.overall=FALSE)
 ```
 
 * **`show.p.trend`:** If the response variable has more than two categories a p-value for trend can be calculated. Results are displayed if the `show.p.trend` argument is set to `TRUE`:
-  
+
 ```{r}
 createTable(res, show.p.trend=TRUE)
 ```
 
 Note: The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non-normal. If row-variable is of class `Surv`, the test score is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. If the row-variable is categorical, the p-value for trend is computed as `1-pchisq(cor(as.integer(x),as.integer(y))^2*(length(x)-1),1)`
 
-  
+
 * **`show.p.mul`:** For a response variable with more than two categories a pairwise comparison of p-values, corrected for multiple comparisons, can be calculated. Results are displayed if the `show.p.mul` argument is set to `TRUE`:
 
-```{r}
+```{r, eval=FALSE}
 createTable(res, show.p.mul=TRUE)
 ```
-  
+
+<div class="small-code">
+
+```{r, echo=FALSE}
+createTable(res, show.p.mul=TRUE)
+```
+
+</div>
+
+
+
 Note: Tukey method is used when explanatory variable is normal-distributed and Benjamini & Hochberg [@BH] method otherwise.
 
 
 * **`show.ratio`:** If response variable is dichotomous or has been defined as class `survival` (see Section 3.1), Odds Ratios and Hazard Ratios can be displayed in the results by stating `TRUE` at the show.ratio option:
-  
+
 ```{r}
-createTable(update(res, subset= group!="Control diet"), show.ratio=TRUE)
+createTable(update(res, subset= group!="Control"), show.ratio=TRUE)
 ```
 
+
+
 Note that category "Control diet" of the response variable has been omitted in order to have only two categories (i.e., a dichotomous variable). No Odds Ratios would be calculated if response variable has more than two categories.
+
+
+
+Note that when response variable is of class `Surv`, Hazard Ratios are calculated instead of Odds Ratios.
 
 ```{r}
 createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.ratio=TRUE)
 ```
 
-Note that when response variable is of class `Surv`, Hazard Ratios are calculated instead of Odds Ratios.
-
 
 * **`digits.ratio`:** The number of decimal places for Odds/Hazard ratios can be changed by the `digits.ratio` argument:
-  
+
 ```{r}
 createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.ratio=TRUE, digits.ratio= 3)
 ```
 
 
 * **`header.labels`:** Change some key table header, such as the p.overall, etc. Note that this is done when printing the table changing the argument in the `print` function and not in the `createTable` function. This argument is also present in other function that exports the table to pdf, plain text, etc.
-  
+
 ```{r}
 tab<-createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.all = TRUE)
 print(tab, header.labels = c("p.overall" = "p-value", "all" = "All"))
@@ -799,10 +861,10 @@ print(tab, header.labels = c("p.overall" = "p-value", "all" = "All"))
 
 <p style="margin-top:50px"></p>
 
-### Combining tables by row
+### Combining tables by row (groups of variable)
 
 Tables made with the same response variable can be combined by row:
-  
+
 ```{r}
 restab1 <- createTable(compareGroups(group ~ age + sex, data=predimed))
 restab2 <- createTable(compareGroups(group ~ bmi + smoke, data=predimed))
@@ -816,14 +878,15 @@ The resulting object is of class `rbind.createTable`, which can be subset but no
 
 
 To select only Age and Smoking:
-  
+
 ```{r}
+x <- rbind("Non-modifiable"=restab1,"Modifiable"=restab2)
 rbind("Non-modifiable"=restab1,"Modifiable"=restab2)[c(1,4)]
 ```
 
 
 To change the order:
-  
+
 ```{r}
 rbind("Modifiable"=restab1,"Non-modifiable"=restab2)[c(4,3,2,1)]
 ```
@@ -831,9 +894,9 @@ rbind("Modifiable"=restab1,"Non-modifiable"=restab2)[c(4,3,2,1)]
 
 <p style="margin-top:50px"></p>
 
-### Combining tables by column
+### Combining tables by column (strata)
 
-Columns from tables built with the same explanatory and response variables but done with a different subset (i.e. "ALL", "Male" and "Female") can be combined:
+Columns from tables built with the same explanatory and response variables but done with a different subset (i.e. "ALL", "Male" and "Female", strata) can be combined:
 
 
 ```{r}
@@ -841,27 +904,84 @@ res<-compareGroups(group ~ age +  smoke + bmi + htn , data=predimed)
 alltab <- createTable(res,  show.p.overall = FALSE)
 femaletab <- createTable(update(res,subset=sex=='Female'), show.p.overall = FALSE)
 maletab <- createTable(update(res,subset=sex=='Male'), show.p.overall = FALSE)
+```
+
+```{r, eval=FALSE}
 cbind("ALL"=alltab,"FEMALE"=femaletab,"MALE"=maletab)
 ```
 
+<div class="small-code">
+
+```{r, echo=FALSE}
+cbind("ALL"=alltab,"FEMALE"=femaletab,"MALE"=maletab)
+```
+</div>
+
+
 With the argument `caption` set to `NULL` no name is displayed for columns.
 
-```{r}
+```{r, eval=FALSE}
 cbind(alltab,femaletab,maletab,caption=NULL)
 ```
 
+<div class="small-code">
+
+```{r, echo=FALSE}
+cbind(alltab,femaletab,maletab,caption=NULL)
+```
+</div>
+
 By default the name of the table is displayed for each set of columns.
 
-```{r}
+```{r, eval=FALSE}
 cbind(alltab,femaletab,maletab)
 ```
+
+<div class="small-code">
+
+```{r, echo=FALSE}
+cbind(alltab,femaletab,maletab)
+```
+</div>
+
 
 
 NOTE: The resulting object is of class `cbind.createTable` and inherits also the class `createTable`. This cannot be updated. It can be nicely printed on the R console and also exported to LaTeX but it cannot be exported to CSV or HTML.
 
+<br>
+
+Since version 4.0, it exists the function **`strataTable`** to build tables within stratas defined by the values or levels defined of a variable. Notice that the syntax is much simpler than using `cbind` method. For example, to perform descriptives by groups, and stratified per gender:
+
+1. first build the table with descriptives by groups:
+
+```{r}
+res <- compareGroups(group ~ . -sex, predimed)
+restab <- createTable(res, hide.no="no")
+```
+
+2. and then apply the `strataTable` function on the table:
+
+```{r, eval=FALSE}
+strataTable(restab, "sex")
+```
 
 
-### **`createTable`** miscellaneous
+<div class="small-code">
+
+```{r, echo=FALSE}
+strataTable(restab, "sex")
+```
+
+</div>
+
+
+
+
+
+
+### Miscellaneous
+
+In this section some other `createTable` options and methods are discussed:
 
 * **`print`:** By default only the table with the descriptives is printed. With `which.table` argument it can be changed: "avail" returns data available and "both" returns both tables:
 
@@ -909,7 +1029,50 @@ createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predim
 createTable(compareGroups(group ~ age + sex + bmi, data=predimed))[1:2, ]
 ```
 
+
+### Building tables in one step {#descrTable}
+
+
+Making use of **`descrTable`** the user can build descriptive table in one step. This function takes all the arguments of `compareGroups` function plus the ones from `createTable` function.
+The result is the same as if the user first call compareGroups and then createTable. Therefore one can use the same methods and functions avaiable for createTable objects (subsetting, ploting, printing, exporting, etc.)
+
+
+To describe all varaible from predimed, just type:
+
+```{r}
+descrTable(predimed)
+```
+
+To describe some varaibles, make use of formula argument (just as using `compareGroups` function)
+
+
+```{r}
+descrTable(~ age + sex, predimed)
+```
+
+To hide "no" category from yes-no variables, use the `hide.no` argument from `createTable`:
+
+```{r}
+descrTable(predimed, hide.no="no")
+```
+
+To report descriptives by group as well as the descriptives of the entire cohort:
+
+```{r}
+descrTable(group ~ ., predimed, hide.no="no", show.all=TRUE)
+```
+
+
+Or you can select individuals using the `subset` argument.
+
+```{r, eval=FALSE}
+descrTable(predimed, subset=age>65)
+```
+
+
+
 <p style="margin-top:50px"></p>
+
 
 ## Exporting tables
 
@@ -938,7 +1101,7 @@ Note that, since version 3.0, it is necessary write the extension of the file.
 
 ### General exporting options
 
-* **`which.table`:** By default only the table with the descriptives is exported. This can be changed with the `which.table` argument: 
+* **`which.table`:** By default only the table with the descriptives is exported. This can be changed with the `which.table` argument:
 "avail" exports only available data and "both" exports both tables.
 
 
@@ -979,8 +1142,60 @@ export2latex(restab)
 * **`landscape`:** Table is placed in horizontal way. This option is specially usefull when table contains many columns and/or they are too wide to be placed vertically.
 
 
+### Exporting to Rmarkdown
 
-### Generating an exhaustive report
+Since 4.0 version, `export2md` supports `cbind.createTable` class objects, i.e. when exporting stratified descriptive tables. Also, nicer and more costumizable tables can be reported making use of `kableExtra` package (such as size, strip rows, etc.).
+
+Following, there are some examples when exporting to HTML.
+
+First create the descriptive table of PREDIMED variables by intervention groups.
+
+```{r}
+res <- compareGroups(group ~ ., predimed)
+restab <- createTable(res, hide.no="no")
+```
+
+* **Default export2md to HTML:**
+
+```{r}
+export2md(restab)
+```
+
+* **Add strip rows, colouring rows by variables:**
+
+```{r}
+export2md(restab, strip=TRUE, first.strip=TRUE)
+```
+
+* **Change size:**
+
+```{r}
+export2md(restab, size=6)
+```
+
+* **Making variable names column wider:**
+
+```{r}
+export2md(restab, width="400px")
+```
+
+* **Stratified table:**
+
+```{r}
+resMales <- compareGroups(group ~ . -sex, predimed, subset=sex=="Male", simplify=FALSE)
+resFemales <- compareGroups(group ~ . -sex, predimed, subset=sex=="Female", simplify=FALSE)
+restabMales <- createTable(resMales, hide.no="no")
+restabFemales <- createTable(resFemales, hide.no="no")
+restab <- cbind("Males"=restabMales, "Females"=restabFemales)
+```
+
+```{r}
+export2md(restab, size=8)
+```
+
+
+
+## Generating an exhaustive report
 
 Since version 2.0 of **`compareGroups`** package, there is a function called `report` which automatically generates a PDF document with the "descriptive" table as well as the corresponding "available"" table. In addition, plots of all analysed variables are shown.
 
@@ -993,15 +1208,16 @@ See the help file of this function where you can find an example with the REGICO
 ?report
 
 # info about REGICOR data set
-?regicor  
+?regicor
 ```
 
-Also, you can use the function `radiograph` that dumps the raw values on a plain text file. This may be usefull to identify possible wrong codes or non-valid values in the data set. 
+Also, you can use the function `radiograph` that dumps the raw values on a plain text file. This may be usefull to identify possible wrong codes or non-valid values in the data set.
 
 
 <p style="margin-top:50px"></p>
 
-## Missing values
+
+## Dealing with missing values
 
 Many times, it is important to be aware of the missingness contained in each variable, possibly by groups.
 Althought "available" table shows the number of the non-missing values for each row-variable and in each group, it would be desirable to test whether the frequency of non-available data is different between groups.
@@ -1041,7 +1257,7 @@ restab
 In the version 2.0 of **`compareGroups`**, it is possible to analyse genetic data, more concretely Single Nucleotic Polymorphisms (SNPs), using the function `compareSNPs`. This function takes advantage of **`SNPassoc`** [@SNPassoc] and **`HardyWeinberg`** [@HW] packages to perform quality control of genetic data displaying the Minor Allele Frequencies, Missingness, Hardy Weinberg Equilibrium, etc. of the whole data set or by groups. When groups are considered, it also performs a test to check whether missingness rates is the same among groups.
 
 
-Following, we illustrate this by an example taking a data set from **`SNPassoc`** package. 
+Following, we illustrate this by an example taking a data set from **`SNPassoc`** package.
 
 
 First of all, load the `SNPs` data from **`SNPassoc`**, and visualize the first rows. Notice how are the SNPs coded, i.e. by the alleles. The alleles separator can be any character. If so, this must be specified in the `sep` argument of `compareSNPs` function (type `?compareSNPs` for more details).
@@ -1073,14 +1289,14 @@ res
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Using GUI
+# Using the Graphical User Inferface (GUI) - tcltk {#gui}
 
 Once the **`compareGroups`** package is loaded, a Graphical User Interface (GUI) is displayed in response to typing `cGroupsGUI(predimed)`. The GUI is meant to make it feasible for users who are unfamiliar with **`R`** to construct bivariate tables.
 Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the PREDIMED data by typing `data(predimed)` before calling `cGroupsGUI` function.
 
 
 In this section we illustrate, step by step, how to construct a bivariate table containing descriptives by groups from the _predimed_ data  using the GUI:
-  
+
 
 ```{r, echo=FALSE, results='asis'}
 export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + wth + htn + diab + hyperchol + famhist + hormo + p14 + toevent + event, data=predimed), hide.no="No",hide = c(sex="Male")))
@@ -1110,7 +1326,7 @@ export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + w
 
 <p style="margin-top:50px"></p>
 
-* **Step 4.** It is possible to hide the first, last or no categories of a categorical row-variable. In this example, "Male" levels will be hidden for Sex; conversely, all categories will be shown for other categorical variables. 
+* **Step 4.** It is possible to hide the first, last or no categories of a categorical row-variable. In this example, "Male" levels will be hidden for Sex; conversely, all categories will be shown for other categorical variables.
 
 ![](./figures/GUI/step4_hide_categ.png)
 
@@ -1182,7 +1398,7 @@ To return to the **`R`** console, just close the GUI window.
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Using WUI
+# Using Web User Inferface (WUI) - Shiny {#wui}
 
 Since version 2.1, **`compareGropus`** package incorporates a **Web User Interface (WUI)** based on **`shiny`** **`R`** available on CRAN repository [@Shiny] [shiny website](http://shiny.rstudio.com) to facilitate the use of the package for non **`R`** users.
 
@@ -1223,9 +1439,9 @@ A panel with different issues to control for different aspects of the bivariate 
 		3. **Survival:** to perform survival analysis where the response is a right censored variable,i.e., with time variable and a variable indicating the censoring (i.e., whether or not the individual suffered the disease). Also, the disease or case status must be indicated.
 
 * <font style="color:blue">Hide</font> For categorical variables, select the category you want to be hidden. Additionally, in the "hide no" input text windows you can type the category which represents "no" in the sense that the category named as indicated for all binary variables are hidden.
-	
+
 * <font style="color:blue">Subset</font> A global subset can be typed affecting all analysed variables. Also you can select a subgroup of individuals for each variable. In any case, a logical expression in **`R`** language must be typed:
-	  
+
 	  | Operator | **R**   |
 	  |:--------:|:-------:|
 	  |=         | `==`    |
@@ -1234,7 +1450,7 @@ A panel with different issues to control for different aspects of the bivariate 
 	  |not       | `!`     |
 
 >>Note that to indicate the category, you must type the number that appears in the "VALUES" table on right side of the application instead of its >>name. For example, for gender, type 1 instead of "male" and 2 instead of "female", if "male" is the first category and "female" is the second.
-	
+
 * <font style="color:blue">OR/HR</font> Options for Odds Ratio (OR) when response is binary or Hazard Ratios (HR) for right censored response. You can specify the reference category when computing the OR or HR for the categorical variables. For continuous variables, the scale can be changed. This is very useful for variables with a wide range such as total cholesterol, where it makes more sense to display the OR/HR for each 10 units of change rather than a single unit.
 
 <p style="margin-top:50px"></p>
@@ -1244,7 +1460,7 @@ A panel with different issues to control for different aspects of the bivariate 
 In this panel, the user can select which information must be displayed in the resulting bivariate table, and in which format, etc.
 
 * <font style="color:blue">Show</font> What to be displayed in the bivariate table:
-    
+
     + **ALL:** Descriptives for the entire data set.
     + **p-overall:** p-value comparing the means, medians, proportions or incidence among groups.
     + **Descriptives:** Descriptives (means, medians, proportions, etc.) by groups.
@@ -1275,25 +1491,25 @@ If PDF format is selected, size can be specified as well as landscape format. Th
 
 ### Results panels (right side)}
 
-* <font style="color:blue">ABOUT:</font> 
-  Explanation about both the **`compareGroups`** **`R`**-package and its Web User Interface (WUI) version. Also, it contains the security rules of the data sent by the user when using WUI remotely (from [**`compareGroups`** website](http://www.comparegroups.eu/)). 
+* <font style="color:blue">ABOUT:</font>
+  Explanation about both the **`compareGroups`** **`R`**-package and its Web User Interface (WUI) version. Also, it contains the security rules of the data sent by the user when using WUI remotely (from [**`compareGroups`** website](http://www.comparegroups.eu/)).
 
 
 * <font style="color:blue">VALUES</font>
   Using this tab, the user can take a look at the data contained in the data set.
 
     + **Summary:** A table with the the name, label and a basic summary of all the variables contained in the data set.
-    
+
     + **Values:** A table with the raw values in the data set. By default only the first ten rows are displayed, but the user can set the number of rows to be shown and navigate through the data set.
 
 * <font style="color:blue">TABLE</font>
-  The bivariate table contaning the descriptives, p-values, etc. for the selected variables. Additionaly, 
+  The bivariate table contaning the descriptives, p-values, etc. for the selected variables. Additionaly,
 pressing "info" button it is displayed the "info table" containing, for each descripted variable, how many observations are available for each group, whether it is treated as normal, non-normal or categorical, which criteria, if any, has been used to select a subset of individuals and if, the Odds Ratio or Hazard Ratio is computed, the factor for which the variable has been multiplied.
 
 * <font style="color:blue">PLOT</font>
   Univariate or bivariate (taking into account the groups if proceeds) plots of selected variable.
 
-* <font style="color:blue">SNPs</font> 
+* <font style="color:blue">SNPs</font>
   Descriptives of SNPs (Single Nucleotide Polymorphims) with appropriate statistics and tests for these genetic variants. To perform this analysis, only SNPs variables can be selected. A factor response to display genotype frequencies by groups is permitted but not a time-to-event response variable.
 
 
@@ -1316,7 +1532,7 @@ cGroupsWUI()
 
 <p style="margin-top:50px"></p>
 
-### Load the data 
+### Load the data
 
 In this example we will load the PREDIMED data set from the PREDIMED study [@PREDIMED]. This data is already available in the **`compareGroups`** package.
 
@@ -1326,7 +1542,7 @@ In this example we will load the PREDIMED data set from the PREDIMED study [@PRE
 
 ### Select the variables to be analysed
 
-After the data is loaded satisfactory, the "Step 2. Select variable" panel is opened automatically. 
+After the data is loaded satisfactory, the "Step 2. Select variable" panel is opened automatically.
 Using this panel, we will select all variables except the "event" and "toevent" (the time-to-event) variables. They will represent the response and must be removed from the row-variables.
 
 ![](./figures/WUI/step2.png)
@@ -1342,7 +1558,7 @@ Since PREDIMED is a longitudinal study where the main goal is to check whether t
 
 <p style="margin-top:50px"></p>
 
-### Take a look at the plots 
+### Take a look at the plots
 
 To see which continuous variables should be treated as normal and which not. By default, **`compareGroups`** performs a Shapiro-Wilks normality test to decide which variables are normal. But we may want to check the normality assumption graphically.
 
@@ -1356,14 +1572,14 @@ To see which continuous variables should be treated as normal and which not. By 
 
 * **Type:** Specify the variables to be treated as normal and the ones as non normal. To specify that all of them will be treated as normal, except `p14' for which median and quartiles are displayed instead of mean and SD:
 
-![](./figures/WUI/step5a.png)	
+![](./figures/WUI/step5a.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Hide:** To hide the "No" category for binary variables such as hypertension, diabetes, etc., we will type "No" in the "hide no" input text window. Also, to hide the "female" category for we will select the "sex" variable and "female" category and press "Update" button afterwards.
 
-![](./figures/WUI/step5b.png)	
+![](./figures/WUI/step5b.png)
 
 
 <p style="margin-top:50px"></p>
@@ -1371,14 +1587,14 @@ To see which continuous variables should be treated as normal and which not. By 
 * **OR:** Since we have hidden the females, we have to do the same for the HR. Also, for the waist we will change the scale to 5. Doing this, the HR will represent the change in 5 units.
 
 ![](./figures/WUI/step5c1.png)
-![](./figures/WUI/step5c2.png)	
+![](./figures/WUI/step5c2.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Subset:** If we want to do the analysis only for male type "sex==1" or "sex==2" in only females must be analysed in the "global subset" text input window.
 
-![](./figures/WUI/step5d.png)	
+![](./figures/WUI/step5d.png)
 
 
 <p style="margin-top:50px"></p>
@@ -1386,44 +1602,44 @@ To see which continuous variables should be treated as normal and which not. By 
 ### What to be displayed and how.
 
 
-* **Show:** Then, we specify which columns (information) to be displayed in the bivariate table. For instance, if we want to display the Odds Ratio, its p-value, but not the descriptives for the entire cohort "p.overall":	
+* **Show:** Then, we specify which columns (information) to be displayed in the bivariate table. For instance, if we want to display the Odds Ratio, its p-value, but not the descriptives for the entire cohort "p.overall":
 
-![](./figures/WUI/step6a.png)	
+![](./figures/WUI/step6a.png)
 
 <p style="margin-top:50px"></p>
 
 * **Format:** Also, we may want to display only the percentages for categorical variables, mean and standard deviation with plus/minus symbol and rounded brackets for first and third quantiles for continuous normal and non-normal variables, respectively:
 
-![](./figures/WUI/step6b1.png)		
-![](./figures/WUI/step6b2.png)		
-![](./figures/WUI/step6b3.png)		
+![](./figures/WUI/step6b1.png)
+![](./figures/WUI/step6b2.png)
+![](./figures/WUI/step6b3.png)
 
 <p style="margin-top:50px"></p>
 
 * **Decimals:** Moreover, it may be important to report more decimals for the odds ratio. By default, two decimals are reported. If we want to report 3 decimals for all variables:
 
-![](./figures/WUI/step6c.png)		
+![](./figures/WUI/step6c.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Headers:** Finally, some "key" words in the header of the descriptive tables, (such as "p.ratio", ...) may be changed:
 
-![](./figures/WUI/step6d.png)		
+![](./figures/WUI/step6d.png)
 
 
-<p style="margin-top:50px"></p> 
+<p style="margin-top:50px"></p>
 
 ### Visualize the table
 
 To see the output, click on TABLE tab on the right panel.
 
-![](./figures/WUI/step7a.png)		
+![](./figures/WUI/step7a.png)
 
 
 By pressing "View options" button a slider to customize the font-size of the bivariate table appears, as well as an "info" button. Pressing the "info" button a table containg information about the number of available data by variable and group, type of variable (normal, non-normal or categorical, etc) is displayed on a modal.
 
-![](./figures/WUI/step7b.png)		
+![](./figures/WUI/step7b.png)
 
 
 
@@ -1434,21 +1650,21 @@ By pressing "View options" button a slider to customize the font-size of the biv
 Finally, once the table contains all the desired figures and in the appropriate format, it can be downloaded and stored in different formats:
 
 a. **PDF:** a LaTeX compiler such as MikTex must be installed to build the PDF document with the descriptive table. The user can select the font size and whether table must be placed vertically or horizontally (landscape option).
-	
+
 b. **CSV:** a plain text file with columns separated by commas or semicolons. For Windows users, this format is useful since it can be opened by Excel.
 
 c. **HTML:** a web browser is opened and the table can be easily copied and pasted to  Word, for instance.
-	
-d. **TXT:** a plain text file which can be opened by any text editor program and which contains the table as in **`R`** console with a nice format. Once the "download" button is pressed, the file is automatically stored in your PC/Mac.	
 
-e. **Word:** A Word document file (either 2000, 2003 or 2010 version) is created.	
+d. **TXT:** a plain text file which can be opened by any text editor program and which contains the table as in **`R`** console with a nice format. Once the "download" button is pressed, the file is automatically stored in your PC/Mac.
 
-f. **Excel:** An Excel sheet file (either 200, 2003 or 2010 version) is created.	
+e. **Word:** A Word document file (either 2000, 2003 or 2010 version) is created.
+
+f. **Excel:** An Excel sheet file (either 2000, 2003 or 2010 version) is created.
 
 
-![](./figures/WUI/step8.png)	
+![](./figures/WUI/step8.png)
 
-	
+
 
 
 
@@ -1456,6 +1672,8 @@ f. **Excel:** An Excel sheet file (either 200, 2003 or 2010 version) is created.
 <p style="margin-top:50px"></p>
 
 # References
+
+
 
 
 

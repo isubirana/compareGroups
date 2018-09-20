@@ -15,6 +15,8 @@
   dots<-paste(paste("args[[",1:length(args),"]]",sep=""),collapse=",")
   ans<-eval(parse(text=paste("rbind(",dots,")",sep="")))
   
+  rbind(args[[1]],args[[2]])
+  
   ll.args<-unlist(lapply(args,length))
   nn.args<-as.vector(unlist(sapply(ll.args,function(x) 1:x)))
   ll.args<-rep(1:length(ll.args),ll.args)
