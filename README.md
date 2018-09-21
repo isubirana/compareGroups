@@ -137,19 +137,13 @@ AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%) 
 with **`compareGroups`** you can also visualize the variables distribution. This can be done by `plot` function on the table:
 
 ```
-plot(tab["sex"])
+plot(tab["sex"]) # barplot
+plot(tab["age"]) # histogram and normality plot
 ```
 
+<img src="./figures/plot1.png" alt="drawing" width="400"/>
+<img src="./figures/plot2.png" alt="drawing" width="400"/>
 
-
-![](./figures/plot1.png)
-
-
-```
-plot(tab["age"])
-```
-
-![](./figures/plot2.png)
 
 
 
@@ -176,8 +170,7 @@ Here there is an example of a chunk inserted in a Rmarkdown file and how it look
 export2md(tab)
 ```
 
-![](./figures/exampleHTML.png)
-
+<img src="./figures/exampleHTML.png" alt="drawing" width="900"/>
 
 
 
@@ -227,11 +220,11 @@ AMI, stroke, or CV Death           56 (7.18%)       41 (4.41%)       51 (5.90%) 
 or when is complied in HTML 
 
 ```
-export2md()
+export2md(tabestr)
 ```
 
 
-![](./figures/examplestr.png)
+<img src="./figures/examplestr.png" alt="drawing" width="900"/>
 
 
 
