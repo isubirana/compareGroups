@@ -141,8 +141,8 @@ plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
 
-<img src="./figures/plot1.png" alt="drawing" width="400"/>
-<img src="./figures/plot2.png" alt="drawing" width="400"/>
+<img src="./figures/plot1.png" alt="drawing" width="350"/>
+<img src="./figures/plot2.png" alt="drawing" width="350"/>
 
 
 
