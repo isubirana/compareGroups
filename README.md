@@ -32,6 +32,60 @@ devtools::install_github(repo = "isubirana/compareGroups")
 
 In the following table, some variables from the PREDIMED study are described by groups. Also, appropiate test to assess differences between groups are performed: ANOVA for continuous normal distributed variables reported as means and standard deviation, non parametric tests for non-normal variables for which medians and quantiles are reported, and chi-squared test for categorical variables.
 
+
+To describe all the variables of the data set just type:
+
+```
+descrTable(predimed)
+```
+
+```
+--------Summary descriptives table ---------
+
+__________________________________________________ 
+                                    [ALL]      N   
+                                    N=6324         
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+Intervention group:                           6324 
+    Control                      2042 (32.3%)      
+    MedDiet + Nuts               2100 (33.2%)      
+    MedDiet + VOO                2182 (34.5%)      
+Sex:                                          6324 
+    Male                         2679 (42.4%)      
+    Female                       3645 (57.6%)      
+Age                              67.0 (6.17)  6324 
+Smoking:                                      6324 
+    Never                        3892 (61.5%)      
+    Current                      858 (13.6%)       
+    Former                       1574 (24.9%)      
+Body mass index                  30.0 (3.82)  6324 
+Waist circumference               100 (10.6)  6324 
+Waist-to-height ratio            0.63 (0.07)  6324 
+Hypertension:                                 6324 
+    No                           1089 (17.2%)      
+    Yes                          5235 (82.8%)      
+Type-2 diabetes:                              6324 
+    No                           3322 (52.5%)      
+    Yes                          3002 (47.5%)      
+Dyslipidemia:                                 6324 
+    No                           1746 (27.6%)      
+    Yes                          4578 (72.4%)      
+Family history of premature CHD:              6324 
+    No                           4895 (77.4%)      
+    Yes                          1429 (22.6%)      
+Hormone-replacement therapy:                  5661 
+    No                           5564 (98.3%)      
+    Yes                           97 (1.71%)       
+MeDiet Adherence score           8.68 (1.94)  6324 
+follow-up to main event (years)  4.36 (1.69)  6324 
+AMI, stroke, or CV Death:                     6324 
+    No                           6072 (96.0%)      
+    Yes                          252 (3.98%)       
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+```
+
+### Costumizing the table
+
 For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you do not want to print "diabetes: yes", but simply "diabetes". This is possible by changing the `hide.no` option. 
 Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
 
@@ -76,6 +130,28 @@ follow-up to main event (years)   4.10 (1.74)      4.32 (1.70)      4.64 (1.59) 
 AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%)      0.088   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 ```
+
+
+## Plotting
+
+with **`compareGroups`** you can also visualize the variables distribution. This can be done by `plot` function on the table:
+
+```
+plot(tab["sex"])
+```
+
+
+
+![](./figures/plot1.png)
+
+
+```
+plot(tab["age"])
+```
+
+![](./figures/plot2png)
+
+
 
 
 ## Exporting the table
