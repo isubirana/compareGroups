@@ -7,7 +7,7 @@ With a very simple code, nice, compact and ready-to-publish descriptives table a
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
 <a href="http://www.comparegroups.eu/wui">
-![](/figures/WUI.png)
+![](./figures/WUI.png)
 </a>
 
 
@@ -16,17 +16,10 @@ You will find an extensive manual describing all **compareGropus** capabilities 
 Also, **compareGroups** package has been published in Journal of Statistical Software [@Subirana2014].
 
 
-# First table
-
-Following, a step-by-step demo of how to use the **compareGroups** code when analysing a data set is described. In this example, a table containing **descriptives by intervention group** is built.
 
 
-```
-knitr::opts_chunk$set(comment="",message=FALSE,warning=FALSE)
-options(warn=-1,width=90)
-```
+## Loading the package
 
-## Step 1. Install the package
 
 Install the **`compareGroups`** package from CRAN and then load it by typing:
 
@@ -35,300 +28,217 @@ install.packages("compareGroups")
 library(compareGroups)
 ```
 
+or from github
+
 ```
-library(compareGroups)
+library(devtools)
+devtools::install_github(repo = "isubirana/compareGroups")
 ```
 
-## Step 2. Load data
+## Example
 
-Load the PREDIMED example data available in **`compareGroups`** package:
+In the following table, some variables from the PREDIMED study are described by groups. Also, appropiate test to assess differences between groups are performed: ANOVA for continuous normal distributed variables reported as means and standard deviation, non parametric tests for non-normal variables for which medians and quantiles are reported, and chi-squared test for categorical variables.
+
+For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you do not want to print "diabetes: yes", but simply "diabetes". This is possible by changing the `hide.no` option. 
+Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
+
+In this example, some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`), and individuals older than 55 years old are selected.
+
+Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, which is very familiar to R users, or the use of `subset` to filter some individuals as usual in many other R funcions.
+
+
+```
+tab <- descrTable(group ~ . , predimed, hide.no="no", method=c(wth=2, p14=2), subset=age>55)
+tab
+```
+
+
+
+```
+____________________________________________________________________________________________ 
+                                    Control       MedDiet + Nuts   MedDiet + VOO   p.overall 
+                                     N=2001           N=2059           N=2141                
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+Sex:                                                                                <0.001   
+    Male                          780 (39.0%)      930 (45.2%)      865 (40.4%)              
+    Female                        1221 (61.0%)     1129 (54.8%)     1276 (59.6%)             
+Age                               67.6 (6.06)      66.9 (5.83)      67.3 (6.01)      0.001   
+Smoking:                                                                             0.490   
+    Never                         1268 (63.4%)     1250 (60.7%)     1340 (62.6%)             
+    Current                       255 (12.7%)      282 (13.7%)      272 (12.7%)              
+    Former                        478 (23.9%)      527 (25.6%)      529 (24.7%)              
+Body mass index                   30.3 (3.95)      29.7 (3.77)      29.9 (3.69)     <0.001   
+Waist circumference                101 (10.7)       100 (10.6)       100 (10.4)      0.024   
+Waist-to-height ratio           0.63 [0.59;0.68] 0.62 [0.58;0.67] 0.63 [0.58;0.67]  <0.001   
+Hypertension                      1683 (84.1%)     1709 (83.0%)     1753 (81.9%)     0.162   
+Type-2 diabetes                   950 (47.5%)      933 (45.3%)      1065 (49.7%)     0.016   
+Dyslipidemia                      1446 (72.3%)     1504 (73.0%)     1532 (71.6%)     0.559   
+Family history of premature CHD   454 (22.7%)      444 (21.6%)      501 (23.4%)      0.358   
+Hormone-replacement therapy        31 (1.71%)       30 (1.64%)       36 (1.87%)      0.854   
+MeDiet Adherence score          9.00 [7.00;10.0] 9.00 [8.00;10.0] 9.00 [8.00;10.0]  <0.001   
+follow-up to main event (years)   4.10 (1.74)      4.32 (1.70)      4.64 (1.59)     <0.001   
+AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%)      0.088   
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+```
+
+
+## Exporting the table
+
+You can export the table in different formats:
+
+
+- Create PDF, Excel, Word, LaTeX
+
+```
+export2pdf(tab, file = "example.pdf")
+```
+
+![](./figures/examplePDF.pdf)
+
+
+- Insert in a Rmarkdown docuemnt to be compiled to HTML, PDF or Word.
+
+Here there is an example of a chunk inserted in a Rmarkdown file and how it looks like after compiling to HTML
+
+```
+export2md(tab)
+```
+
+![](./figures/exampleHTML.png)
+
+
+
+
+## Stratified tables
+
+
+After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable`:
+
+```
+# remove sex (first variable)
+tab <- tab[-1]
+# stratify by sex
+tabestr <- strataTable(tab, strata="sex")
+tabestr
+```
+
+
+```
+--------Summary descriptives table ---------
+
+__________________________________________________________________________________________________________________________________________________________
+                                                            Male                                                         Female                           
+                                ____________________________________________________________  ____________________________________________________________
+                                    Control       MedDiet + Nuts   MedDiet + VOO   p.overall      Control       MedDiet + Nuts   MedDiet + VOO   p.overall 
+                                     N=780            N=930            N=865                       N=1221           N=1129           N=1276                
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Age                               66.8 (6.32)      66.3 (6.10)      66.6 (6.31)      0.181      68.1 (5.84)      67.5 (5.54)      67.7 (5.75)      0.023   
+Smoking:                                                                             0.674                                                         0.923   
+    Never                         196 (25.1%)      259 (27.8%)      229 (26.5%)                 1072 (87.8%)     991 (87.8%)      1111 (87.1%)             
+    Current                       192 (24.6%)      229 (24.6%)      203 (23.5%)                  63 (5.16%)       53 (4.69%)       69 (5.41%)              
+    Former                        392 (50.3%)      442 (47.5%)      433 (50.1%)                  86 (7.04%)       85 (7.53%)       96 (7.52%)              
+Body mass index                   29.5 (3.46)      29.1 (3.27)      29.2 (3.24)      0.014      30.8 (4.18)      30.2 (4.07)      30.4 (3.90)      0.002   
+Waist circumference                104 (9.73)       103 (9.38)       103 (9.63)      0.251      99.1 (10.9)      97.8 (11.0)      98.0 (10.5)      0.009   
+Waist-to-height ratio           0.62 [0.58;0.65] 0.61 [0.58;0.65] 0.62 [0.58;0.65]   0.313    0.64 [0.60;0.69] 0.63 [0.58;0.68] 0.63 [0.59;0.68]   0.002   
+Hypertension                      626 (80.3%)      726 (78.1%)      656 (75.8%)      0.097      1057 (86.6%)     983 (87.1%)      1097 (86.0%)     0.733   
+Type-2 diabetes                   415 (53.2%)      480 (51.6%)      472 (54.6%)      0.455      535 (43.8%)      453 (40.1%)      593 (46.5%)      0.007   
+Dyslipidemia                      506 (64.9%)      621 (66.8%)      566 (65.4%)      0.691      940 (77.0%)      883 (78.2%)      966 (75.7%)      0.346   
+Family history of premature CHD   129 (16.5%)      157 (16.9%)      152 (17.6%)      0.849      325 (26.6%)      287 (25.4%)      349 (27.4%)      0.560   
+Hormone-replacement therapy        0 (0.00%)        0 (0.00%)        0 (0.00%)         .         31 (2.66%)       30 (2.82%)       36 (2.97%)      0.903   
+MeDiet Adherence score          9.00 [7.00;10.0] 9.00 [8.00;10.0] 9.00 [8.00;10.0]  <0.001    8.00 [7.00;10.0] 9.00 [8.00;10.0] 9.00 [7.00;10.0]  <0.001   
+follow-up to main event (years)   4.07 (1.79)      4.40 (1.73)      4.54 (1.64)     <0.001      4.12 (1.71)      4.26 (1.67)      4.72 (1.56)     <0.001   
+AMI, stroke, or CV Death           56 (7.18%)       41 (4.41%)       51 (5.90%)      0.048       39 (3.19%)       29 (2.57%)       33 (2.59%)      0.567   
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+
+```
+
+or when is complied in HTML 
+
+```
+export2md()
+```
+
+
+![](./figures/examplestr.png)
+
+
+
+
+## Other features
+
+
+Using **`compareGroups`** packages you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
+
+- **Example of case-control study**
+
+```
+data(SNPs)
+descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)[1:4]
+```
+
+```
+--------Summary descriptives table by 'casco'---------
+
+_______________________________________________________________ 
+                 0             1              OR        p.ratio 
+               N=47          N=110                              
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+sex:                                                            
+    Male    21 (44.7%)    54 (49.1%)         Ref.        Ref.   
+    Female  26 (55.3%)    56 (50.9%)   0.84 [0.42;1.67]  0.619  
+blood.pre   13.1 (0.88)   12.9 (1.03)  0.78 [0.55;1.11]  0.174  
+protein    39938 (19770) 44371 (24897) 1.00 [1.00;1.00]  0.280  
+snp10001:                                                       
+    CC       2 (4.26%)    10 (9.09%)         Ref.        Ref.   
+    CT      21 (44.7%)    32 (29.1%)   0.33 [0.04;1.43]  0.147  
+    TT      24 (51.1%)    68 (61.8%)   0.60 [0.08;2.55]  0.521  
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+```
+
+- **Example of cohort study**
+
 
 ```
 data(predimed)
-```
-
-PREDIMED is a longitudinal study containing several baseline characteristics of the participants as well as events occurred during the 7 years follow-up period (`event` and `toevent`). Each individual has been assigned to a three intervention diet randomly (`group`).
-
-```
-head(predimed)
-```
-
-
-## Step 3. Compute descriptives and tests  
-
-### Select variables and methods
-
-Compute all descriptives and tests from selected variables by using the **`compareGroups`** function. <br>
-
-Variables are selected by making use of the R standard `formula` environment. Described variables are placed one the right sight of "`~`" separated by "`+`" sign, while the variable indicating the groups is placed on the left side. To select all variables use "`.`", and to remove variables, "`-`".<br>
-
-Note that no transformations are allowed in the formula environment. If necessary they must be made before calling `compareGroups` function.
-<br>
-
-By the argument `method` we set `wtn` and `p14` variables to be reported as median and quartiles instead of mean and standard deviation.
+# create a Surv response
+predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
+           hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+print(tab, header.label=c("p.ratio"="p-value"))           
+``` 
 
 ```
-res <- compareGroups(group ~ . - toevent, data = predimed, method = c(wtn = 2, p14 = 2))
-```
+--------Summary descriptives table by 'tevent'---------
 
-
-### Explore distribution
-
-**compareGroups** package also offers the possibility to explore variable distribution by the generic function **plot**. This may be usefull to check normality or to find possible outliers, or missclassification of categorical variables. For example, to plot the first two described variables (i.e. age and sex),
-
-
-```{r, fig.height=5, fig.width=5}
-plot(res[1:2])
-```
-
-Note the use of "`[`" to select which variables we want to plot. <br>
-
-
-It is also possible to plot the distribution of described variables by groups
-
-
-```
-plot(res[1:2], bivar = TRUE)
-```
-
-### Display results
-
-By applying the generic function <format style="color:blue;font-size:20px">**`print`**</format>, available data, p-values, type of variable and selection is displayed
-
-```
-res
-```
-If you want to display descriptives of each varaible, call the generic function <format style="color:blue;font-size:20px">**`summary`**</format>
-
-```
-summary(res[1:2])
+__________________________________________________________________________________________ 
+                                    No event          Event              HR        p-value 
+                                     N=6072           N=252                                
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
+Intervention group:                                                                        
+    Control                       1945 (32.0%)      97 (38.5%)          Ref.        Ref.   
+    MedDiet + Nuts                2030 (33.4%)      70 (27.8%)    0.66 [0.48;0.89]  0.008  
+    MedDiet + VOO                 2097 (34.5%)      85 (33.7%)    0.70 [0.53;0.94]  0.018  
+Sex:                                                                                       
+    Male                          2528 (41.6%)     151 (59.9%)          Ref.        Ref.   
+    Female                        3544 (58.4%)     101 (40.1%)    0.49 [0.38;0.63] <0.001  
+Age                               66.9 (6.14)      69.4 (6.65)    1.06 [1.04;1.09] <0.001  
+Smoking:                                                                                   
+    Never                         3778 (62.2%)     114 (45.2%)          Ref.        Ref.   
+    Current                       809 (13.3%)       49 (19.4%)    1.96 [1.40;2.74] <0.001  
+    Former                        1485 (24.5%)      89 (35.3%)    2.02 [1.53;2.67] <0.001  
+Body mass index                   30.0 (3.81)      29.8 (3.92)    0.99 [0.96;1.02]  0.455  
+Waist circumference                100 (10.6)       102 (10.6)    1.02 [1.01;1.03]  0.003  
+Waist-to-height ratio           0.63 [0.58;0.67] 0.63 [0.59;0.68] 5.27 [0.83;33.6]  0.079  
+Hypertension                      5025 (82.8%)     210 (83.3%)    1.10 [0.79;1.53]  0.578  
+Type-2 diabetes                   2841 (46.8%)     161 (63.9%)    1.88 [1.46;2.44] <0.001  
+Dyslipidemia                      4427 (72.9%)     151 (59.9%)    0.62 [0.49;0.80] <0.001  
+Family history of premature CHD   1378 (22.7%)      51 (20.2%)    0.93 [0.68;1.26]  0.640  
+Hormone-replacement therapy        96 (1.77%)       1 (0.45%)     0.29 [0.04;2.10]  0.223  
+MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.94] <0.001  
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 ```
 
 
-Note that this is not a descriptive table yet. It will be created in the next step.
-
-
-## Step 4. Create the descriptive table 
-
-**To build the descriptive table**, apply **`creaTable`** function to the previous object computed by **`compareGroups`** function (`res`). Using `creaTable` function you can customize how categorical variables are displayed (only percertage or absolute frequencies or both) by `type` argument. <br>
-
-Also note the use of `hide.no` category which is useful to hide "no" level for those binary variables. <br>
-
-If you only want to show "Female" category use `hide` argument for `sex` variable indicating which category is going to be hidden. This argument also applies to categorical variables with more than two categories. <br>
-
-To specify the number of decimal digits to show use `digits`arguments. In this example `p14` has no decimals and for `hormo` only one. <br>
-
-Finally, if you want to show how many individuals have non-missing values in each described variable, set `hide.n` argument to `TRUE`.
-
-```
-restab <- createTable(res, digits = c(p14 = 0, hormo=1), type = 1, 
-                      hide = c(sex = "Male"), hide.no = "no", show.n = TRUE)
-```
-
-## Step 5. Export the descriptive table {.tabset}
-
-
-### R-console
-
-The descriptive table can be printed in the `R` console using the method <format style="color:blue;font-size:20px">`print`</format>, i.e. just typing the name of the object:
-
-```
-restab
-```
-
-
-If you want to change some headers, such "p-value" instead of "p.overall" use `header.labels` argument:
-
-```
-print(restab, header.labels = c(p.overall = "p-value"))
-```
-
-
-### PDF
-
-Create a PDF document with the table in a publish-ready format
-
-```
-export2pdf(restab, file = "example.pdf", header.labels = c(p.overall = "p-value"))
-```
-
-![](/figures/example1pdf.png)
-
-
-### Word
-
-Export the table to a Word document
-
-```
-export2word(restab, file = "example.docx", header.labels = c(p.overall = "p-value"))
-```
-![](/figures/example1docx.png)
-
-
-### Excel
-
-Export the descriptive table to an Excel file
-
-```
-export2xls(restab, file = "example.xlsx", header.labels = c(p.overall = "p-value"))
-```
-
-![](example1xlsx.png)
-
-### CSV
-
-Export the descriptive table to a plain text format, such as csv file, with the semicolon character as the column separator 
-
-```{r, eval=FALSE}
-export2csv(restab, file = "example.csv", header.labels = c(p.overall = "p-value"), sep = ";")
-```
-
-
-### Markdown
-
-You can translate to Markdown code and insert it in a R-markdown chunk to create reproducible reports.
-
-```
-export2md(restab, header.labels = c(p.overall = "p-value"))
-```
-
-### LaTeX
-
-Similar to Markdown file, it is possible to insert LaTeX code in a Sweave file (.tex)
-
-```{r, eval=FALSE}
-export2tex(restab, header.labels = c(p.overall = "p-value"))
-```
-
-
-# No groups
-
-To compute descriptives for whole cohort, whithout stratifying or comparing groups, just leave the left hand side of "`~`" empty.
-
-```{r}
-resNoGroups <- compareGroups(~ . , predimed)
-restabNoGroups <- createTable(resNoGroups, hide.no = "no")
-print(restabNoGroups, header.labels = c("all" = "Entire cohort"))
-```
-
-
-# Computing OR and HR
-
-## Odds Ratio
-
-For case control studies, it may be interesting to compute the Odds Ratio for each variable between cases and controls. Although PREDIMED study is not a case-control, we will use `event` variable as case-control status.<br>
-
-Note the use of `fact.ratio` argument to set an increment of 10 units for its OR.
-Also, to set the reference cathegory to "male" when displaying the OR set the `ref.ratio` argument. <br>
-
-Finally, also note that `compute` argument must be set to `TRUE` to compute ORs. By default, this argument is set to `FALSE` to save time. Different type of methods to compute Odds Ratio are available by setting `oddsratio.method` (For more info, see `oddsratio` function from `epitools` package).
-
-
-```
-resOR <- compareGroups(event ~ . - toevent, predimed, compute = TRUE, 
-                       fact.ratio = c(waist=10), ref = c(sex = 2))
-restabOR <- createTable(resOR, show.ratio = TRUE, show.p.overall = FALSE, 
-                        hide.no = "no", hide = c(sex = "Male"), type=1)
-print(restabOR, header.labels = c(p.ratio = "p-value"))
-```
-
-
-## Hazard Ratios
-
-When analysing a cohort study, one may be interested in computing Hazard Ratios instead of Odds Ratio, and take into account time-to-event or possible censored values. P-values are computed properly by log-rank test.<br>
-
-First of all, you must **recode the time-to-event variable as a survival variable** by using `Surv` function from `survival` package. The recoded variable can be labelled using the `label` function from `Hmisc` package.
-
-```
-predimed$eventSurv <- with(predimed, Surv(toevent, event == "Yes"))
-label(predimed$eventSurv) <- "Event (possible right censored)"
-```
-
-Then, place the recoded variable in the left side of "`~`", and use a syntax similar to the one used to compute Odds Ratios, replacing `event` to `eventSurv`.
-
-```
-resHR <- compareGroups(eventSurv ~ . - toevent - event, predimed, compute = TRUE, 
-                       fact.ratio = c(waist=10), ref.ratio = c(sex = 2))
-restabHR <- createTable(resHR, show.ratio = TRUE, show.p.overall = FALSE, 
-                        hide.no = "no", hide = c(sex = "Male"), type=1)
-print(restabHR, header.labels = c(p.ratio = "p-value"))
-```
-
-
-
-# Advanced features
-
-## Displaying subset of variables
-
-Use the "<format style="color:blue">**`[`**</format>" generic method of subsetting to select some variables from already built descriptive table
-
-```{r}
-restab[1:4]
-```
-
-
-## Update
-
-The R generic method **`[`** has also been implemented in **`compareGroups`** package. This may be useful to change some specific aspects from the descriptive table without changing the others.
-
-For example, to hide available column ('N') in the previously table
-
-```
-update(restab, show.n = FALSE)
-```
-Or to change the grouping variable (without changing the table format)
-
-```
-update(restab, x = update(res, sex ~ .))
-```
-
-Note here we have to udpate first the object computed by `compareGroups` function. To do so, we had to store the object previously.
-If no `res` object has been stored, we can pick up it by "x" attribute from `restab` object.
-
-```
-update(restab, x = update(attr(restab, "x")[[1]], sex ~ .))
-```
-
-## Stratifying
-
-If you want to perform diet comparisons by sex, first build the descriptive tables by men and women separately making us of `subset` argument from the `compareGroups` function, to select men and women, respectively. Then use the generic function **`cbind`** to combine the two tables.
-
-```{r}
-restabfemale <- update(restab, x = update(res, . ~ . - sex, subset = sex == 'Female'), 
-                       show.n = FALSE)
-restabmale <- update(restabfemale, x=update(res, . ~ . - sex, subset = sex == 'Male'))
-restabstrat <- cbind("Females" = restabfemale, "Males" = restabmale)
-print(restabstrat, header.labels = c(p.overall = "p-value"))
-```
-
-
-```{r, eval=FALSE}
-export2pdf(restabstrat, file = "examplestrat.pdf", 
-           header.labels = c(p.overall = "p-value"), 
-           landscape = TRUE, size = "footnotesize", )
-```
-
-![](/figures/examplestrat.png)
-
-
-
-## Joining groups of variables
-
-To join some variables in the sense of placing a header just before each group of variables (rows of the descriptive tables), first select each set of variables making use of **`[`** and then use the generic method **`rbind`**.
-
-```
-restabgroups <- rbind("First group" = restab[1:4], "Second group" = restab[5:8])
-print(restabgroups, header.labels = c(p.overall = "p-value"))
-```
-
-```
-export2pdf(restabgroups, file = "examplegroups.pdf", 
-           header.labels = c(p.overall = "p-value"))
-```
-
-![](/figures/examplegroups.png)
-
-When the table is exported to LaTeX, the headers are printed in bold. If these headers are very long, they span throught the table columns without making the first column wider.
 
 
 # References
