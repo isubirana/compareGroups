@@ -4,18 +4,10 @@
 
 With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
 
-For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
-
-![](./figures/WUI.png)
-
-Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
-
-<br>
 
 You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://CRAN.R-project.org/package=compareGroups).
 Also, **compareGroups** package has been published in Journal of Statistical Software [@Subirana2014].
-
 
 
 
@@ -49,6 +41,9 @@ Note the simplicity of the syntax. Also, note the use of `formula` to select the
 
 
 ```
+#load example data
+data(predimed)
+# build table
 tab <- descrTable(group ~ . , predimed, hide.no="no", method=c(wth=2, p14=2), subset=age>55)
 tab
 ```
@@ -165,7 +160,7 @@ export2md()
 
 
 
-## Other features
+## Odds Ratios and Hazard Ratios
 
 
 Using **`compareGroups`** packages you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
@@ -241,5 +236,17 @@ MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.9
 
 
 
+
+
+## Web-based User Interface
+
+For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
+
+
+![](./figures/WUI.png)
+
+Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
+
+<br>
 
 # References
