@@ -149,7 +149,7 @@ plot(tab["sex"])
 plot(tab["age"])
 ```
 
-![](./figures/plot2png)
+![](./figures/plot2.png)
 
 
 
