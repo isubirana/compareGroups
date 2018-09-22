@@ -12,6 +12,8 @@ function(
   extra.labels = NA
 ){
   
+  call <- match.call()
+  
   # get arguments from compareGroups and createTable
   names.args.cg <- formalArgs(compareGroups)
   names.args.ct <- formalArgs(createTable)
@@ -29,6 +31,9 @@ function(
   # then call createTable
   aa.ct$x <- res.cg
   ans <- do.call(createTable, aa.ct)
+  
+  attr(ans, "call") <- list()
+  attr(ans, "call")$call <- call
 
   # result is an ordinary createTable object
   return(ans)
