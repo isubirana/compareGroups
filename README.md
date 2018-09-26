@@ -1,16 +1,12 @@
----
-title: "compareGroups package to create descriptive tables"
-output:
-  html_document:
-    toc: true
-    theme: united
----
 
 <p>
 <img src="http://www.r-pkg.org/badges/version/compareGroups?color=brightgreen" style="max-width:100%;">
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/compareGroups?color=brightgreen" style="max-width:100%;">
 <img src="http://cranlogs.r-pkg.org/badges/compareGroups?color=brightgreen" style="max-width:100%;">
 </p>
+
+
+# compareGroups: package to create descriptive tables
 
 
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
@@ -20,10 +16,9 @@ With a very simple code, nice, compact and ready-to-publish descriptives table a
 You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://CRAN.R-project.org/package=compareGroups).
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
-Also, for those not familiar with R syntax, a graphical user interface has been implemented using Shiny tools.
 
 
-## Loading the package
+## Package installation
 
 
 Install the **`compareGroups`** package from CRAN and then load it by typing:
@@ -146,15 +141,15 @@ AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%) 
 
 ## Plotting
 
-with **`compareGroups`** you can also visualize the variables distribution. This can be done by `plot` function on the table:
+With **`compareGroups`** it is also possible to visualize the distribution of analysed variables. This can be done by the `plot` function applied on the table:
 
 ```
 plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
 
-<img src="./figures/plot1.png" alt="drawing" width="350"/>
-<img src="./figures/plot2.png" alt="drawing" width="350"/>
+<img src="./figures/plot1.png" alt="drawing" width="300"/>
+<img src="./figures/plot2.png" alt="drawing" width="300"/>
 
 
 
@@ -165,18 +160,22 @@ plot(tab["age"]) # histogram and normality plot
 You can export the table in different formats:
 
 
-- Create PDF, Excel, Word, LaTeX
+- PDF, Excel, Word, LaTeX
 
 ```
 export2pdf(tab, file = "example.pdf")
+export2xls(tab, file = "example.xlsx")
+export2word(tab, file = "example.docx")
+export2latex(tab, file = "example.tex")
 ```
+This is how the table looks like in PDF:
 
-![](./figures/examplePDF.pdf)
+![](./figures/examplePDF.png)
 
 
-- Insert in a Rmarkdown docuemnt to be compiled to HTML, PDF or Word.
+- Insert the code in a Rmarkdown document to be compiled to HTML, PDF or Word.
 
-Here there is an example of a chunk inserted in a Rmarkdown file and how it looks like after compiling to HTML
+Here there is an example of a chunk inserted in a Rmarkdown file and how the table looks like after compiling to HTML
 
 ```
 export2md(tab)
