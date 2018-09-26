@@ -1,11 +1,11 @@
--   [Package installation](#install)
+-   [Package installation](#package-installation)
 -   [Example](#example)
-    -   [Costumizing the table](#custom-tables)
+    -   [Costumizing the table](#costumizing-the-table)
 -   [Visual exploration](#visual-exploration)
--   [Exporting the table](#exporting-tables)
+-   [Exporting the table](#exporting-the-table)
 -   [Stratified tables](#stratified-tables)
--   [Odds Ratios and Hazard Ratios](#odss-ratios)
--   [Web-based User Interface](#wui)
+-   [Odds Ratios and Hazard Ratios](#odds-ratios-and-hazard-ratios)
+-   [Web-based User Interface](#web-based-user-interface)
 -   [Citation](#citation)
 
 [![CRAN version](http://www.r-pkg.org/badges/version/gapminder)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/gapminder)
@@ -343,6 +343,9 @@ Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
 
 ``` r
 citation("compareGroups")
+```
+
+```
 To cite compareGroups in publications use:
 
   Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical
