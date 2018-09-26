@@ -1,12 +1,19 @@
+-   [Package installation](#install)
+-   [Example](#example)
+    -   [Costumizing the table](#custom-tables)
+-   [Visual exploration](#visual-exploration)
+-   [Exporting the table](#exporting-tables)
+-   [Stratified tables](#stratified-tables)
+-   [Odds Ratios and Hazard Ratios](#odss-ratios)
+-   [Web-based User Interface](#wui)
+-   [Citation](#citation)
 
-<p>
-<img src="http://www.r-pkg.org/badges/version/compareGroups?color=brightgreen" style="max-width:100%;">
-<img src="http://cranlogs.r-pkg.org/badges/grand-total/compareGroups?color=brightgreen" style="max-width:100%;">
-<img src="http://cranlogs.r-pkg.org/badges/compareGroups?color=brightgreen" style="max-width:100%;">
-</p>
+[![CRAN version](http://www.r-pkg.org/badges/version/gapminder)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/gapminder)
 
 
-# compareGroups: package to create descriptive tables
+
+compareGroups: package to create descriptive tables
+=========
 
 
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
@@ -101,7 +108,7 @@ For those binary variables of type "yes/no", you may desire to show only the pro
 Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
 
 
-```
+``` r
 #load example data
 data(predimed)
 # build table
@@ -147,7 +154,7 @@ Also, number of decimals and much more options can be changed to costumize the t
 
 With **`compareGroups`** it is also possible to visualize the distribution of analysed variables. This can be done by the `plot` function applied on the table:
 
-```
+``` r
 plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
@@ -163,7 +170,7 @@ plot(tab["age"]) # histogram and normality plot
 
 Once the table is created, it can be printed on the R console in a nice and compact format, or it can be exported to different formats, such as PDF, Excel, Word or LaTex code.
 
-```
+``` r
 export2pdf(tab, file = "example.pdf")
 export2xls(tab, file = "example.xlsx")
 export2word(tab, file = "example.docx")
@@ -176,7 +183,7 @@ This is how the table looks like in PDF:
 
 Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
 
-```
+``` r
 export2md(tab, strip = TRUE, first = TRUE)
 ```
 
@@ -189,7 +196,7 @@ export2md(tab, strip = TRUE, first = TRUE)
 
 After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable` function:
 
-```
+``` r
 # remove sex (first variable)
 tab <- tab[-1]
 # stratify by sex
@@ -229,7 +236,7 @@ AMI, stroke, or CV Death           56 (7.18%)       41 (4.41%)       51 (5.90%) 
 
 or when is complied in HTML 
 
-```
+``` r
 export2md(tabestr, strip = TRUE, first = TRUE)
 ```
 
@@ -246,7 +253,7 @@ Using **`compareGroups`** package you can compute Odds Ratios for transversal or
 
 - **Example of case-control study: Odds Ratios**
 
-```
+``` r
 data(SNPs)
 descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)[1:4]
 ```
@@ -273,7 +280,7 @@ snp10001:
 - **Example of cohort study: Hazard Ratios**
 
 
-```
+``` r
 # create a Surv response:
 predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
 # perform descriptive table placeing the Surv object as the response (left side of ~):
@@ -318,7 +325,7 @@ MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.9
 
 
 
-## Web-based User Interface
+# Web-based User Interface
 
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
@@ -330,6 +337,30 @@ Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
 <br>
 
 
+
+# Citation
+
+
+``` r
+citation("compareGroups")
+To cite compareGroups in publications use:
+
+  Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical
+  Software, 57(12), 1-16. URL http://www.jstatsoft.org/v57/i12/.
+
+A BibTeX entry for LaTeX users is
+
+  @Article{,
+    title = {Building Bivariate Tables: The {compareGroups} Package for {R}},
+    author = {Isaac Subirana and H\'ector Sanz and Joan Vila},
+    journal = {Journal of Statistical Software},
+    year = {2014},
+    volume = {57},
+    number = {12},
+    pages = {1--16},
+    url = {http://www.jstatsoft.org/v57/i12/},
+  }
+```
 
 # References
 
