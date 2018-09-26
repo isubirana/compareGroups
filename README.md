@@ -8,7 +8,7 @@
 -   [Web-based User Interface](#web-based-user-interface)
 -   [Citation](#citation)
 
-[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)![](http://cranlogs.r-pkg.org/badges/last-month/tableone)
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 
 
@@ -161,7 +161,7 @@ plot(tab["age"]) # histogram and normality plot
 
 |                         |                         |
 |:-----------------------:|:-----------------------:|
-|![](./figures/plot1.png) | ![](./figures/plot2.png)|
+|![](./data-raw/plot1.png) | ![](./data-raw/plot2.png)|
 
 
 
@@ -178,7 +178,7 @@ export2latex(tab, file = "example.tex")
 ```
 This is how the table looks like in PDF:
 
-![](./figures/examplePDF.png)
+![](./data-raw/examplePDF.png)
 
 
 Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
@@ -187,7 +187,7 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 export2md(tab, strip = TRUE, first = TRUE)
 ```
 
-<img src="./figures/exampleHTML.png" alt="drawing" width="600"/>
+<img src="./data-raw/exampleHTML.png" alt="drawing" width="600"/>
 
 
 
@@ -241,7 +241,7 @@ export2md(tabestr, strip = TRUE, first = TRUE)
 ```
 
 
-<img src="./figures/examplestr.png" alt="drawing" width="900"/>
+<img src="./data-raw/examplestr.png" alt="drawing" width="900"/>
 
 
 
@@ -330,7 +330,7 @@ MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.9
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
 
-![](./figures/WUI.png)
+![](./data-raw/WUI.png)
 
 Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
 
