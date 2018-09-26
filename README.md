@@ -93,12 +93,10 @@ AMI, stroke, or CV Death:                     6324
 
 ### Costumizing the table
 
-For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you do not want to print "diabetes: yes", but simply "diabetes". This is possible by changing the `hide.no` option. 
-
-
 In the following table, variables are described by intervention group. 
-Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed and medians ans quantiles instead of means and standard deviations are displayed. 
+Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed, and medians and quantiles within square brackets instead of means and standard deviations within round brackets are displayed.
 Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
+For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you may want to see simply "diabetes" instead of "diabetes: yes". This is possible by `hide.no` argument.
 
 Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
 
@@ -163,7 +161,7 @@ plot(tab["age"]) # histogram and normality plot
 
 ## Exporting the table
 
-Once the table is created, this can be printed on the R console or can be exported in different formats, such as PDF, Excel, Word or LaTex code.
+Once the table is created, it can be printed on the R console in a nice and compact format, or it can be exported to different formats, such as PDF, Excel, Word or LaTex code.
 
 ```
 export2pdf(tab, file = "example.pdf")
@@ -176,7 +174,7 @@ This is how the table looks like in PDF:
 ![](./figures/examplePDF.png)
 
 
-Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML
+Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
 
 ```
 export2md(tab, strip = TRUE, first = TRUE)
@@ -189,7 +187,7 @@ export2md(tab, strip = TRUE, first = TRUE)
 ## Stratified tables
 
 
-After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable`:
+After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable` function:
 
 ```
 # remove sex (first variable)
@@ -244,7 +242,7 @@ export2md(tabestr, strip = TRUE, first = TRUE)
 ## Odds Ratios and Hazard Ratios
 
 
-Using **`compareGroups`** packages you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
+Using **`compareGroups`** package you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
 
 - **Example of case-control study: Odds Ratios**
 
@@ -276,11 +274,12 @@ snp10001:
 
 
 ```
-data(predimed)
-# create a Surv response
+# create a Surv response:
 predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+# perform descriptive table placeing the Surv object as the response (left side of ~):
 tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
            hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+# print table on R console
 print(tab, header.label=c("p.ratio"="p-value"))           
 ``` 
 
