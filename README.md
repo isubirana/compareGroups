@@ -8,7 +8,7 @@
 -   [Web-based User Interface](#web-based-user-interface)
 -   [Citation](#citation)
 
-[![CRAN version](http://www.r-pkg.org/badges/version/gapminder)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/gapminder)
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 
 
