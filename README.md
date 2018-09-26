@@ -37,10 +37,10 @@ devtools::install_github(repo = "isubirana/compareGroups")
 
 ## Example
 
-In the following table, some variables from the PREDIMED study are described by groups. Also, appropiate test to assess differences between groups are performed: ANOVA for continuous normal distributed variables reported as means and standard deviation, non parametric tests for non-normal variables for which medians and quantiles are reported, and chi-squared test for categorical variables.
+In the following table, some variables from the PREDIMED study ([](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
 
 
-To describe all the variables of the data set just type:
+Following, to describe all the variables of the data set just type:
 
 ```
 descrTable(predimed)
@@ -94,9 +94,11 @@ AMI, stroke, or CV Death:                     6324
 ### Costumizing the table
 
 For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you do not want to print "diabetes: yes", but simply "diabetes". This is possible by changing the `hide.no` option. 
-Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
 
-In this example, variables are described by intervention group. Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed and medians ans quantiles instead of means and standard deviations are displayed. Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
+
+In the following table, variables are described by intervention group. 
+Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed and medians ans quantiles instead of means and standard deviations are displayed. 
+Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
 
 Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
 
@@ -139,6 +141,10 @@ AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%) 
 ```
 
 
+Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
+
+
+
 ## Visual exploration
 
 With **`compareGroups`** it is also possible to visualize the distribution of analysed variables. This can be done by the `plot` function applied on the table:
@@ -148,9 +154,9 @@ plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
 
-<img src="./figures/plot1.png" alt="drawing" width="300"/>
-<img src="./figures/plot2.png" alt="drawing" width="300"/>
-
+|                         |                         |
+|:-----------------------:|:-----------------------:|
+|![](./figures/plot1.png) | ![](./figures/plot2.png)|
 
 
 
@@ -240,7 +246,7 @@ export2md(tabestr, strip = TRUE, first = TRUE)
 
 Using **`compareGroups`** packages you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
 
-- **Example of case-control study**
+- **Example of case-control study: Odds Ratios**
 
 ```
 data(SNPs)
@@ -266,7 +272,7 @@ snp10001:
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 ```
 
-- **Example of cohort study**
+- **Example of cohort study: Hazard Ratios**
 
 
 ```
