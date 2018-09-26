@@ -176,7 +176,7 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 export2md(tab, strip = TRUE, first = TRUE)
 ```
 
-<img src="./figures/exampleHTML.png" alt="drawing" width="900"/>
+<img src="./figures/exampleHTML.png" alt="drawing" width="600"/>
 
 
 
@@ -226,7 +226,7 @@ AMI, stroke, or CV Death           56 (7.18%)       41 (4.41%)       51 (5.90%) 
 or when is complied in HTML 
 
 ```
-export2md(tabestr)
+export2md(tabestr, strip = TRUE, first = TRUE)
 ```
 
 
