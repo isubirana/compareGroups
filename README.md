@@ -37,7 +37,7 @@ devtools::install_github(repo = "isubirana/compareGroups")
 
 ## Example
 
-In the following table, some variables from the PREDIMED study ([](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
+In the following table, some variables from the PREDIMED study ([http://www.predimed.es/](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
 
 
 Following, to describe all the variables of the data set just type:
