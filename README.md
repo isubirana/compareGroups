@@ -96,9 +96,9 @@ AMI, stroke, or CV Death:                     6324
 For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you do not want to print "diabetes: yes", but simply "diabetes". This is possible by changing the `hide.no` option. 
 Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
 
-In this example, some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`), and individuals older than 55 years old are selected.
+In this example, variables are described by intervention group. Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed and medians ans quantiles instead of means and standard deviations are displayed. Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
 
-Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, which is very familiar to R users, or the use of `subset` to filter some individuals as usual in many other R funcions.
+Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
 
 
 ```
@@ -139,7 +139,7 @@ AMI, stroke, or CV Death           95 (4.75%)       70 (3.40%)       84 (3.92%) 
 ```
 
 
-## Plotting
+## Visual exploration
 
 With **`compareGroups`** it is also possible to visualize the distribution of analysed variables. This can be done by the `plot` function applied on the table:
 
@@ -157,10 +157,7 @@ plot(tab["age"]) # histogram and normality plot
 
 ## Exporting the table
 
-You can export the table in different formats:
-
-
-- PDF, Excel, Word, LaTeX
+Once the table is created, this can be printed on the R console or can be exported in different formats, such as PDF, Excel, Word or LaTex code.
 
 ```
 export2pdf(tab, file = "example.pdf")
@@ -173,12 +170,10 @@ This is how the table looks like in PDF:
 ![](./figures/examplePDF.png)
 
 
-- Insert the code in a Rmarkdown document to be compiled to HTML, PDF or Word.
-
-Here there is an example of a chunk inserted in a Rmarkdown file and how the table looks like after compiling to HTML
+Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML
 
 ```
-export2md(tab)
+export2md(tab, strip = TRUE, first = TRUE)
 ```
 
 <img src="./figures/exampleHTML.png" alt="drawing" width="900"/>

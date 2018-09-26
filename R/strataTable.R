@@ -41,6 +41,8 @@ strataTable <-
   x.list <- lapply(levels(strata.var), function(i){
     subset.i <- paste0("as.factor(",strata,")=='",i,"'",global.subset)
     cg.i <- eval(parse(text=paste0("update(cg, subset=",subset.i,", simplify=FALSE)")))
+    if (inherits(x, "descrTable"))
+      class(x) <- class(x)[class(x)!="descrTable"]    
     x.i <- update(x, x=cg.i)
     x.i
   })

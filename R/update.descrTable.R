@@ -11,10 +11,12 @@ update.descrTable <- function (object, formula., ..., evaluate = TRUE)
     if (!missing(formula.)){
       if (inherits(formula., "formula")){ 
         if (inherits(eval(call$formula), "formula"))
-          call$formula <- update.formula2(formula(object), formula.)
+          call$formula <- update.formula2(call$formula, formula.)
         else {
+          print("ei")
           call$data <- call$formula
           call$formula <- formula.
+          print(call)
         }
       } else {
         call$formula <- formula.

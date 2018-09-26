@@ -124,6 +124,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
     if (format=="latex" & strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     if (landscape) ans <- landscape(ans)
+    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
     return(ans)
 
   }
@@ -172,6 +173,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)
     if (landscape) ans <- landscape(ans)
+    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
     return(ans)
 
   }

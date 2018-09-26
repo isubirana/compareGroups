@@ -100,6 +100,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
     if (format=="latex" & strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     if (landscape) ans <- landscape(ans)
+    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
     return(ans)
   }      
   if (ww %in% c(2)){
@@ -138,6 +139,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
+    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
     if (landscape) ans <- landscape(ans)
     return(ans)
   }    
