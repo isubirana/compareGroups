@@ -11,7 +11,7 @@ function(
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
   extra.labels = NA
 ){
-  
+
   call <- match.call()
   
   # get arguments from compareGroups and createTable
@@ -35,6 +35,8 @@ function(
   attr(ans, "call") <- list()
   attr(ans, "call")$call <- call
 
+  class(ans) <- c("descrTable", class(ans))
+  
   # result is an ordinary createTable object
   return(ans)
 

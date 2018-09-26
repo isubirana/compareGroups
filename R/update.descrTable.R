@@ -1,20 +1,12 @@
-update.compareGroups<-
-function (object, formula., ..., evaluate = TRUE) 
+update.descrTable <- function (object, formula., ..., evaluate = TRUE) 
 {
-    if(!inherits(object, "compareGroups"))
-        stop("argument 'object' must be of class 'compareGroups'")
-    
-    if(inherits(object, "compareGroups.subset"))
-        stop("Update process might not work properly (different variables selected) since 'obj' has been subset previously")
-    
-    if(inherits(object, "rbind.compareGroups"))
-        stop("Update process does not work for rbind.compareGroups objects")
+   if (is.null(call <- attr(object, "call")$call))
+     stop("need an object with call component")
 
-    call <- attr(object,"call")$call
-    if (is.null(call)) 
-        stop("need an object with call component")
+   if(!inherits(object, "descrTable"))
+     stop("argument 'object' must be of class 'descrTable'")
     
-    extras <- match.call(expand.dots = FALSE)$...
+   extras <- match.call(expand.dots = FALSE)$...
     
     if (!missing(formula.)){
       if (inherits(formula., "formula")){ 

@@ -10,6 +10,8 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       formula <- as.formula(" ~ . ")
     else {
       if (inherits(formula, "matrix") || inherits(formula, "data.frame")){
+        if (!missing(data))
+          warning("data argument will be ignored since formula is already a data set")
         data <- formula
         formula <- as.formula(" ~ . ")
       } else {

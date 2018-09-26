@@ -1,3 +1,11 @@
+---
+title: "compareGroups package to create descriptive tables"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
 <p>
 <img src="http://www.r-pkg.org/badges/version/compareGroups?color=brightgreen" style="max-width:100%;">
 <img src="http://cranlogs.r-pkg.org/badges/grand-total/compareGroups?color=brightgreen" style="max-width:100%;">
@@ -5,18 +13,14 @@
 </p>
 
 
-# compareGroups package to create descriptive tables
-
-
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
 
 With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
 
-
-
 You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://CRAN.R-project.org/package=compareGroups).
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
+Also, for those not familiar with R syntax, a graphical user interface has been implemented using Shiny tools.
 
 
 ## Loading the package

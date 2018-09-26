@@ -1,7 +1,8 @@
 v4.0.0
+- update.compareGroups: changed.
 - dates variables supported
 - compareGroups.default and compareGroups.formula unified in a single compareGroups function.
-- new strataTable function: to create stratified tables without having to use cbind.
+- new strataTable function: to create stratified tables without having to use cbind. Also incorporates an update method.
 - package vignette improved.
 - new descrTable created. This function builds a descriptive table in one step.
 - Imports: kableExtra and chron added,  
