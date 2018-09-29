@@ -106,6 +106,8 @@ library(kableExtra)
 
 - Date variables are treated as continuous-non normal, performing medians, quartiles and non-parametric tests, but now are printed dates.
 
+- New argument `var.equal` added in `compareGroups` and `descrTable`. This allows to consider different variances when comparing means between more than two groups.
+
 
 
 # Introduction

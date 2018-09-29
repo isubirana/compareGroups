@@ -1,7 +1,7 @@
 compareGroups.fit <-
 function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev, include.label, Q1, Q3, 
          simplify, ref, ref.no, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
-         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format) {
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal) {
 
    if (!is.null(Xext)){
     if (!is.matrix(Xext) & !is.data.frame(Xext))
@@ -211,10 +211,14 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
     stop("data doesn't mach")
    
    ans <- lapply(1:nvars, function(i){
-     # cat("------------",names(X)[i],"--------------\n\n")
-     ans.i <- try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], Q1=Q1, Q3=Q3, groups=groups, simplify=simplify, Xext=Xext, ref=ref[i], fact.ratio=fact.ratio[i], ref.y=ref.y, p.corrected=p.corrected, compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, chisq.test.seed=chisq.test.seed, Date.format=Date.format),silent=TRUE)
-     # if (inherits(ans.i, "try-error")) print(ans.i)
-     # cat("\n\n\n")
+     ans.i <- try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], 
+                            alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], 
+                            Q1=Q1, Q3=Q3, groups=groups, simplify=simplify, Xext=Xext, ref=ref[i], 
+                            fact.ratio=fact.ratio[i], ref.y=ref.y, p.corrected=p.corrected, 
+                            compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, 
+                            chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, 
+                            chisq.test.seed=chisq.test.seed, Date.format=Date.format, var.equal=var.equal),
+                  silent=TRUE)
      ans.i
    })
    

@@ -14,7 +14,7 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL,
-  Date.format = "d-mon-Y",
+  Date.format = "d-mon-Y", var.equal = TRUE, 
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
   FALSE, show.descr = TRUE, hide.no = NA, digits.ratio = NA,
@@ -85,7 +85,9 @@ Arguments from \code{\link{compareGroups}} function:
    
   \item{chisq.test.seed}{integer or NULL. Seed when performing permuted chi squared test for categorical variables. Default value is NULL which sets no seed. It is important to introduce some number different from NULL in order to reproduce the results when permuted chi-squared test is performed.} 
   
-  \item{Date.format}{character indicating how the dates are shown. Default is "d-mon-Y". See \code{\link[chron]{chron}} for more details.} 
+  \item{Date.format}{character indicating how the dates are shown. Default is "d-mon-Y". See \code{\link[chron]{chron}} for more details.}
+  
+  \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE \code{\link{anova}} function is applied and \code{\link{oneway.test}} otherwise. Default value is TRUE.} 
 
 Arguments from \code{\link{createTable}} function:
 

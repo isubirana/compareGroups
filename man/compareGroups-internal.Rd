@@ -35,11 +35,11 @@ combn2(x)
 compareGroups.fit(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev, 
          include.label, Q1, Q3, simplify, ref, ref.no, fact.ratio, ref.y, p.corrected, 
          compute.ratio, include.miss, oddsratio.method, chisq.test.perm, byrow, 
-         chisq.test.B, chisq.test.seed, Date.format)
+         chisq.test.B, chisq.test.seed, Date.format, var.equal)
 compare.i(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, 
           groups, simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, 
           include.miss, oddsratio.method, chisq.test.perm, byrow,chisq.test.B, 
-          chisq.test.seed, Date.format)
+          chisq.test.seed, Date.format, var.equal)
 descripSurv(x, y, timemax)
 descrip(x, y, method, Q1, Q3)
 flip(x)

@@ -1,4 +1,5 @@
 v4.0.0
+- new argument var.equal to compareGroups and descrTable.
 - update.compareGroups: changed.
 - dates variables supported
 - compareGroups.default and compareGroups.formula unified in a single compareGroups function.

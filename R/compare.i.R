@@ -1,7 +1,7 @@
 compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
-         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format) {
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal) {
 
   x.orig <- x
   y.orig <- y
@@ -321,7 +321,10 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               } else
                 names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")        
             } else {
-              p.overall<-try(anova(lm(x~y),lm(x~1))[2,"Pr(>F)"],silent=TRUE)
+              if (var.equal)
+                p.overall<-try(anova(lm(x~y),lm(x~1))[2,"Pr(>F)"],silent=TRUE)
+              else
+                p.overall<-try(oneway.test(x~y)$p.value, silent=TRUE)
               if (inherits(p.overall,"try-error"))
                 p.overall<-NaN
               p.trend<-try(cor.test(x,as.integer(y))$p.value,silent=TRUE)
