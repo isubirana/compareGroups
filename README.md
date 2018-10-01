@@ -187,7 +187,7 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 export2md(tab, strip = TRUE, first = TRUE)
 ```
 
-<img src="./docs/readme-figures/exampleHTML.png" alt="drawing" width="900"/>
+<img src="./docs/readme-figures/exampleHTML.png" alt="drawing" width="700"/>
 
 
 
