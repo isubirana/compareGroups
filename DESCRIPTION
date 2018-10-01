@@ -18,7 +18,8 @@ Imports:
     knitr,
     kableExtra,
     methods,
-    chron
+    chron,
+    stats
 Suggests:
     tcltk2,
     shiny,

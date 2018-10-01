@@ -1,3 +1,4 @@
+importFrom(stats, oneway.test)
 importFrom(xtable, xtable)
 importFrom(chron, chron)
 importFrom(Hmisc, label, spss.get, rcorr.cens, mtitle, sys)

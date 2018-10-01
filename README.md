@@ -161,7 +161,7 @@ plot(tab["age"]) # histogram and normality plot
 
 |                         |                         |
 |:-----------------------:|:-----------------------:|
-|![](./readme-figures/plot1.png) | ![](./readme-figures/plot2.png)|
+|![](./docs/readme-figures/plot1.png) | ![](./docs/readme-figures/plot2.png)|
 
 
 
@@ -178,7 +178,7 @@ export2latex(tab, file = "example.tex")
 ```
 This is how the table looks like in PDF:
 
-![](./readme-figures/examplePDF.png)
+![](./docs/readme-figures/examplePDF.png)
 
 
 Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
@@ -330,7 +330,7 @@ MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.9
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
 
-![](./readme-figures/WUI.png)
+![](./docs/readme-figures/WUI.png)
 
 Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
 
