@@ -934,17 +934,29 @@ cGroupsGUI <- function(X){
       print.aux <- function(){
             res <- prepare.input()
             if(!inherits(res,"list")) return()
-            ans <- try(eval(parse(text= paste("compareGroups(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, ref= res$ref)"))))
+            ans <- try(eval(parse(text= paste("compareGroups.fit(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", 
+                                              method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, 
+                                              ref= res$ref, 
+                                              max.xlev=10, timemax=NA, Q1=0.25, Q3=0.75, simplify=TRUE, ref.no=NA, fact.ratio=1, p.corrected=TRUE,
+                                              compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
+                                              byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+                                              Date.format = 'd-mon-Y', var.equal = TRUE)"))))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             print(ans)
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
-            print(ans, , which.table = 'both')
+            print(ans, which.table = 'both')
       }
       export2latex.aux <- function(){
             res <- prepare.input()
             if(!inherits(res,"list")) return()
-            ans <- try(eval(parse(text= paste("compareGroups(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, ref= res$ref)"))))
+            ans <- try(eval(parse(text= paste("compareGroups.fit(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", 
+                                              method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, 
+                                              ref= res$ref, 
+                                              max.xlev=10, timemax=NA, Q1=0.25, Q3=0.75, simplify=TRUE, ref.no=NA, fact.ratio=1, p.corrected=TRUE,
+                                              compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
+                                              byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+                                              Date.format = 'd-mon-Y', var.equal = TRUE)"))))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -964,7 +976,13 @@ cGroupsGUI <- function(X){
      export2csv.aux1 <- function(){
         res <- prepare.input()
         if(!inherits(res,"list")) return()
-        ans <- try(eval(parse(text= paste("compareGroups(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, ref= res$ref)"))))
+        ans <- try(eval(parse(text=paste("compareGroups.fit(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", 
+                                          method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, 
+                                          ref= res$ref, 
+                                          max.xlev=10, timemax=NA, Q1=0.25, Q3=0.75, simplify=TRUE, ref.no=NA, fact.ratio=1, p.corrected=TRUE,
+                                          compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
+                                          byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+                                          Date.format = 'd-mon-Y', var.equal = TRUE)"))))
         if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
         if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -984,7 +1002,13 @@ cGroupsGUI <- function(X){
      export2csv.aux2 <- function(){
           res <- prepare.input()
           if(!inherits(res,"list")) return()
-        ans <- try(eval(parse(text= paste("compareGroups(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, ref= res$ref)"))))
+          ans <- try(eval(parse(text= paste("compareGroups.fit(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", 
+                                             method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, 
+                                             ref= res$ref, 
+                                             max.xlev=10, timemax=NA, Q1=0.25, Q3=0.75, simplify=TRUE, ref.no=NA, fact.ratio=1, p.corrected=TRUE,
+                                             compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
+                                             byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+                                             Date.format = 'd-mon-Y', var.equal = TRUE)"))))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -1004,7 +1028,13 @@ cGroupsGUI <- function(X){
      export2html.aux <- function(){
           res <- prepare.input()
           if(!inherits(res,"list")) return()
-        ans <- try(eval(parse(text= paste("compareGroups(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, ref= res$ref)"))))
+          ans <- try(eval(parse(text= paste("compareGroups.fit(X = res$X, y = res$y, Xext=res$Xext, selec =", res$selec,", 
+                                              method = res$method, alpha = res$alpha,min.dis = 5, max.ylev = 5, ref.y = res$ref.y, 
+                                              ref= res$ref, 
+                                              max.xlev=10, timemax=NA, Q1=0.25, Q3=0.75, simplify=TRUE, ref.no=NA, fact.ratio=1, p.corrected=TRUE,
+                                              compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
+                                              byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
+                                              Date.format = 'd-mon-Y', var.equal = TRUE)"))))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))

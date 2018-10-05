@@ -1,4 +1,6 @@
-export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, format="html", width=Inf, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, ...){
+export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, format="html", width=Inf, 
+                    strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, 
+                    header.background="blue", header.color="white", ...){
 
   compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
   if (inherits(compiled.format, "try-error")){
@@ -11,7 +13,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
   
   if (format == "markdown") return(export2mdword(x, which.table, nmax, header.labels, caption))
   
-  if (inherits(x, "cbind.createTable")) return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, ...))
+  if (inherits(x, "cbind.createTable")) return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, ...))
 
   extras <- list(...)
   if (!inherits(x, "createTable")) 
@@ -100,7 +102,9 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
     if (format=="latex" & strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     if (landscape) ans <- landscape(ans)
-    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
+    if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
+    if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
     return(ans)
   }      
   if (ww %in% c(2)){
@@ -139,7 +143,9 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
-    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
+    if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
+    if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
     if (landscape) ans <- landscape(ans)
     return(ans)
   }    

@@ -1,4 +1,4 @@
-export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, ...){   
+export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, ...){   
 
   if (format=="rmarkdown")
     stop("Word format not suported for 'cbind.createTable' objects")
@@ -124,7 +124,9 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
     if (format=="latex" & strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     if (landscape) ans <- landscape(ans)
-    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
+    if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
+    if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
     return(ans)
 
   }
@@ -173,7 +175,9 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)
     if (landscape) ans <- landscape(ans)
-    if (format=="html") ans <- kable_styling(ans, "striped", full_width = FALSE)
+    if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
+    if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
     return(ans)
 
   }

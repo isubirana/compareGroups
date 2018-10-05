@@ -16,6 +16,7 @@ compareGroups: package to create descriptive tables
 =========
 
 
+
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
 
 With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
@@ -159,10 +160,9 @@ plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
 
-|                         |                         |
-|:-----------------------:|:-----------------------:|
-|![](./docs/readme-figures/plot1.png) | ![](./docs/readme-figures/plot2.png)|
-
+|                                     |                                      |
+|:-----------------------------------:|:------------------------------------:|
+|![](./man/figures/plot1.png) | ![](./man/figures/plot2.png) |
 
 
 
@@ -178,7 +178,7 @@ export2latex(tab, file = "example.tex")
 ```
 This is how the table looks like in PDF:
 
-![](./docs/readme-figures/examplePDF.png)
+![](./man/figures/examplePDF.png)
 
 
 Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
@@ -187,7 +187,7 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 export2md(tab, strip = TRUE, first = TRUE)
 ```
 
-<img src="./docs/readme-figures/exampleHTML.png" alt="drawing" width="600"/>
+<img src="./man/figures/exampleHTML.png" alt="drawing" width="600"/>
 
 
 
@@ -242,7 +242,7 @@ export2md(tabestr, strip = TRUE, first = TRUE)
 ```
 
 
-<img src="./docs/readme-figures/examplestr.png" alt="drawing" width="900"/>
+<img src="./man/figures/examplestr.png" alt="drawing" width="900"/>
 
 
 
@@ -331,7 +331,9 @@ MeDiet Adherence score          9.00 [7.00;10.0] 8.00 [7.00;10.0] 0.88 [0.83;0.9
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
 
 
-![](./docs/readme-figures/WUI.png)
+
+
+![](./man/figures/WUI.png)
 
 Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
 

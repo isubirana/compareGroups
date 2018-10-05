@@ -10,7 +10,8 @@ This function takes the result of \code{createTable} and exports the tables to m
 \usage{
 export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = NULL, 
           format = "html", width = Inf, strip = FALSE, first.strip = FALSE, 
-          background = "#D2D2D2", size = NULL, landscape=FALSE, ...)
+          background = "#D2D2D2", size = NULL, landscape=FALSE, header.background="blue", 
+          header.color="white", ...)
 
 }
 
@@ -34,11 +35,15 @@ export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = 
  
  \item{first.strip}{logical. It determines whether to shadow the first variable (TRUE) or the second (FALSE). It only applies when \code{strip} argument is true.}
  
- \item{background}{color code in HEX format. You can use \code{rgb} function to convert red, green and blue to HEX code. Default color is '#D2D2D2'.}
+ \item{background}{color code in HEX format for shadowed lines. You can use \code{rgb} function to convert red, green and blue to HEX code. Default color is '#D2D2D2'.}
  
  \item{size}{numeric. Size of descriptive table. Default value is NULL which creates the table in default size.}
  
  \item{landscape}{logical. It determines whether to place the table in landscape (horizontal) format. It only applies when format is 'latex'. Default value is FALSE.}
+ 
+ \item{header.background}{color character for table header. Default color is 'blue'.}
+ 
+ \item{header.color}{color character for table header text. Default color is 'white'.}
  
  \item{\ldots}{arguments passed to \code{\link[knitr]{kable}}.}
   

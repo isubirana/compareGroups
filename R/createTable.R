@@ -9,16 +9,40 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
 
   spchar<-if (length(grep("linux",os))==0 || length(grep("UTF-8",locale))>0) TRUE else FALSE
 
-  if (!is.na(extra.labels[1])){ 
+  # if (!is.na(extra.labels[1])){ 
+  #   method <- sapply(x, function(x.i) paste(attr(x.i, "method"),collapse="-"))
+  #   method <- ifelse(method=="continuous-normal", 1, ifelse(method=="continuous-non-normal", 2, 3))
+  #   Q1 <- attr(x,"Q1")
+  #   Q3 <- attr(x,"Q3")
+  #   if (extra.labels[1]=="")
+  #     extra.labels[1] <- if (sd.type==1) "Mean (SD)" else "Mean\u00B1SD"
+  #   if (extra.labels[2]=="")
+  #     extra.labels[2] <- paste0("Median ",ifelse(q.type[1]==1,"[","("),Q1*100,"th",ifelse(q.type[2]==1,";",ifelse(q.type[2]==2,",","-")),Q3*100,"th",ifelse(q.type[1]==1,"]",")"))
+  #   if (extra.labels[3]==""){
+  #     if (is.na(type) || type==2)
+  #       extra.labels[3] <- "N (%)"
+  #     else {
+  #       if (type==1) extra.labels[3] <- "%"
+  #       if (type==3) extra.labels[3] <- "N"
+  #     }
+  #   }
+  #   names(x) <- paste(names(x), 
+  #                     ifelse(method==1, extra.labels[1],
+  #                     ifelse(method==2, extra.labels[2],
+  #                     ifelse(method==3, extra.labels[3], ""))), sep=", ")
+  # }
+  
+  
+  if (any(!is.na(extra.labels))){ 
     method <- sapply(x, function(x.i) paste(attr(x.i, "method"),collapse="-"))
     method <- ifelse(method=="continuous-normal", 1, ifelse(method=="continuous-non-normal", 2, 3))
     Q1 <- attr(x,"Q1")
     Q3 <- attr(x,"Q3")
-    if (extra.labels[1]=="")
+    if (!is.na(extra.labels[1]) && extra.labels[1]=="")
       extra.labels[1] <- if (sd.type==1) "Mean (SD)" else "Mean\u00B1SD"
-    if (extra.labels[2]=="")
+    if (!is.na(extra.labels[2]) && extra.labels[2]=="")
       extra.labels[2] <- paste0("Median ",ifelse(q.type[1]==1,"[","("),Q1*100,"th",ifelse(q.type[2]==1,";",ifelse(q.type[2]==2,",","-")),Q3*100,"th",ifelse(q.type[1]==1,"]",")"))
-    if (extra.labels[3]==""){
+    if (!is.na(extra.labels[3]) && extra.labels[3]==""){
       if (is.na(type) || type==2)
         extra.labels[3] <- "N (%)"
       else {
@@ -26,11 +50,13 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
         if (type==3) extra.labels[3] <- "N"
       }
     }
-    names(x) <- paste(names(x), 
-                      ifelse(method==1, extra.labels[1],
-                      ifelse(method==2, extra.labels[2],
-                      ifelse(method==3, extra.labels[3], ""))), sep=", ")
+    names(x) <- paste0(names(x), 
+                      ifelse(method==1 & !is.na(extra.labels[1]), paste0(", ", extra.labels[1]),
+                      ifelse(method==2 & !is.na(extra.labels[2]), paste0(", ", extra.labels[2]),
+                      ifelse(method==3 & !is.na(extra.labels[3]), paste0(", ", extra.labels[3]), ""))))
   }
+  
+
 
   if (!inherits(x,"compareGroups"))
     stop("x must be of class 'compareGroups'")
