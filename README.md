@@ -51,6 +51,7 @@ In the following table, some variables from the PREDIMED study ([http://www.pred
 Following, to describe all the variables of the data set just type:
 
 ```
+data(predimed) # load example data
 descrTable(predimed)
 ```
 
@@ -110,9 +111,6 @@ Note the simplicity of the syntax. Also, note the use of `formula` to select the
 
 
 ``` r
-#load example data
-data(predimed)
-# build table
 tab <- descrTable(group ~ . , predimed, hide.no="no", method=c(wth=2, p14=2), subset=age>55)
 tab
 ```
