@@ -13,7 +13,6 @@ update.descrTable <- function (object, formula., ..., evaluate = TRUE)
         if (inherits(eval(call$formula), "formula"))
           call$formula <- update.formula2(call$formula, formula.)
         else {
-          print("ei")
           call$data <- call$formula
           call$formula <- formula.
           print(call)
