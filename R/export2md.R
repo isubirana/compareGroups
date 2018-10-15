@@ -1,6 +1,6 @@
 export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, format="html", width=Inf, 
                     strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, 
-                    header.background="blue", header.color="white", ...){
+                    header.background=NULL, header.color=NULL, ...){
 
   compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
   if (inherits(compiled.format, "try-error")){

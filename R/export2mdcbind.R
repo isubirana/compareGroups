@@ -118,7 +118,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
       ans <- row_spec(ans, 1, hline_after=TRUE)
     }
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table1))
-    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
+    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))), background=header.background, color=header.color)
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
@@ -169,7 +169,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     }
     ans <- add_indent(ans, integer())
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
-    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
+    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))), background=header.background, color=header.color)
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (strip) ans <- row_spec(ans, which(rep(0:1, nrow(table2))[1:nrow(table2)]==!first.strip), background = background) 
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))

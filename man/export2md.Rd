@@ -10,8 +10,8 @@ This function takes the result of \code{createTable} and exports the tables to m
 \usage{
 export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = NULL, 
           format = "html", width = Inf, strip = FALSE, first.strip = FALSE, 
-          background = "#D2D2D2", size = NULL, landscape=FALSE, header.background="blue", 
-          header.color="white", ...)
+          background = "#D2D2D2", size = NULL, landscape=FALSE, header.background=NULL, 
+          header.color=NULL, ...)
 
 }
 
@@ -41,9 +41,9 @@ export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = 
  
  \item{landscape}{logical. It determines whether to place the table in landscape (horizontal) format. It only applies when format is 'latex'. Default value is FALSE.}
  
- \item{header.background}{color character for table header. Default color is 'blue'.}
+ \item{header.background}{color character for table header or 'NULL'. Default value is 'NULL'.}
  
- \item{header.color}{color character for table header text. Default color is 'white'.}
+ \item{header.color}{color character for table header text. Default color is 'NULL'.}
  
  \item{\ldots}{arguments passed to \code{\link[knitr]{kable}}.}
   

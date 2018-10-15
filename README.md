@@ -33,7 +33,6 @@ Install the **`compareGroups`** package from CRAN and then load it by typing:
 
 ```
 install.packages("compareGroups")
-library(compareGroups)
 ```
 
 or from github
@@ -51,6 +50,7 @@ In the following table, some variables from the PREDIMED study ([http://www.pred
 Following, to describe all the variables of the data set just type:
 
 ```
+library(compareGroups) # load compareGroups package
 data(predimed) # load example data
 descrTable(predimed)
 ```
@@ -182,7 +182,9 @@ This is how the table looks like in PDF:
 Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
 
 ``` r
-export2md(tab, strip = TRUE, first = TRUE)
+export2md(tab, strip = TRUE, first = TRUE, 
+          header.background = "blue", header.color = "white", 
+          caption = "Description of variables by intervention groups")
 ```
 
 <img src="./man/figures/exampleHTML.png" alt="drawing" width="600"/>
@@ -236,7 +238,8 @@ AMI, stroke, or CV Death           56 (7.18%)       41 (4.41%)       51 (5.90%) 
 or when is complied in HTML 
 
 ``` r
-export2md(tabestr, strip = TRUE, first = TRUE)
+export2md(tabestr, strip = TRUE, first = TRUE, 
+          header.background = "blue", header.color = "white")
 ```
 
 
