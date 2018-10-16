@@ -1,3 +1,12 @@
+
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+
+
+
+compareGroups: package to create descriptive tables
+=========
+
+-   [Overview](#overview)
 -   [Package installation](#package-installation)
 -   [Example](#example)
     -   [Costumizing the table](#costumizing-the-table)
@@ -8,14 +17,7 @@
 -   [Web-based User Interface](#web-based-user-interface)
 -   [Citation](#citation)
 
-[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
-
-
-
-compareGroups: package to create descriptive tables
-=========
-
-
+## Overview
 
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
 
