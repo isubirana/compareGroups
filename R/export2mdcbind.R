@@ -118,7 +118,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
       ans <- row_spec(ans, 1, hline_after=TRUE)
     }
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table1))
-    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))), background=header.background, color=header.color)
+    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    if (format=="latex") ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
     if (format=="latex" & n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
@@ -126,7 +127,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (landscape) ans <- landscape(ans)
     if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
-    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
+    if (format=="html") ans <- sub('colspan="1"><div style="border-bottom: 1px', 'colspan="1"><div style="border-bottom: 0px',fixed = TRUE, ans)
     return(ans)
 
   }
@@ -169,7 +171,10 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     }
     ans <- add_indent(ans, integer())
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
-    ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))), background=header.background, color=header.color)
+    
+    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    if (format=="latex") ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
+    
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (strip) ans <- row_spec(ans, which(rep(0:1, nrow(table2))[1:nrow(table2)]==!first.strip), background = background) 
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
@@ -177,7 +182,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (landscape) ans <- landscape(ans)
     if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
-    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
+    if (format=="html") ans <- sub('colspan="1"><div style="border-bottom: 1px', 'colspan="1"><div style="border-bottom: 0px',fixed = TRUE, ans)
     return(ans)
 
   }

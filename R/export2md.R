@@ -104,7 +104,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (landscape) ans <- landscape(ans)
     if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
-    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
     return(ans)
   }      
   if (ww %in% c(2)){
@@ -145,7 +145,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (format=="html") ans <- kable_styling(ans, bootstrap_options=c("striped", "condensed"), full_width = FALSE)
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
-    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE)
+    if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
     if (landscape) ans <- landscape(ans)
     return(ans)
   }    
