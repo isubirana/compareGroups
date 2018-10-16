@@ -239,7 +239,7 @@ or when is complied in HTML
 
 ``` r
 export2md(tabestr, strip = TRUE, first = TRUE, 
-          header.background = "blue", header.color = "white")
+          header.background = "blue", header.color = "white", size=11)
 ```
 
 
