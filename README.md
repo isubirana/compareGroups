@@ -23,7 +23,8 @@ compareGroups: package to create descriptive tables
 
 With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
 
-You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://CRAN.R-project.org/package=compareGroups).
+You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://github.com/isubirana/compareGroups/blob/master/compareGroups_vignette.html).<br>
+
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
 
