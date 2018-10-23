@@ -25,6 +25,7 @@ With a very simple code, nice, compact and ready-to-publish descriptives table a
 
 You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](https://github.com/isubirana/compareGroups/blob/master/compareGroups_vignette.html).<br>
 
+
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
 
