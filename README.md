@@ -37,7 +37,7 @@ Install the **`compareGroups`** package from CRAN and then load it by typing:
 install.packages("compareGroups")
 ```
 
-or from github
+or from github to get the latest version
 
 ```
 library(devtools)
