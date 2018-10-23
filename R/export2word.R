@@ -14,7 +14,7 @@ export2word <- function(x, file, which.table="descr", nmax = TRUE, header.labels
   output: word_document
 ---
 \n\n\n
-",paste(export2md(x, which.table, nmax , header.labels), collapse="\n"),
+",paste(export2md(x, which.table, nmax , header.labels, format="markdown", ...), collapse="\n"),
 "
 \n"
 ,sep=""

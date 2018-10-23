@@ -25,7 +25,7 @@ export2word(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
   
   \item{header.labels}{see \code{\link{print.createTable}}}
   
-  \item{...}{currently ignored}
+  \item{...}{further arguments passed to \code{\link{export2md}}}
   
 }
 
