@@ -118,7 +118,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
       ans <- row_spec(ans, 1, hline_after=TRUE)
     }
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table1))
-    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    # if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))))  #use the line above when kableExtra is submitted to CRAN
     if (format=="latex") ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
     if (format=="latex") ans <- kable_styling(ans, latex_options = c("repeat_header"))
@@ -129,6 +130,11 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
     if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
     if (format=="html") ans <- sub('colspan="1"><div style="border-bottom: 1px', 'colspan="1"><div style="border-bottom: 0px',fixed = TRUE, ans)
+    
+    if (format=="html") ans <- gsub('<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan=',    paste('<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: ',header.color,';padding-right: 4px; padding-left: 4px; background-color: ',header.background,';" colspan='),ans) # this would be not necessary when kableExtra will be submitted to CRAN.
+    
+    
+    
     return(ans)
 
   }
@@ -172,7 +178,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     ans <- add_indent(ans, integer())
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
     
-    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    # if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption")))) #use the line above when kableExtra is submitted to CRAN
     if (format=="latex") ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))
     
     if (!is.null(size)) ans <- kable_styling(ans, font_size = size)
@@ -184,6 +191,9 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="html") ans <- row_spec(ans, 0, background=header.background, color=header.color)
     if (format=="html" & nmax) ans <- row_spec(ans, 1, italic=TRUE, extra_css = "border-bottom: 1px solid grey")
     if (format=="html") ans <- sub('colspan="1"><div style="border-bottom: 1px', 'colspan="1"><div style="border-bottom: 0px',fixed = TRUE, ans)
+    
+    if (format=="html") ans <- gsub('<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan=',    paste('<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: ',header.color,';padding-right: 4px; padding-left: 4px; background-color: ',header.background,';" colspan='),ans) # this would be not necessary when kableExtra will be submitted to CRAN.
+    
     return(ans)
 
   }
