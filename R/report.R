@@ -1,4 +1,4 @@
-report <- function(x, file, fig.folder, compile=TRUE, openfile=TRUE, title="Report", author, date, ...){
+report <- function(x, file, fig.folder, compile=TRUE, openfile=FALSE, title="Report", author, date, ...){
 
   if (!inherits(x,"createTable"))
     stop("'x' must be of class 'createTable'")
@@ -112,8 +112,6 @@ report <- function(x, file, fig.folder, compile=TRUE, openfile=TRUE, title="Repo
     setwd(dirname(file))  
     texi2pdf(file = basename(file.tex), clean = FALSE, quiet = TRUE)
     texi2pdf(file = basename(file.tex), clean = TRUE, quiet = TRUE)
-    if (openfile)
-      sys(basename(file))
     setwd(wd)
   }
   

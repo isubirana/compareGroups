@@ -11,7 +11,7 @@ This function takes the result of \code{createTable} and exports the tables to m
 export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = NULL, 
           format = "html", width = Inf, strip = FALSE, first.strip = FALSE, 
           background = "#D2D2D2", size = NULL, landscape=FALSE, header.background=NULL, 
-          header.color=NULL, ...)
+          header.color=NULL, position="center",...)
 
 }
 
@@ -44,6 +44,8 @@ export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = 
  \item{header.background}{color character for table header or 'NULL'. Default value is 'NULL'.}
  
  \item{header.color}{color character for table header text. Default color is 'NULL'.}
+ 
+ \item{position}{character specifying the table location. Possible values are 'left', 'center', 'right', 'float_left' and 'float_right'. It only applies when compiling to HTML or PDF. Default value is 'center'. See \code{\link[kableExtra]{kable_styling}} position argument for more info.}
  
  \item{\ldots}{arguments passed to \code{\link[knitr]{kable}}.}
   

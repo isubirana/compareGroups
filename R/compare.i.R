@@ -144,7 +144,8 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       else
         tt <- table(y,x) 
       nn <- rbind(table(x), tt)
-      prop <- rbind(prop.table(table(x)),prop.table(tt,margin=if (byrow) 2 else 1))
+      # prop <- rbind(prop.table(table(x)),prop.table(tt,margin=if (byrow) 2 else 1))
+      prop <- rbind(prop.table(table(x)),prop.table(tt,margin=if(is.na(byrow)) NULL else as.integer(byrow)+1))
       colnames(prop)<-paste(colnames(prop),"%",sep="")
       rownames(nn)[1]<-rownames(prop)[1]<-"[ALL]"
       prop<-prop*100
@@ -189,12 +190,11 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       }
       ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
       attr(ans, "method") <- "categorical" 
-    } else {
+    } else { ## x - not a factor
       
-      ## x - double
+      ## x - survival
       if (inherits(x,"Surv")){
 
-        ## x - survival
         tt<-descripSurv(x, y, timemax.i)
         p.overall<-try(logrank.pval(y,x),silent=TRUE)
         if (inherits(p.overall,"try-error"))

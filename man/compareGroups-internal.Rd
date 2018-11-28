@@ -10,7 +10,6 @@
 \alias{flip}
 \alias{format2}
 \alias{logrank.pval}
-\alias{rcorr.cens.pval}
 \alias{signifdec.i}
 \alias{signifdec}
 \alias{summ.i}
@@ -25,6 +24,7 @@
 \alias{bar.plot}
 \alias{norm.plot}
 \alias{prepare}
+\alias{trim}
 
 
 \title{Internal compareGroups functions}
@@ -63,8 +63,11 @@ norm.plot(x, file, var.label.x, z, n.breaks, ...)
 prepare(x, nmax, header.labels)
 snpQC(X, sep, verbose)
 export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, 
-      background, width, size, landscape, format, header.background, header.color, ...)   
+      background, width, size, landscape, format, header.background, header.color, 
+      position, ...)   
+trim(x)
 }
+
 
 \details{These are not to be called by the user}
 \keyword{internal}

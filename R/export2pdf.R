@@ -1,4 +1,4 @@
-export2pdf <- function(x, file, compile=TRUE, openfile=TRUE, margin=c(2,2,1,1), ...){
+export2pdf <- function(x, file, compile=TRUE, openfile=FALSE, margin=c(2,2,1,1), ...){
 
   if (!inherits(x,"createTable"))
     stop("'x' must be of class 'createTable'")
@@ -28,8 +28,6 @@ export2pdf <- function(x, file, compile=TRUE, openfile=TRUE, margin=c(2,2,1,1), 
     setwd(dirname(file))
     texi2pdf(file = basename(file.tex), clean = FALSE, quiet = TRUE)
     texi2pdf(file = basename(file.tex), clean = TRUE, quiet = TRUE)
-    if (openfile)
-      sys(basename(file))
     setwd(wd)
   }
   

@@ -15,7 +15,7 @@ plot.compareGroups<-function(x, file, type = "pdf", bivar = FALSE, z = 1.5, n.br
   onefile <- FALSE
   if (!is.null(dots.args$onefile))
     onefile<- dots.args$onefile
-
+  
   var.labels<-names(x)
   namesx<-attr(x,"varnames.orig")  
   for (i in 1:length(x)){

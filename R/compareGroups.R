@@ -25,7 +25,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
         }
       }
     }
-
+    
     call <- match.call()
     if (missing(data))
         data <- environment(formula)
@@ -73,18 +73,24 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
     frame.call[["data"]] <- data # in data, non standard characters in names are replaced by . (tibbles)
 
     m <- eval(frame.call, sys.parent())
-
+    
     if (is.environment(data))
       data <- m
+    
     if (!all(names(m) %in% names(data)))
       stop("Invalid formula terms")
-    
+
     mt <- attr(m, "terms")
     pn <- attr(mt, "term.labels")
-    if (!all(pn %in% names(data))) 
+    
+    if (!all(pn %in% names(data))){
+      pn <- sub("^`","",pn) # maybe there are some `name` in the formula terms to accomodate non standard characters
+      pn <- sub("`$","",pn)  
+    } 
+
+    if (!all(pn %in% names(data)))
       stop("Invalid formula terms")
-    
-    
+
     if (is.null(y)){
       if (attr(mt, "response") == 0) 
         y <- NULL
@@ -95,44 +101,21 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       y <- y[rownames(m)]
       attr(y, "label") <- lab.y      
     }
-    
-    rv <- paste(deparse(mt), collapse = "")
-    rv <- strsplit(rv, "~")[[1]]
-    rv <- rv[length(rv)]
-    rv <- trim(rv)
-    rv <- strsplit(rv, " ")[[1]]
-    rv <- rv[rv != ""]
-    rv <- gsub("\\(", "", rv)
-    rv <- gsub("\\)", "", rv)
-    if (rv[1] %in% names(data)) {
-        rv <- c("+", rv)
-    }
-    else {
-        rv[1] <- trim(sub("^-", "", rv[1]))
-        rv <- c("-", rv)
-    }
 
-    pos <- neg <- integer()
-    for (i in 1:(length(rv)/2)) {
-        if (rv[i * 2 - 1] == "+") 
-            pos <- c(pos, which(names(data) == rv[i * 2]))
-        if (rv[i * 2 - 1] == "-") 
-            neg <- c(neg, which(names(data) == rv[i * 2]))
-    }
-    if (length(neg) > 0) {
-        kk <- match(neg, pos)
-        kk <- kk[!is.na(kk)]
-        if (length(kk) > 0) 
-            pos <- pos[-kk]
-    }
-    if (!length(pos) > 0) 
+    rv <- attr(mt,"term.labels")
+    rv <- sub("^`","",rv)
+    rv <- sub("`$","",rv)
+    pos <- which(names(data)%in%rv)
+    
+    if (!length(pos) > 0)
         stop("no row-variables selected")
-    
-    
+
     Xext <- data[rownames(m), ]
 
+    names(pos) <- names(data)[pos]
+    pos <- pos[rv]
     X <- Xext[, pos, drop = FALSE]
-    
+
     # put labels
     for (i in 1:length(pos)){
       # value labels
@@ -149,7 +132,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       else
         attr(X[,i], "label") <- names(data)[pos[i]]
     }
-    
+
     cmd <- paste0("compareGroups.fit(X = X, y = y, include.label = include.label, Xext = Xext, selec = ", deparse(substitute(selec)), ", 
                   method = method, timemax = timemax, alpha = alpha, min.dis = min.dis, max.ylev = max.ylev, 
                   max.xlev = max.xlev, Q1 = Q1, Q3 = Q3, simplify = simplify, ref = ref, ref.no = ref.no, 

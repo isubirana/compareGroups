@@ -1,7 +1,7 @@
 strataTable <- 
   function(x, strata, strata.names=NULL, max.nlevels = 5)
 {
-  
+
   if (missing(strata))
     stop("'strata' argument must be specified")
   
@@ -18,7 +18,7 @@ strataTable <-
     stop("'x' cannot be of class cbind.createTable")
     
   if (inherits(x, "rbind.createTable"))
-    stop("'x' cannot be of class rbind.createTable")    
+    stop("'x' cannot be of class rbind.createTable")
 
   cg <- attr(x, "x", exact = TRUE)[[1]]
   

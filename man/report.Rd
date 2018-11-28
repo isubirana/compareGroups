@@ -10,7 +10,7 @@ This function creates automatically a PDF with the descriptive table as well as 
 }
 
 \usage{
-report(x, file, fig.folder, compile = TRUE, openfile = TRUE, title = "Report", 
+report(x, file, fig.folder, compile = TRUE, openfile = FALSE, title = "Report", 
        author, date, ...)
 }
 
@@ -24,7 +24,7 @@ report(x, file, fig.folder, compile = TRUE, openfile = TRUE, title = "Report",
 
   \item{compile}{logical indicating whether tex file is compiled using \code{\link[tools]{texi2pdf}} function. Default value is TRUE.}
   
-  \item{openfile}{logical indicating whether to open the compiled pdf file or not. It uses the \code{\link[Hmisc]{sys}} function and does not apply when 'compile' argument is FALSE. Default value is TRUE.}
+  \item{openfile}{logical indicating whether to open the compiled pdf file or not. Currently deprectated. Deafult value is FALSE.}
   
   \item{title}{character specifying the title of the report on the cover page. Default value is 'Report'.}
 

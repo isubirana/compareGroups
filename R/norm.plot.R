@@ -45,11 +45,12 @@ norm.plot<-function(x, file, var.label.x, z, n.breaks, ...)
 	plot(qqnorm$y*sd+mean,dif,pch=19,cex=0.01,xlab="",ylab="desv.",main="Standard deviation\nfrom normality")
 	abline(h=c(-z,0,z),lty=c(2,4,2))
   p.sh<-try(shapiro.test(x)$p.value,silent=TRUE)
-  if (inherits(p.sh,"try-error"))
-    mtitle(paste("Normality plots of '",var.label.x,"'",sep=""),lr="",cex.m=1.5, cex.l=1)
-  else
-    mtitle(paste("Normality plots of '",var.label.x,"'",sep=""),lr="",lc=paste("Shapiro-Wilks p-value: ",format2(p.sh,3),sep=""),cex.m=1.5, cex.l=1)
-
+  title(paste("Normality plots of '",var.label.x,"'",sep=""), outer=TRUE, cex=2)
+  if (!inherits(p.sh,"try-error")){
+    mtext(paste("Shapiro-Wilks p-value: ",format2(p.sh,3),sep=""), side=1, outer=TRUE)
+  } else {
+    warning(paste0("p-value for normality in ",var.label.x," could not be calculated"))
+  }
   if (!is.null(file) && (length(grep("pdf$",file))==0 || !onefile))
     dev.off()
 

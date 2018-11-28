@@ -122,10 +122,7 @@ data(regicor)
 
 # compute a time-to-cardiovascular event variable
 regicor$tcv <- with(regicor,Surv(tocv, as.integer(cv=='Yes')))
-Hmisc::label(regicor$tcv)<-"Cardiovascular incidence"
-
-# remove variables used to create time-to variables
-regicor <- remove.vars(regicor,c("todeath","death","tocv","cv"))
+attr(regicor$tcv, "label")<-"Cardiovascular incidence"
 
 # descriptives by time-to-cardiovascular event, taking 'no' category as 
 # the reference in computing HRs.

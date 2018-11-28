@@ -33,7 +33,7 @@ A 'matrix' with two columns
 }
 
 \note{
-If a variable has no "label" attribute, then the 'original varname' is the same as the 'shown varname'. The first variable in the table corresponds to the grouping variable. To label non-labeled variables or to change the label, use the function \code{\link[Hmisc]{label}}.
+If a variable has no "label" attribute, then the 'original varname' is the same as the 'shown varname'. The first variable in the table corresponds to the grouping variable. To label non-labeled variables or to change the label, specify its "label" attribute..
 }
 
 \seealso{

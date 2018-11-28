@@ -189,11 +189,11 @@ Variables and labels in this data frame are:
 ```{r,echo=FALSE,results="asis"}
 dicc <- data.frame(
 "Name"=I(names(predimed)),
-"Label"=I(unlist(lapply(predimed, Hmisc::label))),
+"Label"=I(unlist(lapply(predimed, attr, which="label", exact=TRUE))),
 "Codes"=I(unlist(lapply(predimed, function(x) paste(levels(x),collapse="; "))))
 )
 dicc$Codes <- sub(">=","$\\\\geq$",dicc$Codes)
-print(xtable(dicc,align=rep("l",4)),include.rownames=FALSE,type="html")
+kable(dicc, align=rep("l",4), row.names=FALSE, format = "html")
 ```
 
 
@@ -207,7 +207,7 @@ OBSERVATIONS:
 
 3. The nature of variables to be analyzed should be known, or at least which variables are to be used as categorical. It is important to code categorical variables as factors and the order of their levels is meaningful in this package.
 
-3. The function `label` from the **`Hmisc`** package could be used to label the variables properly. The tables of results will contain the variable labels (by default).
+3. To label the variables set the "label" attributes from each of them. The tables of results will contain the variable labels (by default).
 
 
 <p style="margin-top:50px"></p>
@@ -218,7 +218,7 @@ A variable of class `Surv` must be created to deal with time-to-event variables 
 
 ```{r}
 predimed$tmain <- with(predimed, Surv(toevent, event == 'Yes'))
-Hmisc::label(predimed$tmain) <- "AMI, stroke, or CV Death"
+attr(predimed$tmain,"label") <- "AMI, stroke, or CV Death"
 ```
 
 Note that variables _tmain_ and _tcv_ are created as time-to-death and time-to-cardiovascular event, respectively, both taking into account censoring (i.e. they are of class Surv).
@@ -426,7 +426,7 @@ compareGroups(group ~ age + smoke + waist + hormo, data=predimed, method = c(wai
 ```{r, echo=TRUE}
 predimed$smk<-predimed$smoke
 levels(predimed$smk)<- c("Never smoker", "Current or former < 1y", "Never or former >= 1y", "Unknown")
-Hmisc::label(predimed$smk)<-"Smoking 4 cat."
+attr(predimed$smk,"label")<-"Smoking 4 cat."
 cbind(table(predimed$smk))
 ```
 

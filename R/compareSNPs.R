@@ -74,7 +74,7 @@ compareSNPs <- function(formula, data, subset, na.action = NULL, sep = "", verbo
         ans[[i]] <- snpQC(X.s[[i]], sep=sep, verbose=FALSE)
       p.miss <- sapply(1:ncol(X), function(j) fisher.test(sapply(ans,function(ans.i) unlist(ans.i[j,c("Ntyped","Miss.ct")])))$p.value)
       ans[[length(ans)+1]] <- data.frame(snps=names(X),p.miss)
-      lab.y <- label(y)
+      lab.y <- attr(y,"label",exact=TRUE)
       if (is.null(lab.y) || lab.y=='')
         lab.y <- names(m)[1] 
       attr(ans,"groups")<-TRUE

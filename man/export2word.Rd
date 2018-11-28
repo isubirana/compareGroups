@@ -10,7 +10,7 @@ This function creates automatically a Word file with the table.
 }
 
 \usage{
-export2word(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
+export2word(x, file, which.table="descr", nmax = TRUE, header.labels = c())
 }
 
 \arguments{
@@ -24,8 +24,6 @@ export2word(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
   \item{nmax}{see \code{\link{print.createTable}}}
   
   \item{header.labels}{see \code{\link{print.createTable}}}
-  
-  \item{...}{further arguments passed to \code{\link{export2md}}}
   
 }
 

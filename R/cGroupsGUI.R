@@ -3,7 +3,8 @@
 cGroupsGUI <- function(X){
 
       requireNamespace("tcltk2", quietly=TRUE)
-
+      requireNamespace("haven", quietly=TRUE) # read spss
+  
       #assignInMyNamespace(".cGroupsGUIEnv", NULL)    
         
       call <- match.call()
@@ -33,7 +34,7 @@ cGroupsGUI <- function(X){
          if(inherits(x[,i], "Surv")) matrix.info[i,2] <- 0
          if(length(unique(x[,i]))<6)  matrix.info[i,2] <- 3
          if(is.na(matrix.info[i,2])) matrix.info[i,2] <- 1
-         matrix.info[i,7] <- Hmisc::label(x[,names(x)[i]])
+         matrix.info[i,7] <- attr(x[,names(x)[i]],"label",exact=TRUE)
       }
       matrix.info[,3] <- 1
       matrix.info[,4] <- 0
@@ -260,7 +261,7 @@ cGroupsGUI <- function(X){
           timeto <- tmp.data[,var.name]
           eventto <- as.integer(tmp.data[, var.name2]==event)
           variableF <- Surv(timeto, eventto)
-          KM.plot(x = variableF, file = NULL, var.label.x = Hmisc::label(x[, var.name2]))
+          KM.plot(x = variableF, file = NULL, var.label.x = attr(x[, var.name2],"label",exact=TRUE))
     }  
     plot.uni.surv <- function(){
       if (tcltk::tclvalue(type.var.valuex)=='none') return()
@@ -544,11 +545,10 @@ cGroupsGUI <- function(X){
             eventto <- as.integer(tmp.data[, var.name2]==event)
             variableF <- Surv(timeto, eventto)
             if(variable[,2]=='Categorical'){ 
-              KMg.plot(x = tmp.data[,as.character(variable[1])], y= variableF, file=NULL, var.label.x=Hmisc::label(x[,as.character(variable[1])]), var.label.y = Hmisc::label(x[,var.name2]))
+              KMg.plot(x = tmp.data[,as.character(variable[1])], y= variableF, file=NULL, var.label.x=attr(x[,as.character(variable[1])],"label",exact=TRUE), var.label.y = attr(x[,var.name2],"label",exact=TRUE))
             }
             if(variable[,2]%in%c('Normal','Non-Normal')){
-                Cox.plot(x = tmp.data[,as.character(variable[1])], y= variableF, file=NULL, var.label.x=Hmisc::label(x[,as.character(variable[1])]), var.label.y = Hmisc::label(x[,var.name2]))
-            
+              Cox.plot(x = tmp.data[,as.character(variable[1])], y= variableF, file=NULL, var.label.x=attr(x[,as.character(variable[1])],"label",exact=TRUE), var.label.y = attr(x[,var.name2],"label",exact=TRUE))
             }
          }
       }
@@ -626,7 +626,8 @@ cGroupsGUI <- function(X){
               name <- tcltk::tclvalue(tcltk::tkgetOpenFile(parent = tt, title = "SPSS Data",filetypes = "{{SPSS Files} {.sav}}"))
               if (name=="") return(" ")
               if (length(name)>1)  stop(paste("More than one object in",name))
-              load.data <- try(spss.get(file = name))
+              # load.data <- try(spss.get(file = name))
+              load.data <- try(haven::read_sav(file = name))
               if (inherits(load.data,"try-error")){
                   return("Problems loading .sav")
               } else{
@@ -832,7 +833,7 @@ cGroupsGUI <- function(X){
           tmp.data <- x
           if(tcltk::tclvalue(type.var.valuex)=='factor'){  
               var.plot <- as.character(tcltk::tkget(tlist.factor.selection,0,"end"))
-              label.aux <- attr(tmp.data[,var.plot],"label")
+              label.aux <- attr(tmp.data[,var.plot],"label",exact=TRUE)
               variableF <- factor(tmp.data[,var.plot])
               if (label.aux=="")   attr(variableF,"label") <- var.plot
               if (label.aux!="")   attr(variableF,"label") <- label.aux

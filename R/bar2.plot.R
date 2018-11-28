@@ -29,16 +29,20 @@ bar2.plot<-function(x, y, file, var.label.x, var.label.y, perc, byrow, ...)
   pp <- table(x, y)
   ylab <- "Freq (n)"
   main <- paste("Barplot of '",var.label.x,"' by '",var.label.y,"'", sep="")  
-  if (byrow){
+
+  if (!is.na(byrow) & byrow) {
     main <- paste("Barplot of '",var.label.y,"' by '",var.label.x,"'", sep="")
     pp <- table(y, x)
   }
   if (perc){
-    pp <- prop.table(pp, margin=2)*100
+    if (!is.na(byrow)) 
+      pp <- prop.table(pp, margin=2)*100
+    else 
+      pp <- prop.table(pp, margin=NULL)*100
     ylab <- "Freq (%)"
   }
 
-  if (byrow){
+  if (!is.na(byrow) & byrow){
     barplot(pp, beside=TRUE, main=main, ylim=c(0,max(pp)*1.3),ylab=ylab,col=rainbow(nlevels(y))) 
     legend("topleft",levels(y),fill=rainbow(nlevels(y)),bty="n")
   }else{

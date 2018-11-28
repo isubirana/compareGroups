@@ -77,7 +77,7 @@ Arguments from \code{\link{compareGroups}} function:
   
   \item{oddsratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{oddsratio}}. Default value is "midp".}    
   
-  \item{byrow}{logical. Percentage of categorical variables must be reported by rows. Default value is FALSE, which means that percentages are reported by columns (withing groups).}  
+  \item{byrow}{logical or NA. Percentage of categorical variables must be reported by rows (TRUE), by columns (FALSE) or by columns and rows to sum up 1 (NA). Default value is FALSE, which means that percentages are reported by columns (withing groups).} 
   
   \item{chisq.test.perm}{logical. It applies a permutation chi squared test (\code{\link[stats]{chisq.test}}) instead of an exact Fisher test (\code{\link[stats]{fisher.test}}). It only applies when expected count in some cells are lower than 5.}
   

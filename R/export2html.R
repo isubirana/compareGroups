@@ -37,10 +37,10 @@ export2html<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c()
         table1[1, 1] <- " "
         colnames(table1) <- table1[1, ]
         table1 <- table1[-1, ,drop=FALSE]
+        xcode <- kable(table1, format="html", align=align, row.names=FALSE, escape=FALSE)
         if (!missing(file) && is.character(file))
-          print(xtable(table1, align = align), type = "html", file = file, include.rownames = FALSE, sanitize.text.function = function(x) x)
+          write(xcode, file=file)
         else{
-          xcode <- print(xtable(table1, align = align), type = "html", include.rownames = FALSE, sanitize.text.function = function(x) x)
           return(invisible(xcode))
         }
     }
@@ -69,11 +69,11 @@ export2html<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c()
         align <- c("l", "l", rep("c", ncol(table2) - 1))
         colnames(table2) <- table2[1, ]
         table2 <- table2[-1, ,drop=FALSE]
+        xcode <- kable(table2, format="html", align=align, row.names=FALSE, escape=FALSE)
         if (!missing(file) && is.character(file)){
           file.save<-paste(sub("\\.html$","",file),"_appendix.html",sep="")
-          print(xtable(table2, align = align), type = "html", file = file.save, include.rownames = FALSE, sanitize.text.function = function(x) x)
+          write(xcode, file=file.save)
         } else{
-          xcode <- print(xtable(table2, align = align), type = "html", include.rownames = FALSE, sanitize.text.function = function(x) x)        
           return(invisible(xcode))
         }
     }

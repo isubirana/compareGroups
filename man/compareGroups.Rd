@@ -81,7 +81,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   
   \item{oddsratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{oddsratio}}. Default value is "midp".}    
   
-  \item{byrow}{logical. Percentage of categorical variables must be reported by rows. Default value is FALSE, which means that percentages are reported by columns (withing groups).}  
+  \item{byrow}{logical or NA. Percentage of categorical variables must be reported by rows (TRUE), by columns (FALSE) or by columns and rows to sum up 1 (NA). Default value is FALSE, which means that percentages are reported by columns (withing groups).}  
   
   \item{chisq.test.perm}{logical. It applies a permutation chi squared test (\code{\link[stats]{chisq.test}}) instead of an exact Fisher test (\code{\link[stats]{fisher.test}}). It only applies when expected count in some cells are lower than 5.}
   
@@ -159,7 +159,7 @@ See examples for further illustration about all previous issues.
 \note{
 
 By default, the labels of the variables (row-variables and grouping variable) are displayed in the resulting tables. These labels are taken from the "label" attribute of each variable. And if this attribute is NULL, then the name of the variable is displayed, instead. 
-To label non-labeled variables, or to change their labels, use the function \code{\link[Hmisc]{label}}. Or change its "label" atribute directly.\cr
+To label non-labeled variables, or to change their labels, specify its "label" atribute directly.\cr
 
 There may be no equivalence between the intervals of the OR / HR and p-values. For example, when the response variable is binary and the row-variable is continuous, p-value is based on Mann-Whitney U test or t-test depending on whether row-variable is normal distributed or not, respectively, while the confidence interval is build using the Wald method (log(OR) -/+ 1.96*se). Or when the answer is of class 'Surv', p-value is computed with the logrank test, while confidence intervals are based on the Wald method (log(HR) -/+ 1.96*se). 
 Finally, when the response is binary and the row variable is categorical, the p-value is based on the chi-squared or Fisher test when appropriate, while confidence intervals are constructed from the median-unbiased estimation method (see \code{\link[epitools]{oddsratio}}). \cr
@@ -189,11 +189,11 @@ data(regicor)
 
 # compute a time-to-cardiovascular event variable
 regicor$tcv <- with(regicor, Surv(tocv, as.integer(cv=='Yes')))
-Hmisc::label(regicor$tcv)<-"Cardiovascular"
+attr(regicor$tcv,"label")<-"Cardiovascular"
 
 # compute a time-to-overall death variable
 regicor$tdeath <- with(regicor, Surv(todeath, as.integer(death=='Yes')))
-Hmisc::label(regicor$tdeath) <- "Mortality"
+attr(regicor$tdeath,"label") <- "Mortality"
 
 # descriptives by sex
 res <- compareGroups(sex ~ .-id-tocv-cv-todeath-death, data = regicor)

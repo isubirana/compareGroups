@@ -10,7 +10,7 @@ This function creates automatically a PDF with the table. Also, the LaTeX code i
 }
 
 \usage{
-export2pdf(x, file, compile = TRUE, openfile = TRUE, margin = c(2,2,1,1), ...)
+export2pdf(x, file, compile = TRUE, openfile = FALSE, margin = c(2,2,1,1), ...)
 }
 
 \arguments{
@@ -21,7 +21,7 @@ export2pdf(x, file, compile = TRUE, openfile = TRUE, margin = c(2,2,1,1), ...)
 
   \item{compile}{logical indicating whether tex file is compiled using \code{\link[tools]{texi2pdf}} function. Default value is TRUE.}
   
-  \item{openfile}{logical indicating whether to open the compiled pdf file or not. It uses the \code{\link[Hmisc]{sys}} function and does not apply when 'compile' argument is FALSE. Default value is TRUE.}  
+  \item{openfile}{logical indicating whether to open the compiled pdf file or not. Currently deprectated. Deafult value is FALSE.}  
   
   \item{margin}{an integer vector specifying the margins in cm. Its components refer to 'top', 'bottom', 'left' and 'right' sides. Default values are 2, 2, 1 and 1, respectively.}
   

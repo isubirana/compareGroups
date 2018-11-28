@@ -1,7 +1,5 @@
-export2xls<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c(), ...){
+export2xls<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c()){
 
-    requireNamespace("xlsx", quietly=TRUE)
-  
     if (!inherits(x, "createTable")) 
         stop("x must be of class 'createTable'")
     if (inherits(x, "cbind.createTable")) 
@@ -34,11 +32,13 @@ export2xls<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c(),
             table1[1, wn] <- nn
             table1 <- table1[-2, ]
         }
-        table1[1, 1] <- "Var"
+        table1[1, 1] <- " "
         colnames(table1) <- table1[1, ]
         table1 <- table1[-1, ,drop=FALSE]
         table1 <- rbind(colnames(table1),table1)
-        xlsx::write.xlsx(table1, file = file, showNA=FALSE, row.names=FALSE, col.names=FALSE, ...)
+        cn <- colnames(table1)
+        table1 <- as.data.frame(table1)
+        names(table1) <- c(" ",cn[-1])
     }
     if (ww %in% c(2, 3)) {
         table2 <- prepare(x, nmax = nmax, c())[[2]]
@@ -59,17 +59,20 @@ export2xls<-function(x, file, which.table="descr", nmax=TRUE, header.labels=c(),
             }
         }
         table2 <- rbind(table2[1, ], aux)
-        table2[1, 1] <- "Var"
+        table2[1, 1] <- " "
         colnames(table2) <- table2[1, ]
         table2 <- table2[-1, ,drop=FALSE]
         table2 <- rbind(colnames(table2),table2)
-        extension <- 
-        if (length(grep("\\.xlsx$",file)))
-          file.save <- paste(sub("\\.xlsx$","",file),"_appendix.xlsx",sep="")
-        else
-          file.save <- paste(sub("\\.xls$","",file),"_appendix.xls",sep="")
-        xlsx::write.xlsx(table2, file = file.save, showNA=FALSE, row.names=FALSE, col.names=FALSE, ...)
+        cn <- colnames(table2)
+        table2 <- as.data.frame(table2)
+        names(table2) <- c(" ",cn[-1])        
     }
+    if (ww==1)
+      write_xlsx(list("Descr"=table1), path = file, col_names = FALSE)
+    if (ww==2)
+      write_xlsx(list("Avail"=table2), path = file, col_names = FALSE)
+    if (ww==3)
+      write_xlsx(list("Descr"=table1, "Avail"=table2), path = file, col_names = FALSE)
 }
 
 
