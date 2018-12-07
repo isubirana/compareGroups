@@ -106,7 +106,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
     rv <- sub("^`","",rv)
     rv <- sub("`$","",rv)
     pos <- which(names(data)%in%rv)
-    
+
     if (!length(pos) > 0)
         stop("no row-variables selected")
 
