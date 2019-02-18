@@ -22,12 +22,8 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
   }    
   
   if (is.factor(x) && include.miss){
-    if (any(is.na(x))){
-      ll<-levels(x)
-      x<-as.integer(x)
-      x<-ifelse(is.na(x),999999999,x)
-      x<-factor(x,c(1:length(ll),999999999),labels=c(ll,"'Missing'"))
-    }
+    x <- addNA(x)
+    levels(x)[nlevels(x)] <- "'Missing'"
   }
 
   xlong <- x  

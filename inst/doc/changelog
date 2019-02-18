@@ -1,7 +1,5 @@
 v4.1.0
 - new argument "position" to export2md function, to place tables justified to the left, centerd or to the right (only when compiling to HTML or PDF)
-- bug fixed when variable names contains spaces.
-- "..." argument removed from export2word.
 - no longer Hmisc, xtable, gdata package dependies. Imports write_xlsx from writexl and suggests readxl packages.
 - xlsx removed from suggested packages.
 - export2xls uses write_xlsx function from writexl pacakge.
@@ -11,6 +9,12 @@ v4.1.0
 - export2md, export2mdcbind: bug fixed when drawing header line and no Nmax is reported.
 - labelled class from "predimed", "regicor" variables removed.
 - byrow add a choice to compute proportions by combinations of rows and columns (i.e. to sum up 100%).
+MINOR
+- bug fixed in compareGroups.R when using "select" argument.
+- compare.i function: bug fixed when "include.miss".
+- bug fixed when variable names contains spaces.
+- "..." argument removed from export2word.
+
 v4.0.0
 - new argument var.equal to compareGroups and descrTable.
 - update.compareGroups: changed.

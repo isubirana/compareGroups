@@ -27,6 +27,8 @@ cGroupsGUI <- function(X){
       names(matrix.info) <- c("name","type","digits","hide","subset.all","subset.part","label")
       matrix.info[,2] <- 0
       for (i in 1:ncol(x)){
+         if (is.null(attr(x[,names(x)[i]],"label",exact=TRUE)))
+           attr(x[,names(x)[i]],"label") <- names(x)[i]
          matrix.info[i,1] <- names(x)[i]
          if(is.factor(x[,i])) matrix.info[i,2] <- 3
          if(is.character(x[,i])) matrix.info[i,2] <- 3

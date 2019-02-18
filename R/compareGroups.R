@@ -81,7 +81,42 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       stop("Invalid formula terms")
 
     mt <- attr(m, "terms")
-    pn <- attr(mt, "term.labels")
+    # pn <- attr(mt, "term.labels")
+    
+    av <- all.vars(mt, unique=FALSE)
+    if (attr(mt, "response")==1)
+      av <- av[-1]
+
+    at <- attr(mt,"term.labels")
+    at <- sub("^`","", at)
+    at <- sub("`$","",at)
+    pn <- av[av%in%at]
+    
+    # cat("all.vars(mt, unique=FALSE)\n")
+    # print(all.vars(mt, unique=FALSE))
+    # cat("\n\nattr(mt,'term.labels')\n")
+    # print(attr(mt,"term.labels"))
+    # cat("\n\npn\n")
+    # print(pn)
+    
+    
+    # if (attr(mt, "response")==1){
+    #   pn <- c(all.vars(mt, unique=FALSE)[1], pn)
+    # }
+
+    # pn <- all.vars(mt, unique=FALSE)
+    
+
+    # if (attr(mt, "response")==1)
+    #   pn <- pn[-1]
+    # allv <- all.vars(mt, unique=FALSE)
+    # print(mt)
+    # print(allv)
+    # print(pn)
+    # pn <- allv[allv%in%pn]
+
+    
+    
     
     if (!all(pn %in% names(data))){
       pn <- sub("^`","",pn) # maybe there are some `name` in the formula terms to accomodate non standard characters
@@ -102,7 +137,8 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       attr(y, "label") <- lab.y      
     }
 
-    rv <- attr(mt,"term.labels")
+    # rv <- attr(mt,"term.labels")
+    rv <- pn
     rv <- sub("^`","",rv)
     rv <- sub("`$","",rv)
     pos <- which(names(data)%in%rv)
@@ -133,13 +169,16 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
         attr(X[,i], "label") <- names(data)[pos[i]]
     }
 
-    cmd <- paste0("compareGroups.fit(X = X, y = y, include.label = include.label, Xext = Xext, selec = ", deparse(substitute(selec)), ", 
+    cmd <- paste(c("compareGroups.fit(X = X, y = y, include.label = include.label, Xext = Xext, selec = ", deparse(substitute(selec)), ", 
                   method = method, timemax = timemax, alpha = alpha, min.dis = min.dis, max.ylev = max.ylev, 
                   max.xlev = max.xlev, Q1 = Q1, Q3 = Q3, simplify = simplify, ref = ref, ref.no = ref.no, 
                   fact.ratio = fact.ratio, ref.y = ref.y, p.corrected = p.corrected, compute.ratio = compute.ratio, 
                   include.miss = include.miss, oddsratio.method = oddsratio.method, chisq.test.perm = chisq.test.perm, byrow = byrow, 
-                  chisq.test.B = chisq.test.B, chisq.test.seed = chisq.test.seed, Date.format = Date.format, var.equal=var.equal)")
+                  chisq.test.B = chisq.test.B, chisq.test.seed = chisq.test.seed, Date.format = Date.format, var.equal=var.equal)"), collapse="")
 
+    
+    cat(cmd, "\n")
+    
     ans <- eval(parse(text=cmd))
     
     if (attr(ans, "groups")) {
@@ -167,6 +206,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
     attr(ans, "form") <- list()
     attr(ans, "form")$formula <- formula
     attr(ans, "form")$terms <- mt
+    attr(ans,"varnames.orig")<-names(X)  #pn ###@@@@@
 
     ans
 }
