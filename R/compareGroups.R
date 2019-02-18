@@ -176,8 +176,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
                   include.miss = include.miss, oddsratio.method = oddsratio.method, chisq.test.perm = chisq.test.perm, byrow = byrow, 
                   chisq.test.B = chisq.test.B, chisq.test.seed = chisq.test.seed, Date.format = Date.format, var.equal=var.equal)"), collapse="")
 
-    
-    cat(cmd, "\n")
+    # cat(cmd, "\n")
     
     ans <- eval(parse(text=cmd))
     
