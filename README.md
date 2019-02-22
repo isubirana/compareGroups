@@ -30,6 +30,8 @@ Also, **compareGroups** package has been published in Journal of Statistical Sof
 
 ## What's new (version 4.1)
 
+**_Version 4.1_**
+
 - Compute confidence intervals of means, medians, proporcions or incidences
 
 - Proportions can be computed by rows as well as by columns, or by combinations of rows and columns (i.e. to sum up 100%).
@@ -39,6 +41,22 @@ Also, **compareGroups** package has been published in Journal of Statistical Sof
 - When exporting tables to Excel, `export2xls` no longer uses `xlsx` package and uses `write_xlsx` function from writexl pacakge, instead.
 
 - The web-based user interface , `cGroupsWUI()`, has been improved and updated.
+
+**_Version 4.0_**
+
+- New argument `var.equal` to consider unequal variances when performing ANOVA tests.
+
+- Date variables are supported.
+
+- New **`strataTable`** function: to create stratified tables without having to use cbind.
+
+- package vignette improved.
+
+- New **`descrTable`** function that builds a descriptive table in one step.
+
+- New options added in `export2md`, to export tables in nicer format.
+
+- New options added in `compareGroups` to control permutated chisquared test.
 
 
 ## Package installation
