@@ -7,6 +7,7 @@ compareGroups: package to create descriptive tables
 =========
 
 -   [Overview](#overview)
+-   [What's new](#news)
 -   [Package installation](#package-installation)
 -   [Example](#example)
     -   [Costumizing the table](#costumizing-the-table)
@@ -28,7 +29,7 @@ You will find an extensive manual describing all **compareGropus** capabilities 
 
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
-## What's new (version 4.1)
+## What's new
 
 **_Version 4.1_**
 
