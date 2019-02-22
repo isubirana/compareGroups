@@ -7,10 +7,9 @@ compareGroups: package to create descriptive tables
 =========
 
 -   [Overview](#overview)
--   [What's new](#news)
+-   [News](#news)
 -   [Package installation](#package-installation)
--   [Example](#example)
-    -   [Costumizing the table](#costumizing-the-table)
+-   [Costumizing the table](#costumizing-the-table)
 -   [Visual exploration](#visual-exploration)
 -   [Exporting the table](#exporting-the-table)
 -   [Stratified tables](#stratified-tables)
@@ -29,7 +28,7 @@ You will find an extensive manual describing all **compareGropus** capabilities 
 
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
-## What's new
+## News
 
 **_Version 4.1_**
 
@@ -76,7 +75,7 @@ library(devtools)
 devtools::install_github(repo = "isubirana/compareGroups")
 ```
 
-## Example
+## Costumizing the table
 
 In the following table, some variables from the PREDIMED study ([http://www.predimed.es/](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
 
@@ -134,7 +133,7 @@ AMI, stroke, or CV Death:                     6324
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 ```
 
-### Costumizing the table
+**Example**
 
 In the following table, variables are described by intervention group. 
 Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed, and medians and quantiles within square brackets instead of means and standard deviations within round brackets are displayed.
