@@ -21,61 +21,95 @@ getResults <- function(obj, what = "descr"){
   
   ### Descriptives ###
   if (what=="descr"){
-    nn.tot<-pp.tot<-mean.tot<-sd.tot<-med.tot<-q1.tot<-q3.tot<-rn<-NULL
+    nn.tot<-pp.tot<-mean.tot<-sd.tot<-med.tot<-q1.tot<-q3.tot<-inc.tot<-lower.tot<-upper.tot<-rn<-NULL
     for (i in 1:length(obj)){
       obj.i<-obj[[i]]
       mm<-attr(obj.i,"method")
       dd<-obj.i$desc
       if ("categorical"%in%mm){
-        nn<-t(dd)
-        pp<-prop.table(nn,margin=2)
+        nn<-t(obj.i$descriptive)
+        pp<-t(obj.i$prop/100)
         nn.tot<-rbind(nn.tot,nn)
         pp.tot<-rbind(pp.tot,pp)
+        lowers <- t(obj.i$lower/100)
+        uppers <- t(obj.i$upper/100)
+        inc.tot<-rbind(inc.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
         mean.tot<-rbind(mean.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
         sd.tot<-rbind(sd.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
         med.tot<-rbind(med.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
         q1.tot<-rbind(q1.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
         q3.tot<-rbind(q3.tot,matrix(NA,nrow=nrow(pp),ncol=ncol(pp)))
+        lower.tot<-rbind(lower.tot,lowers)
+        upper.tot<-rbind(upper.tot,uppers)
         rn<-c(rn,paste(names(obj)[i],rownames(nn),sep=": "))
       }
       if ("normal"%in%mm){
         means<-t(dd[,1,drop=FALSE])
         sds<-t(dd[,2,drop=FALSE])
+        lowers <- t(dd[,"lower",drop=FALSE])
+        uppers <- t(dd[,"upper",drop=FALSE])
         mean.tot<-rbind(mean.tot,means)
         sd.tot<-rbind(sd.tot,sds)
+        inc.tot<-rbind(inc.tot,matrix(NA,nrow=1,ncol=ncol(means)))
         nn.tot<-rbind(nn.tot,matrix(NA,nrow=1,ncol=ncol(means)))
         pp.tot<-rbind(pp.tot,matrix(NA,nrow=1,ncol=ncol(means)))
         med.tot<-rbind(med.tot,matrix(NA,nrow=1,ncol=ncol(means)))
         q1.tot<-rbind(q1.tot,matrix(NA,nrow=1,ncol=ncol(means)))
         q3.tot<-rbind(q3.tot,matrix(NA,nrow=1,ncol=ncol(means)))
+        lower.tot<-rbind(lower.tot,lowers)
+        upper.tot<-rbind(upper.tot,uppers)
         rn<-c(rn,names(obj)[i])                                
       }
       if ("non-normal"%in%mm){
         meds<-t(dd[,1,drop=FALSE])
         q1s<-t(dd[,2,drop=FALSE])
         q3s<-t(dd[,3,drop=FALSE])
+        lowers <- t(dd[,"lower",drop=FALSE])
+        uppers <- t(dd[,"upper",drop=FALSE])
         med.tot<-rbind(med.tot,meds)
         q1.tot<-rbind(q1.tot,q1s)
         q3.tot<-rbind(q3.tot,q3s)
+        inc.tot<-rbind(inc.tot,matrix(NA,nrow=1,ncol=ncol(meds)))
         nn.tot<-rbind(nn.tot,matrix(NA,nrow=1,ncol=ncol(meds)))
         pp.tot<-rbind(pp.tot,matrix(NA,nrow=1,ncol=ncol(meds)))
         mean.tot<-rbind(mean.tot,matrix(NA,nrow=1,ncol=ncol(meds)))
         sd.tot<-rbind(sd.tot,matrix(NA,nrow=1,ncol=ncol(meds)))
+        lower.tot<-rbind(lower.tot,lowers)
+        upper.tot<-rbind(upper.tot,uppers)
         rn<-c(rn,names(obj)[i]) 
       }
+      if ("Surv"%in%mm){
+        incs<-t(dd[,1,drop=FALSE])
+        lowers <- t(dd[,"lower",drop=FALSE])
+        uppers <- t(dd[,"upper",drop=FALSE])
+        inc.tot<-rbind(inc.tot,incs)
+        mean.tot<-rbind(mean.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        sd.tot<-rbind(sd.tot,matrix(NA,nrow=1,ncol=ncol(incs)))        
+        nn.tot<-rbind(nn.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        pp.tot<-rbind(pp.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        med.tot<-rbind(med.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        q1.tot<-rbind(q1.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        q3.tot<-rbind(q3.tot,matrix(NA,nrow=1,ncol=ncol(incs)))
+        lower.tot<-rbind(lower.tot,lowers)
+        upper.tot<-rbind(upper.tot,uppers)
+        rn<-c(rn,names(obj)[i]) 
+      }      
     }
-    rownames(mean.tot)<-rownames(sd.tot)<-rownames(med.tot)<-rownames(q1.tot)<-rownames(q3.tot)<-rownames(nn.tot)<-rownames(pp.tot)<-rn
+    rownames(mean.tot)<-rownames(sd.tot)<-rownames(med.tot)<-rownames(q1.tot)<-rownames(q3.tot)<-rownames(nn.tot)<-rownames(pp.tot)<-rownames(inc.tot)<-rownames(lower.tot)<-rownames(upper.tot)<-rn
     if (attr(obj,"groups")){ 
-      ans<-array(NA,dim=c(nrow(mean.tot),7,ncol(mean.tot)),dimnames=list(rn,c("mean","sd","med","Q1","Q3","n","prop"),c("[ALL]",levels(attr(obj[[1]],"y")))))
+      ans<-array(NA,dim=c(nrow(mean.tot),10,ncol(mean.tot)),dimnames=list(rn,c("mean","sd","med","Q1","Q3","n","prop","inc","lower","upper"),c("[ALL]",levels(attr(obj[[1]],"y")))))
       ans[,1,]<-mean.tot
       ans[,2,]<-sd.tot
       ans[,3,]<-med.tot
       ans[,4,]<-q1.tot
       ans[,5,]<-q3.tot        
       ans[,6,]<-nn.tot        
-      ans[,7,]<-pp.tot 
+      ans[,7,]<-pp.tot
+      ans[,8,]<-inc.tot
+      ans[,9,]<-lower.tot
+      ans[,10,]<-upper.tot
     } else {
-      ans<-array(NA,dim=c(nrow(mean.tot),ncol=7),dimnames=list(rn,c("mean","sd","med","Q1","Q3","n","prop")))
+      ans<-array(NA,dim=c(nrow(mean.tot),ncol=10),dimnames=list(rn,c("mean","sd","med","Q1","Q3","n","prop","inc","lower","upper")))
       ans[,1]<-mean.tot[,1]
       ans[,2]<-sd.tot[,1]
       ans[,3]<-med.tot[,1]
@@ -83,9 +117,12 @@ getResults <- function(obj, what = "descr"){
       ans[,5]<-q3.tot[,1]        
       ans[,6]<-nn.tot[,1]        
       ans[,7]<-pp.tot[,1] 
+      ans[,8]<-inc.tot[,1]
+      ans[,9]<-lower.tot[,1]
+      ans[,10]<-upper.tot[,1]
     }
   }
- 
+
   ### p.overall ###
   if (what=="p.overall"){
     if (!attr(obj,"groups"))

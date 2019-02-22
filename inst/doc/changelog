@@ -1,4 +1,5 @@
 v4.1.0
+- new argument show.ci and conf.level in createTable and compareGroups, respectively, to compute confidence intervals of means, medians, proportions and incidences.
 - new argument "position" to export2md function, to place tables justified to the left, centerd or to the right (only when compiling to HTML or PDF)
 - no longer Hmisc, xtable, gdata package dependies. Imports write_xlsx from writexl and suggests readxl packages.
 - xlsx removed from suggested packages.
@@ -14,6 +15,7 @@ MINOR
 - compare.i function: bug fixed when "include.miss".
 - bug fixed when variable names contains spaces.
 - "..." argument removed from export2word.
+- internal function simplify.formula removed.
 
 v4.0.0
 - new argument var.equal to compareGroups and descrTable.

@@ -4,10 +4,10 @@ function(
   timemax = NA, alpha = 0.05, min.dis = 5, max.ylev = 5, max.xlev = 10, include.label = TRUE, Q1 = 0.25, Q3 = 0.75, 
   simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, 
   include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, 
-  chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, 
+  chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, 
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
-  FALSE, show.descr = TRUE, hide.no = NA, digits.ratio = NA,
+  FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
   extra.labels = NA
 ){

@@ -28,6 +28,17 @@ You will find an extensive manual describing all **compareGropus** capabilities 
 
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
 
+## What's new (version 4.1)
+
+- Compute confidence intervals of means, medians, proporcions or incidences
+
+- Proportions can be computed by rows as well as by columns, or by combinations of rows and columns (i.e. to sum up 100%).
+
+- New argument "position" to place tables justified to the left, centered or to the right using Rmarkdown.
+
+- When exporting tables to Excel, `export2xls` no longer uses `xlsx` package and uses `write_xlsx` function from writexl pacakge, instead.
+
+- The web-based user interface , `cGroupsWUI()`, has been improved and updated.
 
 
 ## Package installation

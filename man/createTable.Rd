@@ -14,7 +14,7 @@ This functions builds a "compact" and "nice" table with the descriptives by grou
 \usage{
 createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
            show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
-           FALSE, show.descr = TRUE, hide.no = NA, digits.ratio = NA,
+           FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
            show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
            extra.labels = NA)
 \method{print}{createTable}(x, which.table = "descr", nmax = TRUE, header.labels = c(), ...)
@@ -44,6 +44,8 @@ createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   \item{show.ratio}{logical indicating whether OR / HR is displayed or not. Default value is FALSE.}  
 
   \item{show.descr}{logical indicating whether descriptives (i.e. mean, proportions, ...) are displayed. Default value is TRUE.}
+  
+  \item{show.ci}{logical indicating whether to show confidence intervals of means, medians, proporcions or incidences are displayed. If so, they are displayed between squared brackets. Default value is FALSE.}  
   
   \item{hide.no}{character specifying the name of the level to be hidden for all categorical variables with 2 categories. It is not case-sensitive. The result is one row for the variable with only the name displayed and not the category. This is especially useful for yes/no variables. It is ignored for the categorical row-variables with 'hide' argument different from NA. Default value is NA which means that no category is hidden.}
   

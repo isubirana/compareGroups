@@ -14,10 +14,10 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL,
-  Date.format = "d-mon-Y", var.equal = TRUE, 
+  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95,
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
-  FALSE, show.descr = TRUE, hide.no = NA, digits.ratio = NA,
+  FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
   extra.labels = NA)
 }
@@ -88,6 +88,8 @@ Arguments from \code{\link{compareGroups}} function:
   \item{Date.format}{character indicating how the dates are shown. Default is "d-mon-Y". See \code{\link[chron]{chron}} for more details.}
   
   \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE \code{\link{anova}} function is applied and \code{\link{oneway.test}} otherwise. Default value is TRUE.} 
+  
+  \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.}   
 
 Arguments from \code{\link{createTable}} function:
 
@@ -111,6 +113,8 @@ Arguments from \code{\link{createTable}} function:
   \item{show.ratio}{logical indicating whether OR / HR is displayed or not. Default value is FALSE.}  
 
   \item{show.descr}{logical indicating whether descriptives (i.e. mean, proportions, ...) are displayed. Default value is TRUE.}
+  
+  \item{show.ci}{logical indicating whether to show confidence intervals of means, medians, proporcions or incidences are displayed. If so, they are displayed between squared brackets. Default value is FALSE.}  
   
   \item{hide.no}{character specifying the name of the level to be hidden for all categorical variables with 2 categories. It is not case-sensitive. The result is one row for the variable with only the name displayed and not the category. This is especially useful for yes/no variables. It is ignored for the categorical row-variables with 'hide' argument different from NA. Default value is NA which means that no category is hidden.}
   

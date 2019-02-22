@@ -1,7 +1,7 @@
 compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
-         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal) {
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level) {
 
   x.orig <- x
   y.orig <- y
@@ -142,8 +142,27 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       nn <- rbind(table(x), tt)
       # prop <- rbind(prop.table(table(x)),prop.table(tt,margin=if (byrow) 2 else 1))
       prop <- rbind(prop.table(table(x)),prop.table(tt,margin=if(is.na(byrow)) NULL else as.integer(byrow)+1))
+      
+      upper <- lower <- matrix(NA, nrow(prop), ncol(prop))
+      for (i in 1:nrow(prop)){
+        for (j in 1:ncol(prop)){
+          if (is.na(byrow)) 
+            n.ij <- sum(nn[-1,])
+          else
+            if (byrow) 
+              n.ij <- sum(nn[-1,j,drop=FALSE])
+            else
+              n.ij <- sum(nn[i,])
+          bt.ci <- binom.test(nn[i,j], n.ij, conf.level = conf.level)$conf.int
+          lower[i,j] <- bt.ci[1]*100
+          upper[i,j] <- bt.ci[2]*100
+        }
+      }
+
       colnames(prop)<-paste(colnames(prop),"%",sep="")
       rownames(nn)[1]<-rownames(prop)[1]<-"[ALL]"
+      colnames(lower)<-colnames(upper)<-colnames(prop)
+      rownames(lower)<-rownames(upper)<-rownames(prop)
       prop<-prop*100
       if (groups){
         if (inherits(y,"Surv"))
@@ -184,7 +203,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
         else
           p.mul <- structure(pp,names=paste("p",np,sep="."))
       }
-      ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
+      ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul, lower=lower, upper=upper)
       attr(ans, "method") <- "categorical" 
     } else { ## x - not a factor
       
@@ -240,9 +259,9 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
           x <- as.numeric(x)
           
           if (inherits(y,"Surv"))
-            tt<-descrip(x, gy, method="no", Q1, Q3)
+            tt <- descrip(x, gy, method="no", Q1, Q3, conf.level)
           else
-            tt<-descrip(x, y, method="no", Q1, Q3)   
+            tt <- descrip(x, y, method="no", Q1, Q3, conf.level)   
 
           if (groups){
             if (inherits(y,"Surv"))
@@ -292,11 +311,12 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
           
           ## x- numeric          
           x <- as.double(x)
+            # x- normal
           if (method.i == 1){
             if (inherits(y,"Surv"))
-              tt<-descrip(x, gy, method="param", Q1, Q3)
+              tt <- descrip(x, gy, method="param", Q1, Q3, conf.level)
             else
-              tt<-descrip(x, y, method="param", Q1, Q3)
+              tt <- descrip(x, y, method="param", Q1, Q3, conf.level)
             if (ny<=2) {
               if (groups){
                 if (inherits(y,"Surv"))
@@ -353,11 +373,12 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
             }
             ans<-list(descriptive=tt[,-1], sam=tt[,1], p.overall=p.overall, p.trend=p.trend, p.mul=p.mul)
             attr(ans, "method") <- c("continuous", "normal") 
-          } else {
+            # x- no normal
+          } else { 
             if (inherits(y,"Surv"))
-              tt<-descrip(x, gy, method="no", Q1, Q3)
+              tt <- descrip(x, gy, method="no", Q1, Q3, conf.level)
             else
-              tt<-descrip(x, y, method="no", Q1, Q3)        
+              tt <- descrip(x, y, method="no", Q1, Q3, conf.level)        
             if (groups){
               if (inherits(y,"Surv"))
                 p.overall<-try(coef(summary(coxph(y~x)))[,'Pr(>|z|)'],silent=TRUE) 

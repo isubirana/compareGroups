@@ -29,6 +29,5 @@ update.formula2<-function(old, new)
           ans <- as.formula(paste(new[[2]], "~", new.right))
     }
   }
-  ans <- simplify.formula(ans)
   return(ans)
 }

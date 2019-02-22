@@ -1,5 +1,5 @@
 table.i <-
-function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar){
+function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci){
 
   method<-attr(x,"method")
 
@@ -57,13 +57,21 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     nn<-ifelse(is.na(nn),".",nn)
     pp<-format2(x$prop,digits)
     pp<-ifelse(is.na(pp),".",pp)
+    lower<-format2(x$lower,digits)
+    lower<-ifelse(is.na(lower),".",lower)
+    upper<-format2(x$upper,digits)
+    upper<-ifelse(is.na(upper),".",upper)    
     ans<-pp
-    if (type==1)
-      ans<-matrix(paste(pp,"%",sep=""),nrow=nrow(ans),ncol=ncol(ans))    
-    if (type==2)
-      ans<-matrix(paste(nn," (",pp,"%)",sep=""),nrow=nrow(ans),ncol=ncol(ans))
-    if (type==3)
-      ans<-matrix(nn,nrow=nrow(ans),ncol=ncol(ans))
+    if (show.ci){
+      ans<-matrix(paste0(pp,"% [",lower,"%;",upper,"%]"),nrow=nrow(ans),ncol=ncol(ans))  
+    } else {
+      if (type==1)
+        ans<-matrix(paste(pp,"%",sep=""),nrow=nrow(ans),ncol=ncol(ans))    
+      if (type==2)
+        ans<-matrix(paste(nn," (",pp,"%)",sep=""),nrow=nrow(ans),ncol=ncol(ans))
+      if (type==3)
+        ans<-matrix(nn,nrow=nrow(ans),ncol=ncol(ans))
+    }
     colnames(ans)<-paste(varname,colnames(nn),sep=": ")
     rownames(ans)<-rownames(nn)
     ansp<-matrix(NA,nrow=length(pvals),ncol=ncol(ans))
@@ -114,12 +122,19 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
       colnames(ans)<-varname
   } 
   if (method[1]=="Surv"){
-    nn<-x$descriptive
-    nn<-format2(x$descriptive,digits)
-    nn<-ifelse(is.na(nn) | is.nan(nn),".",nn)
-    ans<-nn
-    rn<-rownames(nn)
-    ans<-cbind(c(paste(as.vector(ans),"%",sep=""),OR=ci,p.ratio=p.ratio,pvals,N))
+    # nn<-x$descriptive[,1,drop=FALSE]
+    inc<-format2(x$descriptive[,1,drop=FALSE],digits)
+    inc<-ifelse(is.na(inc) | is.nan(inc),".",inc)
+    lower<-format2(x$descriptive[,2,drop=FALSE],digits)
+    lower<-ifelse(is.na(lower) | is.nan(lower),".",lower)
+    upper<-format2(x$descriptive[,3,drop=FALSE],digits)
+    upper<-ifelse(is.na(upper) | is.nan(upper),".",upper)       
+    rn<-rownames(inc)
+    if (show.ci) 
+      inc.out <- paste0(paste0(as.vector(inc),"%"), " [",paste0(as.vector(lower),"%"), ";",paste0(as.vector(upper),"%"),"]")
+    else
+      inc.out <- paste0(as.vector(inc),"%")
+    ans<-cbind(c(inc.out,OR=ci,p.ratio=p.ratio,pvals,N))
     rownames(ans)[1:length(rn)]<-rn
     rownames(ans)[nrow(ans)]<-"N"
     colnames(ans)<-varname 
@@ -129,31 +144,39 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     if (is.numeric(x$descriptive)) nn<-format2(x$descriptive,digits) # to distinguish to dates.
     nn<-ifelse(is.na(nn),".",nn)
     if (method[2]=="normal"){
-      if (sd.type==1)
-        ans<-cbind(apply(nn,1,function(y) paste(y[1]," (",y[2],")",sep="")))
-      else
-        if (spchar)
-          ans<-cbind(apply(nn,1,function(y) paste(y[1],intToUtf8(0xB1L),y[2],sep="")))        
-        else
-          ans<-cbind(apply(nn,1,function(y) paste(y[1],"+/-",y[2],sep="")))                
-    } else {
-      if (q.type[1]==1){
-        if (q.type[2]==1)
-          ans<-cbind(apply(nn,1,function(y) paste(y[1]," [",y[2],";",y[3],"]",sep="")))
-        else 
-          if (q.type[2]==2)
-            ans<-cbind(apply(nn,1,function(y) paste(y[1]," [",y[2],",",y[3],"]",sep="")))
-          else
-            ans<-cbind(apply(nn,1,function(y) paste(y[1]," [",y[2],"-",y[3],"]",sep="")))      
+      if (show.ci){
+        ans<-cbind(apply(nn,1,function(y) paste0(y[1]," [",y[3],";",y[4],"]")))
       } else {
-        if (q.type[2]==1)
-          ans<-cbind(apply(nn,1,function(y) paste(y[1]," (",y[2],";",y[3],")",sep="")))
-        else 
-          if (q.type[2]==2)
-            ans<-cbind(apply(nn,1,function(y) paste(y[1]," (",y[2],",",y[3],")",sep="")))
+        if (sd.type==1)
+          ans<-cbind(apply(nn,1,function(y) paste0(y[1]," (",y[2],")")))
+        else
+          if (spchar)
+            ans<-cbind(apply(nn,1,function(y) paste0(y[1],intToUtf8(0xB1L),y[2])))        
           else
-            ans<-cbind(apply(nn,1,function(y) paste(y[1]," (",y[2],"-",y[3],")",sep="")))      
-      }      
+            ans<-cbind(apply(nn,1,function(y) paste0(y[1],"+/-",y[2])))                
+      }
+    } else {
+      if (show.ci){
+        ans<-cbind(apply(nn,1,function(y) paste0(y[1]," [",y[4],";",y[5],"]")))
+      } else {
+        if (q.type[1]==1){
+          if (q.type[2]==1)
+            ans<-cbind(apply(nn,1,function(y) paste0(y[1]," [",y[2],";",y[3],"]")))
+          else 
+            if (q.type[2]==2)
+              ans<-cbind(apply(nn,1,function(y) paste0(y[1]," [",y[2],",",y[3],"]")))
+            else
+              ans<-cbind(apply(nn,1,function(y) paste0(y[1]," [",y[2],"-",y[3],"]")))      
+        } else {
+          if (q.type[2]==1)
+            ans<-cbind(apply(nn,1,function(y) paste0(y[1]," (",y[2],";",y[3],")")))
+          else 
+            if (q.type[2]==2)
+              ans<-cbind(apply(nn,1,function(y) paste0(y[1]," (",y[2],",",y[3],")")))
+            else
+              ans<-cbind(apply(nn,1,function(y) paste0(y[1]," (",y[2],"-",y[3],")")))      
+        }
+      }
     }  
     rn<-rownames(nn)
     if (attr(x,"groups")){
