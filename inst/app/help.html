@@ -27,7 +27,7 @@ SELECT
 <cghelptext>
 <div style="font-size=25px; text-align:justify">                            
 <p><br>Once your data are loaded satisfactory, this panel will be opened automatically.</p>
-<p>A list of all variables will apear on the left side list. Use the &quot;<>&quot; button to move the variables from the left side to the right side list and viceversa. Once you have chosen which ones are analysed and which are discarded, press on &quot;Update&quot; button. The remaining variables in the left side will be the ones analysed, i.e. by rows in the descriptive tables.</p>
+<p>A list of all variables from the data set will apear on the left side list. Click on the "x" beside each variable to remove them from the table. Or drag a variable to place it in a different order in the descripive table. If you click on the list window, non selected variables will appear which can be browsed and selected to be incorporated again in the selected variables. Once you have chosen which variables are displayed in the table and their order, press on &quot;Update&quot; button.</p>
 </div>
 </cghelptext>
 
@@ -119,6 +119,7 @@ Show
 <li><p><strong>NA category:</strong> For categorical variables, the non-available data is considered as a new category.</p></li>
 <li><p><strong>Pairwise p-value:</strong> When more than two groups are considered, p-values corresponding to 2 by 2 comparisons are performed taking into account multiple testing.</p></li>
 <li><p><strong>Simplify:</strong> Empty categories (with no available data) are removed from the analyses.</p></li>
+<li><p><strong>Confidence interval:</strong> Show confidence interval of means, medians, proporcions or incidences.</p></li>
 </ul>
 </div>
 </cghelptext>
@@ -180,9 +181,10 @@ VALUES
 TABLE
 <cghelptext>
 <div style="font-size=25px; text-align:justify"> 
-<p><br>In this tab the bivariate table is shown.</p>
+<p><br>In this tab the descriptive table is shown.</p>
 <p>use the slider input to make it smaller or bigger.</p>
-<p>Press the &quot; info &quot; button to display the &quot; info table &quot; containing, for each descripted variable, how many observations are available for each group, whether it is treated as normal, non-normal or categorical, which criteria, if any, has been used to select a subset of individuals and if, the Odds Ratio or Hazard Ratio is computed, the factor for which the variable has been multiplied.</p>
+<p>Press the &quot; Info Table &quot; button to display the &quot; info table &quot; containing, for each descripted variable, how many observations are available for each group, whether it is treated as normal, non-normal or categorical, which criteria, if any, has been used to select a subset of individuals and if, the Odds Ratio or Hazard Ratio is computed, the factor for which the variable has been multiplied.</p>
+<p>Press the &quot; Names/labels &quot; button to display correpondence of names and labels of the described.</p>
 </div>
 </cghelptext>
 

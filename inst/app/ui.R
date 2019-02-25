@@ -7,6 +7,8 @@ shinyUI(
     shinyjs::useShinyjs(), # Set up shinyjs
     
     uiOutput("panelwidthout"),
+    
+    # verbatimTextOutput("xxxx"),
      
     headerPanel("",windowTitle="compareGroups | Explore and Summarise Epidemiological Data in R"),
     

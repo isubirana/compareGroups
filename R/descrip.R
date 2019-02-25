@@ -23,7 +23,7 @@ function(x, y, method, Q1, Q3, conf.level) {
      med.all <- median(x)
      q1.all <- quantile(x,prob=Q1)
      q3.all <- quantile(x,prob=Q3)
-     ans<-cbind(n, med, q1, q3, ci[,-1])
+     ans<-cbind(n, med, q1, q3, ci[,-1, drop=FALSE])
      ans <- rbind(c(n.all, med.all, q1.all, q3.all, ci.all[-1]), ans)
      q1.lab<-paste("P",Q1*100,sep="") 
      q3.lab<-paste("P",Q3*100,sep="") 

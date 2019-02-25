@@ -1,5 +1,7 @@
 shinyServer(function(input, output, session) {
   
+  output$xxxx <- renderPrint(structure(rv$selevars, names=HTML(paste0('<a title="',rv$selevars,'"> </a>'))))
+  
   
   write(paste0("enter: ",as.character(Sys.time()),"\n"), file="log", append=TRUE)
   on.exit(write(paste0("exit: ",as.character(Sys.time()),"\n\n"), file="log", append=TRUE)) 
@@ -127,15 +129,17 @@ shinyServer(function(input, output, session) {
   })
 
   
-  observeEvent(input$changeselevars,{
-    if (length(input$discvars)>0){
-      rv$selevars<-c(rv$selevars,input$discvars) 
-      rv$discvars<-rv$discvars[-which(rv$discvars%in%input$discvars)]       
-    }
-    if (length(input$selevars)>0){
-      rv$discvars<-c(rv$discvars,input$selevars)           
-      rv$selevars<-rv$selevars[-which(rv$selevars%in%input$selevars)]
-    }
+  # observeEvent(input$changeselevars,{
+  observeEvent(input$changeselevarsok,{
+    rv$selevars <- input$selevars
+    # if (length(input$discvars)>0){
+    #   rv$selevars<-c(rv$selevars,input$discvars) 
+    #   rv$discvars<-rv$discvars[-which(rv$discvars%in%input$discvars)]       
+    # }
+    # if (length(input$selevars)>0){
+    #   rv$discvars<-c(rv$discvars,input$selevars)           
+    #   rv$selevars<-rv$selevars[-which(rv$selevars%in%input$selevars)]
+    # }
   })  
   
   observeEvent(input$changemethod,{
@@ -314,12 +318,14 @@ shinyServer(function(input, output, session) {
             )
           )
         ),
-        column(3,
-          bsButton("tableinfo","Display info Table"),
-          bsModal("tableinfoModal",title="Info table",trigger="tableinfo",size="large",
-            htmlOutput("sumtab")
-          )
-        )
+        column(1, bsButton("tableinfo","Info Table", size="small")),
+        column(1, bsButton("tablevarinfo","Names/labels", size="small"))
+      ),
+      bsModal("tableinfoModal",title="Info table",trigger="tableinfo",size="large",
+              htmlOutput("sumtab")
+      ),
+      bsModal("tablefvarinfoModal",title="Var info table",trigger="tablevarinfo",size="large",
+              tableOutput("varinfotab")
       )
     ))
   })  
@@ -336,7 +342,8 @@ shinyServer(function(input, output, session) {
     progress <- shiny::Progress$new(session, min=1, max=3)
     progress$set(message = "Reading data",value=1)
     on.exit(progress$close())    
-    rv$selevars<<-rv$discvars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
+    # rv$selevars<<-rv$discvars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
+    rv$selevars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
     rv$initial<<-FALSE
     if (input$exampledata!='Own data'){ # read examples...
       datasetname<-input$exampledata
@@ -446,11 +453,11 @@ shinyServer(function(input, output, session) {
     }
     if (!inherits(dataset, "data.frame") || nrow(dataset)==0)
       return(invisible(NULL))
-    # iniciate selevars and discvars
+    # iniciate selevars    and discvars
     if (is.null(rv$selevars))
       rv$selevars<<-names(dataset)
-    if (is.null(rv$discvars))
-      rv$discvars<<-character()
+    # if (is.null(rv$discvars))
+    #   rv$discvars<<-character()
     # iniciate method
     if (is.null(rv$method)){
       res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
@@ -692,18 +699,20 @@ shinyServer(function(input, output, session) {
       simplify<-if (is.null(input$simplify)) TRUE else input$simplify
       Dateformat<-if (is.null(input$Dateformat)) "d-mon-Y" else input$Dateformat
       byrow <- if (is.null(input$byrow)) FALSE else switch(input$byrow, rows=TRUE, columns=FALSE, total=NA)
-
+      conflevel <- if (is.null(input$conflevel)) 0.95 else input$conflevel/100
+      showci <- if (is.null(input$showci)) FALSE else input$showci
+      
       # compareGroups
       res<-compareGroups(form,dd,max.xlev=Inf,max.ylev=Inf,method=method,include.miss=includemiss,ref.no="no",
                          ref=refratiocat,Q1=Q1/100,Q3=Q3/100,simplify=simplify,compute.ratio=computeratio,
                          fact.ratio=factratio,ref.y=refy,min.dis=mindis,alpha=alpha,p.corrected=pcorrected,
-                         Date.format=Dateformat,byrow=byrow)    
+                         Date.format=Dateformat,byrow=byrow,conf.level=conflevel)    
 
       # createTable
       restab<-createTable(res,show.p.overall=showpoverall,show.p.trend=showptrend,show.ratio=showratio,
                           show.p.ratio=showpratio,show.all=showall,show.n=shown,show.desc=showdesc,
                           hide.no=hideno,hide=xhide,type=type,sd.type=sdtype,q.type=c(qtype1,qtype2),
-                          digits=descdigits,digits.ratio=ratiodigits,digits.p=pvaldigits,show.p.mul=showpmul)      
+                          digits=descdigits,digits.ratio=ratiodigits,digits.p=pvaldigits,show.p.mul=showpmul,show.ci=showci)      
       
     
       # strataTable
@@ -1022,6 +1031,22 @@ shinyServer(function(input, output, session) {
               header.background=input$header.background,size=input$htmlsizerestab)
   })
   
+  ##############################
+  ##### varinfo             ####
+  ##############################
+  
+  output$varinfotab <- renderTable({
+    
+    progress <- shiny::Progress$new(session, min=1, max=3)
+    progress$set(message = "Creating var info table",value=0)
+    on.exit(progress$close())    
+    
+    restab<-create()
+    if (is.null(restab))
+      return(invisible(NULL))
+    varinfo(restab)
+  })  
+  
   
   
   ##########################################
@@ -1039,11 +1064,21 @@ shinyServer(function(input, output, session) {
     nn<-names(dd)
     div(
       fluidRow(
-        column(4,selectInput("selevars",HTML('<div title="Choose the variables you want to analyze">Selected</div>'),rv$selevars,multiple=TRUE,selectize=FALSE),tags$style(type='text/css', paste("#selevars { height: ",ifelse(length(rv$selevars)==0,20,ifelse(length(rv$selevars)>20,300,20*length(rv$selevars)+15)),"px;}",sep=""))),
-        column(2,br(),br(),br(),bsButton("changeselevars","<>",size="extra-small"),offset=1),
-        column(4,selectInput("discvars",HTML('<div title="Choose the variables you DO NOT want to analyze">Discarted</div>'), rv$discvars, multiple=TRUE,selectize=FALSE),tags$style(type='text/css', paste("#discvars { height: ",ifelse(length(rv$discvars)==0,20,ifelse(length(rv$discvars)>20,300,20*length(rv$discvars)+15)),"px;}",sep=""))),offset=1      
-      ),
-      bsButton("changeselevarsok","Update")
+        column(8,selectizeInput("selevars","Choose the variables you want to analyze",
+                       choices=names(dataset()), 
+                       selected=rv$selevars,
+                       multiple=TRUE,
+                       options=list(plugins=list('remove_button', 'drag_drop')))
+        ),
+        # fluidRow(
+        #   column(4,selectizeInput("selevars",HTML('<div title="Choose the variables you want to analyze">Selected</div>'),rv$selevars,multiple=TRUE,
+        #                        options=list(plugins=list('remove_button', 'drag_drop'))),
+        #          tags$style(type='text/css', paste("#selevars { height: ",ifelse(length(rv$selevars)==0,20,ifelse(length(rv$selevars)>20,300,20*length(rv$selevars)+15)),"px;}",sep=""))),
+        #   column(2,br(),br(),br(),bsButton("changeselevars","<>",size="extra-small"),offset=1),
+        #   column(4,selectInput("discvars",HTML('<div title="Choose the variables you DO NOT want to analyze">Discarted</div>'), rv$discvars, multiple=TRUE,selectize=FALSE),tags$style(type='text/css', paste("#discvars { height: ",ifelse(length(rv$discvars)==0,20,ifelse(length(rv$discvars)>20,300,20*length(rv$discvars)+15)),"px;}",sep=""))),offset=1      
+        # ),
+        column(4, br(), br(), bsButton("changeselevarsok","Update"))
+      )
     )
   })
   
@@ -1133,7 +1168,8 @@ shinyServer(function(input, output, session) {
       cat("\n\nData not loaded")
       return(invisible(NULL))
     }
-    input$changeselevars
+    # input$changeselevars
+    input$changeselevarsok
     if (is.null(rv$selevars) || length(rv$selevars)==0)
       return(NULL)
     div(
@@ -1622,6 +1658,10 @@ shinyServer(function(input, output, session) {
           column(6,checkboxInput('simplify', 'Simplify', FALSE)),
           column(6,"")
       ),
+      fluidRow(
+        column(6,checkboxInput('showci', 'Confidence Interval', FALSE)),
+        column(6,conditionalPanel('input.showci',sliderInput('conflevel', 'Confidence level', min=50, max=100, value=95, step=1)))
+      ),
       actionButton("changeshow","Update")
     )                         
   })
@@ -1793,7 +1833,8 @@ shinyServer(function(input, output, session) {
     }
     if (is.null(rv$selevars) || length(rv$selevars)==0)
       return(invisible(NULL))
-    input$changeselevars
+    # input$changeselevars
+    input$changeselevarsok
     return(
       wellPanel(id="varPlotPanel",
         fluidRow(
