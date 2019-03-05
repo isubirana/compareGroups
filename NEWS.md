@@ -1,11 +1,4 @@
----
-title: "NEWS"
-output: html_document
----
-
-
-
-# v4.1.0
+# compareGroups 4.1.0
 
 - new argument show.ci and conf.level in createTable and compareGroups, respectively, to compute confidence intervals of means, medians, proportions and incidences.
 - new argument "position" to export2md function, to place tables justified to the left, centerd or to the right (only when compiling to HTML or PDF)
@@ -26,7 +19,7 @@ output: html_document
 - "..." argument removed from export2word.
 - internal function simplify.formula removed.
 
-# v4.0.0
+# compareGroups 4.0.0
 
 - new argument var.equal to compareGroups and descrTable.
 - update.compareGroups: changed.
@@ -42,17 +35,17 @@ output: html_document
 - table.i, createTable: checking OS to print +/- sign removed from table.i and passed to createTable. This speeds up the bivariate construction a lot.
 - compareGroups.default: '...' argument removed.
 
-# v3.4.0
+# compareGroups 3.4.0
 
 - compareGroups now handles tibble objects
 
-# v3.3.4
+# compareGroups 3.3.4
 
 - bug fixed when checking vignette
 v3.3.3
 - bug fixed for Hmisc::label in examples and vignette
 
-# v3.3.2
+# compareGroups 3.3.2
 
 - createTable: bug fixed related to hide.no
 v3.3.1
@@ -80,18 +73,18 @@ v3.2
 - Internal function descripSurv has been modified fixing a bug when computing K-M probabilities.
 - xlsx not imported but suggested. Only required when calling export2xls function.
 
-# v3.1
+# compareGroups 3.1
 
 - cGroupsWUI: improved shiny app interface.
 - export2word: new function to export tables to Word.
 - export2md: new function to export tables to Markdown.
 - export2html: file argument can be left missing to return HTML code, similar to export2latex.
 
-# v3.0.1
+# compareGroups 3.0.1
 
 - cGroupsWUI: udpates and improvements in the aspect of the GUI web based application.
 
-# v3.0
+# compareGroups 3.0
 
 2015-01-14
 - new argument header.labels incorporated to functions to print and export the bivariate table. This offers the possibility to change some 'key' labels such as p.overall or p.trend.
@@ -110,31 +103,31 @@ v3.2
 - fixed: indentation when exporting a rbind.createTable object to HTML
 - SNPs data removed.
 
-# v2.0.5
+# compareGroups 2.0.5
 
 2014-8-25
 
 - Bug fixed regarding number of decimals when applying subsetting '[' method to createTable, rbind.createTable and cbind.createTable class objects.
 
-# v2.0.4
+# compareGroups 2.0.4
 
 2014-05-02
 
 - JSS paper citation included, in compareGroups.Rd and in createTable.Rd help files.
 
-# v2.0.3
+# compareGroups 2.0.3
 
 2014-04-29
 
 - high line and +/- symbol when printint table on R console replaced by standard C-locale if necessary.
 
-# v2.0.2
+# compareGroups 2.0.2
 
 2014-03-26
 
 - fixed: +/- symbol
 
-# v2.0.1
+# compareGroups 2.0.1
 
 2014-03-17
 
@@ -142,7 +135,7 @@ v3.2
 - integerToAscii replaced by intToUtf8 function.
 - internal functions 'snp.R', 'SNPHWE.R', 'sortSNPs.R', etc. removed since SNPassoc package has been incorporated in depends list.
 
-# v2.0
+# compareGroups 2.0
 
 2013-08-02
 
@@ -166,14 +159,14 @@ v3.2
 - bug fixed in export2html function when exporting a table with one row.
 - bug fixed in 'ref.no' argument of compareGroups function.	
 
-# v1.4
+# compareGroups 1.4
 
 2012-11-06
 
 - an internal bug fixed when specifying selec for a particular row-varible in building Xlong attribute for compareGroups object.
 - cGroupsGUI: improved, more compact.
 
-# v1.3
+# compareGroups 1.3
 
 2012-07-19
 
@@ -188,7 +181,7 @@ v3.2
 - a bug fixed in [.createTable: an error ocurred when a literal category specified to be hiden when subsetting a createTable object.
 - MINOR CHANGE: 1.95 replaced by 1.96 in 'compareGroups.Rd' file.
 
-# v1.2
+# compareGroups 1.2
 
 2012-07-10
 
@@ -196,7 +189,7 @@ v3.2
 - repeated row-variables are kept after applying the generic function 'update'. This was not possible in the previous version 1.1.
 - new internal function 'simplify.formula' added.
 
-# v1.1 
+# compareGroups 1.1 
 
 2012-05-13
 
@@ -207,7 +200,7 @@ v3.2
 - bug fixed in export2latex.cbind.createTable when drawing hlines.
 - export2latex: apostrophes have been changed from '' to `' in writing default table caption.
 
-# v1.0
+# compareGroups 1.0
 
 2011-11-29
 
@@ -225,7 +218,7 @@ v3.2
 - example data sets: 'myData' example data set has been removed and 'regicor' data set is used in the examples instead.
 
 
-# v0.1-6
+# compareGroups 0.1-6
 
 2010-03-25
 
@@ -243,7 +236,7 @@ v3.2
 - argument silent set to TRUE in all functions where try have been applied.
 
 
-# v0.1-5
+# compareGroups 0.1-5
 
 2010-08-20
 
@@ -267,7 +260,7 @@ v3.2
 - compare.i: bug fixed in p-value for multiple comparison for a normal row-variable.
 - createTable: automatacally detects if grouping variable is an ordered factor to display p-trend.
 
-# v0.1-4
+# compareGroups 0.1-4
 
 2010-07-30
 
@@ -276,27 +269,27 @@ v3.2
 - compareGroups.default: added an option to specify different quantiles from Q1 and Q3  (min and max for example) for non-normal variables.
 - [.summary.compareGroups method
 
-# V0.1-3
+# compareGroups 0.1-3
 
 2010-07-27
 
 - fixed a bug in 'print.createTable', 'export2csv' and 'export2latex' functions when there is only one row-variable
 
-# v0.1-2
+# compareGroups 0.1-2
 
 2010-07-27
 
 - MAIN CHANGE: submitted to CRAN.
 - package no more available in www.regicor.org
 
-# v0.1-1
+# compareGroups 0.1-1
 
 2010-07-26
 
 - fixed a bug in 'print.createTable', 'export2csv' and 'export2latex' functions when there is only one group
 - some words changed in help documentation
 
-# v0.1-0
+# compareGroups 0.1-0
 
 2010-06-22
 

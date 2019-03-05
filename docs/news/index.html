@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -112,15 +112,415 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/isubirana/compareGroups/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      
     </div>
 
+    <div id="comparegroups-4-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-4-1-0" class="anchor"></a>compareGroups 4.1.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>new argument show.ci and conf.level in createTable and compareGroups, respectively, to compute confidence intervals of means, medians, proportions and incidences.</li>
+<li>new argument “position” to export2md function, to place tables justified to the left, centerd or to the right (only when compiling to HTML or PDF)</li>
+<li>no longer Hmisc, xtable, gdata package dependies. Imports write_xlsx from writexl and suggests readxl packages.</li>
+<li>xlsx removed from suggested packages.</li>
+<li>export2xls uses write_xlsx function from writexl pacakge.</li>
+<li>cGroupsWUI improved and updated.</li>
+<li>shinythemes package suggested. This saves a lot of space in app folder.</li>
+<li>shinyWidgets package suggested (for awasome dropdownbuttons and colour picker in the shiny app)</li>
+<li>export2md, export2mdcbind: bug fixed when drawing header line and no Nmax is reported.</li>
+<li>labelled class from “predimed”, “regicor” variables removed.</li>
+<li>byrow add a choice to compute proportions by combinations of rows and columns (i.e. to sum up 100%).</li>
+</ul>
+<p><strong>MINOR</strong></p>
+<ul>
+<li>bug fixed in compareGroups.R when using “select” argument.</li>
+<li>compare.i function: bug fixed when “include.miss”.</li>
+<li>bug fixed when variable names contains spaces.</li>
+<li>“…” argument removed from export2word.</li>
+<li>internal function simplify.formula removed.</li>
+</ul>
+</div>
+    <div id="comparegroups-4-0-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-4-0-0" class="anchor"></a>compareGroups 4.0.0<small> 2018-11-02 </small>
+</h1>
+<ul>
+<li>new argument var.equal to compareGroups and descrTable.</li>
+<li>update.compareGroups: changed.</li>
+<li>dates variables supported</li>
+<li>compareGroups.default and compareGroups.formula unified in a single compareGroups function.</li>
+<li>new strataTable function: to create stratified tables without having to use cbind. Also incorporates an update method.</li>
+<li>package vignette improved.</li>
+<li>new descrTable created. This function builds a descriptive table in one step.</li>
+<li>Imports: kableExtra and chron added,<br>
+</li>
+<li>Suggested: car removed</li>
+<li>export2md: new arguments added (format, width, strip, first.strip, background, size and landscape)</li>
+<li>compareGroups: new arguments added (chisq.test.B and chisq.test.seed)</li>
+<li>table.i, createTable: checking OS to print +/- sign removed from table.i and passed to createTable. This speeds up the bivariate construction a lot.</li>
+<li>compareGroups.default: ‘…’ argument removed.</li>
+</ul>
+</div>
+    <div id="comparegroups-3-4-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-4-0" class="anchor"></a>compareGroups 3.4.0<small> 2018-05-18 </small>
+</h1>
+<ul>
+<li>compareGroups now handles tibble objects</li>
+</ul>
+</div>
+    <div id="comparegroups-3-3-4" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-3-4" class="anchor"></a>compareGroups 3.3.4<small> 2018-04-22 </small>
+</h1>
+<ul>
+<li>bug fixed when checking vignette v3.3.3</li>
+<li>bug fixed for Hmisc::label in examples and vignette</li>
+</ul>
+</div>
+    <div id="comparegroups-3-3-2" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-3-2" class="anchor"></a>compareGroups 3.3.2<small> Unreleased </small>
+</h1>
+<ul>
+<li>createTable: bug fixed related to hide.no v3.3.1</li>
+<li>createTable: bug fixed related to extra.labels argument v3.3</li>
+<li>createTable: new “extra.labels” argument indicating the key to normal, non-normal or categorical variables.</li>
+<li>compareGroups: new “byrow” argument to report percentages by rows or by columns. v3.2.5</li>
+<li>export2md, export2html: Var removed from descriptive table header. v3.2.4</li>
+<li>compareGroups.default: new argument chisq.test.perm to perform simulation chisq test instead of fisher test v3.2.3</li>
+<li>export2word: changed working directory v3.2.2</li>
+<li>plot do not open new windows when file argument is NULL.</li>
+<li>new argument “verbose” set to FALSE by default in “compareSNPs”</li>
+<li>new component in header.labels argument to modify OR/HR bivariate table column label.</li>
+<li>bug fixed in getResults function when exctracting proportions.<br>
+v3.2.1</li>
+<li>package vignette updated.</li>
+<li>new argument “oddsratio.method” in “compareGroups.default” function to compute odds ratio under different methods.</li>
+<li>XLConnect and shinythemes removed from suggested packages. v3.2</li>
+<li>cGroupsWUI: improved.</li>
+<li>Internal function descripSurv has been modified fixing a bug when computing K-M probabilities.</li>
+<li>xlsx not imported but suggested. Only required when calling export2xls function.</li>
+</ul>
+</div>
+    <div id="comparegroups-3-1" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-1" class="anchor"></a>compareGroups 3.1<small> 2015-09-07 </small>
+</h1>
+<ul>
+<li>cGroupsWUI: improved shiny app interface.</li>
+<li>export2word: new function to export tables to Word.</li>
+<li>export2md: new function to export tables to Markdown.</li>
+<li>export2html: file argument can be left missing to return HTML code, similar to export2latex.</li>
+</ul>
+</div>
+    <div id="comparegroups-3-0-1" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-0-1" class="anchor"></a>compareGroups 3.0.1<small> 2015-05-13 </small>
+</h1>
+<ul>
+<li>cGroupsWUI: udpates and improvements in the aspect of the GUI web based application.</li>
+</ul>
+</div>
+    <div id="comparegroups-3-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-3-0" class="anchor"></a>compareGroups 3.0<small> 2015-01-23 </small>
+</h1>
+<p>2015-01-14</p>
+<ul>
+<li>new argument header.labels incorporated to functions to print and export the bivariate table. This offers the possibility to change some ‘key’ labels such as p.overall or p.trend.</li>
+<li>new function getResults to retrieve results from compareGroups or createTable object as vectors and matrices.</li>
+<li>new argument ‘margin’ implemented in ‘export2pdf’ function.</li>
+</ul>
+<p><strong>MAJOR CHANGES:</strong></p>
+<ul>
+<li>new function cGroupsWUI has been implemented which opens a web browser with a Web User Interface using Shiny functions.</li>
+<li>new vignette compareGroupsWUI_vignette.pdf created to illustrate how WUI works.</li>
+</ul>
+<p><strong>MINOR CHANGES:</strong></p>
+<ul>
+<li>‘file’ argument from export2csv, export2latex, export2html, export2pdf and report functions must specify the extension. This has been changed from previous versions where no extension (.pdf, .tex, .html or .pdf) was required.</li>
+<li>fixed: ‘hide’ argument from createTable does not produce an error but a warning when a non-existing variable is specified.</li>
+<li>fixed: indentation when exporting a rbind.createTable object to HTML</li>
+<li>SNPs data removed.</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0-5" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0-5" class="anchor"></a>compareGroups 2.0.5<small> 2014-08-28 </small>
+</h1>
+<p>2014-8-25</p>
+<ul>
+<li>Bug fixed regarding number of decimals when applying subsetting ‘[’ method to createTable, rbind.createTable and cbind.createTable class objects.</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0-4" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0-4" class="anchor"></a>compareGroups 2.0.4<small> 2014-05-02 </small>
+</h1>
+<p>2014-05-02</p>
+<ul>
+<li>JSS paper citation included, in compareGroups.Rd and in createTable.Rd help files.</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0-3" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0-3" class="anchor"></a>compareGroups 2.0.3<small> 2014-04-29 </small>
+</h1>
+<p>2014-04-29</p>
+<ul>
+<li>high line and +/- symbol when printint table on R console replaced by standard C-locale if necessary.</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0-2" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0-2" class="anchor"></a>compareGroups 2.0.2<small> 2014-03-26 </small>
+</h1>
+<p>2014-03-26</p>
+<ul>
+<li>fixed: +/- symbol</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0-1" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0-1" class="anchor"></a>compareGroups 2.0.1<small> 2014-03-17 </small>
+</h1>
+<p>2014-03-17</p>
+<ul>
+<li>check package: Sweave.sty removed from vignette folder.</li>
+<li>integerToAscii replaced by intToUtf8 function.</li>
+<li>internal functions ‘snp.R’, ‘SNPHWE.R’, ‘sortSNPs.R’, etc. removed since SNPassoc package has been incorporated in depends list.</li>
+</ul>
+</div>
+    <div id="comparegroups-2-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-2-0" class="anchor"></a>compareGroups 2.0<small> 2013-08-02 </small>
+</h1>
+<p>2013-08-02</p>
+<ul>
+<li>new argument ‘type’ in ‘plot.compareGroups’ method to save plots in different formats.</li>
+<li>new argument ‘include.miss’ in compareGroups function. This treats NA values as a new category for categorical row-variables.</li>
+<li>new function ‘radiograph’ that reports raw data in the data set.</li>
+<li>new function ‘missTable’ has been created, to report missingness tables.</li>
+<li>new function ‘compareSNPs’ has been created, with its own ‘print’ method.</li>
+<li>new functions ‘report’ and ‘export2pdf’ have been created to generate PDF files with tables and/or plots.</li>
+<li>new argumen ‘landscape’ has been incorporated to ‘export2latex’ function.</li>
+<li>new package dependencies required: SNPassoc and HardyWeinberg</li>
+</ul>
+<p><strong>MINOR CHANGES:</strong></p>
+<ul>
+<li>when computing p-values to compare groups for a categorical row-variables, if only one row or one column has some non-zero count, p-value is ‘.’.</li>
+<li>cGroupsGUI no longer saves objects in .GlobalEnv but uses .compareGroupsEnv environment.</li>
+<li>cGroupsGUI input cannot be left missing.</li>
+<li>bug fixed in cGroupsGUI function when exporting to html format.</li>
+<li>internal function prepare has been modified in order to fit the bivariate table columns to their width.</li>
+<li>internal function descripSurv has been modified to accomodate group codes containing regular expression symbols (such as +, -, etc.).</li>
+<li>bug fixed in export2html function when exporting a table with one row.</li>
+<li>bug fixed in ‘ref.no’ argument of compareGroups function.</li>
+</ul>
+</div>
+    <div id="comparegroups-1-4" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-1-4" class="anchor"></a>compareGroups 1.4<small> 2012-11-07 </small>
+</h1>
+<p>2012-11-06</p>
+<ul>
+<li>an internal bug fixed when specifying selec for a particular row-varible in building Xlong attribute for compareGroups object.</li>
+<li>cGroupsGUI: improved, more compact.</li>
+</ul>
+</div>
+    <div id="comparegroups-1-3" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-1-3" class="anchor"></a>compareGroups 1.3<small> 2012-09-10 </small>
+</h1>
+<p>2012-07-19</p>
+<ul>
+<li>createTable objects can be plotted and it is also possible to apply varinfo function on them.</li>
+<li>cGroupsGUI: new smaller frame.</li>
+<li>createTable: new argument q.type, to specify how the quartiles (percentiles) are displayed for a non-normal distributed row-variable.</li>
+<li>createTable: new argument sd.type, to allow the user change the format in displaying SD; 1-inside brackets (default), 2- mean +/- SD.</li>
+<li>createTable: new argument digits.p added, to allow the user specify the number of decimals for all p-values displayed on the bivariate table.</li>
+<li>createTable: new argument p.ratio has been added. This computes de p-value corresponding to each OR/HR individually.</li>
+<li>Nmax reported changed: now it represents the number of patients with at least one valid value across all analized variables.</li>
+<li>a bug fixed in compareGroup: when some row-variable could not be performed ‘varnames.orig’ attribute was bad built. This affected other functions such as createTable.</li>
+<li>a bug fixed in [.createTable: an error ocurred when a literal category specified to be hiden when subsetting a createTable object.</li>
+<li>MINOR CHANGE: 1.95 replaced by 1.96 in ‘compareGroups.Rd’ file.</li>
+</ul>
+</div>
+    <div id="comparegroups-1-2" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-1-2" class="anchor"></a>compareGroups 1.2<small> 2012-07-11 </small>
+</h1>
+<p>2012-07-10</p>
+<ul>
+<li>export2html: a bug fixed in N.</li>
+<li>repeated row-variables are kept after applying the generic function ‘update’. This was not possible in the previous version 1.1.</li>
+<li>new internal function ‘simplify.formula’ added.</li>
+</ul>
+</div>
+    <div id="comparegroups-1-1" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-1-1" class="anchor"></a>compareGroups 1.1<small> 2012-05-13 </small>
+</h1>
+<p>2012-05-13</p>
+<ul>
+<li>[.compareGroups: a bug fixed when a row-variable present multiple times.</li>
+<li>compareGroups: new argument ‘compute.ratio’.</li>
+<li>compareGroups: default value for argument ‘simplify’ changed to TRUE.</li>
+<li>load tcltk only when cGroupsGUI is called.</li>
+<li>bug fixed in export2latex.cbind.createTable when drawing hlines.</li>
+<li>export2latex: apostrophes have been changed from ’’ to `’ in writing default table caption.</li>
+</ul>
+</div>
+    <div id="comparegroups-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-1-0" class="anchor"></a>compareGroups 1.0<small> 2012-02-03 </small>
+</h1>
+<p>2011-11-29</p>
+<p><strong>MAIN CHANGES</strong></p>
+<ul>
+<li>new method ‘[’ implemented for createTable objects.</li>
+<li>new method rbind implemented for compareGroups and createGroups objects.</li>
+<li>new method cbind implemented for createTable objects.</li>
+<li>new method summary implemented for createTable objects.</li>
+<li>createTable: new value for type (3) displays only absolute frequencies for categorical variables.</li>
+<li>export2latex.createTable, export2latex.cbind.createTable: new argument ‘label’ implemented to put a label for each table to be cited in the main LaTeX document.</li>
+<li>chisq.test2: computes simulated p-values for the chi-squared test when it is not possible to compute assymptotic nor exact fisher test.</li>
+<li>compareGroups: new argument ‘p.mult.corrected’ added that gives the option of computing multiple comparison corrected p-values or non-corrected p-values.</li>
+<li>regicor: some variables names have been changed (gender to sex, histbp to histhtn).</li>
+<li>example data sets: ‘myData’ example data set has been removed and ‘regicor’ data set is used in the examples instead.</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-6" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-6" class="anchor"></a>compareGroups 0.1-6<small> Unreleased </small>
+</h1>
+<p>2010-03-25</p>
+<p><strong>MAIN CHANGES</strong></p>
+<ul>
+<li>compareGroups: can deal with Surv objects as response variables in order to compute appropiate p-values for a cohort (time-to-response) studies.</li>
+<li>plot.compareGroups: perform appropiate plots when response is of class ‘Surv’ (kaplan-meier, etc.)</li>
+<li>export2html: new function created to export tables to HTML format</li>
+<li>plot.compareGroups: new internal functions created to draw proper plots for survival class variables<br>
+</li>
+<li>createTable: new argument ‘show.p.overall’.</li>
+<li>createTable: change default value for ‘show.p.all’ argument to FALSE.</li>
+<li>export2csv and export2html: new argument created which is the same as ‘which.table’ in ‘export2latex’ function</li>
+<li>plot.compareGroups: bug fixed in performing shapiro-Wilks test on &gt;5000 size sample.</li>
+<li>export2latex: new arguments ‘caption’ and ‘loc.caption’ added.</li>
+<li>argument silent set to TRUE in all functions where try have been applied.</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-5" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-5" class="anchor"></a>compareGroups 0.1-5<small> Unreleased </small>
+</h1>
+<p>2010-08-20</p>
+<ul>
+<li>print.createTable: lines in header and botoom of the tables are printed, using some characters from integer2ascii function of oce package.</li>
+<li>print.createTable, export2latex, export2csv: new argument ‘nmax’ added.</li>
+<li>export2latex: environment longtable is used, instead of table.</li>
+<li>compareGroups: new argument ‘simplify’ added.</li>
+<li>MAIN change: it is possible not to specify any grouping variable, and descriptives for all sample are performed without p-values.</li>
+<li>print.createTable, export2latex, export2csv: bug fixed when row-variables with no data present.</li>
+<li>plot.compareGroups method now plots barplots for categorical variable, as well as bivariate plots (row-variables vs grouping variable).</li>
+<li>[.summary.compareGroups method deleted and new [.compareGroups method created instead.</li>
+<li>export2csv: now writes the N (sample size) for each group in the header line.</li>
+<li>createTable: argument ‘hide’ changed, now the user can specify either the position of the cateogory to be hidden or the name of this category.</li>
+<li>createTable: new argument ‘hide.no’ added, that allows the user to specify which category to be hidden for all 2-level row-variables.</li>
+<li>createTable: bug fixed, when only 1 row-variable and show.all=FALSE.</li>
+<li>print.createTable changed: ‘which.table’ argument added that specifyies which table is printed (descr, avail or both). By default, only ‘descr’ table is printed.</li>
+<li>export2latex: ‘which.table’ argument added add an argument that specifyies which table is printed (descr, avail or both). By default, only ‘descr’ table is printed.</li>
+<li>export2latex: ‘file’ argument can be missing. In this case, LaTex code is printed in the R console. This function returns the LaTeX code like print.xtable does.</li>
+<li>export2latex: ‘size’ argument added.</li>
+<li>compareGroups.formula: bug fixed in removing variables using ‘-’.</li>
+<li>compare.i: bug fixed in p-value for multiple comparison for a normal row-variable.</li>
+<li>createTable: automatacally detects if grouping variable is an ordered factor to display p-trend.</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-4" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-4" class="anchor"></a>compareGroups 0.1-4<small> 2011-04-26 </small>
+</h1>
+<p>2010-07-30</p>
+<ul>
+<li>print.compareGroups: fix a bug, significant p-values codes 0.01 has been replaced by 0.1</li>
+<li>export2latex: substitute some special character ($, &lt;, &gt;, &gt;=, &lt;=, &amp;, …) in the grouping variable label, and ‘&amp;’ for row-variables and group levels.</li>
+<li>compareGroups.default: added an option to specify different quantiles from Q1 and Q3 (min and max for example) for non-normal variables.</li>
+<li>[.summary.compareGroups method</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-3" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-3" class="anchor"></a>compareGroups 0.1-3<small> 2010-07-29 </small>
+</h1>
+<p>2010-07-27</p>
+<ul>
+<li>fixed a bug in ‘print.createTable’, ‘export2csv’ and ‘export2latex’ functions when there is only one row-variable</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-2" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-2" class="anchor"></a>compareGroups 0.1-2<small> Unreleased </small>
+</h1>
+<p>2010-07-27</p>
+<ul>
+<li>MAIN CHANGE: submitted to CRAN.</li>
+<li>package no more available in www.regicor.org</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-1" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-1" class="anchor"></a>compareGroups 0.1-1<small> Unreleased </small>
+</h1>
+<p>2010-07-26</p>
+<ul>
+<li>fixed a bug in ‘print.createTable’, ‘export2csv’ and ‘export2latex’ functions when there is only one group</li>
+<li>some words changed in help documentation</li>
+</ul>
+</div>
+    <div id="comparegroups-0-1-0" class="section level1">
+<h1 class="page-header">
+<a href="#comparegroups-0-1-0" class="anchor"></a>compareGroups 0.1-0<small> Unreleased </small>
+</h1>
+<p>2010-06-22</p>
+<ul>
+<li>‘compareGroups’ created and uploaded in www.regicor.org</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#comparegroups-4-1-0">4.1.0</a></li>
+        <li><a href="#comparegroups-4-0-0">4.0.0</a></li>
+        <li><a href="#comparegroups-3-4-0">3.4.0</a></li>
+        <li><a href="#comparegroups-3-3-4">3.3.4</a></li>
+        <li><a href="#comparegroups-3-3-2">3.3.2</a></li>
+        <li><a href="#comparegroups-3-1">3.1</a></li>
+        <li><a href="#comparegroups-3-0-1">3.0.1</a></li>
+        <li><a href="#comparegroups-3-0">3.0</a></li>
+        <li><a href="#comparegroups-2-0-5">2.0.5</a></li>
+        <li><a href="#comparegroups-2-0-4">2.0.4</a></li>
+        <li><a href="#comparegroups-2-0-3">2.0.3</a></li>
+        <li><a href="#comparegroups-2-0-2">2.0.2</a></li>
+        <li><a href="#comparegroups-2-0-1">2.0.1</a></li>
+        <li><a href="#comparegroups-2-0">2.0</a></li>
+        <li><a href="#comparegroups-1-4">1.4</a></li>
+        <li><a href="#comparegroups-1-3">1.3</a></li>
+        <li><a href="#comparegroups-1-2">1.2</a></li>
+        <li><a href="#comparegroups-1-1">1.1</a></li>
+        <li><a href="#comparegroups-1-0">1.0</a></li>
+        <li><a href="#comparegroups-0-1-6">0.1-6</a></li>
+        <li><a href="#comparegroups-0-1-5">0.1-5</a></li>
+        <li><a href="#comparegroups-0-1-4">0.1-4</a></li>
+        <li><a href="#comparegroups-0-1-3">0.1-3</a></li>
+        <li><a href="#comparegroups-0-1-2">0.1-2</a></li>
+        <li><a href="#comparegroups-0-1-1">0.1-1</a></li>
+        <li><a href="#comparegroups-0-1-0">0.1-0</a></li>
       </ul>
     </div>
   </div>
