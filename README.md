@@ -224,6 +224,165 @@ export2md(tab, strip = TRUE, first = TRUE,
 
 
 
+<table class="table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Description of variables by intervention groups</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;color: white;background-color: blue;">   </th>
+   <th style="text-align:center;color: white;background-color: blue;"> Control </th>
+   <th style="text-align:center;color: white;background-color: blue;"> MedDiet + Nuts </th>
+   <th style="text-align:center;color: white;background-color: blue;"> MedDiet + VOO </th>
+   <th style="text-align:center;color: white;background-color: blue;"> p.overall </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;font-style: italic;border-bottom: 1px solid grey">  </td>
+   <td style="text-align:center;font-style: italic;border-bottom: 1px solid grey"> N=2001 </td>
+   <td style="text-align:center;font-style: italic;border-bottom: 1px solid grey"> N=2059 </td>
+   <td style="text-align:center;font-style: italic;border-bottom: 1px solid grey"> N=2141 </td>
+   <td style="text-align:center;font-style: italic;border-bottom: 1px solid grey">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Sex: </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> &lt;0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;background-color: #D2D2D2;" indentlevel="1"> Male </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 780 (39.0%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 930 (45.2%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 865 (40.4%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;background-color: #D2D2D2;" indentlevel="1"> Female </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1221 (61.0%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1129 (54.8%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1276 (59.6%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Age </td>
+   <td style="text-align:center;"> 67.6 (6.06) </td>
+   <td style="text-align:center;"> 66.9 (5.83) </td>
+   <td style="text-align:center;"> 67.3 (6.01) </td>
+   <td style="text-align:center;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Smoking: </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 0.490 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;background-color: #D2D2D2;" indentlevel="1"> Never </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1268 (63.4%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1250 (60.7%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1340 (62.6%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;background-color: #D2D2D2;" indentlevel="1"> Current </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 255 (12.7%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 282 (13.7%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 272 (12.7%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;background-color: #D2D2D2;" indentlevel="1"> Former </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 478 (23.9%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 527 (25.6%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 529 (24.7%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Body mass index </td>
+   <td style="text-align:center;"> 30.3 (3.95) </td>
+   <td style="text-align:center;"> 29.7 (3.77) </td>
+   <td style="text-align:center;"> 29.9 (3.69) </td>
+   <td style="text-align:center;"> &lt;0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Waist circumference </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 101 (10.7) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 100 (10.6) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 100 (10.4) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 0.024 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Waist-to-height ratio </td>
+   <td style="text-align:center;"> 0.63 [0.59;0.68] </td>
+   <td style="text-align:center;"> 0.62 [0.58;0.67] </td>
+   <td style="text-align:center;"> 0.63 [0.58;0.67] </td>
+   <td style="text-align:center;"> &lt;0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Hypertension </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1683 (84.1%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1709 (83.0%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1753 (81.9%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 0.162 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Type-2 diabetes </td>
+   <td style="text-align:center;"> 950 (47.5%) </td>
+   <td style="text-align:center;"> 933 (45.3%) </td>
+   <td style="text-align:center;"> 1065 (49.7%) </td>
+   <td style="text-align:center;"> 0.016 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Dyslipidemia </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1446 (72.3%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1504 (73.0%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 1532 (71.6%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 0.559 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Family history of premature CHD </td>
+   <td style="text-align:center;"> 454 (22.7%) </td>
+   <td style="text-align:center;"> 444 (21.6%) </td>
+   <td style="text-align:center;"> 501 (23.4%) </td>
+   <td style="text-align:center;"> 0.358 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> Hormone-replacement therapy </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 31 (1.71%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 30 (1.64%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 36 (1.87%) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 0.854 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MeDiet Adherence score </td>
+   <td style="text-align:center;"> 9.00 [7.00;10.0] </td>
+   <td style="text-align:center;"> 9.00 [8.00;10.0] </td>
+   <td style="text-align:center;"> 9.00 [8.00;10.0] </td>
+   <td style="text-align:center;"> &lt;0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;background-color: #D2D2D2;"> follow-up to main event (years) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 4.10 (1.74) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 4.32 (1.70) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> 4.64 (1.59) </td>
+   <td style="text-align:center;background-color: #D2D2D2;"> &lt;0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AMI, stroke, or CV Death </td>
+   <td style="text-align:center;"> 95 (4.75%) </td>
+   <td style="text-align:center;"> 70 (3.40%) </td>
+   <td style="text-align:center;"> 84 (3.92%) </td>
+   <td style="text-align:center;"> 0.088 </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
+
 
 ## Stratified tables
 
