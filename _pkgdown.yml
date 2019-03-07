@@ -2,13 +2,14 @@ url: https://github.com/isubirana/compareGroups
 
 template:
   params:
-    bootswatch: yeti
+    bootswatch: cerulean
     
-title: compareGroups
+title: compareGroups 
 
 author: Isaac Subirana
 
 navbar:
+  type: inverse
   structure:
     left:
     - home
@@ -16,24 +17,41 @@ navbar:
     - reference
     - articles
     - tutorials
+    - wui
     - news
-    right: github
+    right: 
+    - github
+    - forum
   components:
     home:
-      icon: fa-home fa-lg
+      icon: fa-home fa-lg    
+      text: Home
       href: index.html
+    intro:
+      text: About
+      href: about.Rmd
     reference:
+      icon: fas fa-list-ul
       text: Reference
       href: reference/index.html
     articles:
+      icon: fas fa-book    
       text: Articles
       menu:
       - text: 'compareGroups 4.0: Descriptives by groups'
         href: articles/compareGroups_vignette.html
     news:
+      icon: fas fa-wrench
       text: Changelog
       href: news/index.html
     github:
       icon: fa-github fa-lg
       href: https://github.com/isubirana/compareGroups
-      
+    forum:
+      icon: fas fa-comments
+      text: Forum
+      href: https://groups.google.com/forum/#!forum/comparegroupsforum   
+    wui:
+      icon: fas fa-play
+      text: WUI
+      href: http://apps.datarus.eu/comparegroups/   

@@ -1,6 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^compareGroups_vignette.html$
+^docs$
+^_config\.yml$
+^_pkgdown\.yml$
 
 
 

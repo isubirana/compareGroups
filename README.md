@@ -1,10 +1,8 @@
+compareGroups: package to create descriptive tables
+=========
 
 [![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
-
-
-compareGroups: package to create descriptive tables
-=========
 
 -   [Overview](#overview)
 -   [News](#news)
@@ -16,6 +14,9 @@ compareGroups: package to create descriptive tables
 -   [Odds Ratios and Hazard Ratios](#odds-ratios-and-hazard-ratios)
 -   [Web-based User Interface](#web-based-user-interface)
 -   [Citation](#citation)
+
+
+
 
 ## Overview
 
