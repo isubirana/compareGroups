@@ -1,0 +1,8 @@
+---
+title: "Web User Interface"
+output: html_document
+---
+
+[Go to full screen](http://apps.datarus.eu/comparegroups/)
+
+<iframe src="http://apps.datarus.eu/comparegroups/" width="120%" height="1200px"></iframe>

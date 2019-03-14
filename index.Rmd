@@ -1,0 +1,107 @@
+---
+title: 'compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>'
+output: html_document
+---
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, comment="")
+```
+
+**_package to create descriptive tables_**
+
+
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+
+
+## Overview
+
+**compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
+
+With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
+
+You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](http://htmlpreview.github.io/?https://github.com/isubirana/compareGroups/blob/master/compareGroups_vignette.html).<br>
+
+
+Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
+
+## Who we are
+
+**`compareGroups`** is developed and maintained by Isaac Subirana, Hector Sanz, Joan Vila and collaborators at the cardiovascular epidemiology research unit (URLEC), located at [Barcelona Biomedical Research Park (PRBB)](http://www.prbb.org/) .
+
+![](../man/figures/prbb.jpg)
+
+As the driving force behind the [REGICOR study](www.regicor.org), URLEC has extensive experience in statistical epidemiology, and is a national reference centre for research into cardiovascular diseases and their risk factors.
+
+![](../man/figures/logo_regicor.jpg)
+
+
+
+## Gets started
+
+Install the package from CRAN
+
+
+```{r, eval=FALSE}
+install.packages("compareGroups")
+```
+
+or the lattest version from Github
+
+```{r, eval=FALSE}
+library(devtools)
+devtools::install_github("isubirana/compareGroups")
+```
+
+### Building the descriptive table
+
+```{r}
+library(compareGroups)
+data(predimed)
+tab <- descrTable(group ~ . , predimed, hide.no = "no", method = c(wth = 2, p14 = 2), subset = age > 55)
+export2md(tab, header.background = "black", header.color = "white")
+```
+
+### Stratified table
+
+```{r}
+tabstrat <- strataTable(update(tab, . ~ . -sex), "sex")
+export2md(tabstrat, header.background = "black", header.color = "white")
+```
+
+
+### Visual exploration
+
+<div class="col2">
+```{r, fig.width=7, fig.height=7}
+plot(tab["sex"]) # barplot
+plot(tab["age"]) # histogram and normality plot
+```
+</div>
+
+### Computing Odds Ratios
+
+```{r}
+data(SNPs)
+tabor <- descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)
+export2md(tabor[1:4], strip=TRUE, first=TRUE)
+```
+
+
+
+### Web-based User Interface
+
+For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
+
+
+
+![](../man/figures/WUI.png)
+
+Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)

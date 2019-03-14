@@ -13,7 +13,6 @@ navbar:
   structure:
     left:
     - home
-    - intro
     - reference
     - articles
     - tutorials
@@ -27,9 +26,6 @@ navbar:
       icon: fa-home fa-lg    
       text: Home
       href: index.html
-    intro:
-      text: About
-      href: about.Rmd
     reference:
       icon: fas fa-list-ul
       text: Reference
@@ -40,6 +36,10 @@ navbar:
       menu:
       - text: 'compareGroups 4.0: Descriptives by groups'
         href: articles/compareGroups_vignette.html
+      - text: 'Example 1'
+        href: articles/examples/example1.html 
+      - text: 'Example 2'
+        href: articles/examples/example2.html        
     news:
       icon: fas fa-wrench
       text: Changelog
@@ -49,9 +49,9 @@ navbar:
       href: https://github.com/isubirana/compareGroups
     forum:
       icon: fas fa-comments
-      text: Forum
+      text: 'Forum'
       href: https://groups.google.com/forum/#!forum/comparegroupsforum   
     wui:
       icon: fas fa-play
-      text: WUI
-      href: http://apps.datarus.eu/comparegroups/   
+      text: 'WUI'
+      href: articles/wui.html

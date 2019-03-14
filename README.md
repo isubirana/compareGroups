@@ -1,5 +1,8 @@
-compareGroups: package to create descriptive tables
+compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
 =========
+
+**_package to create descriptive tables_**
+
 
 [![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 

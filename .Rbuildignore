@@ -3,7 +3,9 @@
 ^compareGroups_vignette.html$
 ^docs$
 ^_config\.yml$
-^_pkgdown\.yml$
+^build_logo\.R$
+^vignettes/about.Rmd$
+^vignettes/examples$
 
 
 
