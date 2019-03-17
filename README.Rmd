@@ -23,11 +23,6 @@ compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
 -   [Citation](#citation)
 
 
-```{r}
-3+3
-```
-
-
 
 ## Overview
 
