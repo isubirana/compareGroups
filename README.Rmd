@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: yes
 ---
 
 compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
@@ -160,7 +161,7 @@ After creating a table you may want to repeat the descriptives within stratas. F
 
 ```{r}
 # remove sex (first variable)
-tab <- tab[-1]
+# tab <- tab[-1]
 # stratify by sex
 tabestr <- strataTable(tab, strata="sex")
 tabestr
