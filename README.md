@@ -252,7 +252,7 @@ in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here
 there is an example of a Rmarkdown compiled to HTML.
 
 ``` r
-export2md(tab, strip = TRUE, first = TRUE, 
+export2md(tab, format = "html", strip = TRUE, first = TRUE, 
           header.background = "blue", header.color = "white", 
           caption = "Description of variables by intervention groups")
 ```
