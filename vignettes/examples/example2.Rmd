@@ -1,5 +1,5 @@
 ---
-title: "Example 2: Univariate or bivariate plots <br>of categorical or numeric variables."
+title: "Example 2: Exploring your data graphically."
 output:
   rmdformats::html_clean:
     highlight: tango

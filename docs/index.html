@@ -70,10 +70,10 @@
       <a href="articles/compareGroups_vignette.html">compareGroups 4.0: Descriptives by groups</a>
     </li>
     <li>
-      <a href="articles/examples/example1.html">Example 1</a>
+      <a href="articles/examples/example1.html">Example 1: Building a descriptive table.</a>
     </li>
     <li>
-      <a href="articles/examples/example2.html">Example 2</a>
+      <a href="articles/examples/example2.html">Example 2: Exploring your data graphically.</a>
     </li>
   </ul>
 </li>
@@ -127,7 +127,14 @@
     -webkit-columns: 2 200px; /* chrome, safari */
     -moz-columns: 2 200px;    /* firefox */
   }
+  .small {
+    font-size:9pt;
+  }
 </style>
+<div id="comparegroups" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#comparegroups" class="anchor"></a>compareGroups <img src="reference/figures/logo.png" align="right" width="80px">
+</h1></div>
 <p><strong><em>package to create descriptive tables</em></strong></p>
 <p><a href="http://cran.r-project.org/package=compareGroups"><img src="http://www.r-pkg.org/badges/version/compareGroups" alt="CRAN version"></a> <img src="http://cranlogs.r-pkg.org/badges/grand-total/compareGroups"><img src="http://cranlogs.r-pkg.org/badges/last-month/compareGroups"></p>
 <div id="overview" class="section level2">
@@ -158,12 +165,15 @@
 <h3 class="hasAnchor">
 <a href="#building-the-descriptive-table" class="anchor"></a>Building the descriptive table</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">tab &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>. , predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">wth =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>), <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">55</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tab, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">tab &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>. , predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">wth =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>), <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">55</span>, <span class="dt">sd.type =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tab, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">caption =</span> <span class="st">"Summary by intervention group"</span>)</a></code></pre></div>
 <table class="table table table table-striped table-condensed">
 <caption>
-Summary descriptives table by groups of `group’
+Summary by intervention group
 </caption>
 <thead><tr>
 <th style="text-align:left;color: white;background-color: black;">
@@ -248,13 +258,13 @@ Female
 Age
 </td>
 <td style="text-align:center;">
-67.6 (6.06)
+67.6±6.06
 </td>
 <td style="text-align:center;">
-66.9 (5.83)
+66.9±5.83
 </td>
 <td style="text-align:center;">
-67.3 (6.01)
+67.3±6.01
 </td>
 <td style="text-align:center;">
 0.001
@@ -327,13 +337,13 @@ Former
 Body mass index
 </td>
 <td style="text-align:center;">
-30.3 (3.95)
+30.3±3.95
 </td>
 <td style="text-align:center;">
-29.7 (3.77)
+29.7±3.77
 </td>
 <td style="text-align:center;">
-29.9 (3.69)
+29.9±3.69
 </td>
 <td style="text-align:center;">
 &lt;0.001
@@ -344,13 +354,13 @@ Body mass index
 Waist circumference
 </td>
 <td style="text-align:center;">
-101 (10.7)
+101±10.7
 </td>
 <td style="text-align:center;">
-100 (10.6)
+100±10.6
 </td>
 <td style="text-align:center;">
-100 (10.4)
+100±10.4
 </td>
 <td style="text-align:center;">
 0.024
@@ -480,13 +490,13 @@ MeDiet Adherence score
 follow-up to main event (years)
 </td>
 <td style="text-align:center;">
-4.10 (1.74)
+4.10±1.74
 </td>
 <td style="text-align:center;">
-4.32 (1.70)
+4.32±1.70
 </td>
 <td style="text-align:center;">
-4.64 (1.59)
+4.64±1.59
 </td>
 <td style="text-align:center;">
 &lt;0.001
@@ -515,10 +525,13 @@ AMI, stroke, or CV Death
 <div id="stratified-table" class="section level3">
 <h3 class="hasAnchor">
 <a href="#stratified-table" class="anchor"></a>Stratified table</h3>
+<div class="small">
+
+
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tabstrat &lt;-<span class="st"> </span><span class="kw"><a href="reference/strataTable.html">strataTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(tab, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span>sex), <span class="st">"sex"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabstrat, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabstrat, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">size=</span><span class="dv">9</span>)</a></code></pre></div>
 <table class="table table table table-striped table-condensed">
-<caption>
+<caption style="font-size: initial !important;">
 Summary descriptive tables
 </caption>
 <thead>
@@ -600,25 +613,25 @@ N=1276
 Age
 </td>
 <td style="text-align:center;">
-66.8 (6.32)
+66.8±6.32
 </td>
 <td style="text-align:center;">
-66.3 (6.10)
+66.3±6.10
 </td>
 <td style="text-align:center;">
-66.6 (6.31)
+66.6±6.31
 </td>
 <td style="text-align:center;">
 0.181
 </td>
 <td style="text-align:center;">
-68.1 (5.84)
+68.1±5.84
 </td>
 <td style="text-align:center;">
-67.5 (5.54)
+67.5±5.54
 </td>
 <td style="text-align:center;">
-67.7 (5.75)
+67.7±5.75
 </td>
 <td style="text-align:center;">
 0.023
@@ -733,25 +746,25 @@ Former
 Body mass index
 </td>
 <td style="text-align:center;">
-29.5 (3.46)
+29.5±3.46
 </td>
 <td style="text-align:center;">
-29.1 (3.27)
+29.1±3.27
 </td>
 <td style="text-align:center;">
-29.2 (3.24)
+29.2±3.24
 </td>
 <td style="text-align:center;">
 0.014
 </td>
 <td style="text-align:center;">
-30.8 (4.18)
+30.8±4.18
 </td>
 <td style="text-align:center;">
-30.2 (4.07)
+30.2±4.07
 </td>
 <td style="text-align:center;">
-30.4 (3.90)
+30.4±3.90
 </td>
 <td style="text-align:center;">
 0.002
@@ -762,25 +775,25 @@ Body mass index
 Waist circumference
 </td>
 <td style="text-align:center;">
-104 (9.73)
+104±9.73
 </td>
 <td style="text-align:center;">
-103 (9.38)
+103±9.38
 </td>
 <td style="text-align:center;">
-103 (9.63)
+103±9.63
 </td>
 <td style="text-align:center;">
 0.251
 </td>
 <td style="text-align:center;">
-99.1 (10.9)
+99.1±10.9
 </td>
 <td style="text-align:center;">
-97.8 (11.0)
+97.8±11.0
 </td>
 <td style="text-align:center;">
-98.0 (10.5)
+98.0±10.5
 </td>
 <td style="text-align:center;">
 0.009
@@ -994,25 +1007,25 @@ MeDiet Adherence score
 follow-up to main event (years)
 </td>
 <td style="text-align:center;">
-4.07 (1.79)
+4.07±1.79
 </td>
 <td style="text-align:center;">
-4.40 (1.73)
+4.40±1.73
 </td>
 <td style="text-align:center;">
-4.54 (1.64)
+4.54±1.64
 </td>
 <td style="text-align:center;">
 &lt;0.001
 </td>
 <td style="text-align:center;">
-4.12 (1.71)
+4.12±1.71
 </td>
 <td style="text-align:center;">
-4.26 (1.67)
+4.26±1.67
 </td>
 <td style="text-align:center;">
-4.72 (1.56)
+4.72±1.56
 </td>
 <td style="text-align:center;">
 &lt;0.001
@@ -1049,6 +1062,7 @@ AMI, stroke, or CV Death
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div id="visual-exploration" class="section level3">
 <h3 class="hasAnchor">
@@ -1255,6 +1269,7 @@ TT
 <p>For those not familiar to R syntax, a Web User Interface (<strong>WUI</strong>) has been implemented using <a href="http://shiny.rstudio.com/">Shiny</a> tools, which can be used remotely just accessing the <a href="http://www.comparegroups.eu"><strong>compareGroups project website</strong></a></p>
 <p><img src="../man/figures/WUI.png"></p>
 <p>Try the WUI compareGroups <a href="http://www.comparegroups.eu/wui">here</a></p>
+</div>
 </div>
 </div>
   </div>

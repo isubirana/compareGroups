@@ -1,5 +1,5 @@
 ---
-title: "Example 1: Descriptives of variables"
+title: "Example 1: Building a descriptive table."
 output:
   rmdformats::html_clean:
     highlight: tango

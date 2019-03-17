@@ -1,5 +1,5 @@
 ---
-title: 'compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>'
+title: 'compareGroups'
 output: html_document
 ---
 
@@ -9,11 +9,19 @@ output: html_document
     -webkit-columns: 2 200px; /* chrome, safari */
     -moz-columns: 2 200px;    /* firefox */
   }
+  .small {
+    font-size:9pt;
+  }
 </style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, comment="")
 ```
+
+
+
+compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
+=================
 
 **_package to create descriptive tables_**
 
@@ -64,18 +72,24 @@ devtools::install_github("isubirana/compareGroups")
 
 ```{r}
 library(compareGroups)
+
 data(predimed)
-tab <- descrTable(group ~ . , predimed, hide.no = "no", method = c(wth = 2, p14 = 2), subset = age > 55)
-export2md(tab, header.background = "black", header.color = "white")
+
+tab <- descrTable(group ~ . , predimed, hide.no = "no", method = c(wth = 2, p14 = 2), subset = age > 55, sd.type = 3)
+
+export2md(tab, header.background = "black", header.color = "white", caption = "Summary by intervention group")
 ```
 
 ### Stratified table
 
-```{r}
+<div class="small">
+
+```{r,size=6}
 tabstrat <- strataTable(update(tab, . ~ . -sex), "sex")
-export2md(tabstrat, header.background = "black", header.color = "white")
+export2md(tabstrat, header.background = "black", header.color = "white", size=9)
 ```
 
+</div>
 
 ### Visual exploration
 

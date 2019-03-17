@@ -1,0 +1,234 @@
+---
+output: github_document
+---
+
+compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
+=========
+
+**_package to create descriptive tables_**
+
+
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+
+
+-   [Overview](#overview)
+-   [News](#news)
+-   [Package installation](#package-installation)
+-   [Costumizing the table](#costumizing-the-table)
+-   [Visual exploration](#visual-exploration)
+-   [Exporting the table](#exporting-the-table)
+-   [Stratified tables](#stratified-tables)
+-   [Odds Ratios and Hazard Ratios](#odds-ratios-and-hazard-ratios)
+-   [Web-based User Interface](#web-based-user-interface)
+-   [Citation](#citation)
+
+
+
+
+## Overview
+
+**compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
+
+With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
+
+You will find an extensive manual describing all **compareGropus** capabilities with real examples in the [vignette](http://htmlpreview.github.io/?https://github.com/isubirana/compareGroups/blob/master/compareGroups_vignette.html).<br>
+
+
+Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](http://www.jstatsoft.org/v57/i12/.)].
+
+## News
+
+**_Version 4.1_**
+
+- Compute confidence intervals of means, medians, proporcions or incidences
+
+- Proportions can be computed by rows as well as by columns, or by combinations of rows and columns (i.e. to sum up 100%).
+
+- New argument "position" to place tables justified to the left, centered or to the right using Rmarkdown.
+
+- When exporting tables to Excel, `export2xls` no longer uses `xlsx` package and uses `write_xlsx` function from writexl pacakge, instead.
+
+- The web-based user interface , `cGroupsWUI()`, has been improved and updated.
+
+**_Version 4.0_**
+
+- New argument `var.equal` to consider unequal variances when performing ANOVA tests.
+
+- Date variables are supported.
+
+- New **`strataTable`** function: to create stratified tables without having to use cbind.
+
+- package vignette improved.
+
+- New **`descrTable`** function that builds a descriptive table in one step.
+
+- New options added in `export2md`, to export tables in nicer format.
+
+- New options added in `compareGroups` to control permutated chisquared test.
+
+
+## Package installation
+
+
+Install the **`compareGroups`** package from CRAN and then load it by typing:
+
+```
+install.packages("compareGroups")
+```
+
+or from github to get the latest version
+
+```{r, eval=FALSE}
+library(devtools)
+devtools::install_github(repo = "isubirana/compareGroups")
+```
+
+## Costumizing the table
+
+In the following table, some variables from the PREDIMED study ([http://www.predimed.es/](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
+
+
+Following, to describe all the variables of the data set just type:
+
+```{r}
+library(compareGroups) # load compareGroups package
+data(predimed) # load example data
+descrTable(predimed)
+```
+
+
+**Example**
+
+In the following table, variables are described by intervention group. 
+Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed, and medians and quantiles within square brackets instead of means and standard deviations within round brackets are displayed.
+Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
+For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you may want to see simply "diabetes" instead of "diabetes: yes". This is possible by `hide.no` argument.
+
+Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
+
+
+```{r}
+tab <- descrTable(group ~ . , predimed, hide.no="no", method=c(wth=2, p14=2), subset=age>55)
+tab
+```
+
+
+
+Also, number of decimals and much more options can be changed to costumize the table as desired (see the  [package manual](https://CRAN.R-project.org/package=compareGroups))
+
+
+
+## Visual exploration
+
+With **`compareGroups`** it is also possible to visualize the distribution of analysed variables. This can be done by the `plot` function applied on the table:
+
+```{r}
+plot(tab["sex"]) # barplot
+plot(tab["age"]) # histogram and normality plot
+```
+
+
+## Exporting the table
+
+Once the table is created, it can be printed on the R console in a nice and compact format, or it can be exported to different formats, such as PDF, Excel, Word or LaTex code.
+
+```{r, eval=FALSE}
+export2pdf(tab, file = "example.pdf")
+export2xls(tab, file = "example.xlsx")
+export2word(tab, file = "example.docx")
+export2latex(tab, file = "example.tex")
+```
+
+This is how the table looks like in PDF:
+
+![](./man/figures/examplePDF.png)
+
+
+Also, by using `export2md` function a descriptive table can be inserted in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here there is an example of a Rmarkdown compiled to HTML.
+
+```{r}
+export2md(tab, strip = TRUE, first = TRUE, 
+          header.background = "blue", header.color = "white", 
+          caption = "Description of variables by intervention groups")
+```
+
+
+
+## Stratified tables
+
+
+After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable` function:
+
+```{r}
+# remove sex (first variable)
+tab <- tab[-1]
+# stratify by sex
+tabestr <- strataTable(tab, strata="sex")
+tabestr
+```
+
+
+or when is complied in HTML 
+
+```{r}
+export2md(tabestr, strip = TRUE, first = TRUE, 
+          header.background = "blue", header.color = "white", size=11)
+```
+
+
+
+## Odds Ratios and Hazard Ratios
+
+
+Using **`compareGroups`** package you can compute Odds Ratios for transversal or case-control studies, or Hazard Ratios for cohort studies
+
+- **Example of case-control study: Odds Ratios**
+
+```{r}
+data(SNPs)
+descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)[1:4]
+```
+
+
+- **Example of cohort study: Hazard Ratios**
+
+
+```{r}
+# create a Surv response:
+predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+# perform descriptive table placeing the Surv object as the response (left side of ~):
+tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
+           hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+# print table on R console
+print(tab, header.label=c("p.ratio"="p-value"))           
+``` 
+
+
+
+# Web-based User Interface
+
+For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](http://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
+
+
+
+
+![](./man/figures/WUI.png)
+
+Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
+
+<br>
+
+
+
+# Citation
+
+
+```{r}
+citation("compareGroups")
+```
+
+
+# References
+
+
+<p>Subirana, Isaac, Héctor Sanz, and Joan Vila. 2014. “Building Bivariate Tables: The compareGroups Package for R.” <em>Journal of Statistical Software</em> 57 (12): 1–16. <a href="http://www.jstatsoft.org/v57/i12/" class="uri">http://www.jstatsoft.org/v57/i12/</a>.</p>
