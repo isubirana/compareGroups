@@ -21,6 +21,7 @@ compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
 
 
 
+
 ## Overview
 
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
