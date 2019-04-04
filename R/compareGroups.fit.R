@@ -219,7 +219,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
                             chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, 
                             chisq.test.seed=chisq.test.seed, Date.format=Date.format, var.equal=var.equal, conf.level=conf.level),
                   silent=TRUE)
-     # if (inherits(ans.i, "try-error")) print(ans.i)
+     if (inherits(ans.i, "try-error")) print(ans.i)
      ans.i
    })
    

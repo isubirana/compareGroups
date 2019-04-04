@@ -6,7 +6,9 @@ function(x, y, method, Q1, Q3, conf.level) {
    n[is.na(n)]<-0
    n.all <- length(x)
    ci.all <- confinterval(x, conf.level=conf.level, method=method)
-   ci <- do.call(rbind, tapply(x, y, confinterval, conf.level=conf.level, method=method))
+   ci.groups <- tapply(x, y, confinterval, conf.level=conf.level, method=method)
+   for (ii in seq_along(ci.groups)) if (is.null(ci.groups[[ii]])) ci.groups[[ii]] <- c(NA,NA,NA)
+   ci <- do.call(rbind, ci.groups)
    if (method=="param") {
      mm <- tapply(x, y, mean)
      ss <- tapply(x, y, sd)
