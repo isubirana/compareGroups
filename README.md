@@ -6,7 +6,7 @@ body {
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: white;
+  background-color: black;
   padding: 30px;
   color: #333;
 }
