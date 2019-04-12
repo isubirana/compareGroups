@@ -4,8 +4,7 @@ compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
 
 ***package to create descriptive tables***
 
-[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
-
+<!-- [![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups) -->
 -   [Overview](#overview)
 -   [News](#news)
 -   [Package installation](#package-installation)
@@ -570,9 +569,6 @@ Stratified tables
 After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable` function:
 
 ``` r
-# remove sex (first variable)
-# tab <- tab[-1]
-# stratify by sex
 tabestr <- strataTable(tab, strata="sex")
 tabestr
 ```

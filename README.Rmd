@@ -1,5 +1,7 @@
 ---
-output: github_document
+output:
+  github_document:
+    html_preview: false
 always_allow_html: yes
 ---
 
@@ -15,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, warning=FALSE, comment="", message=FALSE)
 ```
 
 
-[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+<!-- [![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups) -->
 
 
 -   [Overview](#overview)
@@ -166,9 +168,6 @@ export2md(tab, format = "html", strip = TRUE, first = TRUE,
 After creating a table you may want to repeat the descriptives within stratas. For example, you may want to compare the groups for men and for women. This is very easy using the `strataTable` function:
 
 ```{r}
-# remove sex (first variable)
-# tab <- tab[-1]
-# stratify by sex
 tabestr <- strataTable(tab, strata="sex")
 tabestr
 ```
