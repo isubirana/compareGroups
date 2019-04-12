@@ -4,12 +4,7 @@ compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
 
 ***package to create descriptive tables***
 
-<!-- ![CRAN version](http://www.r-pkg.org/badges/version/compareGroups) -->
-<!-- [xxx](http://cran.r-project.org/package=compareGroups)  -->
-![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
-
-<!-- ![xxx](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups)  -->
-![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups)![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups)![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 -   [Overview](#overview)
 -   [News](#news)
@@ -185,13 +180,13 @@ With **`compareGroups`** it is also possible to visualize the distribution of an
 plot(tab["sex"]) # barplot
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 ``` r
 plot(tab["age"]) # histogram and normality plot
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-2.png)
+![](README_files/figure-markdown_github/unnamed-chunk-4-2.png)
 
 Exporting the table
 -------------------
@@ -615,9 +610,6 @@ or when is complied in HTML
 export2md(tabestr, strip = TRUE, first = TRUE, 
           header.background = "blue", header.color = "white", size=11)
 ```
-
-
-{::nomarkdown}
 
 <table class="table table-striped table-condensed" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -1225,12 +1217,6 @@ AMI, stroke, or CV Death
 </tr>
 </tbody>
 </table>
-
-
-{:/}
-
-
-
 Odds Ratios and Hazard Ratios
 -----------------------------
 
