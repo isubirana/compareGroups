@@ -6,6 +6,7 @@
 ^build_logo\.R$
 ^vignettes/about.Rmd$
 ^vignettes/examples$
+^README.css$
 
 
 
