@@ -26,14 +26,36 @@ plot(1, 1, type="n", axes=FALSE, xlim=c(0,2), ylim=c(0,2), xlab="", ylab="")
 dev.off()
 
 
+png("man/figures/subplot.png", 480*7/4, 480*7/7,bg = "transparent")
+par(mar=c(0,0,0,0))
+boxplot(iris[,1]~iris[,5],col=2:4,axes=FALSE,lwd=3,border="white")
+# plot(1, 1, type="n", axes=FALSE, xlim=c(0,2), ylim=c(0,2), xlab="", ylab="")
+# text(1, 1, expression(bar(x) %+-% sigma),cex=10, adj = c(0.5, 0.5), font=3, col="white")
+# mtext("n (%)", 3, line=-20, cex=8)
+dev.off()
+
+
+png("man/figures/subplot.png", 480*7/4, 480*7/7,bg = "transparent")
+par(mar=c(0,0,0,0))
+plot(1,1,xlim=c(-1,1),ylim=c(-1,1),axes=FALSE, xlab="",ylab="")
+abline(v=0,h=0,lwd=4,col="white")
+text(-0.5,0.5,expression(bar(x)), cex=9,col="white")
+text(0.5,0.5,expression(sigma^2), cex=9,col="white")
+text(-0.5,-0.5,"N", cex=9,col="white")
+text(0.5,-0.5,"%", cex=9,col="white")
+dev.off()
+
+
 sticker("man/figures/subplot.png",
-        package="c~G", dpi=300, 
-        p_size=40, p_family="wqy-microhei",p_x=1, p_y=1,  
-        s_x=1, s_y=0.6, s_width=0.5, s_height=0.5,
+        package="compareGroups", dpi=300, 
+        p_size=17, p_family="wqy-microhei",p_x=1, p_y=0.60,  
+        s_x=1, s_y=1.20, s_width=0.85, s_height=0.60,
         spotlight = TRUE, l_x=1, l_y=0.9,asp = 1,
         filename="man/figures/logo.png")
 
+library(pkgdown)
 build_favicon()
+build_home()
 build_site()
 
 

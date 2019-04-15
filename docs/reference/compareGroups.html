@@ -407,8 +407,156 @@ Finally, when the response is binary and the row variable is categorical, the p-
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>regicor</span>$<span class='no'>tdeath</span>,<span class='st'>"label"</span>) <span class='kw'>&lt;-</span> <span class='st'>"Mortality"</span>
 
 <span class='co'># descriptives by sex</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>compareGroups</span>(<span class='no'>sex</span> ~ <span class='no'>.</span>-<span class='no'>id</span>-<span class='no'>tocv</span>-<span class='no'>cv</span>-<span class='no'>todeath</span>-<span class='no'>death</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>regicor</span>)
-<span class='no'>res</span></div><div class='output co'>#&gt; 
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>compareGroups</span>(<span class='no'>sex</span> ~ <span class='no'>.</span>-<span class='no'>id</span>-<span class='no'>tocv</span>-<span class='no'>cv</span>-<span class='no'>todeath</span>-<span class='no'>death</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>regicor</span>)</div><div class='output co'>#&gt; $data
+#&gt;        y
+#&gt; x       Male Female Total
+#&gt;   1995   206    225   431
+#&gt;   2000   390    396   786
+#&gt;   2005   505    572  1077
+#&gt;   Total 1101   1193  2294
+#&gt; 
+#&gt; $measure
+#&gt;       odds ratio with 95% C.I.
+#&gt; x       estimate     lower    upper
+#&gt;   1995 1.0000000        NA       NA
+#&gt;   2000 0.9297377 0.7346474 1.176216
+#&gt;   2005 1.0370380 0.8288714 1.297120
+#&gt; 
+#&gt; $p.value
+#&gt;       two-sided
+#&gt; x      midp.exact fisher.exact chi.square
+#&gt;   1995         NA           NA         NA
+#&gt;   2000  0.5438095    0.5493951  0.5430115
+#&gt;   2005  0.7501763    0.7753758  0.7500760
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"
+#&gt; $data
+#&gt;                         y
+#&gt; x                        Male Female Total
+#&gt;   Never smoker            301    900  1201
+#&gt;   Current or former &lt; 1y  410    183   593
+#&gt;   Former &gt;= 1y            360     79   439
+#&gt;   Total                  1071   1162  2233
+#&gt; 
+#&gt; $measure
+#&gt;                         odds ratio with 95% C.I.
+#&gt; x                          estimate      lower      upper
+#&gt;   Never smoker           1.00000000         NA         NA
+#&gt;   Current or former &lt; 1y 0.14954071 0.12004545 0.18560560
+#&gt;   Former &gt;= 1y           0.07363818 0.05554227 0.09660496
+#&gt; 
+#&gt; $p.value
+#&gt;                         two-sided
+#&gt; x                        midp.exact fisher.exact   chi.square
+#&gt;   Never smoker                   NA           NA           NA
+#&gt;   Current or former &lt; 1y          0 2.926828e-72 4.409504e-72
+#&gt;   Former &gt;= 1y                    0 1.550448e-98 3.194910e-96
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"
+#&gt; $data
+#&gt;        y
+#&gt; x       Male Female Total
+#&gt;   Yes    341    382   723
+#&gt;   No     755    808  1563
+#&gt;   Total 1096   1190  2286
+#&gt; 
+#&gt; $measure
+#&gt;      odds ratio with 95% C.I.
+#&gt; x      estimate     lower    upper
+#&gt;   Yes 1.0000000        NA       NA
+#&gt;   No  0.9553839 0.8005878 1.139835
+#&gt; 
+#&gt; $p.value
+#&gt;      two-sided
+#&gt; x     midp.exact fisher.exact chi.square
+#&gt;   Yes         NA           NA         NA
+#&gt;   No   0.6124146    0.6206952  0.6119205
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"
+#&gt; $data
+#&gt;        y
+#&gt; x       Male Female Total
+#&gt;   No     889    934  1823
+#&gt;   Yes    189    239   428
+#&gt;   Total 1078   1173  2251
+#&gt; 
+#&gt; $measure
+#&gt;      odds ratio with 95% C.I.
+#&gt; x     estimate     lower    upper
+#&gt;   No  1.000000        NA       NA
+#&gt;   Yes 1.203346 0.9740431 1.488276
+#&gt; 
+#&gt; $p.value
+#&gt;      two-sided
+#&gt; x     midp.exact fisher.exact chi.square
+#&gt;   No          NA           NA         NA
+#&gt;   Yes 0.08619969   0.09552699 0.08599193
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"
+#&gt; $data
+#&gt;        y
+#&gt; x       Male Female Total
+#&gt;   Yes    353    356   709
+#&gt;   No     741    823  1564
+#&gt;   Total 1094   1179  2273
+#&gt; 
+#&gt; $measure
+#&gt;      odds ratio with 95% C.I.
+#&gt; x     estimate     lower   upper
+#&gt;   Yes 1.000000        NA      NA
+#&gt;   No  1.101251 0.9220107 1.31537
+#&gt; 
+#&gt; $p.value
+#&gt;      two-sided
+#&gt; x     midp.exact fisher.exact chi.square
+#&gt;   Yes         NA           NA         NA
+#&gt;   No   0.2872368    0.2974975  0.2867336
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"
+#&gt; $data
+#&gt;        y
+#&gt; x       Male Female Total
+#&gt;   No     962   1049  2011
+#&gt;   Yes    114    114   228
+#&gt;   Total 1076   1163  2239
+#&gt; 
+#&gt; $measure
+#&gt;      odds ratio with 95% C.I.
+#&gt; x     estimate     lower    upper
+#&gt;   No  1.000000        NA       NA
+#&gt;   Yes 0.917111 0.6969148 1.206891
+#&gt; 
+#&gt; $p.value
+#&gt;      two-sided
+#&gt; x     midp.exact fisher.exact chi.square
+#&gt;   No          NA           NA         NA
+#&gt;   Yes  0.5363264    0.5759351  0.5355491
+#&gt; 
+#&gt; $correction
+#&gt; [1] FALSE
+#&gt; 
+#&gt; attr(,"method")
+#&gt; [1] "median-unbiased estimate &amp; mid-p exact CI"</div><div class='input'><span class='no'>res</span></div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; -------- Summary of results by groups of 'Sex'---------
 #&gt; 

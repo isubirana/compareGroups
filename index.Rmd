@@ -16,11 +16,12 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, comment="")
+library(knitr)
 ```
 
 
 
-compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
+compareGroups <img src="man/figures/logo.png" align="right" width="120px"/>
 =================
 
 **_package to create descriptive tables_**
@@ -42,14 +43,25 @@ Also, **compareGroups** package has been published in Journal of Statistical Sof
 
 ## Who we are
 
+
+```{r, echo=FALSE, out.width= "25%", out.extra='style="float:right; padding:10px"'}
+include_graphics("../man/figures/prbb.jpg")
+```
+
+
 **`compareGroups`** is developed and maintained by Isaac Subirana, Hector Sanz, Joan Vila and collaborators at the cardiovascular epidemiology research unit (URLEC), located at [Barcelona Biomedical Research Park (PRBB)](http://www.prbb.org/) .
 
-![](../man/figures/prbb.jpg)
+
+<br><br><br><br><br>
+
+```{r, echo=FALSE, out.width= "20%", out.extra='style="float:left; padding:10px"'}
+include_graphics("../man/figures/logo_regicor.jpg")
+```
 
 As the driving force behind the [REGICOR study](www.regicor.org), URLEC has extensive experience in statistical epidemiology, and is a national reference centre for research into cardiovascular diseases and their risk factors.
 
-![](../man/figures/logo_regicor.jpg)
 
+<br><br>
 
 
 ## Gets started
