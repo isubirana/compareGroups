@@ -1,4 +1,4 @@
-compareGroups <img src="man/figures/logo.png" align="right" width="80px"/>
+compareGroups <img src="man/figures/logo.png" align="right" style="margin-top:30px" width="200px"/>
 =========
 
 **_package to create descriptive tables_**

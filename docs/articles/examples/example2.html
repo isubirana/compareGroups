@@ -133,23 +133,23 @@
 <h1 class="hasAnchor">
 <a href="#step-1--install-the-package" class="anchor"></a>Step 1. Install the package</h1>
 <p>Install <strong><code>compareGroups</code></strong> package from CRAN and then load it by typing:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a></code></pre></div>
 </div>
 <div id="step-2--load-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#step-2--load-data" class="anchor"></a>Step 2. Load data</h1>
 <p>Load the PREDIMED example data available in <strong><code>compareGroups</code></strong> package:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a></code></pre></div>
 </div>
 <div id="setp-3--computations" class="section level1">
 <h1 class="hasAnchor">
 <a href="#setp-3--computations" class="anchor"></a>Setp 3. Computations</h1>
 <p>First use <code>compareGroups</code> function to store all values used to perform plots afterwards.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent, <span class="dt">data =</span> predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent, <span class="dt">data =</span> predimed)</a></code></pre></div>
 <p><br></p>
 <p>You can use <font style="color:blue"><code>varinfo</code></font> function to recover the original name of variables (not labels which are displayed in the results).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../../reference/varinfo.html">varinfo</a></span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../../reference/varinfo.html">varinfo</a></span>(res)</a></code></pre></div>
 <pre><code>
 --- Analyzed variable names ----
 
@@ -176,14 +176,14 @@
 <ol style="list-style-type: lower-alpha">
 <li>For categorical variables a barplot is performed, stratifying by groups (right plot) or not (left plot):</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'diab'</span>])</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'diab'</span>],<span class="dt">bivar=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'diab'</span>])</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'diab'</span>],<span class="dt">bivar=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="example2a.png"><img src="example2b.png"></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>For continuous variables boxplots or normality plots are performed depending whether groups are considered or not, respectively.</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'bmi'</span>])</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'bmi'</span>],<span class="dt">bivar=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'bmi'</span>])</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="st">'bmi'</span>],<span class="dt">bivar=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="example2c.png"><img src="example2d.png"></p>
 </div>
   </div>

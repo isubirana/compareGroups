@@ -46,12 +46,21 @@ text(0.5,-0.5,"%", cex=9,col="white")
 dev.off()
 
 
+
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Gochi Hand", "gochi")
+font_add_google("Knewave", "knewave")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
 sticker("man/figures/subplot.png",
         package="compareGroups", dpi=300, 
-        p_size=17, p_family="wqy-microhei",p_x=1, p_y=0.60,  
+        p_size=17, p_family="knewave",p_x=1, p_y=0.60,    # "wqy-microhei"
         s_x=1, s_y=1.20, s_width=0.85, s_height=0.60,
         spotlight = TRUE, l_x=1, l_y=0.9,asp = 1,
         filename="man/figures/logo.png")
+
 
 library(pkgdown)
 build_favicon()
