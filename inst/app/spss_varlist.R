@@ -251,7 +251,7 @@ spss_varlist <- function(file){
   	#cat('rectype', rectype, '\n')
   	# check for a value label set / variable index pair (rectypes 3 & 4)
   	while (rectype==3) {
-  		elemcount= readBin(sav, integer())	# number of labels defined 
+  		elemcount <- readBin(sav, integer())	# number of labels defined 
   		while (elemcount > 0) {
   			#cat(' 3:', elemcount)
   			elemcount <- elemcount - 1
@@ -325,7 +325,7 @@ spss_varlist <- function(file){
   		rectype <- readBin(sav, integer())
   	}
 
-  } else longname=varname # version <12.0
+  } else longname <- varname # version <12.0
  
   #erase empty spaces in varname, longname and printfmt
   varname <- gsub(" ","",varname)

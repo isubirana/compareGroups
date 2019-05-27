@@ -74,7 +74,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
     selec<-temp
    } else
      if (length(selec)==1) 
-      selec=rep(selec,nvars)
+      selec <- rep(selec,nvars)
 
    if (!is.null(attr(method,"names"))){
     temp<-rep(1,ncol(X))
@@ -90,7 +90,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
     method<-temp
    } else 
      if (length(method)==1) 
-       method=rep(method,nvars)
+       method <- rep(method,nvars)
 
    if (!is.null(attr(timemax,"names"))){
     temp<-rep(NA,ncol(X))
@@ -219,7 +219,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
                             chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, 
                             chisq.test.seed=chisq.test.seed, Date.format=Date.format, var.equal=var.equal, conf.level=conf.level),
                   silent=TRUE)
-     if (inherits(ans.i, "try-error")) print(ans.i)
+     # if (inherits(ans.i, "try-error")) print(ans.i)
      ans.i
    })
    

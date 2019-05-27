@@ -45,7 +45,7 @@ cbind.createTable <- function(..., caption)
   out<-args
 
   if (is.null(caption) || all(caption=='')) 
-    caption=unlist(lapply(args,function(vv) ifelse(is.null(attr(vv,"yname")),"[No groups]",paste("By",attr(vv,"yname")))))
+    caption <- unlist(lapply(args,function(vv) ifelse(is.null(attr(vv,"yname")),"[No groups]",paste("By",attr(vv,"yname")))))
   
   attr(out,"caption")<-caption
 

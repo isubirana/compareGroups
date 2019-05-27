@@ -28,10 +28,10 @@ norm.plot<-function(x, file, var.label.x, z, n.breaks, ...)
         pdf(file,...)                             
   }
 
-  mean<-mean(x,na.rm=T)
-  sd<-sd(x,na.rm=T)
+  mean<-mean(x,na.rm=TRUE)
+  sd<-sd(x,na.rm=TRUE)
   Z.x<-(x-mean)/sd
-  qqnorm<-qqnorm(Z.x,plot=F)
+  qqnorm<-qqnorm(Z.x,plot=FALSE)
   dif<-qqnorm$y-qqnorm$x
   par(mfrow=c(2,2),mar=c(3,3,3,1),mgp=c(2,0.5,0),oma=c(3,0,3,0))
   hist(x,probability=TRUE,main="Histogram",xlab="",ylab="",col="red",breaks=n.breaks)

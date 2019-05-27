@@ -488,7 +488,6 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
           if (ref!=1)
             tb<-rbind(tb[ref,,drop=FALSE],tb[-ref,,drop=FALSE])
           or.res<-try(oddsratio(tb,method=oddsratio.method),silent=TRUE)
-          print(or.res)
           if (inherits(or.res,"try-error")){
             ci<-matrix(NaN,nlevels(x),3)
             ci[ref,]<-c(1,NA,NA)          

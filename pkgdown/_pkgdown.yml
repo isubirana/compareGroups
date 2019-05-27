@@ -33,13 +33,7 @@ navbar:
     articles:
       icon: fas fa-book    
       text: Articles
-      menu:
-      - text: 'compareGroups 4.0: Descriptives by groups'
-        href: articles/compareGroups_vignette.html
-      - text: 'Example 1: Building a descriptive table.'
-        href: articles/examples/example1.html 
-      - text: 'Example 2: Exploring your data graphically.'
-        href: articles/examples/example2.html        
+      href: articles/index.html
     news:
       icon: fas fa-wrench
       text: Changelog
@@ -55,3 +49,15 @@ navbar:
       icon: fas fa-play
       text: 'WUI'
       href: articles/wui.html
+      
+      
+articles:
+  - title: "Articles"
+    desc: >
+      The following documents describe the package functionality
+    contents:
+    - '`compareGroups_vignette`'
+    - '`examples/example1`'
+    - '`examples/example2`'
+    - '`wui`'
+

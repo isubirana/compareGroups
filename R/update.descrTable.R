@@ -15,7 +15,7 @@ update.descrTable <- function (object, formula., ..., evaluate = TRUE)
         else {
           call$data <- call$formula
           call$formula <- formula.
-          print(call)
+          # print(call)
         }
       } else {
         call$formula <- formula.
