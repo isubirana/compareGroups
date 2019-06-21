@@ -33,6 +33,7 @@ norm.plot<-function(x, file, var.label.x, z, n.breaks, ...)
   Z.x<-(x-mean)/sd
   qqnorm<-qqnorm(Z.x,plot=FALSE)
   dif<-qqnorm$y-qqnorm$x
+  
   par(mfrow=c(2,2),mar=c(3,3,3,1),mgp=c(2,0.5,0),oma=c(3,0,3,0))
   hist(x,probability=TRUE,main="Histogram",xlab="",ylab="",col="red",breaks=n.breaks)
   dens<-dnorm(seq(min(x),max(x),len=1000),mean,sd)
@@ -42,7 +43,7 @@ norm.plot<-function(x, file, var.label.x, z, n.breaks, ...)
   qqnorm(x,datax=TRUE,pch=19,cex=0.09)
   qqline(unclass(x),datax=TRUE)
   boxplot(x,main="Boxplot",pch=19,cex=0.09,outline=TRUE,col="red")
-	plot(qqnorm$y*sd+mean,dif,pch=19,cex=0.01,xlab="",ylab="desv.",main="Standard deviation\nfrom normality")
+  plot(qqnorm$y*sd+mean,dif,pch=19,cex=0.01,xlab="",ylab="desv.",main="Standard deviation\nfrom normality")
 	abline(h=c(-z,0,z),lty=c(2,4,2))
   p.sh<-try(shapiro.test(x)$p.value,silent=TRUE)
   title(paste("Normality plots of '",var.label.x,"'",sep=""), outer=TRUE, cex=2)
@@ -51,6 +52,8 @@ norm.plot<-function(x, file, var.label.x, z, n.breaks, ...)
   } else {
     warning(paste0("p-value for normality in ",var.label.x," could not be calculated"))
   }
+  par(mfrow=c(1,1))
+  
   if (!is.null(file) && (length(grep("pdf$",file))==0 || !onefile))
     dev.off()
 

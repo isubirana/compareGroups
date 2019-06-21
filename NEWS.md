@@ -1,3 +1,7 @@
+# compareGroups 4.1.1
+- norm.plot: par(mfrow=c(1,1)) added at the end, to restore mutiplots device.
+- export2md: more understandable warning message when used outside the Rmarkdown chunk.
+
 # compareGroups 4.1.0
 
 - new argument show.ci and conf.level in createTable and compareGroups, respectively, to compute confidence intervals of means, medians, proportions and incidences.

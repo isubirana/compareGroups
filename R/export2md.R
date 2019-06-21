@@ -4,7 +4,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
 
   compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
   if (inherits(compiled.format, "try-error")){
-    warning("error")
+    warning("you are using export2md out of Rmarkdown context...")
   } else {
     if (compiled.format%in%c("html_document","ioslides_presentation","slidy_presentation")) format <- "html"
     if (compiled.format%in%c("pdf_document","beamer_presentation")) format <- "latex"
