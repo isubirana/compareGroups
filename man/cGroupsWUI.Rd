@@ -2,7 +2,7 @@
 \alias{cGroupsWUI}
 
 \title{
-Web User Interface.
+Web User Interface based on Shiny tools.
 }
 
 \description{

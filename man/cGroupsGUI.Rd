@@ -2,7 +2,7 @@
 \alias{cGroupsGUI}
 
 \title{
-Graphical user interface to create tables of descriptives by groups (bivariate tables)
+Graphical user interface based on tcltk tools
 }
 
 \description{

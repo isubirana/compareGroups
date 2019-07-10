@@ -12,6 +12,8 @@
 ^pkgdown$
 ^vignettes/wui.Rmd$
 ^README.md$
+^\.travis\.yml$
 
 
 
+^_pkgdown\.yml$

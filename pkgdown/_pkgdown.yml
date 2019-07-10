@@ -2,11 +2,11 @@ url: https://github.com/isubirana/compareGroups
 
 template:
   params:
-    bootswatch: cerulean
+    bootswatch: spacelab
     
 title: compareGroups 
 
-author: Isaac Subirana
+author: Isaac Subirana Cachinero
 
 navbar:
   type: inverse
@@ -61,3 +61,35 @@ articles:
     - '`examples/example2`'
     - '`wui`'
 
+
+reference:
+  - title: "Computing descriptives"
+    contents:
+      - compareGroups
+      - compareSNPs
+  - title: "Building descriptive tables"
+    contents: 
+      - createTable 
+      - descrTable
+      - strataTable
+  - title: "Exporting and saving descriptive tables"
+    contents:
+      - starts_with("export2")
+  - title: "Retrieving results from a descriptive tables"
+    contents:
+      - getResults
+  - title: "Graphical user interfaces"
+    contents: 
+      - cGroupsGUI
+      - cGroupsWUI
+  - title: "Miscelania"
+    contents:
+      - printTable
+      - radiograph
+      - report
+      - varinfo
+      - missingTable      
+  - title: "compareGroups Datasets"
+    contents:
+      - predimed
+      - regicor
