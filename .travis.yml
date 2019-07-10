@@ -1,13 +1,4 @@
 language: r
-sudo: required
-cache: packages
-
-addons:
-  apt:
-    packages:
-      - ruby2.0-tcltk
-      - libtcl-8.5
-      - libtk-8.5
 
 before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
