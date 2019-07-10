@@ -1,7 +1,15 @@
 language: r
+sudo: required
 cache: packages
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown"); remotes::install_cran("tcltk2")'
+addons:
+  apt:
+    packages:
+      - ruby2.0-tcltk
+      - libtcl-8.5
+      - libtk-8.5
+
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
