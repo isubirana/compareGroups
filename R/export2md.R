@@ -14,11 +14,16 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
   
   if (missing(format)){
     format <- NA
-    if (knitr::is_html_output()) format="html"
-    if (knitr::is_latex_output()) format="latex"
-    if (!knitr::is_html_output() & !knitr::is_latex_output()) format="markdown"
-    if (is.na(format)){
-      warning("Unable to identify format. HTML assigned.")
+    if (!interactive()){ # execute inside Rmarkdown
+      if (knitr::is_html_output()) format="html"
+      if (knitr::is_latex_output()) format="latex"
+      if (!knitr::is_html_output() & !knitr::is_latex_output()) format="markdown"
+      if (is.na(format)){
+        warning("Unable to identify format -> HTML assigned.")
+        format <- "html"
+      }
+    } else {# execute inside Rmarkdown
+      warning("You are calling export2md outside Rmarkdown without specifying format -> html format is assigned")
       format <- "html"
     }
   }
