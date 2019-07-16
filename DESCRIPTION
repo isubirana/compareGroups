@@ -2,7 +2,7 @@ Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
 Version: 4.1.1
-Date: 2019-06-21
+Date: 2019-07-16
 Depends: 
     R (>= 2.13.1),
     SNPassoc

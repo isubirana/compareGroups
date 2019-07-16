@@ -4,7 +4,7 @@ template:
   params:
     bootswatch: spacelab
     
-title: compareGroups 
+title: compareGroups
 
 author: Isaac Subirana Cachinero
 
@@ -13,10 +13,9 @@ navbar:
   structure:
     left:
     - home
-    - reference
     - articles
-    - tutorials
     - wui
+    - reference
     - news
     right: 
     - github
@@ -31,7 +30,7 @@ navbar:
       text: Reference
       href: reference/index.html
     articles:
-      icon: fas fa-book    
+      icon: fas fa-book   
       text: Articles
       href: articles/index.html
     news:
@@ -50,16 +49,14 @@ navbar:
       text: 'WUI'
       href: articles/wui.html
       
-      
 articles:
   - title: "Articles"
-    desc: >
-      The following documents describe the package functionality
+    desc: "The following documents describe the package functionality"
     contents:
-    - '`compareGroups_vignette`'
-    - '`examples/example1`'
-    - '`examples/example2`'
-    - '`wui`'
+      - '`compareGroups_vignette`'
+      - '`examples/example1`'
+      - '`examples/example2`'
+      - '`wui`'
 
 
 reference:
@@ -82,7 +79,7 @@ reference:
     contents: 
       - cGroupsGUI
       - cGroupsWUI
-  - title: "Miscelania"
+  - title: "Miscelania functions"
     contents:
       - printTable
       - radiograph

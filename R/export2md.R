@@ -2,15 +2,27 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
                     strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, 
                     header.background=NULL, header.color=NULL, position="center", ...){
 
-  compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
-  if (inherits(compiled.format, "try-error")){
-    warning("you are using export2md out of Rmarkdown context...")
-  } else {
-    if (compiled.format%in%c("html_document","ioslides_presentation","slidy_presentation")) format <- "html"
-    if (compiled.format%in%c("pdf_document","beamer_presentation")) format <- "latex"
-    if (compiled.format=="word_document") format <- "markdown"
-  }
+  # compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
+  # 
+  # if (inherits(compiled.format, "try-error") || is.null(compiled.format)){
+  #   warning("you are using export2md out of Rmarkdown context...")
+  # } else {
+  #   if (compiled.format%in%c("html_document","ioslides_presentation","slidy_presentation")) format <- "html"
+  #   if (compiled.format%in%c("pdf_document","beamer_presentation")) format <- "latex"
+  #   if (compiled.format=="word_document") format <- "markdown"
+  # }
   
+  if (missing(format)){
+    format <- NA
+    if (knitr::is_html_output()) format="html"
+    if (knitr::is_latex_output()) format="latex"
+    if (!knitr::is_html_output() & !knitr::is_latex_output()) format="markdown"
+    if (is.na(format)){
+      warning("Unable to identify format. HTML assigned.")
+      format <- "html"
+    }
+  }
+
   if (format == "markdown") return(export2mdword(x, which.table, nmax, header.labels, caption))
   
   if (inherits(x, "cbind.createTable")) return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position,...))

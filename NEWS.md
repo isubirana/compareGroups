@@ -1,4 +1,7 @@
+
+
 # compareGroups 4.1.1
+- bug fixed in export2md when exportd in a Rmd notebook.
 - norm.plot: par(mfrow=c(1,1)) added at the end, to restore mutiplots device.
 - export2md: more understandable warning message when used outside the Rmarkdown chunk.
 

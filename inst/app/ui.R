@@ -4,7 +4,7 @@ shinyUI(
   
     theme = shinytheme("spacelab"),
 
-    shinyjs::useShinyjs(), # Set up shinyjs
+    shinyjs::useShinyjs(),
     
     uiOutput("panelwidthout"),
     
@@ -52,7 +52,8 @@ shinyUI(
           bsCollapse(id = "collapseInput", open = c("collapseLoad"),
             
             ## load data
-            bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 1. Load data</font>'), value="collapseLoad", style = "primary",
+            bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 1. Load data</font>'), 
+              value="collapseLoad", style = "primary",
               uiOutput("initial"),
               column(1,bsButton("infoLoad","",size="extra-small",style="info",icon=shiny::icon("info-circle")),offset=11),
               bsModal("infoLoadModal",HTML('<p> <strong>Step 1. Load data</strong></p>'), "infoLoad",uiOutput("helpload")),
@@ -98,11 +99,13 @@ shinyUI(
             ),
             
             ## vars list
-            bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 2. Select variables</font>'), value="collapseSelect", style = "primary", 
+            bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 2. Select variables</font>'),
+              value="collapseSelect", style = "primary", 
               column(1,bsButton("infoSelect","",size="extra-small",style="info",icon=icon("info-circle")),offset=11),
               bsModal("infoSelectModal",HTML('<p> <strong>Step 2. Select variables</strong></p>'), "infoSelect",uiOutput("helpselect")),
               uiOutput("selevarslist")
             ),
+            
             ## groups/stratas
             bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 3. Select goups/strata</font>'), value="collapseResponse", style = "primary", 
               column(1,bsButton("infoResponse","",size="extra-small",style="info",icon=icon("info-circle")),offset=11),
@@ -113,7 +116,8 @@ shinyUI(
                 )
               ),
               uiOutput("responseout")
-            ),            
+            ),  
+            
             ## settings
             bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 4. Settings</font>'), value="collapseSettings", style = "primary", 
               column(1,bsButton("infoSettings","",size="extra-small",style="info",icon=icon("info-circle")),offset=11),
@@ -127,6 +131,7 @@ shinyUI(
               ),
               uiOutput("settingsout")
             ),
+            
             ## display
             bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 5. Display</font>'), value="collapseDisplay", style = "primary",
               column(1,bsButton("infoDisplay","",size="extra-small",style="info",icon=icon("info-circle")),offset=11),
@@ -140,12 +145,14 @@ shinyUI(
               ), 
               uiOutput("displayout")
             ),
+            
             ## save
             bsCollapsePanel(title=HTML('<font style="font-size:18px">Step 6. Save table</font>'), value="collapseSave", style = "primary",
               column(1,bsButton("infoSave","",size="extra-small",style="info",icon=icon("info-circle")),offset=11),
               bsModal("infoSaveModal",HTML('<p> <strong>Step 6. Save table</strong></p>'), "infoSave", uiOutput("helpsave")),
               uiOutput("saveout")
             )
+            
           )
       )
 

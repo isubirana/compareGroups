@@ -6,4 +6,7 @@ articles:
   example1: examples/example1.html
   example2: examples/example2.html
   wui: wui.html
+urls:
+  reference: https://github.com/isubirana/compareGroups/reference
+  article: https://github.com/isubirana/compareGroups/articles
 
