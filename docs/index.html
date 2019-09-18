@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.0</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@
 <p><strong>compareGroups</strong> is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br></p>
 <p>With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br></p>
 <p>You will find an extensive manual describing all <strong>compareGropus</strong> capabilities with real examples in the <a href="http://htmlpreview.github.io/?https://github.com/isubirana/compareGroups/blob/master/compareGroups_vignette.html">vignette</a>.<br></p>
-<p>Also, <strong>compareGroups</strong> package has been published in Journal of Statistical Software [Subirana et al, 2014 <a href="http://www.jstatsoft.org/v57/i12/." class="uri">http://www.jstatsoft.org/v57/i12/.</a>].</p>
+<p>Also, <strong>compareGroups</strong> package has been published in Journal of Statistical Software [Subirana et al, 2014 <a href="http://www.jstatsoft.org/v57/i12/.">http://www.jstatsoft.org/v57/i12/.</a>].</p>
 </div>
 <div id="who-we-are" class="section level2">
 <h2 class="hasAnchor">
@@ -162,20 +162,20 @@
 <h2 class="hasAnchor">
 <a href="#gets-started" class="anchor"></a>Gets started</h2>
 <p>Install the package from CRAN</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a></code></pre></div>
 <p>or the lattest version from Github</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(devtools)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"isubirana/compareGroups"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(devtools)</a>
+<a class="sourceLine" id="cb2-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"isubirana/compareGroups"</span>)</a></code></pre></div>
 <div id="building-the-descriptive-table" class="section level3">
 <h3 class="hasAnchor">
 <a href="#building-the-descriptive-table" class="anchor"></a>Building the descriptive table</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">tab &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>. , predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">wth =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>), <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">55</span>, <span class="dt">sd.type =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tab, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">caption =</span> <span class="st">"Summary by intervention group"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5">tab &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>. , predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">wth =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>), <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">55</span>, <span class="dt">sd.type =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tab, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">caption =</span> <span class="st">"Summary by intervention group"</span>)</a></code></pre></div>
 <table class="table table table table-striped table-condensed">
 <caption>
 Summary by intervention group
@@ -533,8 +533,8 @@ AMI, stroke, or CV Death
 <div class="small">
 
 
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tabstrat &lt;-<span class="st"> </span><span class="kw"><a href="reference/strataTable.html">strataTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(tab, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span>sex), <span class="st">"sex"</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabstrat, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">size=</span><span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">tabstrat &lt;-<span class="st"> </span><span class="kw"><a href="reference/strataTable.html">strataTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(tab, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span>sex), <span class="st">"sex"</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabstrat, <span class="dt">header.background =</span> <span class="st">"black"</span>, <span class="dt">header.color =</span> <span class="st">"white"</span>, <span class="dt">size=</span><span class="dv">9</span>)</a></code></pre></div>
 <table class="table table table table-striped table-condensed">
 <caption style="font-size: initial !important;">
 Summary descriptive tables
@@ -1073,18 +1073,18 @@ AMI, stroke, or CV Death
 <h3 class="hasAnchor">
 <a href="#visual-exploration" class="anchor"></a>Visual exploration</h3>
 <div class="col2">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(tab[<span class="st">"sex"</span>]) <span class="co"># barplot</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(tab[<span class="st">"sex"</span>]) <span class="co"># barplot</span></a></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(tab[<span class="st">"age"</span>]) <span class="co"># histogram and normality plot</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(tab[<span class="st">"age"</span>]) <span class="co"># histogram and normality plot</span></a></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-7-2.png" width="672"></p>
 </div>
 </div>
 <div id="computing-odds-ratios" class="section level3">
 <h3 class="hasAnchor">
 <a href="#computing-odds-ratios" class="anchor"></a>Computing Odds Ratios</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(SNPs)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">tabor &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(casco <span class="op">~</span><span class="st"> </span>.<span class="op">-</span>id, SNPs, <span class="dt">show.ratio=</span><span class="ot">TRUE</span>, <span class="dt">show.p.overall=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabor[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">strip=</span><span class="ot">TRUE</span>, <span class="dt">first=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(SNPs)</a>
+<a class="sourceLine" id="cb7-2" title="2">tabor &lt;-<span class="st"> </span><span class="kw"><a href="reference/descrTable.html">descrTable</a></span>(casco <span class="op">~</span><span class="st"> </span>.<span class="op">-</span>id, SNPs, <span class="dt">show.ratio=</span><span class="ot">TRUE</span>, <span class="dt">show.p.overall=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw"><a href="reference/export2md.html">export2md</a></span>(tabor[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], <span class="dt">strip=</span><span class="ot">TRUE</span>, <span class="dt">first=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <table class="table table table table-striped table-condensed">
 <caption>
 Summary descriptives table by groups of `casco’

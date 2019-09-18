@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 4.1.1
-Date: 2019-07-16
+Version: 4.2.0
+Date: 2019-09-18
 Depends: 
     R (>= 2.13.1),
     SNPassoc
@@ -17,7 +17,9 @@ Imports:
     methods,
     chron,
     stats,
-    writexl
+    writexl,
+    flextable,
+    officer
 Suggests: 
     tcltk2,
     shiny,

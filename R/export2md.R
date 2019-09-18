@@ -28,9 +28,11 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     }
   }
 
-  if (format == "markdown") return(export2mdword(x, which.table, nmax, header.labels, caption))
-  
-  if (inherits(x, "cbind.createTable")) return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position,...))
+  if (format == "markdown") 
+    return(export2mdword(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
+
+  if (inherits(x, "cbind.createTable")) 
+    return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position,...))
 
   extras <- list(...)
   if (!inherits(x, "createTable")) 

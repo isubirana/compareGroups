@@ -63,7 +63,12 @@ prepare(x, nmax, header.labels)
 snpQC(X, sep, verbose)
 export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, 
       background, width, size, landscape, format, header.background, header.color, 
-      position, ...)   
+      position, ...) 
+export2mdword(x, which.table, nmax, header.labels, caption, strip, 
+      first.strip, background, size, header.background, header.color)
+export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, 
+      first.strip, background, size, header.background, header.color)         
+        
 trim(x)
 }
 

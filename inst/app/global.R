@@ -12,6 +12,7 @@ library(kableExtra, quietly=TRUE)
 library(shinyhelper, quietly=TRUE) #@
 
 library(shinyWidgets, quietly=TRUE)
+library(shinydashboardPlus, quietly=TRUE)
 
 
 options(shiny.maxRequestSize = 10e6) # ~10 Mb

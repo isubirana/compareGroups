@@ -11,7 +11,7 @@ This function creates automatically a PDF with the descriptive table as well as 
 
 \usage{
 report(x, file, fig.folder, compile = TRUE, openfile = FALSE, title = "Report", 
-       author, date, ...)
+       author, date, perc=FALSE, ...)
 }
 
 \arguments{
@@ -31,6 +31,8 @@ report(x, file, fig.folder, compile = TRUE, openfile = FALSE, title = "Report",
   \item{author}{character specifying the author/s name/s of the report on the cover page. When missing, no authors appear.}
 
   \item{date}{character specifying the date of the report on the cover page. When missing, the present date appears.}
+  
+  \item{perc}{logical. Plot relative frequencies (in percentatges) instead of absolute frequencies are displayed in barplots for categorical variable.}
              
   \item{\ldots}{Arguments passed to \code{\link{export2latex}}.}
   

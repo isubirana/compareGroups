@@ -1,4 +1,4 @@
-report <- function(x, file, fig.folder, compile=TRUE, openfile=FALSE, title="Report", author, date, ...){
+report <- function(x, file, fig.folder, compile=TRUE, openfile=FALSE, title="Report", author, date, perc=FALSE, ...){
 
   if (!inherits(x,"createTable"))
     stop("'x' must be of class 'createTable'")
@@ -15,14 +15,14 @@ report <- function(x, file, fig.folder, compile=TRUE, openfile=FALSE, title="Rep
     dir.create(fig.folder)
 
   tf<-paste(fig.folder,"/uni_",sep="")
-  plot(x,file=tf)
+  plot(x,file=tf,perc=perc)
   unilf<-list.files(fig.folder)
   unilf<-unilf[grep("^uni_",unilf)]
   unilf<-paste("./",basename(fig.folder),"/",unilf,sep="")
 
   if (bivar){
     tf<-paste(fig.folder,"/bivar_",sep="")
-    plot(x,bivar=TRUE,file=tf)
+    plot(x,bivar=TRUE,file=tf,perc=perc)
     bivarlf<-list.files(fig.folder)
     bivarlf<-bivarlf[grep("^bivar_",bivarlf)]
     bivarlf<-paste("./",basename(fig.folder),"/",bivarlf,sep="")

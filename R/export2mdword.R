@@ -1,12 +1,13 @@
-export2mdword<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL){
-  if (!inherits(x, "createTable")) 
+export2mdword<-function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color){
+
+  if (!inherits(x, "createTable"))
     stop("x must be of class 'createTable'")
-  if (inherits(x, "cbind.createTable")) 
-    stop("x cannot be of class 'cbind.createTable'")
+
+  if (inherits(x, "cbind.createTable"))
+    return(export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))   
+
   ww <- charmatch(which.table, c("descr", "avail"))
-  if (is.na(ww)) 
-    stop(" argument 'which.table' must be either 'descr' or 'avail'")
-  
+
   if (attr(x,"groups")){
     y.name.label<-attr(x,"yname")  
   }  
@@ -35,62 +36,201 @@ export2mdword<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), ca
     }  
   }    
   
+  pp <- prepare(x, nmax = nmax, header.labels)
+  cc <- unlist(attr(pp, "cc"))
+  
   if (ww %in% c(1)) {  
-    pp <- prepare(x, nmax = nmax, header.labels)
-    table1 <- prepare(x, nmax = nmax, header.labels)[[1]]
-    cc <- unlist(attr(pp, "cc"))
+
+    ## table1 ##
+    
+    table1 <- pp[[1]]
+    
     ii <- ifelse(rownames(table1)[2] == "", 2, 1)
     table1 <- cbind(rownames(table1), table1)
-    if (!is.null(attr(x, "caption"))) 
+    if (!is.null(attr(x, "caption"))){
       table1[, 1] <- paste("    ", table1[, 1])
+      table1 <- cbind(NA, table1)
+    }
+
     aux <- NULL
     for (i in (ii + 1):nrow(table1)) {
       if (!is.null(cc) && cc[i - ii] != "") {
-        aux <- rbind(aux, c(cc[i - ii], rep("", ncol(table1) - 1)))
-        aux <- rbind(aux, table1[i, ])
+        table1[i,1] <- cc[i - ii]
       }
-      else {
-        aux <- rbind(aux, table1[i, ])
+      aux <- rbind(aux, table1[i, ])
+    }
+    
+    if (!is.null(attr(x, "caption"))){
+      for (i in 2:nrow(aux)){
+        if (is.na(aux[i,1])) aux[i,1] <- aux[i-1,1]
       }
     }
-    table1 <- rbind(table1[1:ii, ], aux)
-    table1[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
-    table1[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table1[, 1])
-    if (nrow(table1) > 1 && length(grep("^N=", trim(table1[2, 2])))) {
-      wn <- grep("^N=", trim(table1[2, ]))
-      nn <- paste(trim(table1[1, wn]), " ", trim(table1[2, wn]))
-      table1[1, wn] <- nn
-      table1 <- table1[-2, ]
+
+    body <- as.data.frame(aux)
+    nr <- attr(pp, "nr")  # to strip variables
+    
+    # row variables group
+    if (!is.null(attr(x, "caption"))){ 
+      body <- as_grouped_data(x = body, groups = "V1", columns=NULL)
+      nr.temp <- integer()
+      nr.index <- 0
+      for (i in 1:nrow(body)){
+        if (!is.na(body[i,1])) {
+          nr.temp <- c(nr.temp, 9) 
+        } else {
+          nr.index <- nr.index+1
+          nr.temp <- c(nr.temp, nr[nr.index])
+        }
+      }
+      nr <- nr.temp
     }
-    align <- c("l", rep("c", ncol(table1)))
-    table1[1, 1] <- " "
-    colnames(table1) <- table1[1, ]
-    table1 <- table1[-1, , drop = FALSE]
-    return(knitr::kable(table1, align = align, row.names = FALSE, caption=caption[1], format="pandoc"))
+    
+    ft <- if (!is.null(attr(x, "caption"))) as_flextable(body) else flextable(body)
+    if (!is.null(attr(x, "caption"))){
+      gr.labels <- unlist(attr(x, "caption"))
+      gr.labels <- gr.labels[gr.labels!=""]
+      ft <- flextable::compose(ft, i= !is.na(body$V1), j=1, value=as_paragraph(as_chunk(gr.labels)))
+      ft <- bold(ft, i=which(!is.na(body[,1])), bold=TRUE)
+    }
+    
+    # header
+    header <- data.frame(cbind(
+      col_keys = colnames(body),
+      t(table1[1:ii,,drop=FALSE])),
+      stringsAsFactors = FALSE
+    )
+    ft <- set_header_df(ft, mapping = header, key = "col_keys")
+    ft <- align(ft, j = 1, align = "left", part = "body")
+    ft <- align(ft, j = -1, align = "center", part = "body")
+    ft <- autofit(ft)
+    ft <- align(ft, part="header", align="center")
+    ft <- bold(ft, part="header", bold=TRUE)
+    if (nmax) ft <- italic(ft, i=ii, part="header", italic = TRUE)
+    ft <- hline_top(ft, part="header", border=fp_border(color="black", style="solid", width=2))
+    ft <- hline(ft, part="header", i=ii, border=fp_border(color="black", style="solid", width=2))
+    if (!is.null(attr(x, "caption"))){
+      ft <- flextable::hline(ft, i=which(nr==9), part="body", border=fp_border(color="black", style="solid", width=1))
+    }
+
+    ## font-size
+    if (!is.null(size)){
+      ft <- fontsize(ft, size = size)
+      ft <- fontsize(ft, part="header", size = size)
+    }
+
+    ## header background-color and color
+    if (!is.null(header.background))
+      ft <- bg(ft, bg = header.background, part = "header")
+    if (!is.null(header.color))
+      ft <- color(ft, color=header.color, part = "header")
+
+    ## caption
+    ft <- set_caption(ft, caption)
+    
+    ## strip
+    if (strip) {
+      ft <- bg(ft, i=which(nr == !first.strip), bg = background, part="body")
+    }
+    
+    ## table position (put in the chunk)
+    # Use ft.align when placing tables in a word document. See ?knit_print.flextable for more info.
+    
+    ## width 
+    # ignored when format=word
+    
+    return(ft)
+
   }      
   if (ww %in% c(2)){
-    table2 <- prepare(x, nmax = nmax, c())[[2]]
+    
+    # table2
+    
+    table2 <- pp[[2]]
+    
+    ii <- ifelse(rownames(table2)[2] == "", 2, 1)
     table2 <- cbind(rownames(table2), table2)
-    if (!is.null(attr(x, "caption"))) {
-      cc <- unlist(attr(x, "caption"))
-      table2[, 1] <- paste("    ", table2[, 1])
-    }
-    aux <- NULL
-    for (i in 2:nrow(table2)) {
-      if (!is.null(attr(x, "caption")) && !is.null(cc) && cc[i - 1] != "") {
-        aux <- rbind(aux, c(cc[i - 1], rep("", ncol(table2) - 1)))
-        aux <- rbind(aux, table2[i, ])
-      } else {
-        aux <- rbind(aux, table2[i, ])
+    if (!is.null(attr(x, "caption"))){
+      table2[,1] <- paste0("     ",table2[,1])
+      table2 <- cbind(NA, table2)
+      for (i in (ii+1):nrow(table2)){
+        if (attr(x, "caption")[[i-ii]]!='')
+          table2[i, 1] <- attr(x, "caption")[[i-ii]]
+        else 
+          table2[i, 1] <- table2[i-1, 1]
       }
     }
-    table2 <- rbind(table2[1, ], aux)
-    table2[, 1] <- sub("^    ", "&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
-    table2[, 1] <- sub("^\\&nbsp;\\&nbsp;\\&nbsp;\\&nbsp;    ", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", table2[, 1])
-    table2[1, 1] <- " "
-    align <- c("l", rep("c", ncol(table2)))
-    colnames(table2) <- table2[1, ]
-    table2 <- table2[-1, ,drop=FALSE]
-    return(knitr::kable(table2, align = align, row.names = FALSE, caption=caption[2], format="pandoc"))
+    aux <- table2[-c(1:ii),,drop=FALSE]
+
+    body <- as.data.frame(aux)
+    
+    if (!is.null(attr(x, "caption"))){
+      body <- as_grouped_data(x = body, groups = "V1", columns=NULL)
+      nr <- integer()
+      val <- 1
+      for (i in 1:nrow(body)){
+        if (!is.na(body[i,1]))
+          nr <- c(nr,9)
+        else{
+          val <- as.integer(!val)
+          nr <- c(nr, val)
+        }
+      }
+    } else {
+      nr <- rep(0:1, nrow(aux))[1:nrow(aux)]  
+    }
+    
+    ft <- if (!is.null(attr(x, "caption"))) as_flextable(body) else flextable(body)
+    
+    if (!is.null(attr(x, "caption"))){
+      gr.labels <- unlist(attr(x, "caption"))
+      gr.labels <- gr.labels[gr.labels!=""]
+      ft <- flextable::compose(ft, i= !is.na(body$V1), j=1, value=as_paragraph(as_chunk(gr.labels)))
+      ft <- bold(ft, i=which(!is.na(body[,1])), bold=TRUE)
+    }
+    # header
+    header <- data.frame(cbind(
+      col_keys = colnames(body),
+      t(table2[1:ii,,drop=FALSE])),
+      stringsAsFactors = FALSE
+    )
+    ft <- set_header_df(ft, mapping = header, key = "col_keys")
+    ft <- align(ft, j = 1, align = "left", part = "body")
+    ft <- align(ft, j = -1, align = "center", part = "body")
+    ft <- autofit(ft)
+    ft <- align(ft, part="header", align="center")
+    ft <- bold(ft, part="header", bold=TRUE)
+    if (nmax) ft <- italic(ft, i=ii, part="header", italic = TRUE)
+    ft <- hline_top(ft, part="header", border=fp_border(color="black", style="solid", width=2))
+    ft <- hline(ft, part="header", i=ii, border=fp_border(color="black", style="solid", width=2))
+    if (!is.null(attr(x, "caption"))){
+      ft <- flextable::hline(ft, i=which(nr==9), part="body", border=fp_border(color="black", style="solid", width=1))
+    }
+    
+    ## font-size
+    if (!is.null(size)){
+      ft <- fontsize(ft, size = size)
+      ft <- fontsize(ft, part="header", size = size)
+    }
+    
+    ## header background-color and color
+    if (!is.null(header.background))
+      ft <- bg(ft, bg = header.background, part = "header")
+    if (!is.null(header.color))
+      ft <- color(ft, color=header.color, part = "header")
+    
+    ## caption
+    ft <- set_caption(ft, caption)
+    
+    ## strip
+    if (strip) {
+      ft <- bg(ft, i=which(nr == !first.strip), bg = background, part="body")
+    }
+    ## table position (put in the chunk)
+    # Use ft.align when placing tables in a word document. See ?knit_print.flextable for more info.
+    
+    ## width 
+    # ignored when format=word
+    
+    return(ft)
   }    
 }

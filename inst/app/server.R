@@ -5,7 +5,7 @@ shinyServer(function(input, output, session) {
   
   # write(paste0("enter: ",as.character(Sys.time()),"\n"), file="log", append=TRUE)
   # on.exit(write(paste0("exit: ",as.character(Sys.time()),"\n\n"), file="log", append=TRUE)) 
-
+  
   output$loadpanel<-renderUI({
     if (is.null(input$files)) return(invisible(NULL))
     return(
@@ -44,10 +44,10 @@ shinyServer(function(input, output, session) {
       HTML(paste("<style type=\"text/css\"> #outpanel {width:",y,"%; float:right} </style>",sep=""))
     )
   })
-
+  
   
   ## init some input values when pressing loadok button
-
+  
   
   ## reactive Values
   
@@ -62,7 +62,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$changestrata,{
     rv$changestratacount<-rv$changestratacount+1
   }) 
-
+  
   rv$changevarsubsetcount<-0
   observeEvent(input$changevarsubset,{
     rv$changevarsubsetcount<-rv$changevarsubsetcount+1
@@ -77,7 +77,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$changeratiodigits,{
     rv$changeratiodigitscount<-rv$changeratiodigitscount+1
   })    
-
+  
   rv$changeshowcount<-0
   observeEvent(input$changeshow,{
     rv$changeshowcount<-rv$changeshowcount+1
@@ -97,7 +97,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$changepvalsdigits,{
     rv$changepvalsdigitscount<-rv$changepvalsdigitscount+1
   })  
-
+  
   rv$changerespcount<-0
   observeEvent(input$changeresp,{
     rv$changerespcount<-rv$changerespcount+1
@@ -127,7 +127,7 @@ shinyServer(function(input, output, session) {
   observeEvent(input$loadok,{
     if (!is.null(dataset())) rv$initial<<-TRUE
   })
-
+  
   
   # observeEvent(input$changeselevars,{
   observeEvent(input$changeselevarsok,{
@@ -208,7 +208,7 @@ shinyServer(function(input, output, session) {
       else
         if (length(input$varselevarsubset)>0)
           rv$varsubset[input$varselevarsubset]<-input$varsubset
-      rv$varsubset<-ifelse(rv$varsubset=='',NA,rv$varsubset)
+        rv$varsubset<-ifelse(rv$varsubset=='',NA,rv$varsubset)
     }
   })  
   
@@ -233,41 +233,41 @@ shinyServer(function(input, output, session) {
     if (rv$count==6) return(div(h4("Bivariate plots"),wellPanel(img(src='./examples/example6.png', align = "centre", width="90%"))))
     if (rv$count==7) return(div(h4("Analyses of SNPs"),wellPanel(img(src='./examples/example7.png', align = "centre", width="80%"))))    
   })
-
+  
   ## toggles
-    # table
+  # table
   observe({
-   if (!is.null(input$tableoptionsaction))
-     updateButton(session, "tableoptionsaction", label = if(input$tableoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+    if (!is.null(input$tableoptionsaction))
+      updateButton(session, "tableoptionsaction", label = if(input$tableoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   })
-   # info
+  # info
   observe({
-   if (!is.null(input$infooptionsaction))
-    updateButton(session, "infooptionsaction", label = if(input$infooptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+    if (!is.null(input$infooptionsaction))
+      updateButton(session, "infooptionsaction", label = if(input$infooptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   })  
   # values summary
   observe({
-   if (!is.null(input$valuessumoptionsaction))     
-    updateButton(session, "valuessumoptionsaction", label = if(input$valuessumoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+    if (!is.null(input$valuessumoptionsaction))     
+      updateButton(session, "valuessumoptionsaction", label = if(input$valuessumoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   })   
-   # values extended
+  # values extended
   observe({
-   if (!is.null(input$valuextoptionsaction))         
-    updateButton(session, "valuextoptionsaction", label = if(input$valuextoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+    if (!is.null(input$valuextoptionsaction))         
+      updateButton(session, "valuextoptionsaction", label = if(input$valuextoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   }) 
-   # varPlot
+  # varPlot
   observe({
     if (!is.null(input$varPlotoptionsaction))
-    updateButton(session, "varPlotoptionsaction", label = if(input$varPlotoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+      updateButton(session, "varPlotoptionsaction", label = if(input$varPlotoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   })
-   # SNPs
+  # SNPs
   observe({
-   if (!is.null(input$SNPsoptionsaction))       
-    updateButton(session, "SNPsoptionsaction", label = if(input$SNPsoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
+    if (!is.null(input$SNPsoptionsaction))       
+      updateButton(session, "SNPsoptionsaction", label = if(input$SNPsoptionsaction%%2==1) "View options (Hide)" else "View options (Show)")
   })     
   # encoding
   observeEvent(input$encodingaction,{
-   toggle("encoding", TRUE, "fade")
+    toggle("encoding", TRUE, "fade")
   })
   # open select variables panel when data is loaded
   observe({
@@ -286,37 +286,37 @@ shinyServer(function(input, output, session) {
     if (rv$changeselevarsokcount==0)
       shinyjs::click("changeselevarsok")
   })
-
+  
   output$tableoptionsout <- renderUI({
     if (!rv$initial) return(invisible(NULL))
     return(div(
       fluidRow(
         column(8,
-          dropdownButton(inputId = "tableoptionsaction", circle=FALSE, status="info", label="View (show)",
-            div(id="tableoptions",               
-              fluidRow(
-                column(4,sliderInput("htmlsizerestab", "Resize:", min=7, max=30, value=16, step=1)),
-                column(4,sliderInput("htmlwidthrestab", "Variable column width (cm):", min=2, max=20, value=8, step=0.5)),
-                column(4, 
-                  radioButtons("position", "Table position", c("left","center","right"), inline=TRUE),
-                  checkboxInput("strip", "Strip variables", FALSE)
-                )
-              ),
-              fluidRow(
-                column(4,
-                  colorSelectorInput("header.background","Header background colour:",choices=choices_brewer,selected="#F7FBFF",display_label=TRUE)
-                ),
-                column(4,
-                  colorSelectorInput("header.color","Header colour:",choices=choices_brewer,selected="#000000",display_label=TRUE)
-                ),
-                column(4,
-                  conditionalPanel("input.strip",
-                    colorSelectorInput("strip.color","Strip colour:",choices=choices_brewer,selected="#F0F0F0",display_label=TRUE)
-                  )
-                )
-              )
-            )
-          )
+               dropdownButton(inputId = "tableoptionsaction", circle=FALSE, status="info", label="View (show)",
+                              div(id="tableoptions",               
+                                  fluidRow(
+                                    column(4,sliderInput("htmlsizerestab", "Resize:", min=7, max=30, value=16, step=1)),
+                                    column(4,sliderInput("htmlwidthrestab", "Variable column width (cm):", min=2, max=20, value=8, step=0.5)),
+                                    column(4, 
+                                           radioButtons("position", "Table position", c("left","center","right"), inline=TRUE),
+                                           checkboxInput("strip", "Strip variables", FALSE)
+                                    )
+                                  ),
+                                  fluidRow(
+                                    column(4,
+                                           colorSelectorInput("header.background","Header background colour:",choices=choices_brewer,selected="#F7FBFF",display_label=TRUE)
+                                    ),
+                                    column(4,
+                                           colorSelectorInput("header.color","Header colour:",choices=choices_brewer,selected="#000000",display_label=TRUE)
+                                    ),
+                                    column(4,
+                                           conditionalPanel("input.strip",
+                                                            colorSelectorInput("strip.color","Strip colour:",choices=choices_brewer,selected="#F0F0F0",display_label=TRUE)
+                                           )
+                                    )
+                                  )
+                              )
+               )
         ),
         column(1, bsButton("tableinfo","Info Table", size="small")),
         column(1, bsButton("tablevarinfo","Names/labels", size="small"))
@@ -337,180 +337,180 @@ shinyServer(function(input, output, session) {
   dataset<-reactive({
     input$loadok
     isolate({
-    # remove all elements 
-    rm(list=ls(),envir=.cGroupsWUIEnv)  
-    progress <- shiny::Progress$new(session, min=1, max=3)
-    progress$set(message = "Reading data",value=1)
-    on.exit(progress$close())    
-    # rv$selevars<<-rv$discvars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
-    rv$selevars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
-    rv$initial<<-FALSE
-    if (input$exampledata!='Own data'){ # read examples...
-      datasetname<-input$exampledata
-      if (input$exampledata=='REGICOR'){
-        data(regicor)
-        dataset <- regicor
-      }      
-      if (input$exampledata=='PREDIMED'){
-        data(predimed)
-        dataset <- predimed
-      }     
-      if (input$exampledata=='SNPS'){
-        data(SNPs,package="SNPassoc")
-        dataset <- SNPs
-      }
-    } else { # read own data
-      inFile<-input$files
-      if (is.null(inFile)){
-        return(invisible(NULL))
-      }
-      # read TXT
-      if (input$datatype=='*.txt'){
-        if (is.null(input$quote))
-          quote<-'"'
-        else{
-          if (input$quote==1)
-            quote<-""
-          if (input$quote==2)
-            quote<-'"'
-          if (input$quote==3)
-            quote<-"'"
-        }
-        if (input$sep=='o')
-          sepchar<-input$sepother
-        else
-          sepchar<-input$sep      
-        if (input$encoding=='default')
-          dataset<- try(read.table(inFile$datapath,header=input$header,sep=sepchar,quote=quote,dec=input$dechar,na.strings=input$missvalue),silent=TRUE)
-        else
-          dataset<- try(read.table(inFile$datapath,header=input$header,sep=sepchar,quote=quote,dec=input$dechar,na.strings=input$missvalue,encoding=input$encoding),silent=TRUE)        
-        if (inherits(dataset,"try-error")){
-          cat("Error in reading data\n")
-          return(invisible(NULL))      
-        }
-        if (!is.data.frame(dataset)){
-          cat("Data is not a data frame\n")
-          return(invisible(NULL))      
-        }          
-      }
-      # read SPSS
-      if (input$datatype=='*.sav'){
-        # if (input$encoding=='default')
-        #   dataset<-try(read.spss(inFile$datapath,to.data.frame=TRUE),silent=TRUE)
-        # else
-        #   dataset<-try(read.spss(inFile$datapath,to.data.frame=TRUE,reencode=input$encoding),silent=TRUE)
-        dataset <- try(read_sav(inFile$datapath), silent=TRUE)
-        # fix date vars
-        # vardict <- spss_varlist(inFile$datapath)[,'printfmt']
-        # datevars<-grep("^DATE",vardict)
-        # if (length(datevars)){
-        #   for (ii in datevars) dataset[,ii]<-importConvertDateTime(dataset[,ii],"date", "spss")
-        # }
-        if (inherits(dataset,"try-error")){
-          cat("Error in reading data\n")
-          return(invisible(NULL))      
-        }
-        if (!inherits(dataset, "data.frame")){
-          cat("Data is not a data frame\n")
-          return(invisible(NULL))      
-        }
-        # fix data
-        dataset <- as.data.frame(dataset)
-        # vl<-attr(dataset,"variable.labels")
-        for (i in 1:ncol(dataset)){
-          vari.label <- if (is.null(attr(dataset[,i],"label",exact=TRUE))) "" else attr(dataset[,i],"label",exact=TRUE)
-          if (inherits(dataset[,i], "labelled")){
-            value.labels <- attr(dataset[,i],"labels",exact=TRUE)
-            dataset[,i] <- factor(dataset[,i], levels=value.labels, labels=names(value.labels))
-            class(dataset[,i]) <- class(dataset[,i])[class(dataset[,i])!='labelled']
-          }
-          attr(dataset[,i],"label") <- vari.label
-        }
-      }
-      # read R
-      if (input$datatype=='*.rda'){
-        datasetname <- try(load(inFile$datapath),silent=TRUE)
-        if (inherits(datasetname,"try-error")){
-          cat("Error in reading data\n")
-          return(invisible(NULL))      
-        }
-        dataset <- get(datasetname)
-        if (!is.data.frame(dataset)){
-          cat("Data is not a data frame\n")
-          return(invisible(NULL))      
+      # remove all elements 
+      rm(list=ls(),envir=.cGroupsWUIEnv)  
+      progress <- shiny::Progress$new(session, min=1, max=3)
+      progress$set(message = "Reading data",value=1)
+      on.exit(progress$close())    
+      # rv$selevars<<-rv$discvars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
+      rv$selevars<<-rv$method<<-rv$descdigits<<-rv$ratiodigits<<-rv$refratiocat<<-rv$factratio<<-rv$xhide<<-rv$varsubset<<-NULL
+      rv$initial<<-FALSE
+      if (input$exampledata!='Own data'){ # read examples...
+        datasetname<-input$exampledata
+        if (input$exampledata=='REGICOR'){
+          data(regicor)
+          dataset <- regicor
         }      
-      }
-      # read EXCEL
-      if (input$datatype=='*.xls'){
-        if (is.null(input$tablenames))
-          return(invisible(NULL)) 
-        # dataset<-try(xlsx::read.xlsx(inFile$datapath,sheetName=input$tablenames),silent=TRUE)
-        dataset<-try(readxl::read_excel(path=inFile$datapath, sheet=input$tablenames), silent=TRUE)
-        if (inherits(dataset,"try-error"))
+        if (input$exampledata=='PREDIMED'){
+          data(predimed)
+          dataset <- predimed
+        }     
+        if (input$exampledata=='SNPS'){
+          data(SNPs,package="SNPassoc")
+          dataset <- SNPs
+        }
+      } else { # read own data
+        inFile<-input$files
+        if (is.null(inFile)){
           return(invisible(NULL))
-        dataset <- as.data.frame(dataset) # to remove tibble class.
+        }
+        # read TXT
+        if (input$datatype=='*.txt'){
+          if (is.null(input$quote))
+            quote<-'"'
+          else{
+            if (input$quote==1)
+              quote<-""
+            if (input$quote==2)
+              quote<-'"'
+            if (input$quote==3)
+              quote<-"'"
+          }
+          if (input$sep=='o')
+            sepchar<-input$sepother
+          else
+            sepchar<-input$sep      
+          if (input$encoding=='default')
+            dataset<- try(read.table(inFile$datapath,header=input$header,sep=sepchar,quote=quote,dec=input$dechar,na.strings=input$missvalue),silent=TRUE)
+          else
+            dataset<- try(read.table(inFile$datapath,header=input$header,sep=sepchar,quote=quote,dec=input$dechar,na.strings=input$missvalue,encoding=input$encoding),silent=TRUE)        
+          if (inherits(dataset,"try-error")){
+            cat("Error in reading data\n")
+            return(invisible(NULL))      
+          }
+          if (!is.data.frame(dataset)){
+            cat("Data is not a data frame\n")
+            return(invisible(NULL))      
+          }          
+        }
+        # read SPSS
+        if (input$datatype=='*.sav'){
+          # if (input$encoding=='default')
+          #   dataset<-try(read.spss(inFile$datapath,to.data.frame=TRUE),silent=TRUE)
+          # else
+          #   dataset<-try(read.spss(inFile$datapath,to.data.frame=TRUE,reencode=input$encoding),silent=TRUE)
+          dataset <- try(read_sav(inFile$datapath), silent=TRUE)
+          # fix date vars
+          # vardict <- spss_varlist(inFile$datapath)[,'printfmt']
+          # datevars<-grep("^DATE",vardict)
+          # if (length(datevars)){
+          #   for (ii in datevars) dataset[,ii]<-importConvertDateTime(dataset[,ii],"date", "spss")
+          # }
+          if (inherits(dataset,"try-error")){
+            cat("Error in reading data\n")
+            return(invisible(NULL))      
+          }
+          if (!inherits(dataset, "data.frame")){
+            cat("Data is not a data frame\n")
+            return(invisible(NULL))      
+          }
+          # fix data
+          dataset <- as.data.frame(dataset)
+          # vl<-attr(dataset,"variable.labels")
+          for (i in 1:ncol(dataset)){
+            vari.label <- if (is.null(attr(dataset[,i],"label",exact=TRUE))) "" else attr(dataset[,i],"label",exact=TRUE)
+            if (inherits(dataset[,i], "labelled")){
+              value.labels <- attr(dataset[,i],"labels",exact=TRUE)
+              dataset[,i] <- factor(dataset[,i], levels=value.labels, labels=names(value.labels))
+              class(dataset[,i]) <- class(dataset[,i])[class(dataset[,i])!='labelled']
+            }
+            attr(dataset[,i],"label") <- vari.label
+          }
+        }
+        # read R
+        if (input$datatype=='*.rda'){
+          datasetname <- try(load(inFile$datapath),silent=TRUE)
+          if (inherits(datasetname,"try-error")){
+            cat("Error in reading data\n")
+            return(invisible(NULL))      
+          }
+          dataset <- get(datasetname)
+          if (!is.data.frame(dataset)){
+            cat("Data is not a data frame\n")
+            return(invisible(NULL))      
+          }      
+        }
+        # read EXCEL
+        if (input$datatype=='*.xls'){
+          if (is.null(input$tablenames))
+            return(invisible(NULL)) 
+          # dataset<-try(xlsx::read.xlsx(inFile$datapath,sheetName=input$tablenames),silent=TRUE)
+          dataset<-try(readxl::read_excel(path=inFile$datapath, sheet=input$tablenames), silent=TRUE)
+          if (inherits(dataset,"try-error"))
+            return(invisible(NULL))
+          dataset <- as.data.frame(dataset) # to remove tibble class.
+        }
       }
-    }
-    if (!inherits(dataset, "data.frame") || nrow(dataset)==0)
-      return(invisible(NULL))
-    # iniciate selevars    and discvars
-    if (is.null(rv$selevars))
-      rv$selevars<<-names(dataset)
-    # if (is.null(rv$discvars))
-    #   rv$discvars<<-character()
-    # iniciate method
-    if (is.null(rv$method)){
-      res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
-      method<-sapply(res,function(x) paste(attr(x,"method"),collapse=" "))
-      method<-ifelse(method=="continuous normal",1,
-                   ifelse(method=="continuous non-normal",2,3))
-      names(method)<-attr(res,"varnames.orig")
-      rv$method<<-method
-    }
-    # iniciate descdigits
-    if (is.null(rv$descdigits)){
-      res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
-      descdigits<-rep(NA,length(res))
-      names(descdigits)<-attr(res,"varnames.orig")
-      rv$descdigits<<-descdigits
-    }
-    # iniciate ratiodigits
-    if (is.null(rv$ratiodigits)){
-      res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
-      ratiodigits<-rep(NA,length(res))
-      names(ratiodigits)<-attr(res,"varnames.orig")
-      rv$ratiodigits<<-ratiodigits
-    }    
-    # iniciate reference category for OR/HR of categorical row-variables
-    if (is.null(rv$refratiocat)){    
-      res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
-      refratiocat<-rep(1,length(res))
-      names(refratiocat)<-attr(res,"varnames.orig")
-      rv$refratiocat<<-refratiocat
-    }
-    # iniciate factor to be multiplied for continuous variables in computing OR/HR
-    if (is.null(rv$factratio)){        
-      res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
-      factratio<-rep(1,length(res))
-      names(factratio)<-attr(res,"varnames.orig")
-      rv$factratio<<-factratio
-    }
-    # iniciate hide
-    if (is.null(rv$xhide)){ 
-      nn<-names(dataset)
-      xhide<-rep(NA,length(nn))
-      names(xhide)<-nn
-      rv$xhide<<-xhide
-    }  
-    # iniciate variable subset
-    if (is.null(rv$varsubset)){
-      nn<-names(dataset)
-      varsubset<-rep(NA,length(nn))
-      names(varsubset)<-nn
-      rv$varsubset<<-varsubset
-    }
-    # return data
-    return(dataset)
+      if (!inherits(dataset, "data.frame") || nrow(dataset)==0)
+        return(invisible(NULL))
+      # iniciate selevars    and discvars
+      if (is.null(rv$selevars))
+        rv$selevars<<-names(dataset)
+      # if (is.null(rv$discvars))
+      #   rv$discvars<<-character()
+      # iniciate method
+      if (is.null(rv$method)){
+        res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
+        method<-sapply(res,function(x) paste(attr(x,"method"),collapse=" "))
+        method<-ifelse(method=="continuous normal",1,
+                       ifelse(method=="continuous non-normal",2,3))
+        names(method)<-attr(res,"varnames.orig")
+        rv$method<<-method
+      }
+      # iniciate descdigits
+      if (is.null(rv$descdigits)){
+        res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
+        descdigits<-rep(NA,length(res))
+        names(descdigits)<-attr(res,"varnames.orig")
+        rv$descdigits<<-descdigits
+      }
+      # iniciate ratiodigits
+      if (is.null(rv$ratiodigits)){
+        res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
+        ratiodigits<-rep(NA,length(res))
+        names(ratiodigits)<-attr(res,"varnames.orig")
+        rv$ratiodigits<<-ratiodigits
+      }    
+      # iniciate reference category for OR/HR of categorical row-variables
+      if (is.null(rv$refratiocat)){    
+        res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
+        refratiocat<-rep(1,length(res))
+        names(refratiocat)<-attr(res,"varnames.orig")
+        rv$refratiocat<<-refratiocat
+      }
+      # iniciate factor to be multiplied for continuous variables in computing OR/HR
+      if (is.null(rv$factratio)){        
+        res<-compareGroups(~.,dataset,max.xlev=Inf,max.ylev=Inf,method=NA)
+        factratio<-rep(1,length(res))
+        names(factratio)<-attr(res,"varnames.orig")
+        rv$factratio<<-factratio
+      }
+      # iniciate hide
+      if (is.null(rv$xhide)){ 
+        nn<-names(dataset)
+        xhide<-rep(NA,length(nn))
+        names(xhide)<-nn
+        rv$xhide<<-xhide
+      }  
+      # iniciate variable subset
+      if (is.null(rv$varsubset)){
+        nn<-names(dataset)
+        varsubset<-rep(NA,length(nn))
+        names(varsubset)<-nn
+        rv$varsubset<<-varsubset
+      }
+      # return data
+      return(dataset)
     })
   })
   
@@ -518,7 +518,7 @@ shinyServer(function(input, output, session) {
   ###############################
   #### check if data is read ####
   ###############################
-
+  
   
   #output$initial <- renderUI({
   #  if (is.null(dataset()))
@@ -574,7 +574,7 @@ shinyServer(function(input, output, session) {
   ###################
   ### create table ##
   ###################
-
+  
   create<-reactive({
     
     # if (is.null(input$loadok)) return(NULL)
@@ -597,15 +597,15 @@ shinyServer(function(input, output, session) {
     progress <- shiny::Progress$new(session, min=0, max=4)
     progress$set(message = "Creating bivariate table",value=1)
     on.exit(progress$close())
-
-
+    
+    
     isolate({
       
       dd<-dataset()
       validate(need(dd, "Data not loaded"))      
       
       validate(need(!is.null(rv$selevars) && length(rv$selevars)>0,"No variables selected"))      
-
+      
       # global subset
       if (!is.null(input$globalsubset) && input$globalsubset!=""){
         dd2<-dd
@@ -621,7 +621,7 @@ shinyServer(function(input, output, session) {
         for (i in 1:ncol(dd))
           attr(dd[,i],"label") <- vari.labels[i]
       }
-
+      
       # form
       if (is.null(input$resptype) || input$resptype=='None'){
         form<-as.formula(paste("~",paste(paste0("`",rv$selevars,"`"),collapse="+"),sep=""))
@@ -646,14 +646,14 @@ shinyServer(function(input, output, session) {
         for (i in 1:ncol(dd2))
           if (is.factor(dd2[,i]))
             dd2[,i]<-as.integer(dd2[,i])
-        for (i in seq_along(rv$varsubset)){
-          if (!is.na(rv$varsubset[i])){
-            if (is.factor(dd2[,names(rv$varsubset)[i]]))
-              dd2[,i]<-as.integer(dd2[,names(rv$varsubset)[i]])
-            kk<-!eval(parse(text=paste("with(dd2,",rv$varsubset[i],")",sep="")))
-            dd[kk,names(rv$varsubset)[i]]<-NA
+          for (i in seq_along(rv$varsubset)){
+            if (!is.na(rv$varsubset[i])){
+              if (is.factor(dd2[,names(rv$varsubset)[i]]))
+                dd2[,i]<-as.integer(dd2[,names(rv$varsubset)[i]])
+              kk<-!eval(parse(text=paste("with(dd2,",rv$varsubset[i],")",sep="")))
+              dd[kk,names(rv$varsubset)[i]]<-NA
+            }
           }
-        }
       }
       
       # hide.no
@@ -661,7 +661,7 @@ shinyServer(function(input, output, session) {
         hideno<-NA
       else
         hideno<-unlist(strsplit(input$hideno,","))
-    
+      
       # ref
       refno<-hideno
       refy<-if (is.null(input$gvarcat)) 1 else as.numeric(strsplit(input$gvarcat,":")[[1]][1])
@@ -676,16 +676,16 @@ shinyServer(function(input, output, session) {
       ratiodigits<-as.vector(rv$ratiodigits[attr(res,"varnames.orig")])
       alpha<-if (is.null(input$alpha)) 0.05 else input$alpha
       mindis<-if (is.null(input$mindis)) 0.05 else input$mindis
-    
+      
       # quartiles, sd, ...
       Q1<-if (is.null(input$Q1)) 25 else input$Q1   
       Q3<-if (is.null(input$Q3)) 75 else input$Q3
-
+      
       qtype1<-if (is.null(input$qtype1)) 1 else input$qtype1
       qtype2<-if (is.null(input$qtype2)) 1 else input$qtype2
       type<-if (is.null(input$type)) NA else input$type
       sdtype<-if (is.null(input$sdtype)) 1 else input$sdtype
-
+      
       showpoverall<-if (is.null(input$showpoverall)) TRUE else input$showpoverall
       showptrend<-if (is.null(input$showptrend)) FALSE else input$showptrend
       showratio<-if (is.null(input$showratio)) FALSE else input$showratio
@@ -707,14 +707,14 @@ shinyServer(function(input, output, session) {
                          ref=refratiocat,Q1=Q1/100,Q3=Q3/100,simplify=simplify,compute.ratio=computeratio,
                          fact.ratio=factratio,ref.y=refy,min.dis=mindis,alpha=alpha,p.corrected=pcorrected,
                          Date.format=Dateformat,byrow=byrow,conf.level=conflevel)    
-
+      
       # createTable
       restab<-createTable(res,show.p.overall=showpoverall,show.p.trend=showptrend,show.ratio=showratio,
                           show.p.ratio=showpratio,show.all=showall,show.n=shown,show.desc=showdesc,
                           hide.no=hideno,hide=xhide,type=type,sd.type=sdtype,q.type=c(qtype1,qtype2),
                           digits=descdigits,digits.ratio=ratiodigits,digits.p=pvaldigits,show.p.mul=showpmul,show.ci=showci)      
       
-    
+      
       # strataTable
       if (!is.null(input$stratatype) && input$stratatype!="None"){
         cg <- attr(restab, "x", exact = TRUE)[[1]]
@@ -727,10 +727,10 @@ shinyServer(function(input, output, session) {
         else 
           global.subset <- ""
         x.list <- lapply(levels(strata.var), function(i){
-            subset.i <- paste0("as.factor(",strata,")=='",i,"'",global.subset)
-            cg.i <- eval(parse(text=paste0("update(cg, subset=",subset.i,", simplify=FALSE)")))
-            x.i <- update(restab, x=cg.i)
-            x.i
+          subset.i <- paste0("as.factor(",strata,")=='",i,"'",global.subset)
+          cg.i <- eval(parse(text=paste0("update(cg, subset=",subset.i,", simplify=FALSE)")))
+          x.i <- update(restab, x=cg.i)
+          x.i
         })
         strata.names <- levels(strata.var) 
         restab <- do.call(cbind, structure(x.list, names=strata.names))
@@ -783,7 +783,7 @@ shinyServer(function(input, output, session) {
         if (input$resptype=='Survival'){
           return(invisible(NULL))
         } else
-        form<-as.formula(paste(input$gvar,"~",paste(paste0("`",rv$selevars,"`"),collapse="+"),sep=""))
+          form<-as.formula(paste(input$gvar,"~",paste(paste0("`",rv$selevars,"`"),collapse="+"),sep=""))
       }      
     })    
     restabSNPs<-compareSNPs(form, dd, sep = input$sepSNPs) 
@@ -854,35 +854,35 @@ shinyServer(function(input, output, session) {
                      filter = "top",
                      rownames= FALSE,
                      extensions = list("ColReorder" = NULL,
-                                        "Buttons" = NULL,
-                                        "FixedColumns" = list(leftColumns=1)),
-                    options = list(
-                        dom = 'BRrltpi',
-                        autoWidth=TRUE,
-                        lengthMenu = list(c(10, 50, -1), c('10', '50', 'All')),
-                        ColReorder = TRUE,
-                        buttons =
-                          list(
-                            'copy',
-                            'print',
-                            list(
-                              extend = 'collection',
-                              buttons = c('csv', 'excel', 'pdf'),
-                              text = 'Download'
-                            ),
-                            I('colvis')
-                          )
-                    ))
+                                       "Buttons" = NULL,
+                                       "FixedColumns" = list(leftColumns=1)),
+                     options = list(
+                       dom = 'BRrltpi',
+                       autoWidth=TRUE,
+                       lengthMenu = list(c(10, 50, -1), c('10', '50', 'All')),
+                       ColReorder = TRUE,
+                       buttons =
+                         list(
+                           'copy',
+                           'print',
+                           list(
+                             extend = 'collection',
+                             buttons = c('csv', 'excel', 'pdf'),
+                             text = 'Download'
+                           ),
+                           I('colvis')
+                         )
+                     ))
     formatStyle(ans,columns=0:ncol(dd),`font-size`=paste0(input$valueextsize,"%"))
   })
-
+  
   output$valuextoptionsout <- renderUI({
     if (!rv$initial) return(invisible(NULL))
     return(div(
       dropdownButton(inputId="valuextoptionsaction", circle=FALSE, status="info", label="View", 
-        div(id="valuextoptions",
-          sliderInput("valueextsize", "Resize (%):", min=10, max=300, value=100, step=10)
-        )
+                     div(id="valuextoptions",
+                         sliderInput("valueextsize", "Resize (%):", min=10, max=300, value=100, step=10)
+                     )
       )
     ))
   })
@@ -892,18 +892,18 @@ shinyServer(function(input, output, session) {
     if (!rv$initial) return(invisible(NULL))
     return(div(
       tabsetPanel(id="ResponseTabsetPanel",
-        ## response
-        tabPanel("Response",
-                 radioButtons("resptype", "", c("None","Group","Survival"),"None"),                 
-                 uiOutput("response"),
-                 actionButton("changeresp","Update")
-        ),  
-        ## strata
-        tabPanel("Strata",
-                 radioButtons("stratatype", "", c("None","Strata"),"None"),                 
-                 uiOutput("strata"),
-                 actionButton("changestrata","Update")
-        )
+                  ## response
+                  tabPanel("Response",
+                           radioButtons("resptype", "", c("None","Group","Survival"),"None"),                 
+                           uiOutput("response"),
+                           actionButton("changeresp","Update")
+                  ),  
+                  ## strata
+                  tabPanel("Strata",
+                           radioButtons("stratatype", "", c("None","Strata"),"None"),                 
+                           uiOutput("strata"),
+                           actionButton("changestrata","Update")
+                  )
       )
     ))
   })
@@ -980,7 +980,7 @@ shinyServer(function(input, output, session) {
     ))
   })
   
-    
+  
   ############################
   ##### html createTable #####
   ############################
@@ -1065,10 +1065,10 @@ shinyServer(function(input, output, session) {
     div(
       fluidRow(
         column(8,selectizeInput("selevars","Choose the variables you want to analyze",
-                       choices=names(dataset()), 
-                       selected=rv$selevars,
-                       multiple=TRUE,
-                       options=list(plugins=list('remove_button', 'drag_drop')))
+                                choices=names(dataset()), 
+                                selected=rv$selevars,
+                                multiple=TRUE,
+                                options=list(plugins=list('remove_button', 'drag_drop')))
         ),
         # fluidRow(
         #   column(4,selectizeInput("selevars",HTML('<div title="Choose the variables you want to analyze">Selected</div>'),rv$selevars,multiple=TRUE,
@@ -1175,13 +1175,13 @@ shinyServer(function(input, output, session) {
     div(
       fluidRow(
         column(6,
-          selectInput("varselemethod", "", choices = rv$selevars, multiple = TRUE, selected = isolate({ input$varselemethod}),selectize=FALSE),
-          tags$style(type='text/css', paste("#varselemethod { height: ",ifelse(length(rv$selevars)==0,20,ifelse(length(rv$selevars)>20,300,18*length(rv$selevars)+5)),"px; width:120px}",sep=""))
+               selectInput("varselemethod", "", choices = rv$selevars, multiple = TRUE, selected = isolate({ input$varselemethod}),selectize=FALSE),
+               tags$style(type='text/css', paste("#varselemethod { height: ",ifelse(length(rv$selevars)==0,20,ifelse(length(rv$selevars)>20,300,18*length(rv$selevars)+5)),"px; width:120px}",sep=""))
         ),
         column(6,
-          checkboxInput('varselemethodALL', 'ALL', isolate({input$varselemethodALL})),
-          selectInput("method", "", c("Normal","Non-normal","Categorical","NA"),isolate({input$method}),selectize=FALSE),   
-          actionButton("changemethod","Update")
+               checkboxInput('varselemethodALL', 'ALL', isolate({input$varselemethodALL})),
+               selectInput("method", "", c("Normal","Non-normal","Categorical","NA"),isolate({input$method}),selectize=FALSE),   
+               actionButton("changemethod","Update")
         )
       )
     )
@@ -1254,7 +1254,7 @@ shinyServer(function(input, output, session) {
       return(invisible(NULL))
     }
   })
-
+  
   ####################################
   ##### select descriptive digits ####
   ####################################
@@ -1265,12 +1265,12 @@ shinyServer(function(input, output, session) {
     div(
       fluidRow(
         column(4,
-          selectInput("varseledescdigits", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varseledescdigits}),selectize=FALSE),
-          checkboxInput('varseledescdigitsALL', 'ALL', isolate({input$varseledescdigitsALL}))
+               selectInput("varseledescdigits", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varseledescdigits}),selectize=FALSE),
+               checkboxInput('varseledescdigitsALL', 'ALL', isolate({input$varseledescdigitsALL}))
         ),
         column(8,
-          numericInput("descdigits", label=HTML('<div>Number of decimals<br>(-1: default)</div>'), value = -1, min=-1, max=10),
-          actionButton("changedescdigits","Update")
+               numericInput("descdigits", label=HTML('<div>Number of decimals<br>(-1: default)</div>'), value = -1, min=-1, max=10),
+               actionButton("changedescdigits","Update")
         )
       )
     )
@@ -1297,12 +1297,12 @@ shinyServer(function(input, output, session) {
     div(
       fluidRow(
         column(4,
-          selectInput("varseleratiodigits", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varseleratiodigits}),selectize=FALSE),
-          checkboxInput('varseleratiodigitsALL', 'ALL', isolate({input$varseleratiodigitsALL}))
+               selectInput("varseleratiodigits", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varseleratiodigits}),selectize=FALSE),
+               checkboxInput('varseleratiodigitsALL', 'ALL', isolate({input$varseleratiodigitsALL}))
         ),
         column(8,
-          numericInput("ratiodigits", label=HTML('<div>Number of decimals<br>(-1: default)</div>'), value = -1, min=-1, max=10),
-          actionButton("changeratiodigits","Update")
+               numericInput("ratiodigits", label=HTML('<div>Number of decimals<br>(-1: default)</div>'), value = -1, min=-1, max=10),
+               actionButton("changeratiodigits","Update")
         )
       )
     )
@@ -1332,14 +1332,14 @@ shinyServer(function(input, output, session) {
       HTML('<div style="height:10px"></div>'),
       bsCollapse(
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Global subset</p>'),style="info",
-          textInput('globalsubset', 'Write subset expression', ''),
-          actionButton("changeglobalsubset","Apply")
+                        textInput('globalsubset', 'Write subset expression', ''),
+                        actionButton("changeglobalsubset","Apply")
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Variable subset</p>'),style="info",
-          selectInput("varselevarsubset", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varselevarsubset}),selectize=FALSE),
-          checkboxInput('varselevarsubsetALL', 'ALL', isolate({input$varselevarsubsetALL})),
-          textInput("varsubset", label="Write subset expression", value = ""),
-          actionButton("changevarsubset","Update")
+                        selectInput("varselevarsubset", "variable", choices = rv$selevars, multiple = TRUE, selected = isolate({input$varselevarsubset}),selectize=FALSE),
+                        checkboxInput('varselevarsubsetALL', 'ALL', isolate({input$varselevarsubsetALL})),
+                        textInput("varsubset", label="Write subset expression", value = ""),
+                        actionButton("changevarsubset","Update")
         )
       )
     )
@@ -1369,13 +1369,13 @@ shinyServer(function(input, output, session) {
         HTML('<div style="height:10px"></div>'),
         bsCollapse(
           bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Reference category</p>'), style="info",
-            fluidRow(
-              column(6,uiOutput("selerefvar")),
-              column(6,uiOutput("selerefcat"))
-            )
+                          fluidRow(
+                            column(6,uiOutput("selerefvar")),
+                            column(6,uiOutput("selerefcat"))
+                          )
           ),
           bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Multiplying factor</p>'), style="info",
-            uiOutput("selefactratio")
+                          uiOutput("selefactratio")
           )
         )
       )
@@ -1625,38 +1625,38 @@ shinyServer(function(input, output, session) {
     }
     div(
       fluidRow(
-          column(6,checkboxInput('showall', 'ALL', TRUE)),
-          column(6,checkboxInput('showpoverall', 'p-overall', TRUE))
+        column(6,checkboxInput('showall', 'ALL', TRUE)),
+        column(6,checkboxInput('showpoverall', 'p-overall', TRUE))
       ),
       fluidRow(
-          column(6,checkboxInput('showdesc', 'Descriptives', TRUE)),
-          column(6,checkboxInput('showptrend', 'p-trend', FALSE))
-      ),
-     fluidRow(
-          column(6,checkboxInput('showratio', 'OR/HR', FALSE)),
-          column(6,                    
-              conditionalPanel(
-                condition = "input.showratio == true",
-                checkboxInput('showpratio', 'OR/HR p-value', FALSE)
-              )                    
-          )                    
+        column(6,checkboxInput('showdesc', 'Descriptives', TRUE)),
+        column(6,checkboxInput('showptrend', 'p-trend', FALSE))
       ),
       fluidRow(
-          column(6,checkboxInput('shown', 'Available', FALSE)),
-          column(6,checkboxInput('includemiss', "NA category", FALSE))
+        column(6,checkboxInput('showratio', 'OR/HR', FALSE)),
+        column(6,                    
+               conditionalPanel(
+                 condition = "input.showratio == true",
+                 checkboxInput('showpratio', 'OR/HR p-value', FALSE)
+               )                    
+        )                    
       ),
       fluidRow(
-          column(6,checkboxInput('showpmul', 'Pairwise p-value', FALSE)),
-          column(6,
-              conditionalPanel(
-                condition = "input.showpmul == true",
-                checkboxInput('pcorrected', 'Correct pairwise p-values', FALSE)
-              )
-          )
+        column(6,checkboxInput('shown', 'Available', FALSE)),
+        column(6,checkboxInput('includemiss', "NA category", FALSE))
       ),
       fluidRow(
-          column(6,checkboxInput('simplify', 'Simplify', FALSE)),
-          column(6,"")
+        column(6,checkboxInput('showpmul', 'Pairwise p-value', FALSE)),
+        column(6,
+               conditionalPanel(
+                 condition = "input.showpmul == true",
+                 checkboxInput('pcorrected', 'Correct pairwise p-values', FALSE)
+               )
+        )
+      ),
+      fluidRow(
+        column(6,checkboxInput('simplify', 'Simplify', FALSE)),
+        column(6,"")
       ),
       fluidRow(
         column(6,checkboxInput('showci', 'Confidence Interval', FALSE)),
@@ -1686,24 +1686,24 @@ shinyServer(function(input, output, session) {
       HTML('<div style="height:10px"></div>'),
       bsCollapse(
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Frequencies</p>'), style="info",
-          radioButtons("type", "", c("%" = 1, "n (%)" = 2, "n"=3), selected="n (%)",inline = TRUE),
-          radioButtons("byrow", "Percentages by:", choices=c("columns","rows","total"), inline = TRUE)
+                        radioButtons("type", "", c("%" = 1, "n (%)" = 2, "n"=3), selected="n (%)",inline = TRUE),
+                        radioButtons("byrow", "Percentages by:", choices=c("columns","rows","total"), inline = TRUE)
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Mean, standard deviation</p>'), style="info",
-          radioButtons("sdtype", "", c("Mean (SD)"=1,"Mean+-SD"=2), selected="Mean (SD)",inline = TRUE)
+                        radioButtons("sdtype", "", c("Mean (SD)"=1,"Mean+-SD"=2), selected="Mean (SD)",inline = TRUE)
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Median [a, b]</p>'), style="info",
-          fluidRow(
-            column(6,numericInput("Q1", label="[a, ]:", value = 25, min=0, max=49)),
-            column(6,numericInput("Q3", label="[ , b]:", value = 75, min=51, max=100))
-          ),
-          fluidRow(
-            column(6,radioButtons("qtype1", "brackets", c("Squared"=1,"Rounded"=2), selected="Squared")),
-            column(6,radioButtons("qtype2", "separator", c("Semicolon"=1,"Comma"=2,"Slash"=3), selected="Semicolon"))
-          )
+                        fluidRow(
+                          column(6,numericInput("Q1", label="[a, ]:", value = 25, min=0, max=49)),
+                          column(6,numericInput("Q3", label="[ , b]:", value = 75, min=51, max=100))
+                        ),
+                        fluidRow(
+                          column(6,radioButtons("qtype1", "brackets", c("Squared"=1,"Rounded"=2), selected="Squared")),
+                          column(6,radioButtons("qtype2", "separator", c("Semicolon"=1,"Comma"=2,"Slash"=3), selected="Semicolon"))
+                        )
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Date variables</p>'), style="info",
-          selectInput("Dateformat", "Date format", choices=c("d-m-Y","m-d-Y","Y-m-d","d-mon-Y","mon-d-Y"), selected="d-mon-Y")
+                        selectInput("Dateformat", "Date format", choices=c("d-m-Y","m-d-Y","Y-m-d","d-mon-Y","mon-d-Y"), selected="d-mon-Y")
         )
       ),
       actionButton("changeformat","Update")
@@ -1723,14 +1723,14 @@ shinyServer(function(input, output, session) {
       HTML('<div style="height:10px"></div>'),
       bsCollapse(
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">p-values</p>'), style="info", 
-          numericInput("pvaldigits", label="Number of decimals", value = 3, min=1, max=20),
-          actionButton("changepvalsdigits","Update")
+                        numericInput("pvaldigits", label="Number of decimals", value = 3, min=1, max=20),
+                        actionButton("changepvalsdigits","Update")
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">Descriptives</p>'), style="info",
-          uiOutput("seledescdigits")
+                        uiOutput("seledescdigits")
         ),
         bsCollapsePanel(title=HTML('<div style="font-color:black; height:15px">OR/HR</p>'), style="info",      
-          uiOutput("seleratiodigits")
+                        uiOutput("seleratiodigits")
         )
       )
     )
@@ -1765,19 +1765,19 @@ shinyServer(function(input, output, session) {
     validate(need(rv$initial, "Data not loaded"))
     div(
       dropdownButton(inputId="valuessumoptionsaction",label="View options",circle=FALSE,status="info",
-        div(id="valuessumoptions",
-          fluidRow(
-            column(4,numericInput("maxvalues", "Maximum number of categories to display:", min=3, max=100, value=10, step=1)),
-            column(8,sliderInput("htmlsizeinfotab", "Resize", min=4, max=30, value=16))
-          )
-        )
+                     div(id="valuessumoptions",
+                         fluidRow(
+                           column(4,numericInput("maxvalues", "Maximum number of categories to display:", min=3, max=100, value=10, step=1)),
+                           column(8,sliderInput("htmlsizeinfotab", "Resize", min=4, max=30, value=16))
+                         )
+                     )
       ),
       br(),
       htmlOutput('valuestable')
     )
   })
   
-
+  
   ########################
   ####### table ##########
   ########################
@@ -1807,14 +1807,14 @@ shinyServer(function(input, output, session) {
     validate(need(rv$initial, "Data not loaded"))
     div(
       div(class="row-fluid",
-        dropdownButton(inputId="SNPsoptionsaction", circle=FALSE, status="info", label="View",  
-          div(id="SNPsoptions",
-            fluidRow(
-              column(4,textInput("sepSNPs","Allele separator")),
-              column(4,br(),downloadButton('actiondownloadSNPtable', 'Download'),offset=4)
-            )                    
+          dropdownButton(inputId="SNPsoptionsaction", circle=FALSE, status="info", label="View",  
+                         div(id="SNPsoptions",
+                             fluidRow(
+                               column(4,textInput("sepSNPs","Allele separator")),
+                               column(4,br(),downloadButton('actiondownloadSNPtable', 'Download'),offset=4)
+                             )                    
+                         )
           )
-        )
       ),
       br(),
       verbatimTextOutput('restabSNPs')
@@ -1837,31 +1837,31 @@ shinyServer(function(input, output, session) {
     input$changeselevarsok
     return(
       wellPanel(id="varPlotPanel",
-        fluidRow(
-          column(3,
-            selectInput("varPlot", HTML('<div title="Choose variable to plot">Variable</div>'), choices = rv$selevars, selectize=FALSE)
-          ),
-          column(3,
-            br(),
-            shinyjs::hidden(checkboxInput("bivar","Bivariate",FALSE))
-          ),
-          column(3,
-            br(),
-            checkboxInput("perc","Plot percentage",TRUE)
-          ),
-          column(3,
-            br(),br(),
-            bsButton("downloadplot","Click to download"),
-            bsModal("plotModal", "Download plot", "downloadplot",
-              selectInput("downloadplottype", "Select format", choices = c('pdf','bmp','jpg','png','tif'), selectize=FALSE),
-              downloadButton('actiondownloadplot', 'Download')
-            )
-          )
-        )
+                fluidRow(
+                  column(3,
+                         selectInput("varPlot", HTML('<div title="Choose variable to plot">Variable</div>'), choices = rv$selevars, selectize=FALSE)
+                  ),
+                  column(3,
+                         br(),
+                         shinyjs::hidden(checkboxInput("bivar","Bivariate",FALSE))
+                  ),
+                  column(3,
+                         br(),
+                         checkboxInput("perc","Plot percentage",TRUE)
+                  ),
+                  column(3,
+                         br(),br(),
+                         bsButton("downloadplot","Click to download"),
+                         bsModal("plotModal", "Download plot", "downloadplot",
+                                 selectInput("downloadplottype", "Select format", choices = c('pdf','bmp','jpg','png','tif'), selectize=FALSE),
+                                 downloadButton('actiondownloadplot', 'Download')
+                         )
+                  )
+                )
       )
     )
   })
-
+  
   observe({
     if (!is.null(input$collapseInput) && input$collapseInput=="collapseResponse"){
       if (!is.null(input$ResponseTabsetPanel) && input$ResponseTabsetPanel=="Response"){
@@ -1933,7 +1933,7 @@ shinyServer(function(input, output, session) {
   output$helpdecimals<-renderUI(HTML(hlp['Decimals']))
   output$helplabel<-renderUI(HTML(hlp['Label']))
   output$helpsave<-renderUI(HTML(hlp['SAVE']))
-
+  
   output$helpabout<-renderUI(HTML(hlp['HELPCG']))
   output$helpwui<-renderUI(HTML(hlp['HELPWUI']))
   output$helpsecurity<-renderUI(HTML(hlp['DATASECURITY']))
@@ -1979,8 +1979,8 @@ shinyServer(function(input, output, session) {
       }
       if (input$downloadtabletype=='HTML'){
         ans <- export2md(restab,format='html',header.labels=header.labels,caption=captionlabel,
-                    width=paste0(input$htmlwidthrestab,'cm'),header.color=input$header.color,header.background=input$header.background,
-                    size=input$htmlsizerestab,background=input$strip.color,strip=input$strip,first.strip=TRUE)
+                         width=paste0(input$htmlwidthrestab,'cm'),header.color=input$header.color,header.background=input$header.background,
+                         size=input$htmlsizerestab,background=input$strip.color,strip=input$strip,first.strip=TRUE)
         write(ans, file=ff)
       }
       if (input$downloadtabletype=='TXT'){
@@ -2005,7 +2005,7 @@ shinyServer(function(input, output, session) {
     isolate({
       if (!is.null(input$stratatype) && input$stratatype!='None' && input$downloadtabletype%in%c('Excel','Word','CSV')){
         createAlert(session, "downloadtablealert", "downloadtablealertMessage", title = "Warning:",
-            content = "Stratified tables cannot be downloaded under the specified format", append = FALSE, style = "warning")
+                    content = "Stratified tables cannot be downloaded under the specified format", append = FALSE, style = "warning")
         shinyjs::disable("actiondownloadtable")
       } else {
         closeAlert(session, "downloadtablealertMessage")
@@ -2013,7 +2013,7 @@ shinyServer(function(input, output, session) {
       }
     })
   })
-
+  
   
   ####### SNPs table #########
   output$actiondownloadSNPtable <- downloadHandler(
@@ -2053,8 +2053,8 @@ shinyServer(function(input, output, session) {
       })
     }
   )      
-      
-
+  
+  
 })
 
 

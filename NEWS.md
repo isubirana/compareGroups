@@ -1,4 +1,9 @@
-
+# compareGroups 4.2.0
+- flextable package dependency
+- export2md supports tables to export to word in nicer format using flextable
+- export2md supports stratified tables when exporting to word (new export2mdwordcbind internal function)
+- new argument perc in report function (same as plot)
+- export2word bug fixed
 
 # compareGroups 4.1.1
 - bug fixed in export2md when exportd in a Rmd notebook.

@@ -1,10 +1,10 @@
 export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position, ...){   
 
-  if (format=="rmarkdown")
-    stop("Word format not suported for 'cbind.createTable' objects")
-  
   if (!inherits(x,"cbind.createTable"))
     stop("'x' must be of class 'cbind.createTable'")
+  
+  if (format=="markdown")
+    return(export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
 
   ww <- charmatch(which.table, c("descr","avail"))
   if (is.na(ww))
