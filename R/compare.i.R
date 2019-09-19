@@ -1,7 +1,7 @@
 compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
-         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level) {
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv) {
 
   x.orig <- x
   y.orig <- y
@@ -210,7 +210,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
       ## x - survival
       if (inherits(x,"Surv")){
 
-        tt<-descripSurv(x, y, timemax.i)
+        tt<-descripSurv(x, y, timemax.i, surv)
         p.overall<-try(logrank.pval(y,x),silent=TRUE)
         if (inherits(p.overall,"try-error"))
           p.overall <- NaN        

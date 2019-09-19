@@ -22,7 +22,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
-  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95)
+  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE)
 \method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
   n.breaks = "Sturges", perc = FALSE, ...)
 }
@@ -94,6 +94,8 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE \code{\link{anova}} function is applied and \code{\link{oneway.test}} otherwise. Default value is TRUE.}   
 
   \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.}
+  
+  \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.}  
     
   
 Arguments passed to \code{plot} method.  

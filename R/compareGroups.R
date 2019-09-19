@@ -3,7 +3,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
           timemax = NA, alpha = 0.05, min.dis = 5, max.ylev = 5, max.xlev = 10, include.label = TRUE, Q1 = 0.25, Q3 = 0.75, 
           simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, 
           include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, 
-          chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95) 
+          chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE) 
 {
     tibble <- FALSE
     if (missing(formula)) 
@@ -92,32 +92,6 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
     at <- sub("`$","",at)
     pn <- av[av%in%at]
     
-    # cat("all.vars(mt, unique=FALSE)\n")
-    # print(all.vars(mt, unique=FALSE))
-    # cat("\n\nattr(mt,'term.labels')\n")
-    # print(attr(mt,"term.labels"))
-    # cat("\n\npn\n")
-    # print(pn)
-    
-    
-    # if (attr(mt, "response")==1){
-    #   pn <- c(all.vars(mt, unique=FALSE)[1], pn)
-    # }
-
-    # pn <- all.vars(mt, unique=FALSE)
-    
-
-    # if (attr(mt, "response")==1)
-    #   pn <- pn[-1]
-    # allv <- all.vars(mt, unique=FALSE)
-    # print(mt)
-    # print(allv)
-    # print(pn)
-    # pn <- allv[allv%in%pn]
-
-    
-    
-    
     if (!all(pn %in% names(data))){
       pn <- sub("^`","",pn) # maybe there are some `name` in the formula terms to accomodate non standard characters
       pn <- sub("`$","",pn)  
@@ -137,7 +111,6 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       attr(y, "label") <- lab.y      
     }
 
-    # rv <- attr(mt,"term.labels")
     rv <- pn
     rv <- sub("^`","",rv)
     rv <- sub("`$","",rv)
@@ -175,7 +148,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
                   fact.ratio = fact.ratio, ref.y = ref.y, p.corrected = p.corrected, compute.ratio = compute.ratio, 
                   include.miss = include.miss, oddsratio.method = oddsratio.method, chisq.test.perm = chisq.test.perm, byrow = byrow, 
                   chisq.test.B = chisq.test.B, chisq.test.seed = chisq.test.seed, Date.format = Date.format, var.equal=var.equal, 
-                  conf.level=conf.level)"), collapse="")
+                  conf.level=conf.level,surv=surv)"), collapse="")
 
     ans <- eval(parse(text=cmd))
     

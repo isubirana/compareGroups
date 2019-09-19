@@ -1,5 +1,5 @@
 descripSurv <-
-function(x, y, timemax)
+function(x, y, timemax, surv)
 {
 
   tt<-table(y)
@@ -41,6 +41,11 @@ function(x, y, timemax)
   }
   ans<-cbind(c(nn.all,nn),c(Pmax.all,Pmax.i)*100,c(Pmax.lower.all,Pmax.lower.i)*100,c(Pmax.upper.all,Pmax.upper.i)*100)
   colnames(ans) <- c("n", "inc","lower","upper")
+  if (surv){
+    ans[,-1] <- 100-ans[,-1]
+    ans[,3:4] <- ans[,4:3]
+    colnames(ans) <- c("n", "surv","lower","upper")
+  }
   rownames(ans) <- c("[ALL]",levels(y))  
   ans
   
