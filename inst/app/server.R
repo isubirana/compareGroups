@@ -985,11 +985,11 @@ shinyServer(function(input, output, session) {
   ##### html createTable #####
   ############################
   
-  # output$htmltab <- renderText({
-  output$htmltab <- renderUI({
+  output$htmltab <- renderText({
     restab<-create()
-    if (is.null(restab))
-      return(invisible(NULL))
+    validate(need(restab, "Table not created or data not loaded"))
+    # if (is.null(restab))
+    #   return(invisible(NULL))
     input$changeLabels
     isolate({
       captionlabel<-input$captionlabel
@@ -998,10 +998,10 @@ shinyServer(function(input, output, session) {
       header.labels<-c('all'=input$alllabel,'p.overall'=input$poveralllabel,'p.trend'=input$ptrendlabel,'p.ratio'=input$pratiolabel,'N'=input$Nlabel)
     })
     position <- if (is.null(input$position)) "center" else input$position
-    ans <- export2md(restab,header.labels=header.labels,caption=captionlabel,
+    ans <- export2md(restab,format="html",header.labels=header.labels,caption=captionlabel,
                      width=paste0(input$htmlwidthrestab,"cm"),header.color=input$header.color,header.background=input$header.background,
                      size=input$htmlsizerestab,background=input$strip.color,strip=input$strip,first.strip=TRUE,position=position)      
-    ans
+    return(HTML(ans))
   })
   
   
@@ -1029,7 +1029,7 @@ shinyServer(function(input, output, session) {
     restab<-create()
     if (is.null(restab))
       return(invisible(NULL))
-    export2md(restab,which.table="avail",width=paste0(input$htmlwidthrestab,"cm"),header.color=input$header.color,
+    export2md(restab,format="html",which.table="avail",width=paste0(input$htmlwidthrestab,"cm"),header.color=input$header.color,
               header.background=input$header.background,size=input$htmlsizerestab)
   })
   
@@ -1784,11 +1784,10 @@ shinyServer(function(input, output, session) {
   ####### table ##########
   ########################
   
-  output$table <- renderUI({
-    validate(need(rv$initial, "Data not loaded"))
-    # htmlOutput('htmltab')
-    uiOutput("htmltab")
-  })
+  # output$table <- renderUI({
+  #   validate(need(rv$initial, "Data not loaded"))
+  #   htmlOutput('htmltab')
+  # })
   
   ########################
   ###### ui plot #########
@@ -1992,7 +1991,7 @@ shinyServer(function(input, output, session) {
         sink()
       } 
       if (input$downloadtabletype=='Word'){
-        if (inherits(restab,"cbind.createTable")) return(NULL)
+        # if (inherits(restab,"cbind.createTable")) return(NULL)
         export2word(restab, file=ff,header.labels=header.labels)
       } 
       if (input$downloadtabletype=='Excel'){
@@ -2006,7 +2005,7 @@ shinyServer(function(input, output, session) {
     if (is.null(input$downloadtabletype)) return(NULL)
     rv$changestratacount
     isolate({
-      if (!is.null(input$stratatype) && input$stratatype!='None' && input$downloadtabletype%in%c('Excel','Word','CSV')){
+      if (!is.null(input$stratatype) && input$stratatype!='None' && input$downloadtabletype%in%c('Excel','CSV')){
         createAlert(session, "downloadtablealert", "downloadtablealertMessage", title = "Warning:",
                     content = "Stratified tables cannot be downloaded under the specified format", append = FALSE, style = "warning")
         shinyjs::disable("actiondownloadtable")

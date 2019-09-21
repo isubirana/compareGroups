@@ -1,3 +1,6 @@
+# compareGroups 4.2.1
+- export2word supports stratified tables
+
 # compareGroups 4.2.0
 - flextable package dependency
 - export2md supports tables to export to word in nicer format using flextable

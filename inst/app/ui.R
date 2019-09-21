@@ -210,7 +210,8 @@ shinyUI(
               div(style="position:absolute;right:50px;top:100px",bsButton("infoTable","",size="extra-small",style="info",icon=icon("info-circle"))),
               bsModal("infoTableModal",HTML('<p> <strong>TABLE</strong></p>'), "infoTable",uiOutput("helptable")),
               uiOutput("tableoptionsout"),
-              uiOutput("table")
+              # uiOutput("table")
+              htmlOutput("htmltab")
             ),
             tabPanel(value="resultsPlot",title=HTML('<p title="Visualize data">PLOT</p>'),
               div(style="margin-top:-10px", " "),
