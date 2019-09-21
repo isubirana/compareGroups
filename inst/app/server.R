@@ -985,7 +985,8 @@ shinyServer(function(input, output, session) {
   ##### html createTable #####
   ############################
   
-  output$htmltab <- renderText({
+  # output$htmltab <- renderText({
+  output$htmltab <- renderUI({
     restab<-create()
     if (is.null(restab))
       return(invisible(NULL))
@@ -1785,7 +1786,8 @@ shinyServer(function(input, output, session) {
   
   output$table <- renderUI({
     validate(need(rv$initial, "Data not loaded"))
-    htmlOutput('htmltab')
+    # htmlOutput('htmltab')
+    uiOutput("htmltab")
   })
   
   ########################
