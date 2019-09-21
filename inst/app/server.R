@@ -1000,6 +1000,7 @@ shinyServer(function(input, output, session) {
     ans <- export2md(restab,header.labels=header.labels,caption=captionlabel,
                      width=paste0(input$htmlwidthrestab,"cm"),header.color=input$header.color,header.background=input$header.background,
                      size=input$htmlsizerestab,background=input$strip.color,strip=input$strip,first.strip=TRUE,position=position)      
+    ans
   })
   
   
