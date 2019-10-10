@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -85,28 +85,12 @@
     Home
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="../articles/index.html">
     <span class="fas fa fas fa-book"></span>
      
     Articles
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/compareGroups_vignette.html">compareGroups 4.0: Descriptives by groups</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example1.html">Example 1: Building a descriptive table.</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example2.html">Example 2: Exploring your data graphically.</a>
-    </li>
-    <li>
-      <a href="../articles/wui.html">Web User Interface</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../articles/wui.html">
@@ -173,12 +157,14 @@
 <span class='fu'>compareGroups.fit</span>(<span class='no'>X</span>, <span class='no'>y</span>, <span class='no'>Xext</span>, <span class='no'>selec</span>, <span class='no'>method</span>, <span class='no'>timemax</span>, <span class='no'>alpha</span>, <span class='no'>min.dis</span>, <span class='no'>max.ylev</span>, <span class='no'>max.xlev</span>,
          <span class='no'>include.label</span>, <span class='no'>Q1</span>, <span class='no'>Q3</span>, <span class='no'>simplify</span>, <span class='no'>ref</span>, <span class='no'>ref.no</span>, <span class='no'>fact.ratio</span>, <span class='no'>ref.y</span>, <span class='no'>p.corrected</span>,
          <span class='no'>compute.ratio</span>, <span class='no'>include.miss</span>, <span class='no'>oddsratio.method</span>, <span class='no'>chisq.test.perm</span>, <span class='no'>byrow</span>,
-         <span class='no'>chisq.test.B</span>, <span class='no'>chisq.test.seed</span>, <span class='no'>Date.format</span>, <span class='no'>var.equal</span>, <span class='no'>conf.level</span>)
+         <span class='no'>chisq.test.B</span>, <span class='no'>chisq.test.seed</span>, <span class='no'>Date.format</span>, <span class='no'>var.equal</span>, <span class='no'>conf.level</span>, <span class='no'>surv</span>, <span class='no'>riskratio</span>,
+         <span class='no'>riskratio.method</span>)
 <span class='fu'>compare.i</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>selec.i</span>, <span class='no'>method.i</span>, <span class='no'>timemax.i</span>, <span class='no'>alpha</span>, <span class='no'>min.dis</span>, <span class='no'>max.xlev</span>, <span class='no'>varname</span>, <span class='no'>Q1</span>, <span class='no'>Q3</span>,
           <span class='no'>groups</span>, <span class='no'>simplify</span>, <span class='no'>Xext</span>, <span class='no'>ref</span>, <span class='no'>fact.ratio</span>, <span class='no'>ref.y</span>, <span class='no'>p.corrected</span>, <span class='no'>compute.ratio</span>,
           <span class='no'>include.miss</span>, <span class='no'>oddsratio.method</span>, <span class='no'>chisq.test.perm</span>, <span class='no'>byrow</span>,<span class='no'>chisq.test.B</span>,
-          <span class='no'>chisq.test.seed</span>, <span class='no'>Date.format</span>, <span class='no'>var.equal</span>, <span class='no'>conf.level</span>)
-<span class='fu'>descripSurv</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>timemax</span>)
+          <span class='no'>chisq.test.seed</span>, <span class='no'>Date.format</span>, <span class='no'>var.equal</span>, <span class='no'>conf.level</span>, <span class='no'>surv</span>, <span class='no'>riskratio</span>,
+          <span class='no'>riskratio.method</span>)
+<span class='fu'>descripSurv</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>timemax</span>, <span class='no'>surv</span>)
 <span class='fu'>descrip</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>method</span>, <span class='no'>Q1</span>, <span class='no'>Q3</span>, <span class='no'>conf.level</span>)
 <span class='fu'>confinterval</span>(<span class='no'>x</span>, <span class='no'>method</span>, <span class='no'>conf.level</span>)
 <span class='fu'>flip</span>(<span class='no'>x</span>)
@@ -203,6 +189,11 @@
 <span class='fu'>export2mdcbind</span>(<span class='no'>x</span>, <span class='no'>which.table</span>, <span class='no'>nmax</span>, <span class='no'>header.labels</span>, <span class='no'>caption</span>, <span class='no'>strip</span>, <span class='no'>first.strip</span>,
       <span class='no'>background</span>, <span class='no'>width</span>, <span class='no'>size</span>, <span class='no'>landscape</span>, <span class='no'>format</span>, <span class='no'>header.background</span>, <span class='no'>header.color</span>,
       <span class='no'>position</span>, <span class='no'>...</span>)
+<span class='fu'>export2mdword</span>(<span class='no'>x</span>, <span class='no'>which.table</span>, <span class='no'>nmax</span>, <span class='no'>header.labels</span>, <span class='no'>caption</span>, <span class='no'>strip</span>,
+      <span class='no'>first.strip</span>, <span class='no'>background</span>, <span class='no'>size</span>, <span class='no'>header.background</span>, <span class='no'>header.color</span>)
+<span class='fu'>export2mdwordcbind</span>(<span class='no'>x</span>, <span class='no'>which.table</span>, <span class='no'>nmax</span>, <span class='no'>header.labels</span>, <span class='no'>caption</span>, <span class='no'>strip</span>,
+      <span class='no'>first.strip</span>, <span class='no'>background</span>, <span class='no'>size</span>, <span class='no'>header.background</span>, <span class='no'>header.color</span>)
+
 <span class='fu'>trim</span>(<span class='no'>x</span>)</pre>
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -227,7 +218,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>

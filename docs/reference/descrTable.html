@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -85,28 +85,12 @@
     Home
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="../articles/index.html">
     <span class="fas fa fas fa-book"></span>
      
     Articles
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/compareGroups_vignette.html">compareGroups 4.0: Descriptives by groups</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example1.html">Example 1: Building a descriptive table.</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example2.html">Example 2: Exploring your data graphically.</a>
-    </li>
-    <li>
-      <a href="../articles/wui.html">Web User Interface</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../articles/wui.html">
@@ -174,7 +158,8 @@
   <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>fact.ratio</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.y</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>p.corrected</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>compute.ratio</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>include.miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>oddsratio.method</span> <span class='kw'>=</span> <span class='st'>"midp"</span>,
   <span class='kw'>chisq.test.perm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chisq.test.B</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>chisq.test.seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
+  <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>surv</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>riskratio</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>riskratio.method</span> <span class='kw'>=</span> <span class='st'>"wald"</span>,
   <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>show.p.overall</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>show.all</span>, <span class='no'>show.p.trend</span>, <span class='kw'>show.p.mul</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>show.n</span>, <span class='kw'>show.ratio</span> <span class='kw'>=</span>
   <span class='fl'>FALSE</span>, <span class='kw'>show.descr</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show.ci</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits.ratio</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
@@ -312,6 +297,18 @@
     <tr>
       <th>conf.level</th>
       <td><p>double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.</p></td>
+    </tr>
+    <tr>
+      <th>surv</th>
+      <td><p>logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>riskratio</th>
+      <td><p>logical. Whether to compute Odds Ratio (FALSE) or Risk Ratio (TRUE). Default value is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>riskratio.method</th>
+      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://www.rdocumentation.org/packages/epitools/topics/riskratio'>riskratio</a></code>. Default value is "wald".</p></td>
     </tr>
     <tr>
       <th>hide</th>
@@ -482,7 +479,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>

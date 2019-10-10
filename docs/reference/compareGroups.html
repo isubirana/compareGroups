@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.2.1</span>
       </span>
     </div>
 
@@ -85,28 +85,12 @@
     Home
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="../articles/index.html">
     <span class="fas fa fas fa-book"></span>
      
     Articles
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/compareGroups_vignette.html">compareGroups 4.0: Descriptives by groups</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example1.html">Example 1: Building a descriptive table.</a>
-    </li>
-    <li>
-      <a href="../articles/examples/example2.html">Example 2: Exploring your data graphically.</a>
-    </li>
-    <li>
-      <a href="../articles/wui.html">Web User Interface</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../articles/wui.html">
@@ -174,7 +158,8 @@
   <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>fact.ratio</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.y</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>p.corrected</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>compute.ratio</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>include.miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>oddsratio.method</span> <span class='kw'>=</span> <span class='st'>"midp"</span>,
   <span class='kw'>chisq.test.perm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chisq.test.B</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>chisq.test.seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>)
+  <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>surv</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+  <span class='kw'>riskratio</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>riskratio.method</span> <span class='kw'>=</span> <span class='st'>"wald"</span>)
 <span class='co'># S3 method for compareGroups</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"pdf"</span>, <span class='kw'>bivar</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>z</span><span class='kw'>=</span><span class='fl'>1.5</span>,
   <span class='kw'>n.breaks</span> <span class='kw'>=</span> <span class='st'>"Sturges"</span>, <span class='kw'>perc</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
@@ -312,6 +297,18 @@
       <td><p>double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.</p></td>
     </tr>
     <tr>
+      <th>surv</th>
+      <td><p>logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>riskratio</th>
+      <td><p>logical. Whether to compute Odds Ratio (FALSE) or Risk Ratio (TRUE). Default value is FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>riskratio.method</th>
+      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://www.rdocumentation.org/packages/epitools/topics/riskratio'>riskratio</a></code>. Default value is "wald".</p></td>
+    </tr>
+    <tr>
       <th>x</th>
       <td><p>an object of class 'compareGroups'.</p></td>
     </tr>
@@ -357,7 +354,8 @@ Also, a row-variable can be of class 'Surv'. Then the probability of 'event' at 
 The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. If the row-variable is categorical, the p-value for trend is computed as <br />
 <code>1-pchisq(cor(as.integer(x),as.integer(y))^2*(length(x)-1),1)</code> <br />
 where 'x' is the row-variable and 'y' is the grouping variable.   <br /></p>
-<p>If there are two groups, the Odds Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. <br /></p>
+<p>If there are two groups, the Odds Ratio or Risk Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. 
+When x-variable is a factor, the Odds Ratio and Risk Ratio are computed using <code>epitools</code> and <code>epitools</code>, respectively. While when x-variable is a continuous variable, the Odds Ratio and Risk Ratio are computed under a logistic regression with a canonical link and the log link, respectively. <br /></p>
 <p>The p-values for Hazard Ratios are computed using the logrank or Wald test under a Cox proportional hazard regression when row-variable is categorical or continuous, respectively. <br /></p>
 <p>See the vignette for more detailed examples illustrating the use of this function and the methods used.</p>
     
@@ -731,7 +729,7 @@ Finally, when the response is binary and the row variable is categorical, the p-
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>

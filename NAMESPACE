@@ -1,6 +1,6 @@
 importFrom(chron, chron)
 importFrom(survival, Surv, survfit, survdiff, coxph)
-importFrom(epitools, oddsratio)
+importFrom(epitools, oddsratio, riskratio)
 importFrom(tools, texi2pdf)
 importFrom(HardyWeinberg, HWChisqMat)
 importFrom(rmarkdown, render, word_document)
@@ -9,7 +9,7 @@ importFrom(grDevices, bmp, dev.new, dev.off, grey.colors, jpeg, pdf, png, rainbo
 importFrom(graphics, abline, barplot, box, boxplot, hist, legend, lines, mtext, par, plot, points, text, title)
 importFrom(stats, oneway.test, TukeyHSD, anova, aov, as.formula, chisq.test, coef, confint, confint.default, 
            cor, cor.test, dnorm, fisher.test, formula, glm, kruskal.test, lm, median, na.pass, p.adjust, 
-           pchisq, qqline, quantile, sd, shapiro.test, t.test, update, binom.test, qbinom, qt)
+           pchisq, qqline, quantile, sd, shapiro.test, t.test, update, binom.test, qbinom, qt, binomial)
 importFrom(utils, combn, read.csv, read.csv2, read.table, sessionInfo, write.table)
 importFrom(methods, formalArgs)
 importFrom(writexl, write_xlsx)

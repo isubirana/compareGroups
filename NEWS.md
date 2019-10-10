@@ -1,5 +1,6 @@
-# compareGroups 4.2.1
+# compareGroups 4.3.0
 - export2word supports stratified tables
+- Risk Ratios are now computed. See `riskratio` argument from `compareGroups` function.
 
 # compareGroups 4.2.0
 - flextable package dependency

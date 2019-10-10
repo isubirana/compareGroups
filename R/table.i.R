@@ -19,6 +19,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
   N<-x$sam[1]
   or<-attr(x,"OR")
   hr<-attr(x,"HR")
+  riskratio<-attr(x,"riskratio")
 
   ci <- if(!is.null(or)) or else hr
   p.ratio <- attr(x,"p.ratio")
@@ -112,9 +113,15 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
       if (inherits(attr(x,"y"),"Surv"))
         ans<-rbind(ans,HR=ci,p.ratio=p.ratio,ansp)
       else
-        ans<-rbind(ans,OR=ci,p.ratio=p.ratio,ansp)    
+        if (riskratio)
+          ans<-rbind(ans,RR=ci,p.ratio=p.ratio,ansp)    
+        else
+          ans<-rbind(ans,OR=ci,p.ratio=p.ratio,ansp)
     }else
-      ans<-rbind(ans,OR=ci,p.ratio=p.ratio,ansp)
+      if (riskratio)
+        ans<-rbind(ans,RR=ci,p.ratio=p.ratio,ansp)
+      else 
+        ans<-rbind(ans,OR=ci,p.ratio=p.ratio,ansp)
     ans<-rbind(ans,rep(NA,ncol(ans)))
     ans[nrow(ans),1]<-N
     rownames(ans)[nrow(ans)]<-"N"
@@ -134,10 +141,13 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
       inc.out <- paste0(paste0(as.vector(inc),"%"), " [",paste0(as.vector(lower),"%"), ";",paste0(as.vector(upper),"%"),"]")
     else
       inc.out <- paste0(as.vector(inc),"%")
-    ans<-cbind(c(inc.out,OR=ci,p.ratio=p.ratio,pvals,N))
+    if (riskratio)
+      ans<-cbind(c(inc.out,OR=ci,p.ratio=p.ratio,pvals,N))
+    else
+      ans<-cbind(c(inc.out,RR=ci,p.ratio=p.ratio,pvals,N))
     rownames(ans)[1:length(rn)]<-rn
     rownames(ans)[nrow(ans)]<-"N"
-    colnames(ans)<-varname 
+    colnames(ans)<-varname
   }
   if (method[1]=="continuous"){
     nn<-x$descriptive
@@ -183,9 +193,16 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
       if (inherits(attr(x,"y"),"Surv"))
         ans<-cbind(c(ans,HR=ci,p.ratio=p.ratio,pvals,N))
       else
+        if (riskratio)
+          ans<-cbind(c(ans,RR=ci,p.ratio=p.ratio,pvals,N))
+        else
+          ans<-cbind(c(ans,OR=ci,p.ratio=p.ratio,pvals,N))
+    }else {
+      if (riskratio)
+        ans<-cbind(c(ans,RR=ci,p.ratio=p.ratio,pvals,N))
+      else
         ans<-cbind(c(ans,OR=ci,p.ratio=p.ratio,pvals,N))
-    }else
-      ans<-cbind(c(ans,OR=ci,p.ratio=p.ratio,pvals,N))  
+    }
     rownames(ans)[1:length(rn)]<-rn
     rownames(ans)[nrow(ans)]<-"N"
     colnames(ans)<-varname

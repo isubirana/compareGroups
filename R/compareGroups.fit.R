@@ -1,7 +1,8 @@
 compareGroups.fit <-
 function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev, include.label, Q1, Q3, 
          simplify, ref, ref.no, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
-         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv) {
+         chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv,
+         riskratio, riskratio.method) {
 
    if (!is.null(Xext)){
     if (!is.matrix(Xext) & !is.data.frame(Xext))
@@ -218,9 +219,9 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
                             compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, 
                             chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, 
                             chisq.test.seed=chisq.test.seed, Date.format=Date.format, var.equal=var.equal, 
-                            conf.level=conf.level, surv=surv),
+                            conf.level=conf.level, surv=surv, riskratio=riskratio, riskratio.method=riskratio.method),
                   silent=TRUE)
-     if (inherits(ans.i, "try-error")) print(ans.i)
+     # if (inherits(ans.i, "try-error")) print(ans.i)
      ans.i
    })
    
@@ -270,6 +271,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
    attr(ans,"Q1")<-Q1
    attr(ans,"Q3")<-Q3
    attr(ans,"byrow")<-byrow
+
    class(ans)<-"compareGroups"
    
    ans

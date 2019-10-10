@@ -22,7 +22,8 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
-  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE)
+  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
+  riskratio = FALSE, riskratio.method = "wald")
 \method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
   n.breaks = "Sturges", perc = FALSE, ...)
 }
@@ -95,8 +96,11 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
 
   \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.}
   
-  \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.}  
-    
+  \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.} 
+  \item{riskratio}{logical. Whether to compute Odds Ratio (FALSE) or Risk Ratio (TRUE). Default value is FALSE.}  
+  
+  \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{riskratio}}. Default value is "wald".}     
+
   
 Arguments passed to \code{plot} method.  
   
@@ -131,7 +135,8 @@ The p-value for trend is computed from the Pearson test when row-variable is nor
 \code{1-pchisq(cor(as.integer(x),as.integer(y))^2*(length(x)-1),1)} \cr
 where 'x' is the row-variable and 'y' is the grouping variable.   \cr
 
-If there are two groups, the Odds Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. \cr
+If there are two groups, the Odds Ratio or Risk Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. 
+When x-variable is a factor, the Odds Ratio and Risk Ratio are computed using \code{\link[epitools]{oddsratio}} and \code{\link[epitools]{riskratio}}, respectively. While when x-variable is a continuous variable, the Odds Ratio and Risk Ratio are computed under a logistic regression with a canonical link and the log link, respectively. \cr
 
 The p-values for Hazard Ratios are computed using the logrank or Wald test under a Cox proportional hazard regression when row-variable is categorical or continuous, respectively. \cr
 
