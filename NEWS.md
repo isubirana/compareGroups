@@ -1,3 +1,6 @@
+# compareGroups 4.3.1
+- compareGroups.Rd: p.trend for categorical variables modified.
+
 # compareGroups 4.3.0
 - export2word supports stratified tables
 - Risk Ratios are now computed. See `riskratio` argument from `compareGroups` function.

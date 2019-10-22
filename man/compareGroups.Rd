@@ -131,9 +131,8 @@ Depending whether the row-variable is considered as continuous normal-distribute
 Also, a row-variable can be of class 'Surv'. Then the probability of 'event' at a fixed time (set up with 'timemax' argument) is computed and a logrank test is performed.\cr 
 
 When there are more than 2 groups, it also performs pairwise comparisons adjusting for multiple testing (Tukey when row-variable is normal-distributed and Benjamini & Hochberg method otherwise), and computes p-value for trend. 
-The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. If the row-variable is categorical, the p-value for trend is computed as \cr
-\code{1-pchisq(cor(as.integer(x),as.integer(y))^2*(length(x)-1),1)} \cr
-where 'x' is the row-variable and 'y' is the grouping variable.   \cr
+The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. 
+If the row-variable is categorical, the p-value for trend is computed from Mantel-Haenszel test of trend.
 
 If there are two groups, the Odds Ratio or Risk Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. 
 When x-variable is a factor, the Odds Ratio and Risk Ratio are computed using \code{\link[epitools]{oddsratio}} and \code{\link[epitools]{riskratio}}, respectively. While when x-variable is a continuous variable, the Odds Ratio and Risk Ratio are computed under a logistic regression with a canonical link and the log link, respectively. \cr
