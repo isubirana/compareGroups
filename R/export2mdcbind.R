@@ -130,7 +130,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     
     if (format=="html"){
       ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))))  #use the line above when kableExtra is submitted to CRAN    
-      ans <- kable_styling(ans, bootstrap_options=c(if (strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
+      ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, if (sum(sapply(x, function(x.i) sum(unlist(attr(x.i, which="nmax.pos")))))>0) 1 else 0, 
                                             italic=sum(sapply(x, function(x.i) sum(unlist(attr(x.i, which="nmax.pos")))))>0, extra_css = "border-bottom: 1px solid grey")
@@ -195,7 +195,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     
     if (format=="html"){
       ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption")))) #use the line above when kableExtra is submitted to CRAN    
-      ans <- kable_styling(ans, bootstrap_options=c(if (strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
+      ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, 0, italic=FALSE, extra_css = "border-bottom: 1px solid grey")
       ans <- sub('colspan="1"><div style="border-bottom: 1px', 'colspan="1"><div style="border-bottom: 0px',fixed = TRUE, ans)

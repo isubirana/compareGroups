@@ -124,7 +124,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       if (strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     }
     if (format=="html"){
-      ans <- kable_styling(ans, bootstrap_options=c(if (strip) "striped" else NULL, "condensed"), full_width=FALSE, font_size=size, position=position)  
+      ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width=FALSE, font_size=size, position=position)  
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, if (sum(unlist(attr(x, "nmax.pos")))>0) 1 else 0, italic=sum(unlist(attr(x, "nmax.pos")))>0, extra_css = "border-bottom: 1px solid grey")      
     }
@@ -169,7 +169,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       ans <- kable_styling(ans, latex_options = c("repeat_header"), font_size = size, position=position)
     }
     if (format=="html"){
-      ans <- kable_styling(ans, bootstrap_options=c(if (strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position=position)
+      ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position=position)
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, 0, italic=FALSE, extra_css = "border-bottom: 1px solid grey")
     }
