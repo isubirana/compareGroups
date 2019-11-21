@@ -1,5 +1,6 @@
 # compareGroups 4.3.1
 - compareGroups.Rd: p.trend for categorical variables modified.
+- export2word: new arguments added (same as export2md).
 
 # compareGroups 4.3.0
 - export2word supports stratified tables
