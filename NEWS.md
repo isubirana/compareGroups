@@ -1,6 +1,10 @@
 # compareGroups 4.3.1
 - compareGroups.Rd: p.trend for categorical variables modified.
 - export2word: new arguments added (same as export2md).
+- export2md: longtable fixed.
+- bug fixed in internal table.i function when identifying reference category when NA.
+- bug fixed in cGroupsGUI: updated to new updates of compareGroups.fit function.
+- export2pdf: new arguments incorportated and makes use of export2md function.
 
 # compareGroups 4.3.0
 - export2word supports stratified tables

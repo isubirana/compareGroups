@@ -1,38 +1,51 @@
-export2pdf <- function(x, file, compile=TRUE, openfile=FALSE, margin=c(2,2,1,1), ...){
+export2pdf <- function(x, file, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, 
+                       width=Inf, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL,  
+                       landscape=FALSE, numcompiled=2){
 
-  if (!inherits(x,"createTable"))
-    stop("'x' must be of class 'createTable'")
-
-  text<-
-  paste("
-  \\documentclass[a4paper,titlepage,12pt]{article}
-  \\usepackage[english]{babel}
-  \\usepackage{longtable}
-  \\usepackage{multirow}
-  \\usepackage{lscape}
-  \\usepackage[top=",margin[1],"cm,bottom=",margin[2],"cm,left=",margin[3],"cm,right=",margin[4],"cm]{geometry}
-  \\usepackage[utf8]{inputenc}
-  \\begin{document}
-  ",
-  export2latex(x,file=tempfile(),which = if (inherits(x,"summary.createTable")) 'avail' else 'descr',...)
-  ,"
-  \\end{document}
-  "
-  ,sep="")
+  if (!inherits(x, "createTable")) 
+    stop("x must be of class 'createTable'")
+  # if (inherits(x, "cbind.createTable")) 
+  #   stop("x cannot be of class 'cbind.createTable'")
+  # if (is.null(caption)) caption<-"NULL"
+  if (length(header.labels)==0) header.labels<-"c()"
+  #tempfile<-file.path(tempdir(),"temp.Rmd")
+  tempfile <- NULL
+  tempfile <- sub("pdf$","Rmd",file)
+  # if (is.null(tempfile)) stop("file must be .pdf")
   
-  file.tex <- sub("pdf$","tex",file)
-  write(text, file = file.tex)
-                    
-  if (compile){
-    wd <- getwd()
-    setwd(dirname(file))
-    texi2pdf(file = basename(file.tex), clean = FALSE, quiet = TRUE)
-    texi2pdf(file = basename(file.tex), clean = TRUE, quiet = TRUE)
-    setwd(wd)
+  instr<-paste(
+"---
+header-includes:
+   - \\usepackage{longtable}
+   - \\usepackage{multirow}
+   - \\usepackage{multicol}
+   - \\usepackage{booktabs}
+   - \\usepackage{xcolor}
+   - \\usepackage{colortbl}
+   - \\usepackage{lscape}
+output: pdf_document
+---
+\n\n\n
+
+
+```{r, echo=FALSE}\n
+export2md(x, which.table=which.table, nmax=nmax, header.labels=header.labels, 
+caption=caption, width=width,format='latex', strip=strip, 
+first.strip=first.strip, background=background, size=size, landscape=landscape, 
+header.background=header.background, header.color=header.color)\n
+```\n
+\n"
+,sep=""
+)
+
+  write(instr, file=tempfile)
+
+  for (i in numcompiled){# need to compile twice because of longtable format
+    rmarkdown::render(tempfile, rmarkdown::pdf_document(), file, quiet=TRUE)
   }
-  
-  
+
 }
+
 
 
 

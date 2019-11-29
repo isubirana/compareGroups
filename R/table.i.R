@@ -25,7 +25,9 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
   p.ratio <- attr(x,"p.ratio")
   
   if (!is.null(ci)){
-    rr <- apply(is.na(ci) & !is.nan(ci),1,any)
+    # rr <- apply(is.na(ci) & !is.nan(ci),1,any)
+    rr <- apply(ci, 1, function(x) !is.na(x[1]) & !is.nan(x[1]) & x[1]==1 & all(is.na(x[-1])))
+    if (sum(rr)>1) stop("more than one reference category detected")    
     ci <- ifelse(is.nan(ci),".",format2(ci,digits.ratio))
     ci <- t(ci)
     ci <- apply(ci,2,function(vv) paste(vv[1]," [",vv[2],";",vv[3],"]",sep="")) 
