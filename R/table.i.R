@@ -2,6 +2,7 @@ table.i <-
 function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci){
 
   method<-attr(x,"method")
+  compute.prop <- attr(x, "compute.prop")
 
   if (is.na(digits))
     digits<-NULL
@@ -65,13 +66,14 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     upper<-format2(x$upper,digits)
     upper<-ifelse(is.na(upper),".",upper)    
     ans<-pp
+    symbol.perc <- if (compute.prop) "" else "%"
     if (show.ci){
-      ans<-matrix(paste0(pp,"% [",lower,"%;",upper,"%]"),nrow=nrow(ans),ncol=ncol(ans))  
+      ans<-matrix(paste0(pp,symbol.perc," [",lower,symbol.perc,";",upper,symbol.perc,"]"),nrow=nrow(ans),ncol=ncol(ans))  
     } else {
       if (type==1)
-        ans<-matrix(paste(pp,"%",sep=""),nrow=nrow(ans),ncol=ncol(ans))    
+        ans<-matrix(paste(pp,symbol.perc,sep=""),nrow=nrow(ans),ncol=ncol(ans))    
       if (type==2)
-        ans<-matrix(paste(nn," (",pp,"%)",sep=""),nrow=nrow(ans),ncol=ncol(ans))
+        ans<-matrix(paste(nn," (",pp,symbol.perc,")",sep=""),nrow=nrow(ans),ncol=ncol(ans))
       if (type==3)
         ans<-matrix(nn,nrow=nrow(ans),ncol=ncol(ans))
     }

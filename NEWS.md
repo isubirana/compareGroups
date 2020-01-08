@@ -1,3 +1,6 @@
+# compareGroups 4.4.0
+- compareGroups, descrTable: new argument 'compute.prop' added (to compute proportions instead of percentages for categorical row-variables)
+
 # compareGroups 4.3.1
 - compareGroups.Rd: p.trend for categorical variables modified.
 - export2word: new arguments added (same as export2md).

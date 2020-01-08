@@ -4,7 +4,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
           simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, 
           include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, 
           chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
-          riskratio = FALSE, riskratio.method = "wald") 
+          riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE) 
 {
     tibble <- FALSE
     if (missing(formula)) 
@@ -149,7 +149,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
                   fact.ratio = fact.ratio, ref.y = ref.y, p.corrected = p.corrected, compute.ratio = compute.ratio, 
                   include.miss = include.miss, oddsratio.method = oddsratio.method, chisq.test.perm = chisq.test.perm, byrow = byrow, 
                   chisq.test.B = chisq.test.B, chisq.test.seed = chisq.test.seed, Date.format = Date.format, var.equal=var.equal, 
-                  conf.level=conf.level,surv=surv,riskratio=riskratio,riskratio.method=riskratio.method)"), collapse="")
+                  conf.level=conf.level,surv=surv,riskratio=riskratio,riskratio.method=riskratio.method,compute.prop=compute.prop)"), collapse="")
 
     ans <- eval(parse(text=cmd))
     

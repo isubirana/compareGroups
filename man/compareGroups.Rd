@@ -23,7 +23,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
   Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
-  riskratio = FALSE, riskratio.method = "wald")
+  riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE)
 \method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
   n.breaks = "Sturges", perc = FALSE, ...)
 }
@@ -101,6 +101,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   
   \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{riskratio}}. Default value is "wald".}     
 
+  \item{compute.prop}{logical. Compute proportions (TRUE) or percentages (FALSE) for cathegorical row-variables. Default value is FALSE.}  
   
 Arguments passed to \code{plot} method.  
   

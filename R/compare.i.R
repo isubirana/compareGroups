@@ -2,7 +2,7 @@ compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
          chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv, 
-         riskratio, riskratio.method) {
+         riskratio, riskratio.method, compute.prop) {
 
   x.orig <- x
   y.orig <- y
@@ -155,16 +155,16 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
             else
               n.ij <- sum(nn[i,])
           bt.ci <- binom.test(nn[i,j], n.ij, conf.level = conf.level)$conf.int
-          lower[i,j] <- bt.ci[1]*100
-          upper[i,j] <- bt.ci[2]*100
+          lower[i,j] <- bt.ci[1]*(if (compute.prop) 1 else 100)
+          upper[i,j] <- bt.ci[2]*(if (compute.prop) 1 else 100)
         }
       }
 
-      colnames(prop)<-paste(colnames(prop),"%",sep="")
+      if (!compute.prop) colnames(prop)<-paste(colnames(prop),"%",sep="")
       rownames(nn)[1]<-rownames(prop)[1]<-"[ALL]"
       colnames(lower)<-colnames(upper)<-colnames(prop)
       rownames(lower)<-rownames(upper)<-rownames(prop)
-      prop<-prop*100
+      if (!compute.prop) prop<-prop*100
       if (groups){
         if (inherits(y,"Surv"))
           p.overall <- try(logrank.pval(x,y),silent=TRUE)
@@ -547,6 +547,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
   attr(ans,"xlong")<-xlong
   attr(ans,"ylong")<-ylong
   attr(ans,"riskratio")<-riskratio
+  attr(ans,"compute.prop")<-compute.prop
   
   ans
 

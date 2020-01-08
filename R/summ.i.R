@@ -15,7 +15,7 @@ function(x){
   } else {
     nn<-x$descriptive
     pp<-x$prop
-    colnames(pp)<-paste(colnames(nn)," (row%)",sep="")
+    # colnames(pp)<-paste(colnames(nn)," (%)",sep="")
     if (ny<=2){
       out <- cbind(nn, pp, c(NA,x$p.overall,rep(NA,ny-1)))
       colnames(out)[ncol(out)] <- "p.overall"

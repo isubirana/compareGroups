@@ -10,8 +10,8 @@ This function creates automatically a PDF with the table. Also, the LaTeX code i
 }
 
 \usage{
-export2pdf(x, file, which.table="descr", nmax=TRUE, header.labels=c(), width=Inf, 
-  caption=NULL, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL,  
+export2pdf(x, file, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL,   
+  width=Inf, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL,  
   landscape=FALSE, numcompiled=2)
 }
 
@@ -20,6 +20,14 @@ export2pdf(x, file, which.table="descr", nmax=TRUE, header.labels=c(), width=Inf
   \item{x}{an object of class 'createTable' or that inherits it.}
 
   \item{file}{character specifying the PDF file resulting after compiling the LaTeX code corresponding to the table specified in the 'x' argument. LaTeX code is also stored in the same folder with the same name but .tex extension. When 'compile' argument is FALSE, only .tex file is saved.}
+  
+  \item{which.table}{character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), printing descriptives by groups table, availability data table or both tables, respectively. Default value is 'descr'.}
+  
+  \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
+  
+  \item{header.labels}{a character named vector with 'all', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' components indicating the label for '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' (available data), respectively. Default is a zero length vector which makes no changes, i.e. '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' labels appear for descriptives of entire cohort, global p-value, p-value for trend, HR/OR and p-value of each HR/OR and available data, respectively.}  
+  
+  \item{caption}{character specifying the table caption for descriptives and available data table. If which.table='both' the first element of 'caption' will be assigned to descriptives table and the second to available data table. If it is set to "", no caption is inserted. Default value is NULL, which writes 'Summary descriptives table by groups of 'y'' for descriptives table and 'Available data by groups of 'y'' for the available data table. }
 
    \item{width}{character string to specify the width of first column of descriptive table. Default value is \code{Inf} which makes the first column to autoadjust to variable names. Other examples are '10cm', '3in' or '30em'.}
 

@@ -15,7 +15,7 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL,
   Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv = FALSE,
-  riskratio = FALSE, riskratio.method = "wald",
+  riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, 
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
   FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
@@ -92,10 +92,13 @@ Arguments from \code{\link{compareGroups}} function:
   
   \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.}   
   
-  \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.} 
+  \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.}
+  
   \item{riskratio}{logical. Whether to compute Odds Ratio (FALSE) or Risk Ratio (TRUE). Default value is FALSE.}  
   
-  \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{riskratio}}. Default value is "wald".}   
+  \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{riskratio}}. Default value is "wald".} 
+  
+  \item{compute.prop}{logical. Compute proportions (TRUE) or percentages (FALSE) for cathegorical row-variables. Default value is FALSE.}  
 
 
 Arguments from \code{\link{createTable}} function:

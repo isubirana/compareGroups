@@ -21,8 +21,6 @@ export2word(x, file, which.table="descr", nmax=TRUE, header.labels=c(),
 
   \item{file}{character specifying the word file (.doc or .docx) resulting after compiling the Markdown code corresponding to the table specified in the 'x' argument.}
   
-  \item{x}{an object of class 'createTable'.}
-
   \item{which.table}{character indicating which table is printed. Possible values are 'descr' or 'avail'(partial matching allowed), exporting descriptives by groups table or availability data table, respectively. Default value is 'descr'.}
 
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
@@ -31,8 +29,6 @@ export2word(x, file, which.table="descr", nmax=TRUE, header.labels=c(),
 
  \item{caption}{character specifying the table caption for descriptives and available data table. If which.table='both' the first element of 'caption' will be assigned to descriptives table and the second to available data table. If it is set to "", no caption is inserted. Default value is NULL, which writes 'Summary descriptives table by groups of 'y'' for descriptives table and 'Available data by groups of 'y'' for the available data table. }
 
- \item{format}{character with three options: 'html', 'latex' or 'markdown'. If missing, it tries to guess the default options of Rmarkdown file in which the table in inserted, or html if it is not in a Rmarkdown file or format not specified.}
- 
  \item{strip}{logical. It shadows table lines corresponding to each variable.}
  
  \item{first.strip}{logical. It determines whether to shadow the first variable (TRUE) or the second (FALSE). It only applies when \code{strip} argument is true.}
