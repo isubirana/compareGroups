@@ -1,4 +1,6 @@
 "[.createTable"<-function(x,i,...){
+  show.descr <- attr(x,"show.descr")
+  all.last <- attr(x,"all.last")
   if (is.character(i)){
     oo<-attr(attr(x,"x")[[1]],"varnames.orig")
     oo<-structure(1:length(oo),names=oo)
@@ -22,6 +24,8 @@
   if (inherits(x, "descrTable"))
     class(x) <- class(x)[class(x)!="descrTable"]
   ans<-eval(parse(text=paste("update(x,x=obj.i,hide=",hide,",digits=",digits,")",sep="")))
+  attr(ans,"show.descr") <- show.descr
+  attr(ans,"all.last") <- all.last
   class(ans)<-class.orig
   ans
 }

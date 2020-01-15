@@ -20,7 +20,7 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
   FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
-  extra.labels = NA)
+  extra.labels = NA, all.last = FALSE)
 }
 
 \arguments{
@@ -125,7 +125,6 @@ Arguments from \code{\link{createTable}} function:
   \item{show.descr}{logical indicating whether descriptives (i.e. mean, proportions, ...) are displayed. Default value is TRUE.}
   
   \item{show.ci}{logical indicating whether to show confidence intervals of means, medians, proporcions or incidences are displayed. If so, they are displayed between squared brackets. Default value is FALSE.}  
-  
   \item{hide.no}{character specifying the name of the level to be hidden for all categorical variables with 2 categories. It is not case-sensitive. The result is one row for the variable with only the name displayed and not the category. This is especially useful for yes/no variables. It is ignored for the categorical row-variables with 'hide' argument different from NA. Default value is NA which means that no category is hidden.}
   
   \item{digits.ratio}{The same as 'digits' argument but applied for the Hazard Ratio or Odds Ratio.}
@@ -139,6 +138,8 @@ Arguments from \code{\link{createTable}} function:
   \item{q.type}{a vector with two integer components. The first component refers to the type of brackets to be displayed for non-normal row-variables (1 - rounded and 2 - squared), while the second refers to the percentile separator (1 - ';', 2 - ',' and 3 - '-'. Default value is c(1, 1).}
   
   \item{extra.labels}{character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to \code{c("","","")}, "Mean (SD)", "Median [25th; 75th]" and "N (\%)" are appended.}
+  
+  \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.}  
 
 }
 

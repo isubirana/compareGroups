@@ -23,13 +23,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -56,6 +58,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -72,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.0</span>
       </span>
     </div>
 
@@ -136,6 +139,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -159,11 +163,11 @@
   <span class='kw'>compute.ratio</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>include.miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>oddsratio.method</span> <span class='kw'>=</span> <span class='st'>"midp"</span>,
   <span class='kw'>chisq.test.perm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chisq.test.B</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>chisq.test.seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>surv</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>riskratio</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>riskratio.method</span> <span class='kw'>=</span> <span class='st'>"wald"</span>,
+  <span class='kw'>riskratio</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>riskratio.method</span> <span class='kw'>=</span> <span class='st'>"wald"</span>, <span class='kw'>compute.prop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>show.p.overall</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>show.all</span>, <span class='no'>show.p.trend</span>, <span class='kw'>show.p.mul</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>show.n</span>, <span class='kw'>show.ratio</span> <span class='kw'>=</span>
   <span class='fl'>FALSE</span>, <span class='kw'>show.descr</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show.ci</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits.ratio</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>show.p.ratio</span> <span class='kw'>=</span> <span class='no'>show.ratio</span>, <span class='kw'>digits.p</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sd.type</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>q.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
+  <span class='kw'>show.p.ratio</span> <span class='kw'>=</span> <span class='no'>show.ratio</span>, <span class='kw'>digits.p</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sd.type</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>q.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
   <span class='kw'>extra.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -183,7 +187,7 @@
     </tr>
     <tr>
       <th>na.action</th>
-      <td><p>a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to <code><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.pass</a></code>, which means no action. Value <code><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.exclude</a></code> can be useful if it is desired to removed all individuals with some NA in any variable.</p></td>
+      <td><p>a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to <code><a href='https://rdrr.io/r/stats/na.fail.html'>na.pass</a></code>, which means no action. Value <code><a href='https://rdrr.io/r/stats/na.fail.html'>na.exclude</a></code> can be useful if it is desired to removed all individuals with some NA in any variable.</p></td>
     </tr>
     <tr>
       <th>y</th>
@@ -191,7 +195,7 @@
     </tr>
     <tr>
       <th>Xext</th>
-      <td><p>a data.frame or a matrix with the same rows / individuals contained in <code>X</code>, and maybe with different variables / columns than <code>X</code>. This argument is used by <code>compareGroups.default</code> in the sense that the variables specified in the argument <code>selec</code> are searched in <code>Xext</code> and/or in the <code><a href='https://www.rdocumentation.org/packages/base/topics/environment'>.GlobalEnv</a></code>. If <code>Xext</code> is <code>NULL</code>, then Xext is created from variables of <code>X</code> plus <code>y</code>. Default value is <code>NULL</code>.</p></td>
+      <td><p>a data.frame or a matrix with the same rows / individuals contained in <code>X</code>, and maybe with different variables / columns than <code>X</code>. This argument is used by <code>compareGroups.default</code> in the sense that the variables specified in the argument <code>selec</code> are searched in <code>Xext</code> and/or in the <code><a href='https://rdrr.io/r/base/environment.html'>.GlobalEnv</a></code>. If <code>Xext</code> is <code>NULL</code>, then Xext is created from variables of <code>X</code> plus <code>y</code>. Default value is <code>NULL</code>.</p></td>
     </tr>
     <tr>
       <th>selec</th>
@@ -208,7 +212,7 @@
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>double between 0 and 1. Significance threshold for the <code><a href='https://www.rdocumentation.org/packages/stats/topics/shapiro.test'>shapiro.test</a></code> normality test for continuous row-variables. Default value is 0.05.</p></td>
+      <td><p>double between 0 and 1. Significance threshold for the <code><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></code> normality test for continuous row-variables. Default value is 0.05.</p></td>
     </tr>
     <tr>
       <th>min.dis</th>
@@ -268,7 +272,7 @@
     </tr>
     <tr>
       <th>oddsratio.method</th>
-      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://www.rdocumentation.org/packages/epitools/topics/oddsratio'>oddsratio</a></code>. Default value is "midp".</p></td>
+      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://rdrr.io/pkg/epitools/man/oddsratio.html'>oddsratio</a></code>. Default value is "midp".</p></td>
     </tr>
     <tr>
       <th>byrow</th>
@@ -276,7 +280,7 @@
     </tr>
     <tr>
       <th>chisq.test.perm</th>
-      <td><p>logical. It applies a permutation chi squared test (<code><a href='https://www.rdocumentation.org/packages/stats/topics/chisq.test'>chisq.test</a></code>) instead of an exact Fisher test (<code><a href='https://www.rdocumentation.org/packages/stats/topics/fisher.test'>fisher.test</a></code>). It only applies when expected count in some cells are lower than 5.</p></td>
+      <td><p>logical. It applies a permutation chi squared test (<code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code>) instead of an exact Fisher test (<code><a href='https://rdrr.io/r/stats/fisher.test.html'>fisher.test</a></code>). It only applies when expected count in some cells are lower than 5.</p></td>
     </tr>
     <tr>
       <th>chisq.test.B</th>
@@ -288,11 +292,11 @@
     </tr>
     <tr>
       <th>Date.format</th>
-      <td><p>character indicating how the dates are shown. Default is "d-mon-Y". See <code><a href='https://www.rdocumentation.org/packages/chron/topics/chron'>chron</a></code> for more details.</p></td>
+      <td><p>character indicating how the dates are shown. Default is "d-mon-Y". See <code><a href='https://rdrr.io/pkg/chron/man/chron.html'>chron</a></code> for more details.</p></td>
     </tr>
     <tr>
       <th>var.equal</th>
-      <td><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href='https://www.rdocumentation.org/packages/stats/topics/anova'>anova</a></code> function is applied and <code><a href='https://www.rdocumentation.org/packages/stats/topics/oneway.test'>oneway.test</a></code> otherwise. Default value is TRUE.</p></td>
+      <td><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href='https://rdrr.io/r/stats/anova.html'>anova</a></code> function is applied and <code><a href='https://rdrr.io/r/stats/oneway.test.html'>oneway.test</a></code> otherwise. Default value is TRUE.</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -308,7 +312,11 @@
     </tr>
     <tr>
       <th>riskratio.method</th>
-      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://www.rdocumentation.org/packages/epitools/topics/riskratio'>riskratio</a></code>. Default value is "wald".</p></td>
+      <td><p>Which method to compute the Odds Ratio. See 'method' argument from <code><a href='https://rdrr.io/pkg/epitools/man/riskratio.html'>riskratio</a></code>. Default value is "wald".</p></td>
+    </tr>
+    <tr>
+      <th>compute.prop</th>
+      <td><p>logical. Compute proportions (TRUE) or percentages (FALSE) for cathegorical row-variables. Default value is FALSE.</p></td>
     </tr>
     <tr>
       <th>hide</th>
@@ -380,7 +388,7 @@
     </tr>
     <tr>
       <th>extra.labels</th>
-      <td><p>character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("","","")</a></code>, "Mean (SD)", "Median [25th; 75th]" and "N (%)" are appended.</p></td>
+      <td><p>character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://rdrr.io/r/base/c.html'>c("","","")</a></code>, "Mean (SD)", "Median [25th; 75th]" and "N (%)" are appended.</p></td>
     </tr>
     </table>
     
@@ -394,7 +402,8 @@
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     
-    <p>The use of descrTable function makes easier to build the table (it only needs one line), it may be preferable to build the descriptive table in two steps when computing descriptives and p-values takes some time: first use <code>compareGroups</code> function to store the descriptives and p-values in an object, and then apply <code>createTable</code> to the this object. The two steps strategy saves time since descriptives and p-values are not recomputed every time it is desired to costumize the descriptive table (number of digits, etc.).</p>
+
+<p>The use of descrTable function makes easier to build the table (it only needs one line), it may be preferable to build the descriptive table in two steps when computing descriptives and p-values takes some time: first use <code>compareGroups</code> function to store the descriptives and p-values in an object, and then apply <code>createTable</code> to the this object. The two steps strategy saves time since descriptives and p-values are not recomputed every time it is desired to costumize the descriptive table (number of digits, etc.).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -407,10 +416,10 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>compareGroups</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>compareGroups</span>)
 
 <span class='co'># load REGICOR data</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>regicor</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>regicor</span>)
 
 <span class='co'># perform descriptives by year and build the table.</span>
 <span class='co'># note the use of arguments from compareGroups (formula and data set) and</span>
@@ -473,19 +482,23 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

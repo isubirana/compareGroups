@@ -16,7 +16,7 @@ createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
            show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
            FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
            show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
-           extra.labels = NA)
+           extra.labels = NA, all.last = FALSE)
 \method{print}{createTable}(x, which.table = "descr", nmax = TRUE, header.labels = c(), ...)
 \method{plot}{createTable}(x, ...)
 }
@@ -60,6 +60,8 @@ createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   \item{q.type}{a vector with two integer components. The first component refers to the type of brackets to be displayed for non-normal row-variables (1 - rounded and 2 - squared), while the second refers to the percentile separator (1 - ';', 2 - ',' and 3 - '-'. Default value is c(1, 1).}
   
   \item{extra.labels}{character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to \code{c("","","")}, "Mean (SD)", "Median [25th; 75th]" and "N (\%)" are appended.}
+  
+  \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.}
   
   \item{which.table}{character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), printing descriptives by groups table, availability data table or both tables, respectively. Default value is 'descr'.}
   

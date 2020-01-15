@@ -23,13 +23,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -56,6 +58,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -72,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.0</span>
       </span>
     </div>
 
@@ -136,6 +139,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -152,7 +156,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>export2word</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>which.table</span><span class='kw'>=</span><span class='st'>"descr"</span>, <span class='kw'>nmax</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>header.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>())</pre>
+    <pre class="usage"><span class='fu'>export2word</span>(<span class='no'>x</span>, <span class='no'>file</span>, <span class='kw'>which.table</span><span class='kw'>=</span><span class='st'>"descr"</span>, <span class='kw'>nmax</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>header.labels</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(),
+            <span class='kw'>caption</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>strip</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>first.strip</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>background</span><span class='kw'>=</span><span class='st'>"#D2D2D2"</span>,
+            <span class='kw'>size</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>header.background</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>header.color</span><span class='kw'>=</span><span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,22 +173,51 @@
     </tr>
     <tr>
       <th>which.table</th>
-      <td><p>see <code><a href='export2md.html'>export2md</a></code></p></td>
+      <td><p>character indicating which table is printed. Possible values are 'descr' or 'avail'(partial matching allowed), exporting descriptives by groups table or availability data table, respectively. Default value is 'descr'.</p></td>
     </tr>
     <tr>
       <th>nmax</th>
-      <td><p>see <code><a href='createTable.html'>print.createTable</a></code></p></td>
+      <td><p>logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.</p></td>
     </tr>
     <tr>
       <th>header.labels</th>
-      <td><p>see <code><a href='createTable.html'>print.createTable</a></code></p></td>
+      <td><p>see the 'header.labels' argument from <code><a href='createTable.html'>createTable</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>caption</th>
+      <td><p>character specifying the table caption for descriptives and available data table. If which.table='both' the first element of 'caption' will be assigned to descriptives table and the second to available data table. If it is set to "", no caption is inserted. Default value is NULL, which writes 'Summary descriptives table by groups of 'y'' for descriptives table and 'Available data by groups of 'y'' for the available data table.</p></td>
+    </tr>
+    <tr>
+      <th>strip</th>
+      <td><p>logical. It shadows table lines corresponding to each variable.</p></td>
+    </tr>
+    <tr>
+      <th>first.strip</th>
+      <td><p>logical. It determines whether to shadow the first variable (TRUE) or the second (FALSE). It only applies when <code>strip</code> argument is true.</p></td>
+    </tr>
+    <tr>
+      <th>background</th>
+      <td><p>color code in HEX format for shadowed lines. You can use <code>rgb</code> function to convert red, green and blue to HEX code. Default color is '#D2D2D2'.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>numeric. Size of descriptive table. Default value is NULL which creates the table in default size.</p></td>
+    </tr>
+    <tr>
+      <th>header.background</th>
+      <td><p>color character for table header or 'NULL'. Default value is 'NULL'.</p></td>
+    </tr>
+    <tr>
+      <th>header.color</th>
+      <td><p>color character for table header text. Default color is 'NULL'.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     
-    <p>Word file is created after compiling Markdown code created by <code><a href='export2md.html'>export2md</a></code>. To compile it it calls <code><a href='https://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code> function which requires pandoc to be installed.</p>
+
+<p>Word file is created after compiling Markdown code created by <code><a href='export2md.html'>export2md</a></code>. To compile it it calls <code><a href='https://rdrr.io/pkg/rmarkdown/man/render.html'>render</a></code> function which requires pandoc to be installed.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -191,16 +226,16 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>compareGroups</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>regicor</span>)
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>compareGroups</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>regicor</span>)
 
  <span class='co'># example on an ordinary table</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTable.html'>createTable</a></span>(<span class='fu'><a href='compareGroups.html'>compareGroups</a></span>(<span class='no'>year</span> ~ <span class='no'>.</span> -<span class='no'>id</span>, <span class='no'>regicor</span>), <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>sex</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='st'>'no'</span>)
-<span class='fu'>export2word</span>(<span class='no'>res</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span><span class='kw'>=</span><span class='st'>".docx"</span>))
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='createTable.html'>createTable</a></span>(<span class='fu'><a href='compareGroups.html'>compareGroups</a></span>(<span class='no'>year</span> ~ <span class='no'>.</span> -<span class='no'>id</span>, <span class='no'>regicor</span>), <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>sex</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='st'>'no'</span>)
+<span class='fu'>export2word</span>(<span class='no'>res</span>, <span class='kw'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>(<span class='kw'>fileext</span><span class='kw'>=</span><span class='st'>".docx"</span>))
 
-<span class='co'># }</span><div class='input'>
-</div></pre>
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -217,19 +252,23 @@
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

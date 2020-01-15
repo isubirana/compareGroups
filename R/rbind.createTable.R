@@ -67,6 +67,8 @@ rbind.createTable <- function(..., caption)
   attr(out,"args")<-args  
   attr(out,"Xlong")<-Xlong
   attr(out,"ylong")<-attr(args.i,"ylong")
+  attr(out,"all.last")<-attr(args.i,"all.last")
+  attr(out,"show.descr")<-attr(args.i,"show.descr")
   
   if (!is.null(caption)){
     nv<-unlist(lapply(args,function(x) length(attr(x,"varnames"))))

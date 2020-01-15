@@ -1,5 +1,6 @@
 # compareGroups 4.4.0
-- compareGroups, descrTable: new argument 'compute.prop' added (to compute proportions instead of percentages for categorical row-variables)
+- compareGroups, descrTable: new argument 'compute.prop' added (to compute proportions instead of percentages for categorical row-variables).
+- createTable, descrTable: new argument 'all.last' added (to place descriptives of the whole sample after descriptives by groups).
 
 # compareGroups 4.3.1
 - compareGroups.Rd: p.trend for categorical variables modified.

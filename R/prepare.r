@@ -1,6 +1,18 @@
 prepare<-
 function (x, nmax, header.labels) 
 {
+  
+# x <- tab[1:3]
+# nmax <- TRUE
+# header.labels <- c()
+# names(attributes(x))
+
+    show.all <- attr(x, "show.all")
+    show.descr <- attr(x, "show.descr")
+    groups <- attr(x, "groups")
+    ny <- attr(x, "ny")
+    all.last <- attr(x, "all.last")
+    
     varnames <- attr(x, "varnames")
     nr <- attr(x, "nr")
     desc <- x$desc
@@ -96,12 +108,25 @@ function (x, nmax, header.labels)
     }          
     table1 <- apply(table1, 2, format, justify = "centre")
     colnames(table1) <- rep("", ncol(table1))
+    
+
+    
     table2 <- x[[2]]
     table2 <- as.matrix(table2)
     table2 <- ifelse(is.na(table2), "", table2)
     table2 <- rbind(colnames(table2), table2)
     table2 <- apply(table2, 2, format, justify = "centre")
     colnames(table2) <- rep("", ncol(table2))
+    
+    # rearrange table 1 and table 2 by putting all column after descriptives by groups.
+    if (all.last & show.all & show.descr & groups){
+      table1[,1:(ny+1)] <- table1[,c(2:(ny+1),1)] 
+    }
+    if (all.last){
+      table2[,1:(ny+1)] <- table2[,c(2:(ny+1),1)] 
+    }
+    
+    # out
     out <- list(table1 = table1, table2 = table2)
     if (!is.null(attr(x, "caption"))) attr(out, "cc") <- cc
     attr(out, "nmax") <- nmax
@@ -110,6 +135,7 @@ function (x, nmax, header.labels)
     nr <- unlist(apply(nr, 1, function(x) rep(x[2],x[1])))
     attr(out, "nr") <- nr
     out
+    
 }
 
 
