@@ -154,9 +154,14 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               n.ij <- sum(nn[-1,j,drop=FALSE])
             else
               n.ij <- sum(nn[i,])
-          bt.ci <- binom.test(nn[i,j], n.ij, conf.level = conf.level)$conf.int
-          lower[i,j] <- bt.ci[1]*(if (compute.prop) 1 else 100)
-          upper[i,j] <- bt.ci[2]*(if (compute.prop) 1 else 100)
+          bt.ci <- try(binom.test(nn[i,j], n.ij, conf.level = conf.level)$conf.int,silent=TRUE)
+          if (inherits(bt.ci, "try-error")){
+            lower[i,j] <- NA
+            upper[i,j] <- NA
+          } else {
+            lower[i,j] <- bt.ci[1]*(if (compute.prop) 1 else 100)
+            upper[i,j] <- bt.ci[2]*(if (compute.prop) 1 else 100)
+          }
         }
       }
 
@@ -450,7 +455,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
             p.ratio<-rep(NaN,nlevels(x))
             p.ratio[ref]<-NA
           }else{
-            ci[-ref,]<-exp(cbind(coef(fit),suppressMessages(confint(fit))))
+            ci[-ref,]<-exp(cbind(coef(fit),suppressMessages(confint(fit, level=conf.level))))
             p.ratio[-ref]<-coef(summary(fit))[,5]
           }
           rownames(ci)<-levels(x)
@@ -463,7 +468,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               ci<-matrix(NaN,1,3)
               p.ratio<-NaN
             } else
-              ci<-rbind(exp(c(coef(fit),suppressMessages(confint(fit)))))
+              ci<-rbind(exp(c(coef(fit),suppressMessages(confint(fit, level=conf.level)))))
               p.ratio<-coef(summary(fit))[1,5]
           } else {
             ci<-matrix(NaN,1,3)
@@ -489,9 +494,9 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
           if (ref!=1)
             tb<-rbind(tb[ref,,drop=FALSE],tb[-ref,,drop=FALSE])
           if (riskratio)
-            or.res<-try(riskratio(tb,method=riskratio.method),silent=TRUE)
+            or.res<-try(riskratio(tb,method=riskratio.method,conf.level=conf.level),silent=TRUE)
           else
-            or.res<-try(oddsratio(tb,method=oddsratio.method),silent=TRUE)
+            or.res<-try(oddsratio(tb,method=oddsratio.method,conf.level=conf.level),silent=TRUE)
           if (inherits(or.res,"try-error")){
             ci<-matrix(NaN,nlevels(x),3)
             ci[ref,]<-c(1,NA,NA)          
@@ -517,7 +522,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               ci<-matrix(NaN,1,3)
               p.ratio<-NaN
             }else{
-              ci<-rbind(exp(c(coef(fit)[-1],suppressMessages(confint.default(fit)[-1,]))))
+              ci<-rbind(exp(c(coef(fit)[-1],suppressMessages(confint.default(fit, level=conf.level)[-1,]))))
               if (ref.y==2)
                 ci<-1/ci
               p.ratio<-coef(summary(fit))[2,4]

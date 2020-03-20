@@ -13,6 +13,7 @@
 ^vignettes/wui.Rmd$
 ^README.md$
 ^\.travis\.yml$
+^index_files$
 
 
 

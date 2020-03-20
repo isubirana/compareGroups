@@ -13,9 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <script src="../../pkgdown.js"></script><meta property="og:title" content="Example 1: Building a descriptive table.">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://github.com/isubirana/compareGroups/logo.png">
@@ -38,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.1</span>
       </span>
     </div>
 
@@ -103,7 +102,6 @@
 <!--/.navbar -->
 
       
-
       </header><script src="example1_files/kePrint-0.0.1/kePrint.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -122,26 +120,26 @@
 <h2 class="hasAnchor">
 <a href="#step-1--install-the-package" class="anchor"></a>Step 1. Install the package</h2>
 <p>Install the <strong><code>compareGroups</code></strong> package from CRAN and then load it by typing:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(compareGroups)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"compareGroups"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a></code></pre></div>
 </div>
 <div id="step-2--load-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#step-2--load-data" class="anchor"></a>Step 2. Load data</h2>
 <p>Load the PREDIMED example data available in <strong><code>compareGroups</code></strong> package:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a></code></pre></div>
 </div>
 <div id="step-3--compute-descriptives-and-tests" class="section level2">
 <h2 class="hasAnchor">
 <a href="#step-3--compute-descriptives-and-tests" class="anchor"></a>Step 3. Compute descriptives and tests</h2>
 <p>Compute all descriptives and tests from selected variables by using the <strong><code>compareGroups</code></strong> function. <br> Note the use of <code>formula</code> argument as usual in <code>R</code>, so “.” indicates all variables in the dataset while “-” sign indicates removing, and variable on left side of “~” sign indicates the groups (if descriptives of whole datset without separating by groups is desired left it in blank). Store the results in an object that can be used afterwards to perform plots or bivariate table itself.<br> By the argument <code>method</code> we set <code>wtn</code> and <code>p14</code> varible to be reported as median and quartiles instead of mean and standard deviation.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">wtn =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">wtn =</span> <span class="dv">2</span>, <span class="dt">p14 =</span> <span class="dv">2</span>))</a></code></pre></div>
 </div>
 <div id="step-4--create-the-descriptive-table" class="section level2">
 <h2 class="hasAnchor">
 <a href="#step-4--create-the-descriptive-table" class="anchor"></a>Step 4. Create the descriptive table</h2>
 <p>Use the <strong><code>creaTable</code></strong> function passing the previous object computed by <strong><code>compareGroups</code></strong> function (<code>res</code>). Using this function you can customize how categorical variables are displayed (only percertage or absolute frequencies or both) by <code>type</code> argument or whether standard deviation appears inside brackets or separated by plus/minus symbol by <code>sd.type</code> argument. <br> Also note the use of <code>hide.no</code> category which is useful to hide “no” level for those binary variables. <br> If you only want to show “Female” category use <code>hide</code> argument for <code>sex</code> variable indicating which category is going to be hiden. This argument also applies to categorical variables with more than two categories. To specify the number of decimal digits to show use <code>digits</code>arguments. In this example <code>p14</code> have no decimals and for <code>hormo</code> only one digit. Finally, if you want to show how many individuals have non-missing values in each described variable, set <code>hide.n</code> argument to <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">restab &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/createTable.html">createTable</a></span>(res, <span class="dt">digits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p14 =</span> <span class="dv">0</span>, <span class="dt">hormo=</span><span class="dv">1</span>), <span class="dt">type =</span> <span class="dv">1</span>, <span class="dt">sd.type =</span> <span class="dv">2</span>, <span class="dt">hide =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>), <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">restab &lt;-<span class="st"> </span><span class="kw"><a href="../../reference/createTable.html">createTable</a></span>(res, <span class="dt">digits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p14 =</span> <span class="dv">0</span>, <span class="dt">hormo=</span><span class="dv">1</span>), <span class="dt">type =</span> <span class="dv">1</span>, <span class="dt">sd.type =</span> <span class="dv">2</span>, <span class="dt">hide =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>), <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="step-5--print-or-export-the-descriptive-table" class="section level2">
 <h2 class="hasAnchor">
@@ -150,7 +148,7 @@
 <h3 class="hasAnchor">
 <a href="#print-on-r-console" class="anchor"></a>Print on R console</h3>
 <p>The descriptive table can be printed in the <code>R</code> console using the method <code>print</code>, i.e. just typing the name of the object:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">restab</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">restab</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -176,7 +174,7 @@ MeDiet Adherence score          8 [7;10]     9 [8;10]      9 [8;10]     &lt;0.00
 AMI, stroke, or CV Death          4.75%       3.33%          3.90%       0.064   6324 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>If you want to change some bivariate table header, such “p-value” instead of “p.overall” use <code>header.labels</code> argument:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -209,33 +207,33 @@ AMI, stroke, or CV Death          4.75%       3.33%          3.90%      0.064  6
 <li><strong>Excel</strong></li>
 </ul>
 <p>If you want to create a PDF document with the table in a publish-ready format</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="../../reference/export2pdf.html">export2pdf</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.pdf"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../../reference/export2pdf.html">export2pdf</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.pdf"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <p><img src="example1pdf.png"></p>
 <ul>
 <li><strong>Word</strong></li>
 </ul>
 <p>Export to a Word.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="../../reference/export2word.html">export2word</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.docx"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../../reference/export2word.html">export2word</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.docx"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <p><img src="example1docx.png"></p>
 <ul>
 <li><strong>PDF</strong></li>
 </ul>
 <p>If you want to create a PDF document with the table in a publish-ready format</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw"><a href="../../reference/export2pdf.html">export2pdf</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.pdf"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../../reference/export2pdf.html">export2pdf</a></span>(restab, <span class="dt">file =</span> <span class="st">"example1.pdf"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <p><img src="example1pdf.png"></p>
 <p><em>Note: To create tables in PDF you must have some LaTeX compiler installed on your computer.</em></p>
 <ul>
 <li><strong>Excel</strong></li>
 </ul>
 <p>If you want export the descriptive table to an Excel file:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">export2xlsx</span>(restab, <span class="dt">file =</span> <span class="st">"example1.xlsx"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">export2xlsx</span>(restab, <span class="dt">file =</span> <span class="st">"example1.xlsx"</span>, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <p><img src="example1xlsx.png"></p>
 <p><em>Note: You must have <code>xlsx</code> <code>R</code> package installed.</em></p>
 <ul>
 <li><strong>Markdown</strong></li>
 </ul>
 <p>You can translate to Markdown code and insert it in a R-markdown chunk to create reproducible reports.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../../reference/export2md.html">export2md</a></span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../../reference/export2md.html">export2md</a></span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 <table class="table table table-striped table-condensed">
 <caption>
 Summary descriptives table by groups of `Intervention group’
@@ -594,7 +592,7 @@ AMI, stroke, or CV Death
 <li><strong>LaTeX</strong></li>
 </ul>
 <p>Similar to Markdown file, it is possible to insert LaTeX code in a .tex.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">export2tex</span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">export2tex</span>(restab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>))</a></code></pre></div>
 </div>
 </div>
   </div>
@@ -616,20 +614,17 @@ AMI, stroke, or CV Death
 </div>
 
 
-
       <footer><div class="copyright">
   <p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
 </div>
 
   
-
 
   </body>
 </html>

@@ -944,7 +944,8 @@ cGroupsGUI <- function(X){
                                               compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
                                               byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
                                               Date.format = 'd-mon-Y', var.equal = TRUE, 
-                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald')"))))
+                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald',
+                                              compute.prop=FALSE)"))))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             print(ans)
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
@@ -961,7 +962,8 @@ cGroupsGUI <- function(X){
                                               compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
                                               byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
                                               Date.format = 'd-mon-Y', var.equal = TRUE, 
-                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald')"))))
+                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald',
+                                              compute.prop=FALSE)"))))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
             if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -988,7 +990,8 @@ cGroupsGUI <- function(X){
                                           compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
                                           byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
                                           Date.format = 'd-mon-Y', var.equal = TRUE,
-                                          conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald')"))))
+                                          conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald',
+                                          compute.prop=FALSE)"))))
         if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
         if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -1015,7 +1018,8 @@ cGroupsGUI <- function(X){
                                              compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
                                              byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
                                              Date.format = 'd-mon-Y', var.equal = TRUE, 
-                                             conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald')"))))
+                                             conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald',
+                                             compute.prop=TRUE)"))))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))
@@ -1042,7 +1046,8 @@ cGroupsGUI <- function(X){
                                               compute.ratio=TRUE, include.miss=FALSE, oddsratio.method='midp',chisq.test.perm = FALSE, 
                                               byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
                                               Date.format = 'd-mon-Y', var.equal = TRUE, 
-                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald')"))))
+                                              conf.level=0.95, surv=FALSE, riskratio=FALSE, riskratio.method='wald',
+                                              compute.prop=FALSE)"))))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'compareGroups' function", icon = "info", type="ok"))
             if(!inherits(ans,"try-error")) ans <- try(createTable(x=ans,hide=res$hide, digits=res$digits,type=res$type, show.all= res$show.all, show.p.trend= res$show.p.trend,show.p.mul= res$show.p.mul,show.n=res$show.n, show.p.overall = res$show.p.overall, show.ratio = res$show.ratio, show.descr = res$show.descr))
           if(inherits(ans,"try-error")) return(tcltk::tkmessageBox(message = "Error occurred in 'createTable' function", icon = "info", type="ok"))

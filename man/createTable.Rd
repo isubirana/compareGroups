@@ -105,7 +105,7 @@ An object of class 'createTable', which contains a list of 2 matrix:
 
 The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (<1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').
 
-The p-values corresponding to the OR of a two level row-variable may not me equal to its p.overall p-value. This is because statistical tests are different: the option 'midp.exact' (see \code{\link[epitools]{oddsratio}} for more details) is taken in the first case and Chi-square or Fisher exact test in the second. The same happens when OR for a continuous value is performed: the p-value corresponding to this OR is computed form a logistic regression and therefore may differ from the one computed using a Student-T test or Kruskall Wallis test.
+The p-values corresponding to the OR of a two level row-variable may not me equal to its p.overall p-value. This is because statistical tests are different: the option 'midp.exact' (see \code{oddsratio} from \code{epitools} package for more details) is taken in the first case and Chi-square or Fisher exact test in the second. The same happens when OR for a continuous value is performed: the p-value corresponding to this OR is computed form a logistic regression and therefore may differ from the one computed using a Student-T test or Kruskall Wallis test.
 This discordance may also be present when computing the p-value corresponding to a Hazard Ratio for a categorical two level row-variable: a Wald test or a long-rank test are peformed.
 
 }

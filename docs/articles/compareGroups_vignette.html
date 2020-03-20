@@ -13,9 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="compareGroups 4.0: Descriptives by groups">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://github.com/isubirana/compareGroups/logo.png">
@@ -38,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.1</span>
       </span>
     </div>
 
@@ -103,14 +102,13 @@
 <!--/.navbar -->
 
       
-
       </header><script src="compareGroups_vignette_files/kePrint-0.0.1/kePrint.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>compareGroups 4.0: Descriptives by groups</h1>
                         <h4 class="author">Isaac Subirana, Joan Vila and Héctor Sanz</h4>
             
-            <h4 class="date">2020-01-08</h4>
+            <h4 class="date">2020-03-20</h4>
       
       
       <div class="hidden name"><code>compareGroups_vignette.Rmd</code></div>
@@ -199,7 +197,7 @@
 <p>Tables can easily be exported to CSV, LaTeX, HTML, PDF, Word or Excel, or inserted in R-markdown files to generate reports automatically.</p>
 <p>This package can be used from the <strong><code>R</code></strong> prompt or from a user-friendly graphical user interface for non-R familiarized users.</p>
 <p>The <strong><code>compareGroups</code></strong> package is available on CRAN repository. To load the package using the <strong><code>R</code></strong> prompt, enter:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(compareGroups)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a></code></pre></div>
 <p>This document provides an overview of the usage of the <strong><code>compareGroups</code></strong> package with a real examples, both using the R syntax and the graphical user interface. It is structure as follows:</p>
 <ul>
 <li>Introduction of the package (<a href="#package">section 2</a>) and the data used as example (<a href="#data">section 3</a>),</li>
@@ -255,7 +253,7 @@
 <a href="#data" class="anchor"></a>Data used as example</h1>
 <p>To illustrate how this package works we sampled 85% data from the participants in <a href="http://www.predimed.es/">the PREDIMED study</a> <span class="citation">(Estruch et al. 2013)</span>. PREDIMED is a multicenter trial in Spain, were randomly assigned participants who were at high cardiovascular risk, but with no cardiovascular disease at enrolment, to one of three diets: a Mediterranean diet supplemented with extra-virgin olive oil (MedDiet+VOO), a Mediterranean diet supplemented with mixed nuts (MedDiet+Nuts), or a control diet (advice to reduce dietary fat). Participants received quarterly individual and group educational sessions and, depending on group assignment, free provision of extra-virgin olive oil, mixed nuts, or small non-food gifts. The primary end point was the rate of major cardiovascular events (myocardial infarction, stroke, or death from cardiovascular causes.</p>
 <p>First of all, load PREDIMED data typing:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(predimed)</a></code></pre></div>
 <p style="margin-top:50px">
 </p>
 <p>Variables and labels in this data frame are:</p>
@@ -448,8 +446,8 @@ No; Yes
 <h2 class="hasAnchor">
 <a href="#time-to-event-variables" class="anchor"></a>Time-to-event variables</h2>
 <p>A variable of class <code>Surv</code> must be created to deal with time-to-event variables (i.e., time to Cardiovascular event/censored in our example):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">predimed<span class="op">$</span>tmain &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(predimed, <span class="kw">Surv</span>(toevent, event <span class="op">==</span><span class="st"> "Yes"</span>))</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(predimed<span class="op">$</span>tmain, <span class="st">"label"</span>) &lt;-<span class="st"> "AMI, stroke, or CV Death"</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">predimed<span class="op">$</span>tmain &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(predimed, <span class="kw">Surv</span>(toevent, event <span class="op">==</span><span class="st"> "Yes"</span>))</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/attr">attr</a></span>(predimed<span class="op">$</span>tmain, <span class="st">"label"</span>) &lt;-<span class="st"> "AMI, stroke, or CV Death"</span></a></code></pre></div>
 <p>Note that variables <em>tmain</em> and <em>tcv</em> are created as time-to-death and time-to-cardiovascular event, respectively, both taking into account censoring (i.e. they are of class Surv).</p>
 <p style="margin-top:50px">
 </p>
@@ -467,7 +465,7 @@ No; Yes
 <a href="#computing-descriptives" class="anchor"></a>Computing descriptives</h2>
 <p><code>compareGroups</code> is the main function which does all the calculus. It is needed to store results in an object. Later, applying the function <code>createTable</code> (Section 4.2) to this object will create tables of the analysis results.</p>
 <p>For example, to perform a univariate analysis with the <em>predimed</em> data between <em>group</em> (“response” variable) and all other variables (“explanatory” variables), this formula is required:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> predimed)</a></code></pre></div>
 <p style="margin-top:50px">
 </p>
 <div id="selecting-response-variables" class="section level3">
@@ -475,11 +473,11 @@ No; Yes
 <a href="#selecting-response-variables" class="anchor"></a>Selecting response variables</h3>
 <p>If only a dot occurs on the right side of the <code>~</code> all variables in the data frame will be used.</p>
 <p>To remove the variable <em>toevent</em> and <em>event</em> from the analysis:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent <span class="op">-</span><span class="st"> </span>event, <span class="dt">data =</span> predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>toevent <span class="op">-</span><span class="st"> </span>event, <span class="dt">data =</span> predimed)</a></code></pre></div>
 <p>To select some explanatory variables (e.g., <em>age</em>, <em>sex</em> and <em>waist</em>) and store results in an object of class <code>compareGroups</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb6-2" title="2">    <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb6-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">res</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -504,8 +502,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <h3 class="hasAnchor">
 <a href="#subsetting" class="anchor"></a>Subsetting</h3>
 <p>To perform the analysis in a subset of participants (e.g., “female” participants):</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb8-2" title="2">    <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'group'---------
@@ -520,8 +518,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>Note that only results for female participants are shown.</p>
 <p>To subset specific variable/s (e.g., <em>hormo</em> and <em>waist</em>):</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb10-2" title="2">    <span class="dt">selec =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">hormo =</span> sex <span class="op">==</span><span class="st"> "Female"</span>, <span class="dt">waist =</span> waist <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    <span class="dt">selec =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">hormo =</span> sex <span class="op">==</span><span class="st"> "Female"</span>, <span class="dt">waist =</span> waist <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>))</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -536,8 +534,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>Combinations are also allowed, e.g.:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb12-2" title="2">    <span class="dt">selec =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">waist =</span> <span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(hormo)), <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">    <span class="dt">selec =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">waist =</span> <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(hormo)), <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'group'---------
@@ -551,8 +549,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>A variable can appear twice in the formula, e.g.:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb14-2" title="2">    <span class="dt">data =</span> predimed, <span class="dt">selec =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">bmi.1 =</span> <span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(hormo)))</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">    <span class="dt">data =</span> predimed, <span class="dt">selec =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">bmi.1 =</span> <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(hormo)))</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -575,8 +573,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <h3 class="hasAnchor">
 <a href="#methods-for-continuous-variables" class="anchor"></a>Methods for continuous variables</h3>
 <p>By default continuous variables are analyzed as normal-distributed. When a table is built (see <code>createTable</code> function, Section 4.2), continuous variables will be described with mean and standard deviation. To change default options, e.g., “waist” used as non-normal distributed:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb16-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -598,8 +596,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <li><p>NA: performs a Shapiro-Wilks test to decide between normal or non-normal</p></li>
 </ul>
 <p>If the <code>method</code> argument is stated as <code>NA</code> for a variable, then a Shapiro-Wilk test for normality is used to decide if the variable is normal or non-normal distributed. To change the significance threshold:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb18-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="ot">NA</span>), <span class="dt">alpha =</span> <span class="fl">0.01</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="ot">NA</span>), <span class="dt">alpha =</span> <span class="fl">0.01</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -614,9 +612,9 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>According to Shapiro-Wilk test, stating the cutpoint at 0.01 level, “Hormone-replacement therapy” departed significantly from the normal distribution and therefore the method for this variable will be “continuous non-normal”.</p>
 <p>All non factor variables are considered as continuous. Exception is made (by default) for those that have fewer than 5 different values. This threshold can be changed in the <strong>min.dis</strong> statement:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">predimed<span class="op">$</span>age7gr &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(predimed<span class="op">$</span>age, <span class="dt">breaks =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="ot">Inf</span>, </a>
-<a class="sourceLine" id="cb20-2" title="2">    <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">75</span>, <span class="dv">80</span>, <span class="ot">Inf</span>), <span class="dt">right =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age7gr, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">age7gr =</span> <span class="ot">NA</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">predimed<span class="op">$</span>age7gr &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cut">cut</a></span>(predimed<span class="op">$</span>age, <span class="dt">breaks =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="ot">Inf</span>, </a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">    <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="dv">70</span>, <span class="dv">75</span>, <span class="dv">80</span>, <span class="ot">Inf</span>), <span class="dt">right =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age7gr, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">age7gr =</span> <span class="ot">NA</span>))</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -626,8 +624,8 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 1 age7gr 6324 0.007** continuous non-normal ALL      
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age7gr, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">age7gr =</span> <span class="ot">NA</span>), </a>
-<a class="sourceLine" id="cb22-2" title="2">    <span class="dt">min.dis =</span> <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age7gr, <span class="dt">data =</span> predimed, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">age7gr =</span> <span class="ot">NA</span>), </a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">    <span class="dt">min.dis =</span> <span class="dv">8</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -638,13 +636,13 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>To avoid errors the maximum categories for the response variable is set at 5 in this example (default value). If this variable has more than 5 different values, the function <code>compareGroups</code> returns an error message. For example:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(age7gr <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(age7gr <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed)</a></code></pre></div>
 <div style="color:red">
 <pre><code>Error en compareGroups.default(X = X, y = y, include.label = include.label,  :
 number of groups must be less or equal to 5</code></pre>
 </div>
 <p>Defaults setting can be changed with the <strong>max.ylev</strong> statement:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(age7gr <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed, <span class="dt">max.ylev =</span> <span class="dv">7</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(age7gr <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed, <span class="dt">max.ylev =</span> <span class="dv">7</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'age7gr'---------
@@ -657,8 +655,8 @@ number of groups must be less or equal to 5</code></pre>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>Similarly, by default there is a limit for the maximum number of levels for an explanatory variable. If this level is exceeded, the variable is removed from the analysis and a warning message is printed:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>age7gr, <span class="dt">method =</span> (<span class="dt">age7gr =</span> <span class="dv">3</span>), <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb28-2" title="2">    <span class="dt">max.xlev =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>age7gr, <span class="dt">method =</span> (<span class="dt">age7gr =</span> <span class="dv">3</span>), <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">    <span class="dt">max.xlev =</span> <span class="dv">5</span>)</a></code></pre></div>
 <div style="color:blue">
 <pre><code>Warning in compareGroups.default(X = X, y = y, include.label = include.label,  :
 Variables 'age7gr' have been removed since some errors ocurred</code></pre>
@@ -674,8 +672,8 @@ Variables 'age7gr' have been removed since some errors ocurred</code></pre>
 <li>
 <strong><code>include.label</code>:</strong> By default the variable labels are shown in the output (if there is no label the name will be printed). Changing the statement include.label from “= TRUE” (default) to “= FALSE” will cause variable names to be printed instead.</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb30-2" title="2">    <span class="dt">include.label =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">    <span class="dt">include.label =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'group'---------
@@ -692,9 +690,9 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <li>
 <strong><code>Q1</code>, <code>Q3</code>:</strong> When the method for a variable is stated as “2” (i.e., to be analyzed as continuous non-normal; see section 4.1.3), by default the median and quartiles 1 and 3 will be shown in the final results, after applying the function <code>createTable</code> (see Section 4.2).</li>
 </ul>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">resu1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb32-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb32-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resu1)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">resu1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>waist, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resu1)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -707,9 +705,9 @@ Waist circumference 101 [94.0;108] 100 [93.0;107] 100 [93.0;107]   0.085
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note: percentiles 25 and 75 are calculated for “Waist circumference”.</p>
 <p>To get instead percentile 2.5% and 97.5%:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">resu2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb34-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">Q1 =</span> <span class="fl">0.025</span>, <span class="dt">Q3 =</span> <span class="fl">0.975</span>)</a>
-<a class="sourceLine" id="cb34-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resu2)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">resu2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">Q1 =</span> <span class="fl">0.025</span>, <span class="dt">Q3 =</span> <span class="fl">0.975</span>)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resu2)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -729,24 +727,24 @@ Hormone-replacement therapy:                                                0.85
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note: percentiles 2.5% and 97.5% are calculated for Follow-up.</p>
 <p>To get minimum and maximum:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb36-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">Q1 =</span> <span class="dv">0</span>, <span class="dt">Q3 =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">Q1 =</span> <span class="dv">0</span>, <span class="dt">Q3 =</span> <span class="dv">1</span>)</a></code></pre></div>
 <ul>
 <li>
 <strong><code>simplify</code>:</strong> Sometimes a categorical variable has no individuals for a specific group. For example, <em>smoker</em> has 3 levels. As an example and to illustrate this problem, we have created a new variable <em>smk</em> with a new category (“Unknown”):</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">predimed<span class="op">$</span>smk &lt;-<span class="st"> </span>predimed<span class="op">$</span>smoke</a>
-<a class="sourceLine" id="cb37-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(predimed<span class="op">$</span>smk) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Never smoker"</span>, <span class="st">"Current or former &lt; 1y"</span>, </a>
-<a class="sourceLine" id="cb37-3" title="3">    <span class="st">"Never or former &gt;= 1y"</span>, <span class="st">"Unknown"</span>)</a>
-<a class="sourceLine" id="cb37-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/attr.html">attr</a></span>(predimed<span class="op">$</span>smk, <span class="st">"label"</span>) &lt;-<span class="st"> "Smoking 4 cat."</span></a>
-<a class="sourceLine" id="cb37-5" title="5"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/table.html">table</a></span>(predimed<span class="op">$</span>smk))</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">predimed<span class="op">$</span>smk &lt;-<span class="st"> </span>predimed<span class="op">$</span>smoke</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/levels">levels</a></span>(predimed<span class="op">$</span>smk) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Never smoker"</span>, <span class="st">"Current or former &lt; 1y"</span>, </a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">    <span class="st">"Never or former &gt;= 1y"</span>, <span class="st">"Unknown"</span>)</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/attr">attr</a></span>(predimed<span class="op">$</span>smk, <span class="st">"label"</span>) &lt;-<span class="st"> "Smoking 4 cat."</span></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/table">table</a></span>(predimed<span class="op">$</span>smk))</a></code></pre></div>
 <pre><code>                       [,1]
 Never smoker           3892
 Current or former &lt; 1y  858
 Never or former &gt;= 1y  1574
 Unknown                   0</code></pre>
 <p>Note that this new category (“unknown”) has no individuals:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smk <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smk <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed)</a></code></pre></div>
 <div style="font-color:blue">
 <pre><code>
 -------- Summary of results by groups of 'Intervention group'---------
@@ -766,7 +764,7 @@ In compare.i(X[, i], y = y, selec.i = selec[i], method.i = method[i],  :
 </div>
 <p>Note that a “Warning” message is printed related to the problem with <em>smk</em>.</p>
 <p>To avoid using empty categories, <code>simplify</code> must be stated as <code>TRUE</code> (Default value).</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smk, <span class="dt">data =</span> predimed, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smk, <span class="dt">data =</span> predimed, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <div style="font-color:blue">
 <pre><code>
 -------- Summary of results by groups of 'Intervention group'---------
@@ -792,9 +790,9 @@ Warning messages:
 <h3 class="hasAnchor">
 <a href="#summary" class="anchor"></a>Summary</h3>
 <p>Applying the <code>summary</code> function to an object of class <code>createTable</code> will obtain a more detailed output:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb43-2" title="2">    <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb43-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(res[<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">    <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>), <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(res[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)])</a></code></pre></div>
 <pre><code>
  --- Descriptives of each row-variable by groups of 'Intervention group' ---
 
@@ -847,10 +845,10 @@ MedDiet + VOO                                   </code></pre>
 <h3 class="hasAnchor">
 <a href="#plotting" class="anchor"></a>Plotting</h3>
 <p>Variables can be plotted to see their distribution. Plots differ according to whether the variable is continuous or categorical. Plots can be seen on-screen or saved in different formats (BMP, JPG’, PNG, TIF or PDF). To specify the format use the argument `type’.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(res[<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">file =</span> <span class="st">"./figures/univar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">file =</span> <span class="st">"./figures/univar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
 <p><img src="figures/univar/age.png" alt="alt text"><img src="figures/univar/sex.png" alt="alt text"></p>
 <p>Plots also can be done according to grouping variable. In this case only a boxplot is shown for continuous variables:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(res[<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">bivar =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">"./figures/bivar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">bivar =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">"./figures/bivar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
 <p><img src="figures/bivar/age.png" alt="alt text"><img src="figures/bivar/sex.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -859,9 +857,9 @@ MedDiet + VOO                                   </code></pre>
 <h3 class="hasAnchor">
 <a href="#updating" class="anchor"></a>Updating</h3>
 <p>The object from <code>compareGroups</code> can later be updated. For example:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb47-2" title="2">    <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb47-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">    <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">res</a></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Intervention group'---------
@@ -876,9 +874,9 @@ MedDiet + VOO                                   </code></pre>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>The object <code>res</code> is updated using:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(res, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>toevent, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb49-2" title="2"><span class="st">    "Female"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>, <span class="dt">tovent =</span> <span class="dv">2</span>), <span class="dt">selec =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">bmi =</span> <span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(hormo)))</a>
-<a class="sourceLine" id="cb49-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(res, . <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>toevent, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2"><span class="st">    "Female"</span>, <span class="dt">method =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">waist =</span> <span class="dv">2</span>, <span class="dt">tovent =</span> <span class="dv">2</span>), <span class="dt">selec =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">bmi =</span> <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(hormo)))</a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">res</a></code></pre></div>
 <p>Note that “Sex” is removed as an explanatory variable but used as a filter, subsetting only “Female” participants. Variable “Waist circumference” has been changed to “continuous non-normal”. Two new variables have been added: Body mass index and Follow-up (stated continuous non-normal). For Body mass index is stated to show only data of participants with non-missing values in Hormone-replacement therapy.</p>
 <p style="margin-top:50px">
 </p>
@@ -888,12 +886,12 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <a href="#substracting-results" class="anchor"></a>Substracting results</h3>
 <p>Since version 3.0, there is a new function called <code>getResults</code> to retrieve some specific results computed by <code>compareGroups</code>, such as p-values, descriptives (means, proportions, …), etc.</p>
 <p>For example, it may be interesting to recover the p-values for each variable as a vector to further manipulate it in <strong><code>R</code></strong>, like adjusting for multiple comparison with <code>p.adjust</code>. For example, lets take the example data from <strong><code>SNPassoc</code></strong> package that contains information of dozens of SNPs (genetic variants) from a sample of cases and controls. In this case we analize five of them:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(SNPassoc)</a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(SNPs)</a>
-<a class="sourceLine" id="cb50-3" title="3">tab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(casco <span class="op">~</span><span class="st"> </span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">    </span>snp10005 <span class="op">+</span><span class="st"> </span>snp10008 <span class="op">+</span><span class="st"> </span>snp10009, SNPs))</a>
-<a class="sourceLine" id="cb50-5" title="5">pvals &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getResults.html">getResults</a></span>(tab, <span class="st">"p.overall"</span>)</a>
-<a class="sourceLine" id="cb50-6" title="6"><span class="kw"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span>(pvals, <span class="dt">method =</span> <span class="st">"BH"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(SNPassoc)</a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(SNPs)</a>
+<a class="sourceLine" id="cb50-3" data-line-number="3">tab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(casco <span class="op">~</span><span class="st"> </span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4"><span class="st">    </span>snp10005 <span class="op">+</span><span class="st"> </span>snp10008 <span class="op">+</span><span class="st"> </span>snp10009, SNPs))</a>
+<a class="sourceLine" id="cb50-5" data-line-number="5">pvals &lt;-<span class="st"> </span><span class="kw"><a href="../reference/getResults.html">getResults</a></span>(tab, <span class="st">"p.overall"</span>)</a>
+<a class="sourceLine" id="cb50-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/p.adjust">p.adjust</a></span>(pvals, <span class="dt">method =</span> <span class="st">"BH"</span>)</a></code></pre></div>
 <pre><code> snp10001  snp10002  snp10005  snp10008  snp10009 
 0.7051300 0.7072158 0.7583432 0.7583432 0.7072158 </code></pre>
 <p style="margin-top:50px">
@@ -907,9 +905,9 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <li>
 <strong><code>ref</code>:</strong> This statement can be used to change the reference category:</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">res1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb52-2" title="2">    <span class="dt">ref =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb52-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res1, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">res1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">    <span class="dt">ref =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res1, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -928,9 +926,9 @@ Smoking:                                                           &lt;0.001
     Former      320 (29.4%) 1254 (24.0%) 0.63 [0.54;0.73] &lt;0.001            
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that for categorical response variables the reference category is the first one in the statement:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">res2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb54-2" title="2">    <span class="dt">ref =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">smoke =</span> <span class="dv">1</span>, <span class="dt">sex =</span> <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res2, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">res2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">    <span class="dt">ref =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">smoke =</span> <span class="dv">1</span>, <span class="dt">sex =</span> <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res2, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -953,9 +951,9 @@ Smoking:                                                           &lt;0.001
 <li>
 <strong><code>ref.no</code>:</strong> Similarly to the <code>ref</code> statement, <code>ref.no</code> is used to state “no” as the reference category for all variables with this category:</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hormo <span class="op">+</span><span class="st"> </span>hyperchol, </a>
-<a class="sourceLine" id="cb56-2" title="2">    <span class="dt">data =</span> predimed, <span class="dt">ref.no =</span> <span class="st">"NO"</span>)</a>
-<a class="sourceLine" id="cb56-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hormo <span class="op">+</span><span class="st"> </span>hyperchol, </a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">    <span class="dt">data =</span> predimed, <span class="dt">ref.no =</span> <span class="st">"NO"</span>)</a>
+<a class="sourceLine" id="cb56-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -980,8 +978,8 @@ Dyslipidemia:                                                                   
 <li>
 <strong><code>fact.ratio</code></strong>: By default OR or HR for continuous variables are calculated for each unit increase. It can be changed by the <code>fact.or</code> statement:</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -993,9 +991,9 @@ Age             65.9 (6.19) 67.2 (6.15) 1.04 [1.03;1.05] &lt;0.001   &lt;0.001
 Body mass index 28.9 (3.69) 30.2 (3.80) 1.10 [1.08;1.12] &lt;0.001   &lt;0.001   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Here the OR is for the increase of one unit for Age and Systolic blood pressure.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed, <span class="dt">fact.ratio =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">age =</span> <span class="dv">10</span>, </a>
-<a class="sourceLine" id="cb60-2" title="2">    <span class="dt">bmi =</span> <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb60-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed, <span class="dt">fact.ratio =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">age =</span> <span class="dv">10</span>, </a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">    <span class="dt">bmi =</span> <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -1011,8 +1009,8 @@ Body mass index 28.9 (3.69) 30.2 (3.80) 1.22 [1.17;1.26] &lt;0.001   &lt;0.001
 <li>
 <strong><code>ref.y</code>:</strong> By default when OR or HR are calculated, the reference category for the response variable is the first. The reference category could be changed using the <code>ref.y</code> statement:</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hyperchol, <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb62-2" title="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hyperchol, <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -1030,9 +1028,9 @@ Dyslipidemia:                                                      &lt;0.001
     Yes         680 (62.4%) 3898 (74.5%) 1.75 [1.53;2.01] &lt;0.001            
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note: This output shows the OR of having hypertension. Therefore, “Non-hypertension” is the reference category.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hyperchol, <span class="dt">data =</span> predimed, </a>
-<a class="sourceLine" id="cb64-2" title="2">    <span class="dt">ref.y =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(htn <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>hyperchol, <span class="dt">data =</span> predimed, </a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">    <span class="dt">ref.y =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Hypertension'---------
 
@@ -1051,10 +1049,10 @@ Dyslipidemia:                                                      &lt;0.001
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note: This output shows the OR of having No hypertension, and ‘Hypertension’ is now the reference category.</p>
 <p>When the response variable is of class <code>Surv</code>, the bivariate <code>plot</code> function returns a Kaplan-Meier figure if the explanatory variable is categorical. For continuous variables the function returns a line for each individual, ending with a circle for censored and with a plus sign for uncensored.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), <span class="dt">bivar =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb66-2" title="2">    <span class="dt">file =</span> <span class="st">"./figures/bivarsurv/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a>
-<a class="sourceLine" id="cb66-3" title="3"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> predimed), <span class="dt">bivar =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb66-4" title="4">    <span class="dt">file =</span> <span class="st">"./figures/bivarsurv/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), <span class="dt">bivar =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">    <span class="dt">file =</span> <span class="st">"./figures/bivarsurv/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a>
+<a class="sourceLine" id="cb66-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> predimed), <span class="dt">bivar =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb66-4" data-line-number="4">    <span class="dt">file =</span> <span class="st">"./figures/bivarsurv/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
 <p><img src="figures/bivarsurv/age.png" alt="alt text"><img src="figures/bivarsurv/sex.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -1067,13 +1065,13 @@ Dyslipidemia:                                                      &lt;0.001
 <li>
 <strong><code>timemax</code>:</strong> By default probability is calculated at the median of the follow-up period. <code>timemax</code> option allows us to change at what time probability is calculated.</li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(sex <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>tmain, <span class="dt">timemax =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">tmain =</span> <span class="dv">3</span>), </a>
-<a class="sourceLine" id="cb67-2" title="2">    <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb67-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(sex <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>tmain, <span class="dt">timemax =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">tmain =</span> <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb67-2" data-line-number="2">    <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">res</a></code></pre></div>
 <p>Note that <code>tmain</code> is calculated at 3 years (see section 3.1).</p>
 <p>The <code>plot</code> function applied to a variable of class <code>Surv</code> returns a Kaplan-Meier figure. The figure can be stratified by the grouping variable.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(res[<span class="dv">2</span>], <span class="dt">file =</span> <span class="st">"./figures/univar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(res[<span class="dv">2</span>], <span class="dt">bivar =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">"./figures/bivar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="dv">2</span>], <span class="dt">file =</span> <span class="st">"./figures/univar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(res[<span class="dv">2</span>], <span class="dt">bivar =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">"./figures/bivar/"</span>, <span class="dt">type =</span> <span class="st">"png"</span>)</a></code></pre></div>
 <p><img src="figures/univar/tmain.png" alt="alt text"><img src="figures/bivar/tmain.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -1083,11 +1081,11 @@ Dyslipidemia:                                                      &lt;0.001
 <h2 class="hasAnchor">
 <a href="#performing-the-descritive-table" class="anchor"></a>Performing the descritive table</h2>
 <p>The <code>createTable</code> function, applied to an object of <code>compareGroups</code> class, returns tables with descriptives that can be displayed on-screen or exported to CSV, LaTeX, HTML, Word or Excel.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb69-2" title="2">    <span class="dt">data =</span> predimed, <span class="dt">selec =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">hormo =</span> sex <span class="op">==</span><span class="st"> "Female"</span>))</a>
-<a class="sourceLine" id="cb69-3" title="3">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">    <span class="dt">data =</span> predimed, <span class="dt">selec =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">hormo =</span> sex <span class="op">==</span><span class="st"> "Female"</span>))</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res)</a></code></pre></div>
 <p>Two tables are created with the <code>createTable</code> function: one with the descriptives and the other with the available data. The <code>print</code> method applied to an object of class <code>createTable</code> prints one or both tables on the <strong><code>R</code></strong> console:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(restab, <span class="dt">which.table =</span> <span class="st">"descr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(restab, <span class="dt">which.table =</span> <span class="st">"descr"</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1109,7 +1107,7 @@ Hormone-replacement therapy:                                             0.898
     Yes                       31 (2.64%)    30 (2.81%)    36 (2.95%)             
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that the option “descr” prints descriptive tables.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(restab, <span class="dt">which.table =</span> <span class="st">"avail"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(restab, <span class="dt">which.table =</span> <span class="st">"avail"</span>)</a></code></pre></div>
 <pre><code>
 
 
@@ -1135,7 +1133,7 @@ Hormone-replacement therapy 3459   1174        1066          1219         catego
 <li>
 <strong><code>hide</code>:</strong> If the explanatory variable is dichotomous, one of the categories often is hidden in the results displayed (i.e., if 42.4% are male, obviously 57.6% are female). To hide some category, e.g., “Male”:</li>
 </ul>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(restab, <span class="dt">hide =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(restab, <span class="dt">hide =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1159,8 +1157,8 @@ Hormone-replacement therapy:                                             0.898
 <li>
 <strong><code>hide.no</code>:</strong> Similarly, as explained above, if the category “no” is to be hidden for all variables:</li>
 </ul>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>htn <span class="op">+</span><span class="st"> </span>diab, <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb76-2" title="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">hide =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>htn <span class="op">+</span><span class="st"> </span>diab, <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">hide =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">sex =</span> <span class="st">"Male"</span>))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1178,7 +1176,7 @@ Type-2 diabetes 970 (47.5%)   950 (45.2%)   1082 (49.6%)    0.017
 <li>
 <strong><code>digits</code>:</strong> The number of digits that appear in the results can be changed, e.g:</li>
 </ul>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">digits =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">age =</span> <span class="dv">2</span>, <span class="dt">sex =</span> <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">digits =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">age =</span> <span class="dv">2</span>, <span class="dt">sex =</span> <span class="dv">3</span>))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1202,7 +1200,7 @@ Type-2 diabetes:                                                0.017
 <li>
 <strong><code>type</code>:</strong> By default categorical variables are summarized by frequencies and percentages. This can be changed by the <code>type</code> argument:</li>
 </ul>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1222,7 +1220,7 @@ Type-2 diabetes:                                            0.017
     Yes             47.5%        45.2%          49.6%               
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that only percentages are displayed.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1247,7 +1245,7 @@ Type-2 diabetes:                                            0.017
 <li>
 <strong><code>show.n</code>:</strong> If option <code>show.n</code> is set to <code>TRUE</code> a column with available data for each variable appears in the results:</li>
 </ul>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1270,7 +1268,7 @@ Type-2 diabetes:                                             0.017   6324
 <li>
 <strong><code>show.descr</code>:</strong> If argument <code>show.descr</code> is set to <code>FALSE</code> only p-values are displayed:</li>
 </ul>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.descr =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.descr =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1292,7 +1290,7 @@ Type-2 diabetes:
 <li>
 <strong><code>show.all</code>:</strong> If <code>show.all</code> argument is set to <code>TRUE</code> a column is displayed with descriptives for all data:</li>
 </ul>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1315,7 +1313,7 @@ Type-2 diabetes:                                                          0.017
 <li>
 <strong><code>show.p.overall</code>:</strong> If <code>show.p.overall</code> argument is set to <code>FALSE</code> p-values are omitted from the table:</li>
 </ul>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1338,7 +1336,7 @@ Type-2 diabetes:
 <li>
 <strong><code>show.p.trend</code>:</strong> If the response variable has more than two categories a p-value for trend can be calculated. Results are displayed if the <code>show.p.trend</code> argument is set to <code>TRUE</code>:</li>
 </ul>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.trend =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.trend =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1362,7 +1360,7 @@ Type-2 diabetes:                                             0.017    0.160
 <li>
 <strong><code>show.p.mul</code>:</strong> For a response variable with more than two categories a pairwise comparison of p-values, corrected for multiple comparisons, can be calculated. Results are displayed if the <code>show.p.mul</code> argument is set to <code>TRUE</code>:</li>
 </ul>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.mul =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.mul =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
@@ -1388,7 +1386,7 @@ Type-2 diabetes:                                             0.017              
 <li>
 <strong><code>show.ratio</code>:</strong> If response variable is dichotomous or has been defined as class <code>survival</code> (see Section 3.1), Odds Ratios and Hazard Ratios can be displayed in the results by stating <code>TRUE</code> at the show.ratio option:</li>
 </ul>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(res, <span class="dt">subset =</span> group <span class="op">!=</span><span class="st"> "Control"</span>), <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(res, <span class="dt">subset =</span> group <span class="op">!=</span><span class="st"> "Control"</span>), <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'group'---------
 
@@ -1409,8 +1407,8 @@ Type-2 diabetes:                                                         0.005
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that category “Control diet” of the response variable has been omitted in order to have only two categories (i.e., a dichotomous variable). No Odds Ratios would be calculated if response variable has more than two categories.</p>
 <p>Note that when response variable is of class <code>Surv</code>, Hazard Ratios are calculated instead of Odds Ratios.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
-<a class="sourceLine" id="cb98-2" title="2">    <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">    <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'AMI, stroke, or CV Death'---------
 
@@ -1431,8 +1429,8 @@ Sex:                                                                   &lt;0.001
 <li>
 <strong><code>digits.ratio</code>:</strong> The number of decimal places for Odds/Hazard ratios can be changed by the <code>digits.ratio</code> argument:</li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
-<a class="sourceLine" id="cb100-2" title="2">    <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>, <span class="dt">digits.ratio =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">    <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>, <span class="dt">digits.ratio =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'AMI, stroke, or CV Death'---------
 
@@ -1453,9 +1451,9 @@ Sex:                                                                      &lt;0.
 <li>
 <strong><code>header.labels</code>:</strong> Change some key table header, such as the p.overall, etc. Note that this is done when printing the table changing the argument in the <code>print</code> function and not in the <code>createTable</code> function. This argument is also present in other function that exports the table to pdf, plain text, etc.</li>
 </ul>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">tab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
-<a class="sourceLine" id="cb102-2" title="2">    <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb102-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(tab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>, <span class="dt">all =</span> <span class="st">"All"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">tab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tmain <span class="op">~</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed), </a>
+<a class="sourceLine" id="cb102-2" data-line-number="2">    <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(tab, <span class="dt">header.labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dt">p.overall =</span> <span class="st">"p-value"</span>, <span class="dt">all =</span> <span class="st">"All"</span>))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'AMI, stroke, or CV Death'---------
 
@@ -1479,9 +1477,9 @@ Sex:                                                      &lt;0.001
 <h3 class="hasAnchor">
 <a href="#combining-tables-by-row-groups-of-variable" class="anchor"></a>Combining tables by row (groups of variable)</h3>
 <p>Tables made with the same response variable can be combined by row:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">restab1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed))</a>
-<a class="sourceLine" id="cb104-2" title="2">restab2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed))</a>
-<a class="sourceLine" id="cb104-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable risk factors</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="st">`</span><span class="dt">Modifiable risk factors</span><span class="st">`</span> =<span class="st"> </span>restab2)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">restab1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex, <span class="dt">data =</span> predimed))</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">restab2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>smoke, <span class="dt">data =</span> predimed))</a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable risk factors</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="st">`</span><span class="dt">Modifiable risk factors</span><span class="st">`</span> =<span class="st"> </span>restab2)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1504,9 +1502,9 @@ Modifiable risk factors:
 <p>Note how variables are grouped under “Non-modifiable” and “Modifiable”" risk factors because of an epigraph defined in the <code>rbind</code> command in the example.</p>
 <p>The resulting object is of class <code>rbind.createTable</code>, which can be subset but not updated. It inherits the class <code>createTable</code>. Therefore, columns and other arguments from the <code>createTable</code> function cannot be modified:</p>
 <p>To select only Age and Smoking:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="dt">Modifiable =</span> restab2)</a>
-<a class="sourceLine" id="cb106-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="dt">Modifiable =</span> restab2)[<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb106-3" title="3">    <span class="dv">4</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="dt">Modifiable =</span> restab2)</a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(<span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab1, <span class="dt">Modifiable =</span> restab2)[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb106-3" data-line-number="3">    <span class="dv">4</span>)]</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1523,8 +1521,8 @@ Modifiable:
         Former  490 (24.0%)   545 (26.0%)    539 (24.7%)            
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To change the order:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(<span class="dt">Modifiable =</span> restab1, <span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab2)[<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">4</span>, </a>
-<a class="sourceLine" id="cb108-2" title="2">    <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span>(<span class="dt">Modifiable =</span> restab1, <span class="st">`</span><span class="dt">Non-modifiable</span><span class="st">`</span> =<span class="st"> </span>restab2)[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb108-2" data-line-number="2">    <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)]</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1550,13 +1548,13 @@ Modifiable:
 <div id="combining-tables-by-column-strata" class="section level3">
 <h3 class="hasAnchor">
 <a href="#combining-tables-by-column-strata" class="anchor"></a>Combining tables by column (strata)</h3>
-<p>Columns from tables built with the same explanatory and response variables but done with a different subset (i.e. “ALL”, “Male” and “Female”, strata) can be combined:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>htn, <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb110-2" title="2">alltab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb110-3" title="3">femaletab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(res, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>), </a>
-<a class="sourceLine" id="cb110-4" title="4">    <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb110-5" title="5">maletab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(res, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Male"</span>), <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="dt">ALL =</span> alltab, <span class="dt">FEMALE =</span> femaletab, <span class="dt">MALE =</span> maletab)</a></code></pre></div>
+<p>Columns from tables built with the same explanatory and response variables but done with a different subset (i.e. “ALL”, “Male” and “Female”, strata) can be combined:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>htn, <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">alltab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb110-3" data-line-number="3">femaletab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(res, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Female"</span>), </a>
+<a class="sourceLine" id="cb110-4" data-line-number="4">    <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb110-5" data-line-number="5">maletab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(res, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> "Male"</span>), <span class="dt">show.p.overall =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="dt">ALL =</span> alltab, <span class="dt">FEMALE =</span> femaletab, <span class="dt">MALE =</span> maletab)</a></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -1579,7 +1577,7 @@ Hypertension:
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯</code></pre>
 </div>
 <p>With the argument <code>caption</code> set to <code>NULL</code> no name is displayed for columns.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(alltab, femaletab, maletab, <span class="dt">caption =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(alltab, femaletab, maletab, <span class="dt">caption =</span> <span class="ot">NULL</span>)</a></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -1602,7 +1600,7 @@ Hypertension:
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯</code></pre>
 </div>
 <p>By default the name of the table is displayed for each set of columns.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(alltab, femaletab, maletab)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(alltab, femaletab, maletab)</a></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -1630,12 +1628,12 @@ Hypertension:
 <ol style="list-style-type: decimal">
 <li>first build the table with descriptives by groups:</li>
 </ol>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed)</a>
-<a class="sourceLine" id="cb117-2" title="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed)</a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>and then apply the <code>strataTable</code> function on the table:</li>
 </ol>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw"><a href="../reference/strataTable.html">strataTable</a></span>(restab, <span class="st">"sex"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw"><a href="../reference/strataTable.html">strataTable</a></span>(restab, <span class="st">"sex"</span>)</a></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -1680,8 +1678,8 @@ Smoking 4 cat.:                                                              .  
 <li>
 <strong><code>print</code>:</strong> By default only the table with the descriptives is printed. With <code>which.table</code> argument it can be changed: “avail” returns data available and “both” returns both tables:</li>
 </ul>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb120-2" title="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed)), <span class="dt">which.table =</span> <span class="st">"both"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed)), <span class="dt">which.table =</span> <span class="st">"both"</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1717,8 +1715,8 @@ Waist circumference         6324   2042        2100          2182      continuou
 Hormone-replacement therapy 5661   1842        1865          1954         categorical     ALL   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>With the <code>print</code> method setting <code>nmax</code> argument to <code>FALSE</code>, the total maximum “n” in the available data is omitted in the first row.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb122-2" title="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed)), <span class="dt">nmax =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed)), <span class="dt">nmax =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1742,8 +1740,8 @@ Hormone-replacement therapy:                                             0.850
 <li>
 <strong><code>summary</code>:</strong> returns the same table as that generated with <code>print</code> method setting <code>which.table='avail'</code>:</li>
 </ul>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb124-2" title="2"><span class="st">    </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed)))</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(<span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="st">    </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed)))</a></code></pre></div>
 <pre><code>
 
 
@@ -1762,10 +1760,10 @@ Hormone-replacement therapy 5661   1842        1865          1954         catego
 <li>
 <strong><code>update</code>:</strong> An object of class <code>createTable</code> can be updated:</li>
 </ul>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
-<a class="sourceLine" id="cb126-2" title="2">    <span class="dt">data =</span> predimed)</a>
-<a class="sourceLine" id="cb126-3" title="3">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">1</span>, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb126-4" title="4">restab</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span>hormo, </a>
+<a class="sourceLine" id="cb126-2" data-line-number="2">    <span class="dt">data =</span> predimed)</a>
+<a class="sourceLine" id="cb126-3" data-line-number="3">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">type =</span> <span class="dv">1</span>, <span class="dt">show.ratio =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">restab</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1786,7 +1784,7 @@ Hormone-replacement therapy:                                            0.850
     No                          98.3%        98.4%          98.2%               
     Yes                         1.68%        1.61%          1.84%               
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(restab, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(restab, <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1808,8 +1806,8 @@ Hormone-replacement therapy:                                            0.850   
     Yes                         1.68%        1.61%          1.84%                    
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>In just one statement it is possible to update an object of class <code>compareGroups</code> and <code>createTable</code>:</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(restab, <span class="dt">x =</span> <span class="kw"><a href="https://rdrr.io/r/stats/update.html">update</a></span>(res, <span class="dt">subset =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(sex <span class="op">==</span><span class="st"> "Female"</span>)), </a>
-<a class="sourceLine" id="cb130-2" title="2">    <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(restab, <span class="dt">x =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/update">update</a></span>(res, <span class="dt">subset =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(sex <span class="op">==</span><span class="st"> "Female"</span>)), </a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">    <span class="dt">show.n =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'group'---------
 
@@ -1833,8 +1831,8 @@ Hormone-replacement therapy:                                            0.898   
 <li>
 <strong><code>subsetting</code>:</strong> Objects from <code>createTable</code> function can also be subsetted using “[”:</li>
 </ul>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb132-2" title="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed))</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span>waist <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2"><span class="st">    </span>hormo, <span class="dt">data =</span> predimed))</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1855,8 +1853,8 @@ Hormone-replacement therapy:                                             0.850
     No                       1811 (98.3%)  1835 (98.4%)  1918 (98.2%)            
     Yes                       31 (1.68%)    30 (1.61%)    36 (1.84%)             
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed))[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, </a>
-<a class="sourceLine" id="cb134-2" title="2">    ]</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi, <span class="dt">data =</span> predimed))[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">    ]</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -1875,7 +1873,7 @@ Sex:                                                  &lt;0.001
 <a href="#descrTable" class="anchor"></a>Building tables in one step</h3>
 <p>Making use of <strong><code>descrTable</code></strong> the user can build descriptive table in one step. This function takes all the arguments of <code>compareGroups</code> function plus the ones from <code>createTable</code> function. The result is the same as if the user first call compareGroups and then createTable. Therefore one can use the same methods and functions avaiable for createTable objects (subsetting, ploting, printing, exporting, etc.)</p>
 <p>To describe all varaible from predimed, just type:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -1926,7 +1924,7 @@ Smoking 4 cat.:                               6324
     Never or former &gt;= 1y        1574 (24.9%)      
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To describe some varaibles, make use of formula argument (just as using <code>compareGroups</code> function)</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(<span class="op">~</span>age <span class="op">+</span><span class="st"> </span>sex, predimed)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(<span class="op">~</span>age <span class="op">+</span><span class="st"> </span>sex, predimed)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -1940,7 +1938,7 @@ Sex:                    6324
     Female 3645 (57.6%)      
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To hide “no” category from yes-no variables, use the <code>hide.no</code> argument from <code>createTable</code>:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -1979,7 +1977,7 @@ Smoking 4 cat.:                              6324
     Never or former &gt;= 1y       1574 (24.9%)      
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To report descriptives by group as well as the descriptives of the entire cohort:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>., predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(group <span class="op">~</span><span class="st"> </span>., predimed, <span class="dt">hide.no =</span> <span class="st">"no"</span>, <span class="dt">show.all =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Intervention group'---------
 
@@ -2014,7 +2012,7 @@ Smoking 4 cat.:                                                                 
     Never or former &gt;= 1y       1574 (24.9%) 490 (24.0%)   545 (26.0%)    539 (24.7%)            
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Or you can select individuals using the <code>subset</code> argument.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed, <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">65</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw"><a href="../reference/descrTable.html">descrTable</a></span>(predimed, <span class="dt">subset =</span> age <span class="op">&gt;</span><span class="st"> </span><span class="dv">65</span>)</a></code></pre></div>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -2054,9 +2052,9 @@ Smoking 4 cat.:                                                                 
 <li>
 <strong><code>file</code>:</strong> If <code>file</code> argument in <code>export2latex</code> is missing, the code is printed in the <strong><code>R</code></strong> console. This can be useful when <strong><code>R</code></strong> code is inserted in a LaTeX document chunk to be processed with <strong><code>Sweave</code></strong> package.</li>
 </ul>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb145-2" title="2"><span class="st">    </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed))</a>
-<a class="sourceLine" id="cb145-3" title="3"><span class="kw"><a href="../reference/export2latex.html">export2latex</a></span>(restab)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(<span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>smoke <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="st">    </span>waist <span class="op">+</span><span class="st"> </span>hormo, <span class="dt">data =</span> predimed))</a>
+<a class="sourceLine" id="cb145-3" data-line-number="3"><span class="kw"><a href="../reference/export2latex.html">export2latex</a></span>(restab)</a></code></pre></div>
 <pre><code>    
     \begin{longtable}{lcccc}\caption{Summary descriptives table by groups of `Intervention group'}\\
     \hline  
@@ -2108,12 +2106,12 @@ $\qquad$Yes &amp;  31 (1.68\%)  &amp;   30 (1.61\%)   &amp;  36 (1.84\%)   &amp;
 <p>Since 4.0 version, <code>export2md</code> supports <code>cbind.createTable</code> class objects, i.e. when exporting stratified descriptive tables. Also, nicer and more costumizable tables can be reported making use of <code>kableExtra</code> package (such as size, strip rows, etc.).</p>
 <p>Following, there are some examples when exporting to HTML.</p>
 <p>First create the descriptive table of PREDIMED variables by intervention groups.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>., predimed)</a>
-<a class="sourceLine" id="cb147-2" title="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>., predimed)</a>
+<a class="sourceLine" id="cb147-2" data-line-number="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a></code></pre></div>
 <ul>
 <li><strong>Default export2md to HTML:</strong></li>
 </ul>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab)</a></code></pre></div>
 <table class="table table table-striped table-condensed">
 <caption>
 Summary descriptives table by groups of `Intervention group’
@@ -2563,7 +2561,7 @@ Never or former &gt;= 1y
 <ul>
 <li><strong>Add strip rows, colouring rows by variables:</strong></li>
 </ul>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">strip =</span> <span class="ot">TRUE</span>, <span class="dt">first.strip =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">strip =</span> <span class="ot">TRUE</span>, <span class="dt">first.strip =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <table class="table table table-condensed">
 <caption>
 Summary descriptives table by groups of `Intervention group’
@@ -3013,7 +3011,7 @@ Never or former &gt;= 1y
 <ul>
 <li><strong>Change size:</strong></li>
 </ul>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">size =</span> <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">size =</span> <span class="dv">6</span>)</a></code></pre></div>
 <table class="table table table-striped table-condensed">
 <caption style="font-size: initial !important;">
 Summary descriptives table by groups of `Intervention group’
@@ -3463,7 +3461,7 @@ Never or former &gt;= 1y
 <ul>
 <li><strong>Making variable names column wider:</strong></li>
 </ul>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">width =</span> <span class="st">"400px"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">width =</span> <span class="st">"400px"</span>)</a></code></pre></div>
 <table class="table table table-striped table-condensed">
 <caption>
 Summary descriptives table by groups of `Intervention group’
@@ -3913,14 +3911,14 @@ Never or former &gt;= 1y
 <ul>
 <li><strong>Stratified table:</strong></li>
 </ul>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">resMales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-2" title="2"><span class="st">    "Male"</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb152-3" title="3">resFemales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb152-4" title="4"><span class="st">    "Female"</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb152-5" title="5">restabMales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resMales, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
-<a class="sourceLine" id="cb152-6" title="6">restabFemales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resFemales, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
-<a class="sourceLine" id="cb152-7" title="7">restab &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="dt">Males =</span> restabMales, <span class="dt">Females =</span> restabFemales)</a></code></pre></div>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">size =</span> <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">resMales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="st">    "Male"</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb152-3" data-line-number="3">resFemales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(group <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>sex, predimed, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="st">    "Female"</span>, <span class="dt">simplify =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb152-5" data-line-number="5">restabMales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resMales, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
+<a class="sourceLine" id="cb152-6" data-line-number="6">restabFemales &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(resFemales, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
+<a class="sourceLine" id="cb152-7" data-line-number="7">restab &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">cbind</a></span>(<span class="dt">Males =</span> restabMales, <span class="dt">Females =</span> restabFemales)</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw"><a href="../reference/export2md.html">export2md</a></span>(restab, <span class="dt">size =</span> <span class="dv">8</span>)</a></code></pre></div>
 <table class="table table table-striped table-condensed">
 <caption style="font-size: initial !important;">
 Summary descriptive tables
@@ -4650,10 +4648,10 @@ Unknown
 <p>Since version 2.0 of <strong><code>compareGroups</code></strong> package, there is a function called <code>report</code> which automatically generates a PDF document with the “descriptive” table as well as the corresponding “available”" table. In addition, plots of all analysed variables are shown.</p>
 <p>In order to make easier to navigate throught the document, an index with hyperlinks is inserted in the document.</p>
 <p>See the help file of this function where you can find an example with the REGICOR data (the other example data set contained in the <strong><code>compareGroups</code></strong> package)</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="co"># to know more about report function</span></a>
-<a class="sourceLine" id="cb154-2" title="2"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(report)</a>
-<a class="sourceLine" id="cb154-3" title="3"><span class="co"># info about REGICOR data set</span></a>
-<a class="sourceLine" id="cb154-4" title="4"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(regicor)</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="co"># to know more about report function</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(report)</a>
+<a class="sourceLine" id="cb154-3" data-line-number="3"><span class="co"># info about REGICOR data set</span></a>
+<a class="sourceLine" id="cb154-4" data-line-number="4"><span class="st">`</span><span class="dt">?</span><span class="st">`</span>(regicor)</a></code></pre></div>
 <p>Also, you can use the function <code>radiograph</code> that dumps the raw values on a plain text file. This may be usefull to identify possible wrong codes or non-valid values in the data set.</p>
 <p style="margin-top:50px">
 </p>
@@ -4662,10 +4660,10 @@ Unknown
 <h2 class="hasAnchor">
 <a href="#dealing-with-missing-values" class="anchor"></a>Dealing with missing values</h2>
 <p>Many times, it is important to be aware of the missingness contained in each variable, possibly by groups. Althought “available” table shows the number of the non-missing values for each row-variable and in each group, it would be desirable to test whether the frequency of non-available data is different between groups. For this porpose, a new function has been implemented in the <strong><code>compareGroups</code></strong> package, which is called <code>missingTable</code>. This function applies to both <code>compareGroups</code> and <code>createTable</code> class objects. This last option is useful when the table is already created. To illustrate it, we will use the REGICOR data set, comparing missing rates of all variables by year:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="co"># from a compareGroups object</span></a>
-<a class="sourceLine" id="cb155-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(regicor)</a>
-<a class="sourceLine" id="cb155-3" title="3">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(year <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>id, regicor)</a>
-<a class="sourceLine" id="cb155-4" title="4"><span class="kw"><a href="../reference/missingTable.html">missingTable</a></span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="co"># from a compareGroups object</span></a>
+<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(regicor)</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(year <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>id, regicor)</a>
+<a class="sourceLine" id="cb155-4" data-line-number="4"><span class="kw"><a href="../reference/missingTable.html">missingTable</a></span>(res)</a></code></pre></div>
 <pre><code>
 --------Missingness table by 'year'---------
 
@@ -4697,17 +4695,17 @@ tocv     33 (7.66%) 45 (5.73%)  53 (4.92%)   0.118
 death    44 (10.2%) 48 (6.11%)  54 (5.01%)   0.001   
 todeath  44 (10.2%) 48 (6.11%)  54 (5.01%)   0.001   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="co"># or from createTable objects</span></a>
-<a class="sourceLine" id="cb157-2" title="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
-<a class="sourceLine" id="cb157-3" title="3"><span class="kw"><a href="../reference/missingTable.html">missingTable</a></span>(restab)</a></code></pre></div>
-<p>Perhaps a NA value of a categorical variable may mean something different from just non available. For example, patients admitted for “Coronary Acute Syndrome” with <code>NA</code> in “ST elevation” may have a higher risk of in-hospital death than the ones with available data, i.e. “ST elevation” yes or not. If these kind of variables are introduced in the data set as <code>NA</code>, they are removed from the analysis. To avoid the user having to recode <code>NA</code> as a new category for all categorical variables, new argument called <code>include.miss</code> in <code>compareGroups</code> function has been implemented which does it automatically. Let’s see an example with all variables from REGICOR data set by cardiovascular event.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="co"># first create time-to-cardiovascular event</span></a>
-<a class="sourceLine" id="cb158-2" title="2">regicor<span class="op">$</span>tcv &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/with.html">with</a></span>(regicor, <span class="kw">Surv</span>(tocv, cv <span class="op">==</span><span class="st"> "Yes"</span>))</a>
-<a class="sourceLine" id="cb158-3" title="3"><span class="co"># create the table</span></a>
-<a class="sourceLine" id="cb158-4" title="4">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tcv <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>id <span class="op">-</span><span class="st"> </span>tocv <span class="op">-</span><span class="st"> </span>cv <span class="op">-</span><span class="st"> </span>todeath <span class="op">-</span><span class="st"> </span>death, </a>
-<a class="sourceLine" id="cb158-5" title="5">    regicor, <span class="dt">include.miss =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb158-6" title="6">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
-<a class="sourceLine" id="cb158-7" title="7">restab</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="co"># or from createTable objects</span></a>
+<a class="sourceLine" id="cb157-2" data-line-number="2">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
+<a class="sourceLine" id="cb157-3" data-line-number="3"><span class="kw"><a href="../reference/missingTable.html">missingTable</a></span>(restab)</a></code></pre></div>
+<p>Perhaps a NA value of a categorical variable may mean something different from just non available. For example, patients admitted for “Coronary Acute Syndrome” with <code>NA</code> in “ST elevation” may have a higher risk of in-hospital death than the ones with available data, i.e. “ST elevation” yes or not. If these kind of variables are introduced in the data set as <code>NA</code>, they are removed from the analysis. To avoid the user having to recode <code>NA</code> as a new category for all categorical variables, new argument called <code>include.miss</code> in <code>compareGroups</code> function has been implemented which does it automatically. Let’s see an example with all variables from REGICOR data set by cardiovascular event.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="co"># first create time-to-cardiovascular event</span></a>
+<a class="sourceLine" id="cb158-2" data-line-number="2">regicor<span class="op">$</span>tcv &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/with">with</a></span>(regicor, <span class="kw">Surv</span>(tocv, cv <span class="op">==</span><span class="st"> "Yes"</span>))</a>
+<a class="sourceLine" id="cb158-3" data-line-number="3"><span class="co"># create the table</span></a>
+<a class="sourceLine" id="cb158-4" data-line-number="4">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareGroups.html">compareGroups</a></span>(tcv <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>id <span class="op">-</span><span class="st"> </span>tocv <span class="op">-</span><span class="st"> </span>cv <span class="op">-</span><span class="st"> </span>todeath <span class="op">-</span><span class="st"> </span>death, </a>
+<a class="sourceLine" id="cb158-5" data-line-number="5">    regicor, <span class="dt">include.miss =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb158-6" data-line-number="6">restab &lt;-<span class="st"> </span><span class="kw"><a href="../reference/createTable.html">createTable</a></span>(res, <span class="dt">hide.no =</span> <span class="st">"no"</span>)</a>
+<a class="sourceLine" id="cb158-7" data-line-number="7">restab</a></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'tcv'---------
 
@@ -4766,8 +4764,8 @@ Mental component              48.1 (10.9)  46.3 (12.2)   0.122
 <p>In the version 2.0 of <strong><code>compareGroups</code></strong>, it is possible to analyse genetic data, more concretely Single Nucleotic Polymorphisms (SNPs), using the function <code>compareSNPs</code>. This function takes advantage of <strong><code>SNPassoc</code></strong> <span class="citation">(González et al. 2012)</span> and <strong><code>HardyWeinberg</code></strong> <span class="citation">(Graffelman 2012)</span> packages to perform quality control of genetic data displaying the Minor Allele Frequencies, Missingness, Hardy Weinberg Equilibrium, etc. of the whole data set or by groups. When groups are considered, it also performs a test to check whether missingness rates is the same among groups.</p>
 <p>Following, we illustrate this by an example taking a data set from <strong><code>SNPassoc</code></strong> package.</p>
 <p>First of all, load the <code>SNPs</code> data from <strong><code>SNPassoc</code></strong>, and visualize the first rows. Notice how are the SNPs coded, i.e. by the alleles. The alleles separator can be any character. If so, this must be specified in the <code>sep</code> argument of <code>compareSNPs</code> function (type <code><a href="../reference/compareSNPs.html">?compareSNPs</a></code> for more details).</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(SNPs)</a>
-<a class="sourceLine" id="cb160-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(SNPs)</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(SNPs)</a>
+<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(SNPs)</a></code></pre></div>
 <pre><code>  id casco    sex blood.pre  protein snp10001 snp10002 snp10003 snp10004 snp10005 snp10006 snp10007 snp10008 snp10009 snp100010 snp100011 snp100012
 1  1     1 Female      13.7 75640.52       TT       CC       GG       GG       GG       AA       CC       CC       AA        TT        GG        GG
 2  2     1 Female      12.7 28688.22       TT       AC       GG       GG       AG       AA       CC       CC       AG        TT        GG        CG
@@ -4790,8 +4788,8 @@ Mental component              48.1 (10.9)  46.3 (12.2)   0.122
 5        CG        CT        GG        AA        TT        AG        AG        TT        TT
 6        CC        CC        GG        AA        TT        AA        AA        TT      &lt;NA&gt;</code></pre>
 <p>In this data frame there are some genetic and non-genetic data. Genetic variables are those whose names begin with “snp”. If we want to summarize the first three SNPs by case control status:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareSNPs.html">compareSNPs</a></span>(casco <span class="op">~</span><span class="st"> </span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span>snp10003, <span class="dt">data =</span> SNPs)</a>
-<a class="sourceLine" id="cb162-2" title="2">res</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareSNPs.html">compareSNPs</a></span>(casco <span class="op">~</span><span class="st"> </span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span>snp10003, <span class="dt">data =</span> SNPs)</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2">res</a></code></pre></div>
 <pre><code>*********** Summary of genetic data (SNPs) by groups ***********
 
 
@@ -4828,8 +4826,8 @@ snp10003   0.756
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that all variables specified in the right hand side of the formula must be SNPs, i.e. variables whose levels or codes can be interpreted as genotypes (see <code>setupSNPs</code> function from <strong><code>SNPassoc</code></strong> package for more information). Separated summary tables by groups of cases and controls are displayed, and the last table corresponds to missingness test comparing non-available rates among groups.</p>
 <p>If summarizing SNPs in the whole data set is desired, without separating by groups, leave the left side of formula in blank, as in <code>compareGroups</code> function. In this case, a single table is displayed and no missingness test is performed.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareSNPs.html">compareSNPs</a></span>(<span class="op">~</span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span>snp10003, <span class="dt">data =</span> SNPs)</a>
-<a class="sourceLine" id="cb164-2" title="2">res</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/compareSNPs.html">compareSNPs</a></span>(<span class="op">~</span>snp10001 <span class="op">+</span><span class="st"> </span>snp10002 <span class="op">+</span><span class="st"> </span>snp10003, <span class="dt">data =</span> SNPs)</a>
+<a class="sourceLine" id="cb164-2" data-line-number="2">res</a></code></pre></div>
 <pre><code>*********** Summary of genetic data (SNPs) ***********
 _____________________________________________________ 
 SNP      Ntyped    MAF Genotypes    Genotypes.p HWE.p 
@@ -4847,7 +4845,7 @@ snp10003    144 100.0%        GG 100.0| 0.0|0.0 1.000
 <div id="gui" class="section level1">
 <h1 class="hasAnchor">
 <a href="#gui" class="anchor"></a>Using the Graphical User Inferface (GUI) - tcltk</h1>
-<p>Once the <strong><code>compareGroups</code></strong> package is loaded, a Graphical User Interface (GUI) is displayed in response to typing <code><a href="../reference/cGroupsGUI.html">cGroupsGUI(predimed)</a></code>. The GUI is meant to make it feasible for users who are unfamiliar with <strong><code>R</code></strong> to construct bivariate tables. Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the PREDIMED data by typing <code><a href="https://rdrr.io/r/utils/data.html">data(predimed)</a></code> before calling <code>cGroupsGUI</code> function.</p>
+<p>Once the <strong><code>compareGroups</code></strong> package is loaded, a Graphical User Interface (GUI) is displayed in response to typing <code><a href="../reference/cGroupsGUI.html">cGroupsGUI(predimed)</a></code>. The GUI is meant to make it feasible for users who are unfamiliar with <strong><code>R</code></strong> to construct bivariate tables. Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the PREDIMED data by typing <code><a href="https://www.rdocumentation.org/packages/utils/topics/data">data(predimed)</a></code> before calling <code>cGroupsGUI</code> function.</p>
 <p>In this section we illustrate, step by step, how to construct a bivariate table containing descriptives by groups from the <em>predimed</em> data using the GUI:</p>
 <table class="table table table-striped table-condensed">
 <caption>
@@ -5820,8 +5818,8 @@ Female
 <h3 class="hasAnchor">
 <a href="#launch-the-wui-application" class="anchor"></a>Launch the WUI application</h3>
 <p>To use the WUI locally (and not on a remote server), first load the <strong><code>compareGroups</code></strong> package and call the <font style="color:red"><code>cGroupsWUI</code></font> function:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(compareGroups)</a>
-<a class="sourceLine" id="cb167-2" title="2"><span class="kw"><a href="../reference/cGroupsWUI.html">cGroupsWUI</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(compareGroups)</a>
+<a class="sourceLine" id="cb167-2" data-line-number="2"><span class="kw"><a href="../reference/cGroupsWUI.html">cGroupsWUI</a></span>()</a></code></pre></div>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -5962,19 +5960,19 @@ Female
 <p>Estruch, R., E. Ros, J. Salas-Salvadó, MI. Covas, D. Corella, F. Arós, E. Gómez-Gracia, et al. 2013. “Primary Prevention of Cardiovascular Disease with a Mediterranean Diet.” <em>N Engl J Med</em> 368 (14): 1279–90.</p>
 </div>
 <div id="ref-r2lh">
-<p>Genolini, C., B Desgraupes, and Lionel-Riou Franca. 2011. <em>R2lh: R to Latex and Html</em>. <a href="https://CRAN.R-project.org/package=r2lh">https://CRAN.R-project.org/package=r2lh</a>.</p>
+<p>Genolini, C., B Desgraupes, and Lionel-Riou Franca. 2011. <em>R2lh: R to Latex and Html</em>. <a href="https://CRAN.R-project.org/package=r2lh" class="uri">https://CRAN.R-project.org/package=r2lh</a>.</p>
 </div>
 <div id="ref-SNPassoc">
-<p>González, Juan R, Lluís Armengol, Elisabet Guinó, Xavier Solé, and and Víctor Moreno. 2012. <em>SNPassoc: SNPs-Based Whole Genome Association Studies</em>. <a href="https://CRAN.R-project.org/package=SNPassoc">https://CRAN.R-project.org/package=SNPassoc</a>.</p>
+<p>González, Juan R, Lluís Armengol, Elisabet Guinó, Xavier Solé, and and Víctor Moreno. 2012. <em>SNPassoc: SNPs-Based Whole Genome Association Studies</em>. <a href="https://CRAN.R-project.org/package=SNPassoc" class="uri">https://CRAN.R-project.org/package=SNPassoc</a>.</p>
 </div>
 <div id="ref-HW">
-<p>Graffelman, Jan. 2012. <em>HardyWeinberg: Graphical Tests for Hardy-Weinberg Equilibrium</em>. <a href="https://CRAN.R-project.org/package=HardyWeinberg">https://CRAN.R-project.org/package=HardyWeinberg</a>.</p>
+<p>Graffelman, Jan. 2012. <em>HardyWeinberg: Graphical Tests for Hardy-Weinberg Equilibrium</em>. <a href="https://CRAN.R-project.org/package=HardyWeinberg" class="uri">https://CRAN.R-project.org/package=HardyWeinberg</a>.</p>
 </div>
 <div id="ref-Shiny">
-<p>RStudio, and Inc. 2014. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny">https://CRAN.R-project.org/package=shiny</a>.</p>
+<p>RStudio, and Inc. 2014. <em>Shiny: Web Application Framework for R</em>. <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.</p>
 </div>
 <div id="ref-Subirana2014">
-<p>Subirana, Isaac, Héctor Sanz, and Joan Vila. 2014. “Building Bivariate Tables: The compareGroups Package for R.” <em>Journal of Statistical Software</em> 57 (12): 1–16. <a href="http://www.jstatsoft.org/v57/i12/">http://www.jstatsoft.org/v57/i12/</a>.</p>
+<p>Subirana, Isaac, Héctor Sanz, and Joan Vila. 2014. “Building Bivariate Tables: The compareGroups Package for R.” <em>Journal of Statistical Software</em> 57 (12): 1–16. <a href="http://www.jstatsoft.org/v57/i12/" class="uri">http://www.jstatsoft.org/v57/i12/</a>.</p>
 </div>
 </div>
 </div>
@@ -6022,20 +6020,17 @@ Female
 </div>
 
 
-
       <footer><div class="copyright">
   <p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
 </div>
 
   
-
 
   </body>
 </html>

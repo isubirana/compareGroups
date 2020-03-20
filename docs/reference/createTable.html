@@ -23,15 +23,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -58,7 +56,6 @@
 <![endif]-->
 
 
-
   </head>
 
   <body>
@@ -75,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.1</span>
       </span>
     </div>
 
@@ -139,7 +136,6 @@
 </div><!--/.navbar -->
 
       
-
       </header>
 
 <div class="row">
@@ -159,12 +155,12 @@
     <pre class="usage"><span class='fu'>createTable</span>(<span class='no'>x</span>, <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>show.p.overall</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
            <span class='no'>show.all</span>, <span class='no'>show.p.trend</span>, <span class='kw'>show.p.mul</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>show.n</span>, <span class='kw'>show.ratio</span> <span class='kw'>=</span>
            <span class='fl'>FALSE</span>, <span class='kw'>show.descr</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show.ci</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits.ratio</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-           <span class='kw'>show.p.ratio</span> <span class='kw'>=</span> <span class='no'>show.ratio</span>, <span class='kw'>digits.p</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sd.type</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>q.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
-           <span class='kw'>extra.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+           <span class='kw'>show.p.ratio</span> <span class='kw'>=</span> <span class='no'>show.ratio</span>, <span class='kw'>digits.p</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sd.type</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>q.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
+           <span class='kw'>extra.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>all.last</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='co'># S3 method for createTable</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='kw'>which.table</span> <span class='kw'>=</span> <span class='st'>"descr"</span>, <span class='kw'>nmax</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>header.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(), <span class='no'>...</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>, <span class='kw'>which.table</span> <span class='kw'>=</span> <span class='st'>"descr"</span>, <span class='kw'>nmax</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>header.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(), <span class='no'>...</span>)
 <span class='co'># S3 method for createTable</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -243,7 +239,11 @@
     </tr>
     <tr>
       <th>extra.labels</th>
-      <td><p>character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://rdrr.io/r/base/c.html'>c("","","")</a></code>, "Mean (SD)", "Median [25th; 75th]" and "N (%)" are appended.</p></td>
+      <td><p>character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("","","")</a></code>, "Mean (SD)", "Median [25th; 75th]" and "N (%)" are appended.</p></td>
+    </tr>
+    <tr>
+      <th>all.last</th>
+      <td><p>logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.</p></td>
     </tr>
     <tr>
       <th>which.table</th>
@@ -259,7 +259,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>other arguments passed to <code><a href='https://rdrr.io/r/base/print.default.html'>print.default</a></code>.</p></td>
+      <td><p>other arguments passed to <code><a href='https://www.rdocumentation.org/packages/base/topics/print.default'>print.default</a></code>.</p></td>
     </tr>
     </table>
     
@@ -294,9 +294,8 @@
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     
-
-<p>The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (&lt;1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').</p>
-<p>The p-values corresponding to the OR of a two level row-variable may not me equal to its p.overall p-value. This is because statistical tests are different: the option 'midp.exact' (see <code><a href='https://rdrr.io/pkg/epitools/man/oddsratio.html'>oddsratio</a></code> for more details) is taken in the first case and Chi-square or Fisher exact test in the second. The same happens when OR for a continuous value is performed: the p-value corresponding to this OR is computed form a logistic regression and therefore may differ from the one computed using a Student-T test or Kruskall Wallis test.
+    <p>The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (&lt;1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').</p>
+<p>The p-values corresponding to the OR of a two level row-variable may not me equal to its p.overall p-value. This is because statistical tests are different: the option 'midp.exact' (see <code>oddsratio</code> from <code>epitools</code> package for more details) is taken in the first case and Chi-square or Fisher exact test in the second. The same happens when OR for a continuous value is performed: the p-value corresponding to this OR is computed form a logistic regression and therefore may differ from the one computed using a Student-T test or Kruskall Wallis test.
 This discordance may also be present when computing the p-value corresponding to a Hazard Ratio for a categorical two level row-variable: a Wald test or a long-rank test are peformed.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -310,14 +309,14 @@ This discordance may also be present when computing the p-value corresponding to
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='no'>compareGroups</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>compareGroups</span>)
 
 <span class='co'># load REGICOR data</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>regicor</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>regicor</span>)
 
 <span class='co'># compute a time-to-cardiovascular event variable</span>
-<span class='no'>regicor</span>$<span class='no'>tcv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='no'>regicor</span>,<span class='fu'>Surv</span>(<span class='no'>tocv</span>, <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='no'>cv</span><span class='kw'>==</span><span class='st'>'Yes'</span>)))
-<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>regicor</span>$<span class='no'>tcv</span>, <span class='st'>"label"</span>)<span class='kw'>&lt;-</span><span class='st'>"Cardiovascular incidence"</span>
+<span class='no'>regicor</span>$<span class='no'>tcv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>(<span class='no'>regicor</span>,<span class='fu'>Surv</span>(<span class='no'>tocv</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/integer'>as.integer</a></span>(<span class='no'>cv</span><span class='kw'>==</span><span class='st'>'Yes'</span>)))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/attr'>attr</a></span>(<span class='no'>regicor</span>$<span class='no'>tcv</span>, <span class='st'>"label"</span>)<span class='kw'>&lt;-</span><span class='st'>"Cardiovascular incidence"</span>
 
 <span class='co'># descriptives by time-to-cardiovascular event, taking 'no' category as </span>
 <span class='co'># the reference in computing HRs.</span>
@@ -349,7 +348,7 @@ This discordance may also be present when computing the p-value corresponding to
 #&gt; Physical component            49.7 (8.95)  47.4 (9.03) 0.98 [0.96;1.00]  0.023    0.023   
 #&gt; ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </div><div class='input'>
 <span class='co'># prints available info table</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>restab</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>restab</span>)</div><div class='output co'>#&gt; 
 #&gt; 
 #&gt; 
 #&gt; ---Available data----
@@ -369,38 +368,38 @@ This discordance may also be present when computing the p-value corresponding to
 #&gt; Physical component            1940    1853    87   continuous-normal  ALL       1      
 #&gt; ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </div><div class='input'>
 
-<span class='co'># more...</span>
+# more...
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-
+</div><span class='co'># NOT RUN {</span>
 <span class='co'># Adds the 'available data' column</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>show.n</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>show.n</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 
 <span class='co'># Descriptive of the entire cohort</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>res</span>, ~ <span class='no'>.</span> ))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>res</span>, ~ <span class='no'>.</span> ))
 
 <span class='co'># .. changing the response variable to sex</span>
 <span class='co'># Odds Ratios (OR) are displayed instead of Hazard Ratios (HR).</span>
 <span class='co'># note that now it is possible to compute descriptives by time-to-death </span>
 <span class='co'># or time-to-cv but not the ORs . </span>
 <span class='co'># We set timemax to 5 years, to report the probability of death and CV at 5 years:</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>res</span>, <span class='no'>sex</span> ~ <span class='no'>.</span> - <span class='no'>sex</span> + <span class='no'>tdeath</span> + <span class='no'>tcv</span>, <span class='kw'>timemax</span> <span class='kw'>=</span> <span class='fl'>5</span>*<span class='fl'>365.25</span>))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>restab</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>res</span>, <span class='no'>sex</span> ~ <span class='no'>.</span> - <span class='no'>sex</span> + <span class='no'>tdeath</span> + <span class='no'>tcv</span>, <span class='kw'>timemax</span> <span class='kw'>=</span> <span class='fl'>5</span>*<span class='fl'>365.25</span>))
 
 
 <span class='co'>## Combining tables:</span>
 
 <span class='co'># a) By rows: takes the first four variables as a group and the rest as another group:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>(<span class='st'>"First group of variables"</span><span class='kw'>=</span><span class='no'>restab</span>[<span class='fl'>1</span>:<span class='fl'>4</span>],<span class='st'>"Second group of variables"</span><span class='kw'>=</span>
-  <span class='no'>restab</span>[<span class='fl'>5</span>:<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>res</span>)])
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(<span class='st'>"First group of variables"</span><span class='kw'>=</span><span class='no'>restab</span>[<span class='fl'>1</span>:<span class='fl'>4</span>],<span class='st'>"Second group of variables"</span><span class='kw'>=</span>
+  <span class='no'>restab</span>[<span class='fl'>5</span>:<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>res</span>)])
 
 <span class='co'># b) By columns: puts stratified tables by sex one beside the other:</span>
 <span class='no'>res1</span><span class='kw'>&lt;-</span><span class='fu'><a href='compareGroups.html'>compareGroups</a></span>(<span class='no'>year</span> ~ <span class='no'>.</span> - <span class='no'>id</span> - <span class='no'>sex</span>, <span class='no'>regicor</span>)
 <span class='no'>restab1</span><span class='kw'>&lt;-</span><span class='fu'>createTable</span>(<span class='no'>res1</span>, <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='st'>'no'</span>)
-<span class='no'>restab2</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>restab1</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>res1</span>, <span class='kw'>subset</span> <span class='kw'>=</span> <span class='no'>sex</span> <span class='kw'>==</span> <span class='st'>'Male'</span>))
-<span class='no'>restab3</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>restab1</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span>(<span class='no'>res1</span>, <span class='kw'>subset</span> <span class='kw'>=</span> <span class='no'>sex</span> <span class='kw'>==</span> <span class='st'>'Female'</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='st'>"ALL"</span> <span class='kw'>=</span> <span class='no'>restab1</span>, <span class='st'>"MALES"</span> <span class='kw'>=</span> <span class='no'>restab2</span>, <span class='st'>"FEMALES"</span> <span class='kw'>=</span> <span class='no'>restab3</span>)
+<span class='no'>restab2</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>restab1</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>res1</span>, <span class='kw'>subset</span> <span class='kw'>=</span> <span class='no'>sex</span> <span class='kw'>==</span> <span class='st'>'Male'</span>))
+<span class='no'>restab3</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>restab1</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/update'>update</a></span>(<span class='no'>res1</span>, <span class='kw'>subset</span> <span class='kw'>=</span> <span class='no'>sex</span> <span class='kw'>==</span> <span class='st'>'Female'</span>))
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='st'>"ALL"</span> <span class='kw'>=</span> <span class='no'>restab1</span>, <span class='st'>"MALES"</span> <span class='kw'>=</span> <span class='no'>restab2</span>, <span class='st'>"FEMALES"</span> <span class='kw'>=</span> <span class='no'>restab3</span>)
 
-}</div></pre>
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -421,23 +420,19 @@ This discordance may also be present when computing the p-value corresponding to
   </div>
 </div>
 
-
       <footer>
       <div class="copyright">
   <p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
    </div>
 
   
 
-
   </body>
 </html>
-
 

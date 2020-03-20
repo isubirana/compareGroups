@@ -1,3 +1,13 @@
+# compareGroups 4.4.2
+- bug fixed when exporting tables to PDF in cGroupsWUI()
+
+# compareGroups 4.4.1
+- bug fixed in internal function compare.i when computing binom.test with zero freqs.
+- confinterval function to compute confidence interval of means and medians return NA and not error when it cannot compute IC for medians.
+- conf.level (confidence level) argument in compareGroups and descrTable function also applies to hazard, odds and risk ratios.
+- epitools package removed from importFrom (NAMESPACE)
+- functions qnorm, rbinom and uniroot functions from stats package added in importFrom
+
 # compareGroups 4.4.0
 - compareGroups, descrTable: new argument 'compute.prop' added (to compute proportions instead of percentages for categorical row-variables).
 - createTable, descrTable: new argument 'all.last' added (to place descriptives of the whole sample after descriptives by groups).

@@ -72,6 +72,22 @@ export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip,
       first.strip, background, size, header.background, header.color)         
         
 trim(x)
+
+oddsratio(x, method = c("midp", "fisher", "wald", "small"), conf.level = 0.95)
+riskratio(x, method = c("wald", "small", "boot"), conf.level = 0.95)
+epitable(..., ncol = 2, byrow = TRUE, rev = c("neither", "rows", "columns", "both"))
+table.margins(x)
+or.midp(x, conf.level = 0.95, byrow = TRUE, interval = c(0,1000))
+tab2by2.test(x)
+ormidp.test(a1, a0, b1, b0, or = 1)
+oddsratio.midp(x, conf.level = 0.95)
+oddsratio.fisher(x, conf.level = 0.95)
+oddsratio.wald(x, conf.level = 0.95)
+oddsratio.small(x, conf.level = 0.95)
+riskratio.small(x, conf.level = 0.95)
+riskratio.wald(x, conf.level = 0.95)
+riskratio.boot(x, conf.level = 0.95)
+
 }
 
 

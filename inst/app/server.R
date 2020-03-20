@@ -1973,11 +1973,23 @@ shinyServer(function(input, output, session) {
         export2csv(restab,file=ff,sep=input$sepcsv,header.labels=header.labels)
       }
       if (input$downloadtabletype=='PDF'){
-        export2pdf(restab,file="tableTemp.pdf",openfile=FALSE,size=input$sizepdf,landscape=input$landscape,header.labels=header.labels,caption=captionlabel)
-        file.rename("tableTemp.pdf",ff)
-        file.remove("tableTemp.aux")
-        file.remove("tableTemp.log")
-        file.remove("tableTemp.tex")
+        sizepdf <- switch(input$sizepdf,
+                          "tiny" = 6,
+                          "scriptsize" = 8,
+                          "footnotesize" = 10,
+                          "small" = 10.95,
+                          "normalsize" = 12,
+                          "large" = 14.4,
+                          "Large" = 17.28,
+                          "LARGE" = 20.74,
+                          "huge" = 24.88,
+                          "Huge" = 24.88)
+        export2pdf(restab,file=ff,size=sizepdf,landscape=input$landscape,header.labels=header.labels,caption=captionlabel)
+        # export2pdf(restab,file="tableTemp.pdf",size=input$sizepdf,landscape=input$landscape,header.labels=header.labels,caption=captionlabel)
+        # file.rename("tableTemp.pdf",ff)
+        # file.remove("tableTemp.aux")
+        # file.remove("tableTemp.log")
+        # file.remove("tableTemp.tex")
       }
       if (input$downloadtabletype=='HTML'){
         ans <- export2md(restab,format='html',header.labels=header.labels,caption=captionlabel,

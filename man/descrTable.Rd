@@ -76,7 +76,7 @@ Arguments from \code{\link{compareGroups}} function:
   
   \item{include.miss}{logical, indicating whether to treat missing values as a new category for categorical variables. Default value is FALSE.}   
   
-  \item{oddsratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{oddsratio}}. Default value is "midp".}    
+  \item{oddsratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{oddsratio} (\code{epitools} package). Default value is "midp".}    
   
   \item{byrow}{logical or NA. Percentage of categorical variables must be reported by rows (TRUE), by columns (FALSE) or by columns and rows to sum up 1 (NA). Default value is FALSE, which means that percentages are reported by columns (withing groups).} 
   
@@ -90,13 +90,13 @@ Arguments from \code{\link{compareGroups}} function:
   
   \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE \code{\link{anova}} function is applied and \code{\link{oneway.test}} otherwise. Default value is TRUE.} 
   
-  \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence. Default value is 0.95.}   
+  \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence, and hazard, odds and risk ratios. Default value is 0.95.}   
   
   \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.}
   
   \item{riskratio}{logical. Whether to compute Odds Ratio (FALSE) or Risk Ratio (TRUE). Default value is FALSE.}  
   
-  \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{\link[epitools]{riskratio}}. Default value is "wald".} 
+  \item{riskratio.method}{Which method to compute the Odds Ratio. See 'method' argument from \code{riskratio} (\code{epitools} package). Default value is "wald".} 
   
   \item{compute.prop}{logical. Compute proportions (TRUE) or percentages (FALSE) for cathegorical row-variables. Default value is FALSE.}  
 

@@ -40,10 +40,11 @@ par(mar=c(0,0,0,0))
 plot(1,1,xlim=c(-1,1),ylim=c(-1,1),axes=FALSE, xlab="",ylab="")
 abline(v=0,h=0,lwd=4,col="white")
 text(-0.5,0.5,expression(bar(x)), cex=9,col="white")
-text(0.5,0.5,expression(sigma^2), cex=9,col="white")
+text(0.5,0.5,expression(tilde(S)), cex=9,col="white")
 text(-0.5,-0.5,"N", cex=9,col="white")
 text(0.5,-0.5,"%", cex=9,col="white")
 dev.off()
+
 
 
 

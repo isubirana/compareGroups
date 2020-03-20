@@ -1,0 +1,28 @@
+---
+header-includes:
+   - \usepackage{longtable}
+   - \usepackage{multirow}
+   - \usepackage{multicol}
+   - \usepackage{booktabs}
+   - \usepackage{xcolor}
+   - \usepackage{colortbl}
+   - \usepackage{lscape}
+output: pdf_document
+---
+
+
+
+
+
+
+```{r, echo=FALSE}
+
+export2md(x, which.table=which.table, nmax=nmax, header.labels=header.labels, 
+caption=caption, width=width,format='latex', strip=strip, 
+first.strip=first.strip, background=background, size=size, landscape=landscape, 
+header.background=header.background, header.color=header.color)
+
+```
+
+
+
