@@ -15,7 +15,7 @@ export2xls(x, file, which.table="descr", nmax=TRUE, header.labels=c())
 
   \item{x}{an object of class 'createTable'.}
 
-  \item{file}{file where table in HTML format will be written. Also, another file with the extension '_appendix' is written with the available data table. If missing, the HTML code is returned.}
+  \item{file}{file where table in Excel format will be written.}
 
   \item{which.table}{character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), exporting descriptives by groups table, availability data table or both tables, respectively. In the latter case ('both'), two sheets are built, one for each table. Default value is 'descr'.}
 

@@ -1,3 +1,7 @@
+# compareGroups 4.4.3
+- wrong description of file argument from export2xls function fixed.
+- bug fixed in getResults(, "ratio") when only one variable is described.
+
 # compareGroups 4.4.2
 - bug fixed when exporting tables to PDF in cGroupsWUI()
 

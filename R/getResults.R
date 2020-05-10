@@ -150,8 +150,8 @@ getResults <- function(obj, what = "descr"){
   ### OR / HR ###
   if (what=="ratio"){
     if  (!is.null(attr(obj[[1]],"OR"))){
-      ratios <- sapply(1:length(obj),function(i) attr(obj[[i]],"OR"))
-      pvals <- sapply(1:length(obj),function(i) attr(obj[[i]],"p.ratio"))
+      ratios <- lapply(1:length(obj),function(i) attr(obj[[i]],"OR"))
+      pvals <- lapply(1:length(obj),function(i) attr(obj[[i]],"p.ratio"))
     } else {  
       if  (!is.null(attr(obj[[1]],"HR"))){
         ratios <- lapply(1:length(obj),function(i) attr(obj[[i]],"HR"))
@@ -163,7 +163,7 @@ getResults <- function(obj, what = "descr"){
     for (i in 1:length(ratios)){
       ratios.i<-ratios[[i]]
       pvals.i<-pvals[[i]]
-      kk<-which(is.na(ratios.i[,2]))
+      kk<-which(is.na(ratios.i[,2,drop=FALSE]))
       if (length(kk)>0){
         ratios.i<-ratios.i[-kk,,drop=FALSE]
         pvals.i<-pvals.i[-kk]
