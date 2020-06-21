@@ -1158,7 +1158,7 @@ server <- function(input, output, session) {
           form<-as.formula(paste(input$snpsgvar,"~",paste(paste0("`",input$snpsselevars,"`"),collapse="+"),sep=""))
         restabSNPs<-try(compareSNPs(form, dd, sep = input$sepSNPs), silent=TRUE)
         incProgress(1, detail = "")
-        validate(need(restabSNPs, "Error: Some variables could not be converted to SNPs. Check the selected variables and the allele separator."))
+        # validate(need(restabSNPs, "Error: Some variables could not be converted to SNPs. Check the selected variables and the allele separator."))
         return(restabSNPs)
       })
     })

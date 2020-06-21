@@ -46,4 +46,4 @@ LazyLoad: yes
 Encoding: latin1
 BuildVignettes: true
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+

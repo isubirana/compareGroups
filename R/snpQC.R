@@ -33,7 +33,7 @@ snpQC <- function(X,sep,verbose)
 
     # Compute genotyping success statistics
     snp.sum[,"Ntotal"]  <- nrow(X) 
-    snp.sum[,"Ntyped"]  <- apply(X[,snps], 2, function(i) sum(!is.na(i)))
+    snp.sum[,"Ntyped"]  <- apply(X[,snps,drop=FALSE], 2, function(i) sum(!is.na(i)))
     snp.sum[,"Typed.p"] <- round(snp.sum[,"Ntyped"]/snp.sum[,"Ntotal"],3)
     snp.sum[,"Miss.ct"] <- snp.sum[,"Ntotal"] - snp.sum[,"Ntyped"]
     snp.sum[,"Miss.p"]  <- round(snp.sum[,"Miss.ct"]/snp.sum[,"Ntotal"],3)
@@ -76,7 +76,7 @@ snpQC <- function(X,sep,verbose)
     #require(HardyWeinberg)    
     hw <- as.matrix(snp.sum[,c("Hom1.ct","Het.ct","Hom2.ct")])
     hw[is.na(hw)] <- 0; hw <- matrix(as.numeric(hw),ncol=ncol(hw))
-    snp.sum$HWE.p[rowSums(hw)>0]<-HWChisqMat(hw[rowSums(hw)>0,], verbose=verbose)$pvalvec
+    snp.sum$HWE.p[rowSums(hw)>0]<-HWChisqMat(hw[rowSums(hw)>0,,drop=FALSE], verbose=verbose)$pvalvec
 
     # Set classes and return results
     numvar <- c("Ntotal","Ntyped","Typed.p","Miss.ct","Miss.p","MAF","A1.ct","A2.ct","A1.p","A2.p","Hom1.ct","Het.ct","Hom2.ct","Hom1.p","Het.p","Hom2.p","HWE.p")

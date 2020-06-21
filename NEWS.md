@@ -7,6 +7,7 @@ MINOR
 - bug fixed in xlab and ylab in box.plot internal function.
 - new component in 'extra.labels' argument from 'createTable' function to append label for surv variables.
 - shinydashboardPlus package added to suggested
+- compareSNPs: bug fixed when only one SNP is described
 
 # compareGroups 4.4.2
 - bug fixed when exporting tables to PDF in cGroupsWUI()

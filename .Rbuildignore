@@ -6,6 +6,7 @@
 ^build_logo\.R$
 ^vignettes/about.Rmd$
 ^vignettes/examples$
+^vignettes/wui.Rmd$
 ^README.css$
 ^README_files$
 ^index.Rmd$
@@ -15,5 +16,5 @@
 ^\.travis\.yml$
 ^index_files$
 ^./inst/app/rsconnect$
-^./inst/app/TODO.txt$
 ^_pkgdown\.yml$
+
