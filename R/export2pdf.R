@@ -2,17 +2,15 @@ export2pdf <- function(x, file, which.table="descr", nmax=TRUE, header.labels=c(
                        width=Inf, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL,  
                        landscape=FALSE, numcompiled=2){
 
+  
   if (!inherits(x, "createTable")) 
     stop("x must be of class 'createTable'")
-  # if (inherits(x, "cbind.createTable")) 
-  #   stop("x cannot be of class 'cbind.createTable'")
-  # if (is.null(caption)) caption<-"NULL"
+
   if (length(header.labels)==0) header.labels<-"c()"
-  #tempfile<-file.path(tempdir(),"temp.Rmd")
+
   tempfile <- NULL
   tempfile <- sub("pdf$","Rmd",file)
-  # if (is.null(tempfile)) stop("file must be .pdf")
-  
+
   instr<-paste(
 "---
 header-includes:
@@ -31,8 +29,7 @@ output: pdf_document
 ```{r, echo=FALSE}\n
 export2md(x, which.table=which.table, nmax=nmax, header.labels=header.labels, 
 caption=caption, width=width,format='latex', strip=strip, 
-first.strip=first.strip, background=background, size=size, landscape=landscape, 
-header.background=header.background, header.color=header.color)\n
+first.strip=first.strip, background=background, size=size, landscape=landscape)\n
 ```\n
 \n"
 ,sep=""

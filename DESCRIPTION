@@ -2,7 +2,7 @@ Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
 Version: 4.4.3
-Date: 2020-04-05
+Date: 2020-06-21
 Depends: 
     R (>= 2.13.1),
     SNPassoc
@@ -27,6 +27,7 @@ Suggests:
     shinyjqui,
     shinythemes,
     shinyWidgets,
+    shinydashboardPlus,
     DT,
     readxl,
     haven

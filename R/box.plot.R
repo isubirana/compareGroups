@@ -32,7 +32,7 @@ function(x, y, file, var.label.x, var.label.y, ...)
         pdf(file,...)                             
   }
     
-  boxplot(x ~ y, main = paste("Boxplot of '",var.label.x,"' by '",var.label.y,"'", sep=""),col="red")
+  boxplot(x ~ y, main = paste("Boxplot of '",var.label.x,"' by '",var.label.y,"'", sep=""),col="red",ylab=var.label.x, xlab=var.label.y)
 
   if (!is.null(file) && (length(grep("pdf$",file))==0 || !onefile))
     dev.off()

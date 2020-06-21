@@ -14,7 +14,6 @@
 ^README.md$
 ^\.travis\.yml$
 ^index_files$
-
-
-
+^./inst/app/rsconnect$
+^./inst/app/TODO.txt$
 ^_pkgdown\.yml$

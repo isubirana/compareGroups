@@ -1,43 +1,55 @@
+library(compareGroups, quietly = TRUE)
 library(shiny, quietly=TRUE)
 library(shinyBS, quietly=TRUE)
 library(shinyjs, quietly=TRUE)
-library(shinythemes, quietly=TRUE)
-library(shinyjqui, quietly=TRUE)
+# remotes::install_github("nik01010/dashboardthemes")
+# library(shinythemes, quietly=TRUE)
+# library(shinyjqui, quietly=TRUE)
 # library(colourpicker, quietly=TRUE)
 library(shinyWidgets, quietly=TRUE)
 library(DT, quietly=TRUE)
-library(knitr, quietly=TRUE)
-library(kableExtra, quietly=TRUE)
+library(shinyhelper, quietly=TRUE)
 
-library(shinyhelper, quietly=TRUE) #@
-
-library(shinyWidgets, quietly=TRUE)
+library(shinydashboard, quietly=TRUE)
 library(shinydashboardPlus, quietly=TRUE)
+library(haven, quietly=TRUE)
+
+
+source("flipBox.R")
+
+data(predimed); data(regicor); data(SNPs)
+
+
+# source("dashboard_theme.R")
+
+# horizontal scroll bar on top datatable
+css.topScroolBar <- 
+  "#topScroll > .dataTables_wrapper.no-footer > .dataTables_scroll > .dataTables_scrollBody {
+  transform:rotateX(180deg);
+  }
+  #topScroll > .dataTables_wrapper.no-footer > .dataTables_scroll > .dataTables_scrollBody table{
+  transform:rotateX(180deg);
+  }"
 
 
 options(shiny.maxRequestSize = 10e6) # ~10 Mb
 .cGroupsWUIEnv <- new.env(parent=emptyenv())
 
-loadhelp <- function(){
-  help <- gsub("\t","",readLines("help.html"))
-  starthelp <- which(help=="<cghelptext>") + 1
-  endhelp <- which(help=="</cghelptext>") - 1
-  helpvar <- help[starthelp - 2]
-  hlp <- sapply(1:length(helpvar), function(a) paste(help[starthelp[a]:endhelp[a]],collapse=""))
-  names(hlp) <- helpvar
-  return(hlp)
-}
-hlp <- loadhelp()
-
-require(compareGroups)
-# require(foreign)
-require(haven)
+# loadhelp <- function(){
+#   help <- gsub("\t","",readLines("help.html"))
+#   starthelp <- which(help=="<cghelptext>") + 1
+#   endhelp <- which(help=="</cghelptext>") - 1
+#   helpvar <- help[starthelp - 2]
+#   hlp <- sapply(1:length(helpvar), function(a) paste(help[starthelp[a]:endhelp[a]],collapse=""))
+#   names(hlp) <- helpvar
+#   return(hlp)
+# }
+# hlp <- loadhelp()
 
 
+# source("spss_varlist.R")
 
-source("spss_varlist.R")
-
-wd<-getwd()
+# wd<-getwd()
 
 # color picker
 choices_brewer <- list(
@@ -53,6 +65,6 @@ choices_brewer <- list(
 
 
 
-setwd(system.file("app", package = "compareGroups"))
+# setwd(system.file("app", package = "compareGroups"))
 
 

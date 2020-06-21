@@ -12,7 +12,10 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
 
   if (any(!is.na(extra.labels))){ 
     method <- sapply(x, function(x.i) paste(attr(x.i, "method"),collapse="-"))
-    method <- ifelse(method=="continuous-normal", 1, ifelse(method=="continuous-non-normal", 2, 3))
+    method.ori <- method
+    method <- ifelse(method=="continuous-normal", 1, 
+              ifelse(method=="continuous-non-normal", 2, 
+              ifelse(method=="categorical", 3, 4)))
     Q1 <- attr(x,"Q1")
     Q3 <- attr(x,"Q3")
     if (!is.na(extra.labels[1]) && extra.labels[1]=="")
@@ -27,10 +30,20 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
         if (type==3) extra.labels[3] <- "N"
       }
     }
+    if (length(extra.labels)==4 && !is.na(extra.labels[4]) && extra.labels[4]==""){
+      which.surv <- which(method==4)
+      if (length(which.surv)>0){
+        print(method.ori[which.surv[1]])
+        timemax <- format2(as.double(strsplit(method.ori[which.surv[1]],"-")[[1]][2]))
+        print(timemax)
+        extra.labels[4] <- paste0("Incidence at time=",timemax)
+      }
+    }
     names(x) <- paste0(names(x), 
                       ifelse(method==1 & !is.na(extra.labels[1]), paste0(", ", extra.labels[1]),
                       ifelse(method==2 & !is.na(extra.labels[2]), paste0(", ", extra.labels[2]),
-                      ifelse(method==3 & !is.na(extra.labels[3]), paste0(", ", extra.labels[3]), ""))))
+                      ifelse(method==3 & !is.na(extra.labels[3]), paste0(", ", extra.labels[3]), 
+                      ifelse(method==4 & !is.na(extra.labels[4]), paste0(", ", extra.labels[4]),"")))))
   }
   
 

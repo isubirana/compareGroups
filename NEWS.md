@@ -1,6 +1,12 @@
 # compareGroups 4.4.3
+MAJOR
+- WUI (cGroupsWUI) renewed based on shinydashboardPlus layout and more options.
+MINOR
 - wrong description of file argument from export2xls function fixed.
 - bug fixed in getResults(, "ratio") when only one variable is described.
+- bug fixed in xlab and ylab in box.plot internal function.
+- new component in 'extra.labels' argument from 'createTable' function to append label for surv variables.
+- shinydashboardPlus package added to suggested
 
 # compareGroups 4.4.2
 - bug fixed when exporting tables to PDF in cGroupsWUI()

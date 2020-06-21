@@ -137,7 +137,7 @@ Arguments from \code{\link{createTable}} function:
   
   \item{q.type}{a vector with two integer components. The first component refers to the type of brackets to be displayed for non-normal row-variables (1 - rounded and 2 - squared), while the second refers to the percentile separator (1 - ';', 2 - ',' and 3 - '-'. Default value is c(1, 1).}
   
-  \item{extra.labels}{character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to \code{c("","","")}, "Mean (SD)", "Median [25th; 75th]" and "N (\%)" are appended.}
+  \item{extra.labels}{character vector of 4 components corresponding to key legend to be appended to normal, non-normal, categorical or survival row-variables labels. Default value is NA which appends no extra key. If it is set to \code{c("","","","")}, "Mean (SD)", "Median [25th; 75th]", "N (\%)" and "Incidence at time=timemax" are appended (see argument \code{timemax} from \code{compareGroups} function.}
   
   \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.}  
 
