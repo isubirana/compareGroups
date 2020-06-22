@@ -62,7 +62,7 @@ compareSNPs <- function(formula, data, subset, na.action = NULL, sep = "", verbo
     X <- data[rownames(m), pos, drop = FALSE]
     checkit<-try(setupSNP(X,1:ncol(X),sep=sep))
     if (inherits(checkit,"try-error"))
-      stop(paste0(" some variables cannot be converted to snp\n",checkit))
+      stop(paste0(" some variables cannot be converted to snp\n",checkit,"\n sep",sep))
     if (is.null(y)){
       ans <- snpQC(X,sep=sep,verbose=verbose)
       attr(ans,"groups")<-FALSE
