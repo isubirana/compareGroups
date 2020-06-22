@@ -61,10 +61,11 @@ compareSNPs <- function(formula, data, subset, na.action = NULL, sep = "", verbo
         stop("no row-variables selected")
     X <- data[rownames(m), pos, drop = FALSE]
     X <- as.data.frame(X)
-    checkit<-try(setupSNP(X,1:ncol(X),sep=sep))
-    if (inherits(checkit,"try-error"))
-      stop(paste0(" some variables cannot be converted to snp\n\n----checkit---\n",
-                  checkit,"\n-----class(X)---\n",class(X)))
+    # checkit<-try(setupSNP(X,1:ncol(X),sep=sep))
+    # checkit <- try(setupSNP(X,sep=sep))
+    # if (inherits(checkit,"try-error"))
+    #   stop(paste0(" some variables cannot be converted to snp\n\n----checkit---\n",
+    #               checkit,"\n-----class(X)---\n",class(X)))
     if (is.null(y)){
       ans <- snpQC(X,sep=sep,verbose=verbose)
       attr(ans,"groups")<-FALSE
