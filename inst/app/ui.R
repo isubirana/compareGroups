@@ -2,7 +2,7 @@ ui <- fluidPage(
 
   useShinyjs(),
 
-  verbatimTextOutput("xxx"),
+  # verbatimTextOutput("xxx"),
 
   uiOutput("leftPanelAspect"),
   uiOutput("rightPanelAspect"),
