@@ -5,14 +5,15 @@ server <- function(input, output, session) {
   # })
   
   output$xxx <- renderPrint({
-    cat("summary(rv$dataset)\n")
-    print(summary(rv$dataset))
-    cat("-----------------\n")
-    cat("summary(rv$datasetorig)\n")
-    print(summary(rv$datasetorig))    
-    cat("-----------------\n")
-    cat("summary(rv$datasetorigfiltered)\n")
-    print(summary(rv$datasetorigfiltered))      
+    # cat("summary(rv$dataset)\n")
+    # print(summary(rv$dataset))
+    # cat("-----------------\n")
+    # cat("summary(rv$datasetorig)\n")
+    # print(summary(rv$datasetorig))    
+    # cat("-----------------\n")
+    # cat("summary(rv$datasetorigfiltered)\n")
+    # print(summary(rv$datasetorigfiltered)) 
+    print(input$sepSNPs)
   })
   
   output$github <- renderUser({
