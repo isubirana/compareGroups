@@ -3,7 +3,7 @@ snpQC <- function(X,sep,verbose)
 
     X<-try(SNPassoc::setupSNP(X,1:ncol(X),sep=sep))
     # if (inherits(X, "try-error")) stop("ha donat un error")
-    if (inherits(X, "try-error")) stop(inherits(X, "try-error"))
+    if (inherits(X, "try-error")) stop(X)
     
     snps<-attr(X,"label.SNPs")
     snp.sum<-data.frame(SNP=snps,
