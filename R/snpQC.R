@@ -3,7 +3,8 @@ snpQC <- function(X,sep,verbose)
 
     
     setupSNP2 <- function (data, colSNPs, sep){
-        dataSNPs <- mclapply(data[, colSNPs, drop = FALSE], snp, sep = sep)
+        # dataSNPs <- mclapply(data[, colSNPs, drop = FALSE], snp, sep = sep)
+        dataSNPs <- lapply(data[, colSNPs, drop = FALSE], snp, sep = sep)
         dataSNPs <- data.frame(dataSNPs)
         datPhen <- data[, -colSNPs, drop = FALSE]
         ans <- cbind(datPhen, dataSNPs)
