@@ -6,6 +6,7 @@ MINOR
 - bug fixed in getResults(, "ratio") when only one variable is described.
 - bug fixed in xlab and ylab in box.plot internal function.
 - new component in 'extra.labels' argument from 'createTable' function to append label for surv variables.
+- internal function snpQC syntax code: replace mclapply for lapply
 - shinydashboardPlus package added to suggested
 - compareSNPs: bug fixed when only one SNP is described
 
