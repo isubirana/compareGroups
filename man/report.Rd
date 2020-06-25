@@ -22,7 +22,7 @@ report(x, file, fig.folder, compile = TRUE, openfile = FALSE, title = "Report",
 
   \item{fig.folder}{character specifying the folder where the plots corresponding to all row-variables of the table are placed. If it is left missing, a folder with the name file_figures is created in the same folder of 'file'.}
 
-  \item{compile}{logical indicating whether tex file is compiled using \code{\link[tools]{texi2pdf}} function. Default value is TRUE.}
+  \item{compile}{logical indicating whether tex file is compiled using \code{\link[tools:texi2dvi]{texi2pdf}} function. Default value is TRUE.}
   
   \item{openfile}{logical indicating whether to open the compiled pdf file or not. Currently deprectated. Deafult value is FALSE.}
   

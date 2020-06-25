@@ -36,12 +36,12 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   
   \item{subset}{an optional vector specifying a subset of individuals to be used in the computation process. It is applied to all row-variables. 'subset' and 'selec' are added in the sense of '&' to be applied in every row-variable.}
   
-  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats]{na.pass}}, which means no action. Value \code{\link[stats]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
+  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats:na.fail]{na.pass}}, which means no action. Value \code{\link[stats:na.fail]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
   
   
   \item{y}{a vector variable that distinguishes the groups. It must be either a numeric, character, factor or NULL. Default value is NULL which means that descriptives for whole sample are calculated and no test is performed.}
   
-  \item{Xext}{a data.frame or a matrix with the same rows / individuals contained in \code{X}, and maybe with different variables / columns than \code{X}. This argument is used by \code{compareGroups.default} in the sense that the variables specified in the argument \code{selec} are searched in \code{Xext} and/or in the \code{\link[base]{.GlobalEnv}}. If \code{Xext} is \code{NULL}, then Xext is created from variables of \code{X} plus \code{y}. Default value is \code{NULL}.} 
+  \item{Xext}{a data.frame or a matrix with the same rows / individuals contained in \code{X}, and maybe with different variables / columns than \code{X}. This argument is used by \code{compareGroups.default} in the sense that the variables specified in the argument \code{selec} are searched in \code{Xext} and/or in the \code{\link[base:environment]{.GlobalEnv}}. If \code{Xext} is \code{NULL}, then Xext is created from variables of \code{X} plus \code{y}. Default value is \code{NULL}.} 
   
   \item{selec}{a list with as many components as row-variables. If list length is 1 it is recycled for all row-variables. Every component of 'selec' is an expression that will be evaluated to select the individuals to be analyzed for every row-variable. Otherwise, a named list specifying 'selec' row-variables is applied. '.else' is a reserved name that defines the selection for the rest of the variables; if no '.else' variable is defined, default value is applied for the rest of the variables. Default value is NA; all individuals are analyzed (no subsetting).}
   
@@ -119,7 +119,7 @@ Arguments passed to \code{plot} method.
 
   \item{perc}{logical. Relative frequencies (in percentatges) instead of absolute frequencies are displayed in barplots for categorical variable.}  
 
-  \item{\dots}{For 'plot' method, '...' arguments are passed to \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}} if 'type' argument equals to 'pdf', 'bmp', 'jpg', 'png' or 'tif', respectively.}
+  \item{\dots}{For 'plot' method, '...' arguments are passed to \code{\link[grDevices]{pdf}}, \code{\link[grDevices:png]{bmp}}, \code{\link[grDevices:png]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices:png]{tiff}} if 'type' argument equals to 'pdf', 'bmp', 'jpg', 'png' or 'tif', respectively.}
 
 }
 
@@ -176,7 +176,7 @@ Finally, when the response is binary and the row variable is categorical, the p-
 
 Subjects selection criteria specified in 'selec' and 'subset' arguments are combined using '&' to be applied to every row-variable.\cr
 
-Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see \code{\link[grDevices]{pdf}}, \code{\link[grDevices]{bmp}}, \code{\link[grDevices]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices]{tiff}}.\cr
+Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see \code{\link[grDevices]{pdf}}, \code{\link[grDevices:png]{bmp}}, \code{\link[grDevices:png]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices:png]{tiff}}.\cr
 
 Since version 4.0, date variables are supported. For this kind of variables only method==2 is applied, i.e. non-parametric tests for continuous variables are applied. However, the descriptive statistics (medians and quantiles) are displayed in date format instead of numeric format.
 

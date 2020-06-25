@@ -23,7 +23,7 @@ compareSNPs(formula, data, subset, na.action = NULL, sep = "", verbose = FALSE, 
   
   \item{subset}{an optional vector specifying a subset of individuals to be used in the computation process (applied to all genetic variables).}
   
-  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats]{na.pass}}, which means no action. Value \code{\link[stats]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
+  \item{na.action}{a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to \code{\link[stats:na.fail]{na.pass}}, which means no action. Value \code{\link[stats:na.fail]{na.exclude}} can be useful if it is desired to removed all individuals with some NA in any variable.}    
 
   \item{sep}{character string indicating the separator between alleles (e.g. when using A/A, A/T and T/T genotype codification, 'sep' should be set to '/'. Default value is '' indicating that genotypes are coded as AA, AT and TT.} 
   
