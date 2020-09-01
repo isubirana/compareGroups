@@ -244,7 +244,7 @@ Also, by using `export2md` function a descriptive table can be inserted
 in a Rmarkdown chunk to be compiled in HTML, PDF or Word report. Here
 there is an example of a Rmarkdown compiled to HTML.
 
-    export2md(tab, strip = TRUE, first = TRUE, 
+    export2md(tab, format="html", strip = TRUE, first = TRUE, 
               header.background = "blue", header.color = "white", 
               caption = "Description of variables by intervention groups",
               size=10)
@@ -644,7 +644,7 @@ women. This is very easy using the `strataTable` function:
 
 or when is complied in HTML
 
-    export2md(tabestr, strip = TRUE, first = TRUE, 
+    export2md(tabestr, format="html", strip = TRUE, first = TRUE, 
               header.background = "blue", header.color = "white", size=8)
 
 <table class="table table-condensed" style="font-size: 8px; width: auto !important; margin-left: auto; margin-right: auto;">
