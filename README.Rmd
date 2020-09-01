@@ -164,7 +164,8 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 ```{r}
 export2md(tab, strip = TRUE, first = TRUE, 
           header.background = "blue", header.color = "white", 
-          caption = "Description of variables by intervention groups")
+          caption = "Description of variables by intervention groups",
+          size=10)
 ```
 
 
@@ -176,7 +177,8 @@ After creating a table you may want to repeat the descriptives within stratas. F
 ```{r}
 # stratify by sex
 tabestr <- strataTable(tab, strata="sex")
-# remove sex
+
+# remove sex variable from the table
 tabestr[-1]
 ```
 
@@ -185,7 +187,7 @@ or when is complied in HTML
 
 ```{r}
 export2md(tabestr, strip = TRUE, first = TRUE, 
-          header.background = "blue", header.color = "white", size=11)
+          header.background = "blue", header.color = "white", size=8)
 ```
 
 
@@ -205,13 +207,28 @@ descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)[1:4]
 - **Example of cohort study: Hazard Ratios**
 
 
-```{r}
+```{r, eval=FALSE}
 # create a Surv response:
 library(survival)
-predimed$tevent <<- Surv(predimed$toevent, predimed$event=="Yes")
+predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+
 # perform descriptive table placing the Surv object as the response (left side of ~):
 tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
            hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+
+# print table on R console
+print(tab, header.label=c("p.ratio"="p-value"))           
+```
+
+```{r, echo=FALSE}
+# create a Surv response:
+library(survival)
+predimed$tevent <<- Surv(predimed$toevent, predimed$event=="Yes")
+
+# perform descriptive table placing the Surv object as the response (left side of ~):
+tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
+           hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+
 # print table on R console
 print(tab, header.label=c("p.ratio"="p-value"))           
 ```

@@ -251,12 +251,13 @@ there is an example of a Rmarkdown compiled to HTML.
 ``` r
 export2md(tab, strip = TRUE, first = TRUE, 
           header.background = "blue", header.color = "white", 
-          caption = "Description of variables by intervention groups")
+          caption = "Description of variables by intervention groups",
+          size=10)
 ```
 
-<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 10px; width: auto !important; margin-left: auto; margin-right: auto;">
 
-<caption>
+<caption style="font-size: initial !important;">
 
 Description of variables by intervention groups
 
@@ -967,7 +968,8 @@ women. This is very easy using the `strataTable` function:
 ``` r
 # stratify by sex
 tabestr <- strataTable(tab, strata="sex")
-# remove sex
+
+# remove sex variable from the table
 tabestr[-1]
 ```
 
@@ -1004,10 +1006,10 @@ or when is complied in HTML
 
 ``` r
 export2md(tabestr, strip = TRUE, first = TRUE, 
-          header.background = "blue", header.color = "white", size=11)
+          header.background = "blue", header.color = "white", size=8)
 ```
 
-<table class="table table-condensed" style="font-size: 11px; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 8px; width: auto !important; margin-left: auto; margin-right: auto;">
 
 <caption style="font-size: initial !important;">
 
@@ -2266,10 +2268,12 @@ snp10001:
 ``` r
 # create a Surv response:
 library(survival)
-predimed$tevent <<- Surv(predimed$toevent, predimed$event=="Yes")
+predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+
 # perform descriptive table placing the Surv object as the response (left side of ~):
 tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
            hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+
 # print table on R console
 print(tab, header.label=c("p.ratio"="p-value"))           
 ```
