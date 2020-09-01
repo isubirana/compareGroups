@@ -18,3 +18,5 @@
 ^./inst/app/rsconnect$
 ^_pkgdown\.yml$
 
+^README\.Rmd$
+^index\.md$

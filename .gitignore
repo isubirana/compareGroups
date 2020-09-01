@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-README.Rmd
 docs/
 inst/app/rsconnect
 

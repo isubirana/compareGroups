@@ -1,11 +1,10 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 4.4.3
-Date: 2020-06-24
+Version: 4.4.5
+Date: 2020-09-01
 Depends: 
-    R (>= 2.13.1),
-    SNPassoc
+    R (>= 3.5.0)
 Imports: 
     survival,
     tools,

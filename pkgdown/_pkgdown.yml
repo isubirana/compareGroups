@@ -30,9 +30,17 @@ navbar:
       text: Reference
       href: reference/index.html
     articles:
-      icon: fas fa-book   
+      icon: fas fa-book 
       text: Articles
-      href: articles/index.html
+      menu:
+      - text: "package manual"
+        href: articles/compareGroups_vignette.html
+      - text: -------
+      - text: "Examples:"
+      - text: "Example 1"
+        href: articles/examples/example1.html
+      - text: "Example 2"
+        href: articles/examples/example2.html
     news:
       icon: fas fa-wrench
       text: Changelog
@@ -49,16 +57,9 @@ navbar:
       text: 'WUI'
       href: articles/wui.html
       
-articles:
-  - title: "Articles"
-    desc: "The following documents describe the package functionality"
-    contents:
-      - '`compareGroups_vignette`'
-      - '`examples/example1`'
-      - '`examples/example2`'
-      - '`wui`'
-
-
+home:
+  path: pkgdown/index.Rmd      
+      
 reference:
   - title: "Computing descriptives"
     contents:

@@ -1,3 +1,12 @@
+# compareGroups 4.4.5
+- SNPassoc removed from Suggests
+- SNPs.rda added to data folder and SNPs.rd help file taken from SNPassoc package and added to compareGroups man files.
+- Depends on R version >3.5.0
+- vignette has been reduced after removing WUI section
+
+# compareGroups 4.4.4
+- SNPassoc moved from Depends to Suggests
+
 # compareGroups 4.4.3
 MAJOR
 - WUI (cGroupsWUI) renewed based on shinydashboardPlus layout and more options.

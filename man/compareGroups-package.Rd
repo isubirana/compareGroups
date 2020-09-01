@@ -22,8 +22,8 @@ Summarize genetic data (Single Nucleotide Polymorphisms) data displaying Allele 
 \tabular{ll}{
 Package: \tab compareGroups\cr
 Type: \tab Package\cr
-Version: \tab 4.4.3\cr
-Date: \tab 2020-06-24\cr
+Version: \tab 4.4.5\cr
+Date: \tab 2020-09-01\cr
 License: \tab GPL version 2 or newer\cr
 LazyLoad: \tab yes\cr
 }
@@ -55,7 +55,7 @@ Maintainer: Isaac Subirana <isubirana<at>imim.es>
 }
 
 \references{
-  Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical Software, 57(12), 1-16. URL \url{http://www.jstatsoft.org/v57/i12/}.
+  Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical Software, 57(12), 1-16. URL \url{https://www.jstatsoft.org/v57/i12/}.
 }
  
 \keyword{package}

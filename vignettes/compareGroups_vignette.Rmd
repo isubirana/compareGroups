@@ -217,6 +217,7 @@ OBSERVATIONS:
 A variable of class `Surv` must be created to deal with time-to-event variables (i.e., time to Cardiovascular event/censored in our example): 
 
 ```{r}
+library(survival)
 predimed$tmain <- with(predimed, Surv(toevent, event == 'Yes'))
 attr(predimed$tmain,"label") <- "AMI, stroke, or CV Death"
 ```
@@ -562,7 +563,6 @@ Since version 3.0, there is a new function called `getResults` to retrieve some 
 For example, it may be interesting to recover the p-values for each variable as a vector to further manipulate it in **`R`**, like adjusting for multiple comparison with `p.adjust`. For example, lets take the example data from **`SNPassoc`** package that contains information of dozens of SNPs (genetic variants) from a sample of cases and controls. In this case we analize five of them:
 
 ```{r}
-library(SNPassoc)
 data(SNPs)
 tab <- createTable(compareGroups(casco ~ snp10001 + snp10002 + snp10005 + snp10008 + snp10009, SNPs))
 pvals <- getResults(tab, "p.overall")
@@ -1067,7 +1067,7 @@ descrTable(group ~ ., predimed, hide.no="no", show.all=TRUE)
 
 Or you can select individuals using the `subset` argument.
 
-```{r, eval=FALSE}
+```{r}
 descrTable(predimed, subset=age>65)
 ```
 
@@ -1400,283 +1400,7 @@ To return to the **`R`** console, just close the GUI window.
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
-# Using Web User Inferface (WUI) - Shiny {#wui}
 
-Since version 2.1, **`compareGropus`** package incorporates a **Web User Interface (WUI)** based on **`shiny`** **`R`** available on CRAN repository [@Shiny] [shiny website](http://shiny.rstudio.com) to facilitate the use of the package for non **`R`** users.
 
-This application includes almost all the options existing in "type on" version. Also, thanks to the power of **`shiny`** package, the user can see the results when setting the included variable, the groups, number of decimals, etc almost instantaneously ("reactivity" -see **`shiny`** manual and examples-). This is very useful to modify and customize the descriptive table before saving it in the desired format saving a lot of time.
-
-In the following subsections, we list and describe all the options available in the **`Shiny-compareGroups`** application, and we illustrate how it works with a real example.
-
-
-<p style="margin-top:50px"></p>
-
-## Menus and options
-
-Once the WUI is called, a web browser is launched with two main parts: in the left hand side there are all the control menu options to read the data frame from different format files, select the variables list to be analysed, specify the number of digits of the descriptives or p-values displayed in the bivariate table, and much more other aspects; while the right hand side contains the results, i.e, a table containing a basic summary of all variables, the bivariate table or some plots.
-
-Following, an exhaustive list describing all the options are presented:
-
-
-### Control menu (left side)
-
-<p style="margin-top:50px"></p>
-
-#### START
-
-A panel with all the options to select the data base and to select the analysed variables. Different file formats are allowed; in the present version these are: SPSS, plain text (txt or csv), EXCEL (2000 or 2007) or **`R`** (.rda or RData). Also, it is possible to select example data already present in the **`compareGroups`** package (REGICOR and PREDIMED) and SNPS from **`SNPassoc`** package.
-
-<p style="margin-top:50px"></p>
-
-#### SETTINGS
-
-A panel with different issues to control for different aspects of the bivariate table:
-
-* <font style="color:blue">Type</font> Each variable can be analysed as normal or non-normal or as categorical. In the first case, mean and standard deviation are displayed; for the second case, medians and quantiles; and for the latest, frequencies and proportions.
-
-* <font style="color:blue">Response</font> Control menu to select which variable indicates the group. Three choices are possible:
-
-    1. **None:** descriptives are performed for the entire data set with no groups.
-		2. **Group:** a variable must be selected. By default, only factor variables with five or less categories can be selected. The descriptives will be performed by these groups. When the grouping variable has only 2 categories, Odds Ratio (OR) can be computed.
-		3. **Survival:** to perform survival analysis where the response is a right censored variable,i.e., with time variable and a variable indicating the censoring (i.e., whether or not the individual suffered the disease). Also, the disease or case status must be indicated.
-
-* <font style="color:blue">Hide</font> For categorical variables, select the category you want to be hidden. Additionally, in the "hide no" input text windows you can type the category which represents "no" in the sense that the category named as indicated for all binary variables are hidden.
-
-* <font style="color:blue">Subset</font> A global subset can be typed affecting all analysed variables. Also you can select a subgroup of individuals for each variable. In any case, a logical expression in **`R`** language must be typed:
-
-	  | Operator | **R**   |
-	  |:--------:|:-------:|
-	  |=         | `==`    |
-	  |or        | `|`     |
-	  |and       | `&`     |
-	  |not       | `!`     |
-
->>Note that to indicate the category, you must type the number that appears in the "VALUES" table on right side of the application instead of its >>name. For example, for gender, type 1 instead of "male" and 2 instead of "female", if "male" is the first category and "female" is the second.
-
-* <font style="color:blue">OR/HR</font> Options for Odds Ratio (OR) when response is binary or Hazard Ratios (HR) for right censored response. You can specify the reference category when computing the OR or HR for the categorical variables. For continuous variables, the scale can be changed. This is very useful for variables with a wide range such as total cholesterol, where it makes more sense to display the OR/HR for each 10 units of change rather than a single unit.
-
-<p style="margin-top:50px"></p>
-
-#### DISPLAY
-
-In this panel, the user can select which information must be displayed in the resulting bivariate table, and in which format, etc.
-
-* <font style="color:blue">Show</font> What to be displayed in the bivariate table:
-
-    + **ALL:** Descriptives for the entire data set.
-    + **p-overall:** p-value comparing the means, medians, proportions or incidence among groups.
-    + **Descriptives:** Descriptives (means, medians, proportions, etc.) by groups.
-    + **p-trend:** p-value for trend. It is supposed that the groups are ordered.
-    + **OR/HR:** Odds Ratio or Hazard Ratio for binary or time-to-event response (grouping variable), respectively.
-    + **Available:** Number of individuals with valid data for each variable and each groups.
-    + **NA category:** For categorical variables, the non-available data is considered as a new category.
-    + **Pairwise p-value:** When more than two groups are considered, p-values corresponding to 2 by 2 comparisons are performed taking into account multiple testing.
-    + **Simplify:** Empty categories (with no available data) are removed from the analyses.
-
-* <font style="color:blue">Format</font> The user can specify how to display the mean and standard deviation, the quantiles
-and frequencies.
-
-* <font style="color:blue">Decimals</font> The number of decimals to be displayed in the bivariate table, for descriptives, p-values and for OR / HR.
-
-* <font style="color:blue">Labels</font> This tab allows to change the "key" headers of the descriptive table such as "ALL", "p-value", etc.
-
-<p style="margin-top:50px"></p>
-
-#### SAVE
-
-A panel with the options to save the bivariate table in different formats: PDF, CSV, TXT, HTML, Word (.docx) or Excel (.xlsx).
-
-If PDF format is selected, size can be specified as well as landscape format. These options may be useful when the table is big or contains lots of columns.
-
-
-<p style="margin-top:50px"></p>
-
-### Results panels (right side)}
-
-* <font style="color:blue">ABOUT:</font>
-  Explanation about both the **`compareGroups`** **`R`**-package and its Web User Interface (WUI) version. Also, it contains the security rules of the data sent by the user when using WUI remotely (from [**`compareGroups`** website](http://www.comparegroups.eu/)).
-
-
-* <font style="color:blue">VALUES</font>
-  Using this tab, the user can take a look at the data contained in the data set.
-
-    + **Summary:** A table with the the name, label and a basic summary of all the variables contained in the data set.
-
-    + **Values:** A table with the raw values in the data set. By default only the first ten rows are displayed, but the user can set the number of rows to be shown and navigate through the data set.
-
-* <font style="color:blue">TABLE</font>
-  The bivariate table contaning the descriptives, p-values, etc. for the selected variables. Additionaly,
-pressing "info" button it is displayed the "info table" containing, for each descripted variable, how many observations are available for each group, whether it is treated as normal, non-normal or categorical, which criteria, if any, has been used to select a subset of individuals and if, the Odds Ratio or Hazard Ratio is computed, the factor for which the variable has been multiplied.
-
-* <font style="color:blue">PLOT</font>
-  Univariate or bivariate (taking into account the groups if proceeds) plots of selected variable.
-
-* <font style="color:blue">SNPs</font>
-  Descriptives of SNPs (Single Nucleotide Polymorphims) with appropriate statistics and tests for these genetic variants. To perform this analysis, only SNPs variables can be selected. A factor response to display genotype frequencies by groups is permitted but not a time-to-event response variable.
-
-
-
-## Example
-
-
-In this section we illustrate how to analyse a data set.
-
-<p style="margin-top:50px"></p>
-
-### Launch the WUI application
-
-To use the WUI locally (and not on a remote server), first load the **`compareGroups`** package and call the <font style="color:red">`cGroupsWUI`</font> function:
-
-```{r, eval=FALSE}
-library(compareGroups)
-cGroupsWUI()
-```
-
-<p style="margin-top:50px"></p>
-
-### Load the data
-
-In this example we will load the PREDIMED data set from the PREDIMED study [@PREDIMED]. This data is already available in the **`compareGroups`** package.
-
-![](./figures/WUI/step1.png)
-
-<p style="margin-top:50px"></p>
-
-### Select the variables to be analysed
-
-After the data is loaded satisfactory, the "Step 2. Select variable" panel is opened automatically.
-Using this panel, we will select all variables except the "event" and "toevent" (the time-to-event) variables. They will represent the response and must be removed from the row-variables.
-
-![](./figures/WUI/step2.png)
-
-<p style="margin-top:50px"></p>
-
-### Select the grouping variable
-
-Since PREDIMED is a longitudinal study where the main goal is to check whether the mediterranean diet is related to a less incidence of cardiovascular disease, we will take the response as the time to cardiovascular event. To do so, we will select "Survival" response type, setting the "toevent" as time variable and "event" as indicator variable (taking "yes" as case code).
-
-![](./figures/WUI/step3.png)
-
-
-<p style="margin-top:50px"></p>
-
-### Take a look at the plots
-
-To see which continuous variables should be treated as normal and which not. By default, **`compareGroups`** performs a Shapiro-Wilks normality test to decide which variables are normal. But we may want to check the normality assumption graphically.
-
-![](./figures/WUI/step4.png)
-
-
-<p style="margin-top:50px"></p>
-
-### Set the options.
-
-
-* **Type:** Specify the variables to be treated as normal and the ones as non normal. To specify that all of them will be treated as normal, except `p14' for which median and quartiles are displayed instead of mean and SD:
-
-![](./figures/WUI/step5a.png)
-
-
-<p style="margin-top:50px"></p>
-
-* **Hide:** To hide the "No" category for binary variables such as hypertension, diabetes, etc., we will type "No" in the "hide no" input text window. Also, to hide the "female" category for we will select the "sex" variable and "female" category and press "Update" button afterwards.
-
-![](./figures/WUI/step5b.png)
-
-
-<p style="margin-top:50px"></p>
-
-* **OR:** Since we have hidden the females, we have to do the same for the HR. Also, for the waist we will change the scale to 5. Doing this, the HR will represent the change in 5 units.
-
-![](./figures/WUI/step5c1.png)
-![](./figures/WUI/step5c2.png)
-
-
-<p style="margin-top:50px"></p>
-
-* **Subset:** If we want to do the analysis only for male type "sex==1" or "sex==2" in only females must be analysed in the "global subset" text input window.
-
-![](./figures/WUI/step5d.png)
-
-
-<p style="margin-top:50px"></p>
-
-### What to be displayed and how.
-
-
-* **Show:** Then, we specify which columns (information) to be displayed in the bivariate table. For instance, if we want to display the Odds Ratio, its p-value, but not the descriptives for the entire cohort "p.overall":
-
-![](./figures/WUI/step6a.png)
-
-<p style="margin-top:50px"></p>
-
-* **Format:** Also, we may want to display only the percentages for categorical variables, mean and standard deviation with plus/minus symbol and rounded brackets for first and third quantiles for continuous normal and non-normal variables, respectively:
-
-![](./figures/WUI/step6b1.png)
-![](./figures/WUI/step6b2.png)
-![](./figures/WUI/step6b3.png)
-
-<p style="margin-top:50px"></p>
-
-* **Decimals:** Moreover, it may be important to report more decimals for the odds ratio. By default, two decimals are reported. If we want to report 3 decimals for all variables:
-
-![](./figures/WUI/step6c.png)
-
-
-<p style="margin-top:50px"></p>
-
-* **Headers:** Finally, some "key" words in the header of the descriptive tables, (such as "p.ratio", ...) may be changed:
-
-![](./figures/WUI/step6d.png)
-
-
-<p style="margin-top:50px"></p>
-
-### Visualize the table
-
-To see the output, click on TABLE tab on the right panel.
-
-![](./figures/WUI/step7a.png)
-
-
-By pressing "View options" button a slider to customize the font-size of the bivariate table appears, as well as an "info" button. Pressing the "info" button a table containg information about the number of available data by variable and group, type of variable (normal, non-normal or categorical, etc) is displayed on a modal.
-
-![](./figures/WUI/step7b.png)
-
-
-
-<p style="margin-top:50px"></p>
-
-### Saving the table
-
-Finally, once the table contains all the desired figures and in the appropriate format, it can be downloaded and stored in different formats:
-
-a. **PDF:** a LaTeX compiler such as MikTex must be installed to build the PDF document with the descriptive table. The user can select the font size and whether table must be placed vertically or horizontally (landscape option).
-
-b. **CSV:** a plain text file with columns separated by commas or semicolons. For Windows users, this format is useful since it can be opened by Excel.
-
-c. **HTML:** a web browser is opened and the table can be easily copied and pasted to  Word, for instance.
-
-d. **TXT:** a plain text file which can be opened by any text editor program and which contains the table as in **`R`** console with a nice format. Once the "download" button is pressed, the file is automatically stored in your PC/Mac.
-
-e. **Word:** A Word document file (either 2000, 2003 or 2010 version) is created.
-
-f. **Excel:** An Excel sheet file (either 2000, 2003 or 2010 version) is created.
-
-
-![](./figures/WUI/step8.png)
-
-
-
-
-
-<p style="margin-top:50px"></p>
-<p style="margin-top:50px"></p>
 
 # References
-
-
-
-
-
-

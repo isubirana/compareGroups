@@ -3,6 +3,6 @@ title: "Web User Interface"
 output: html_document
 ---
 
-[Go to full screen](http://apps.datarus.eu/comparegroups/)
+[Go to full screen](https://isubirana.shinyapps.io/compareGroups/)
 
-<iframe src="http://apps.datarus.eu/comparegroups/" width="120%" height="1200px"></iframe>
+<iframe src="https://isubirana.shinyapps.io/compareGroups/" width="120%" height="1200px"></iframe>

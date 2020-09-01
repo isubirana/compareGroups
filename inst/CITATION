@@ -10,12 +10,12 @@ citEntry(entry = "Article",
   volume       = "57",
   number       = "12",
   pages        = "1--16",
-  url          = "http://www.jstatsoft.org/v57/i12/",
+  url          = "https://www.jstatsoft.org/v57/i12/",
 
   textVersion  =
   paste("Isaac Subirana, Hector Sanz, Joan Vila (2014).",
         "Building Bivariate Tables: The compareGroups Package for R.",
         "Journal of Statistical Software, 57(12), 1-16.",
-        "URL http://www.jstatsoft.org/v57/i12/.")
+        "URL https://www.jstatsoft.org/v57/i12/.")
 )
 

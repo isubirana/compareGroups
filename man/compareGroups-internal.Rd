@@ -88,6 +88,16 @@ riskratio.small(x, conf.level = 0.95)
 riskratio.wald(x, conf.level = 0.95)
 riskratio.boot(x, conf.level = 0.95)
 
+setupSNP2(data, colSNPs, sep)
+snp2(x, sep = "/", name.genotypes, reorder = "common", 
+          remove.spaces = TRUE, allow.partial.missing = FALSE) 
+
+reorder.snp2(x, ref = "common", ...)
+
+summary.snp2(object, ...)
+
+SNPHWE2(x)
+
 }
 
 

@@ -10,12 +10,12 @@ importFrom(graphics, abline, barplot, box, boxplot, hist, legend, lines, mtext, 
 importFrom(stats, oneway.test, TukeyHSD, anova, aov, as.formula, chisq.test, coef, confint, confint.default, 
            cor, cor.test, dnorm, fisher.test, formula, glm, kruskal.test, lm, median, na.pass, p.adjust, 
            pchisq, qqline, quantile, sd, shapiro.test, t.test, update, binom.test, qbinom, qt, binomial,
-           qnorm, rbinom, uniroot)
+           qnorm, rbinom, uniroot, na.omit, relevel)
 importFrom(utils, combn, read.csv, read.csv2, read.table, sessionInfo, write.table)
 importFrom(methods, formalArgs)
 importFrom(writexl, write_xlsx)
 importFrom(officer, fp_border)
-import(SNPassoc)
+#import(SNPassoc)
 #import(kableExtra, except=c(footnote,as_image))
 #import(flextable, except=c(footnote,as_image))
 importFrom(flextable, add_footer,add_footer_lines,add_footer_row,add_header,add_header_lines,add_header_row,align,

@@ -706,7 +706,8 @@ server <- function(input, output, session) {
         dataset <- predimed
       }
       if (input$exampledata=='SNPS'){
-        data(SNPs,package="SNPassoc")
+        # data(SNPs,package="SNPassoc")
+        data(SNPs)
         dataset <- SNPs
       }
     } else { # read own data

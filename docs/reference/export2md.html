@@ -15,21 +15,29 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,12 +45,11 @@
 
 
 
+
 <meta property="og:title" content="Exporting descriptives table to Markdown format — export2md" />
-
 <meta property="og:description" content="This function takes the result of createTable and exports the tables to markdown format. It may be useful when inserting R code chunks in a Markdown file (.Rmd)." />
-
 <meta property="og:image" content="https://github.com/isubirana/compareGroups/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -56,9 +63,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -85,12 +93,27 @@
     Home
   </a>
 </li>
-<li>
-  <a href="../articles/index.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fas fa fas fa-book"></span>
      
     Articles
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/compareGroups_vignette.html">package manual</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Examples:</li>
+    <li>
+      <a href="../articles/examples/example1.html">Example 1</a>
+    </li>
+    <li>
+      <a href="../articles/examples/example2.html">Example 2</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../articles/wui.html">
@@ -114,7 +137,6 @@
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/isubirana/compareGroups">
@@ -136,6 +158,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -147,16 +170,14 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function takes the result of <code>createTable</code> and exports the tables to markdown format. It may be useful when inserting R code chunks in a Markdown file (.Rmd).</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>export2md</span>(<span class='no'>x</span>, <span class='kw'>which.table</span> <span class='kw'>=</span> <span class='st'>"descr"</span>, <span class='kw'>nmax</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>header.labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(), <span class='kw'>caption</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-          <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>strip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>first.strip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-          <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"#D2D2D2"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>landscape</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>header.background</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-          <span class='kw'>header.color</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>position</span><span class='kw'>=</span><span class='st'>"center"</span>,<span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/export2md.html'>export2md</a></span>(<span class='kw'>x</span>, which.table = <span class='st'>"descr"</span>, nmax = <span class='fl'>TRUE</span>, header.labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(), caption = <span class='kw'>NULL</span>, 
+          format = <span class='st'>"html"</span>, width = <span class='fl'>Inf</span>, strip = <span class='fl'>FALSE</span>, first.strip = <span class='fl'>FALSE</span>, 
+          background = <span class='st'>"#D2D2D2"</span>, size = <span class='kw'>NULL</span>, landscape=<span class='fl'>FALSE</span>, header.background=<span class='kw'>NULL</span>, 
+          header.color=<span class='kw'>NULL</span>, position=<span class='st'>"center"</span>,<span class='kw'>...</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -174,7 +195,7 @@
     </tr>
     <tr>
       <th>header.labels</th>
-      <td><p>see the 'header.labels' argument from <code><a href='createTable.html'>createTable</a></code>.</p></td>
+      <td><p>see the 'header.labels' argument from <code><a href='https://rdrr.io/pkg/compareGroups/man/createTable.html'>createTable</a></code>.</p></td>
     </tr>
     <tr>
       <th>caption</th>
@@ -218,78 +239,39 @@
     </tr>
     <tr>
       <th>position</th>
-      <td><p>character specifying the table location. Possible values are 'left', 'center', 'right', 'float_left' and 'float_right'. It only applies when compiling to HTML or PDF. Default value is 'center'. See <code><a href='https://www.rdocumentation.org/packages/kableExtra/topics/kable_styling'>kable_styling</a></code> position argument for more info.</p></td>
+      <td><p>character specifying the table location. Possible values are 'left', 'center', 'right', 'float_left' and 'float_right'. It only applies when compiling to HTML or PDF. Default value is 'center'. See <code><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></code> position argument for more info.</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
-      <td><p>arguments passed to <code><a href='https://www.rdocumentation.org/packages/knitr/topics/kable'>kable</a></code>.</p></td>
+      <th>...</th>
+      <td><p>arguments passed to <code><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     
 
 <p>It does not return anything, but the Markdown code to generate the descriptive or available table is printed.</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     
-    <p>The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (&lt;1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').</p>
+
+<p>The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (&lt;1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').</p>
 <p>Stratified tables, i.e. <code>cbind.createTable</code> class, are not supported when creating a Word document.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='createTable.html'>createTable</a></code>, <code><a href='export2latex.html'>export2latex</a></code>, <code><a href='export2pdf.html'>export2pdf</a></code>, <code><a href='export2csv.html'>export2csv</a></code>, <code><a href='export2html.html'>export2html</a></code>, <code><a href='export2word.html'>export2word</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/compareGroups/man/createTable.html'>createTable</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2latex.html'>export2latex</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2pdf.html'>export2pdf</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2csv.html'>export2csv</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2html.html'>export2html</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2word.html'>export2word</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div># NOT RUN {
----
-title: "Report"
-output:
-  html_document: default
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
-```
-
-```{r}
-library(compareGroups)
-data(predimed)
-res <- compareGroups(group~., predimed)
-restab <- createTable(res)
-```
-
-## Report section
-
-The following table contains descriptives of **PREDIMED** data
-
-```{r}
-export2md(restab, strip = TRUE, first.strip = TRUE)
-```
-# }
-<div class='input'>
-</div></pre>
+    <pre class="examples"></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -297,13 +279,16 @@ export2md(restab, strip = TRUE, first.strip = TRUE)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -14,6 +14,7 @@ library(shinydashboard, quietly=TRUE)
 library(shinydashboardPlus, quietly=TRUE)
 library(haven, quietly=TRUE)
 
+library(survival, quietly=TRUE)
 
 source("flipBox.R")
 

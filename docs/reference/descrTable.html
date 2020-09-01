@@ -15,21 +15,29 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-<!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,12 +45,11 @@
 
 
 
+
 <meta property="og:title" content="Perform descriptives and build the bivariate table. — descrTable" />
-
 <meta property="og:description" content="This functions builds a bivariate table calling compareGroups and createTable function in one step." />
-
 <meta property="og:image" content="https://github.com/isubirana/compareGroups/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -56,9 +63,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -85,12 +93,27 @@
     Home
   </a>
 </li>
-<li>
-  <a href="../articles/index.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fas fa fas fa-book"></span>
      
     Articles
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/compareGroups_vignette.html">package manual</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Examples:</li>
+    <li>
+      <a href="../articles/examples/example1.html">Example 1</a>
+    </li>
+    <li>
+      <a href="../articles/examples/example2.html">Example 2</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../articles/wui.html">
@@ -114,7 +137,6 @@
   </a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/isubirana/compareGroups">
@@ -136,6 +158,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -147,25 +170,23 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This functions builds a bivariate table calling compareGroups and createTable function in one step.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>descrTable</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='no'>subset</span>, <span class='kw'>na.action</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>Xext</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>selec</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>timemax</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.05</span>, <span class='kw'>min.dis</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>max.ylev</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>max.xlev</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>include.label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>Q1</span> <span class='kw'>=</span> <span class='fl'>0.25</span>, <span class='kw'>Q3</span> <span class='kw'>=</span> <span class='fl'>0.75</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>ref</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>fact.ratio</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ref.y</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>p.corrected</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>compute.ratio</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>include.miss</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>oddsratio.method</span> <span class='kw'>=</span> <span class='st'>"midp"</span>,
-  <span class='kw'>chisq.test.perm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>chisq.test.B</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>chisq.test.seed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>Date.format</span> <span class='kw'>=</span> <span class='st'>"d-mon-Y"</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>surv</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>riskratio</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>riskratio.method</span> <span class='kw'>=</span> <span class='st'>"wald"</span>, <span class='kw'>compute.prop</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>hide</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>show.p.overall</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>show.all</span>, <span class='no'>show.p.trend</span>, <span class='kw'>show.p.mul</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>show.n</span>, <span class='kw'>show.ratio</span> <span class='kw'>=</span>
-  <span class='fl'>FALSE</span>, <span class='kw'>show.descr</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show.ci</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>hide.no</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>digits.ratio</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>show.p.ratio</span> <span class='kw'>=</span> <span class='no'>show.ratio</span>, <span class='kw'>digits.p</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sd.type</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>q.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
-  <span class='kw'>extra.labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>all.last</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/descrTable.html'>descrTable</a></span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, <span class='kw'>subset</span>, na.action = <span class='kw'>NULL</span>, y = <span class='kw'>NULL</span>, Xext = <span class='kw'>NULL</span>, 
+  selec = <span class='fl'>NA</span>, method = <span class='fl'>1</span>, timemax = <span class='fl'>NA</span>, alpha = <span class='fl'>0.05</span>, min.dis = <span class='fl'>5</span>, max.ylev = <span class='fl'>5</span>, 
+  max.xlev = <span class='fl'>10</span>, include.label = <span class='fl'>TRUE</span>, Q1 = <span class='fl'>0.25</span>, Q3 = <span class='fl'>0.75</span>, simplify = <span class='fl'>TRUE</span>, 
+  ref = <span class='fl'>1</span>, ref.no = <span class='fl'>NA</span>, fact.ratio = <span class='fl'>1</span>, ref.y = <span class='fl'>1</span>, p.corrected = <span class='fl'>TRUE</span>, 
+  compute.ratio = <span class='fl'>TRUE</span>, include.miss = <span class='fl'>FALSE</span>, oddsratio.method = <span class='st'>"midp"</span>, 
+  chisq.test.perm = <span class='fl'>FALSE</span>, byrow = <span class='fl'>FALSE</span>, chisq.test.B = <span class='fl'>2000</span>, chisq.test.seed = <span class='kw'>NULL</span>,
+  Date.format = <span class='st'>"d-mon-Y"</span>, var.equal = <span class='fl'>TRUE</span>, conf.level = <span class='fl'>0.95</span>, surv = <span class='fl'>FALSE</span>,
+  riskratio = <span class='fl'>FALSE</span>, riskratio.method = <span class='st'>"wald"</span>, compute.prop = <span class='fl'>FALSE</span>, 
+  hide = <span class='fl'>NA</span>, digits = <span class='fl'>NA</span>, type = <span class='fl'>NA</span>, show.p.overall = <span class='fl'>TRUE</span>,
+  <span class='kw'>show.all</span>, <span class='kw'>show.p.trend</span>, show.p.mul = <span class='fl'>FALSE</span>, <span class='kw'>show.n</span>, show.ratio =
+  <span class='fl'>FALSE</span>, show.descr = <span class='fl'>TRUE</span>, show.ci = <span class='fl'>FALSE</span>, hide.no = <span class='fl'>NA</span>, digits.ratio = <span class='fl'>NA</span>,
+  show.p.ratio = <span class='kw'>show.ratio</span>, digits.p = <span class='fl'>3</span>, sd.type = <span class='fl'>1</span>, q.type = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>),
+  extra.labels = <span class='fl'>NA</span>, all.last = <span class='fl'>FALSE</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -183,7 +204,7 @@
     </tr>
     <tr>
       <th>na.action</th>
-      <td><p>a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to <code><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.pass</a></code>, which means no action. Value <code><a href='https://www.rdocumentation.org/packages/stats/topics/na.fail'>na.exclude</a></code> can be useful if it is desired to removed all individuals with some NA in any variable.</p></td>
+      <td><p>a function which indicates what should happen when the data contain NAs. The default is NULL, and that is equivalent to <code><a href='https://rdrr.io/r/stats/na.fail.html'>na.pass</a></code>, which means no action. Value <code><a href='https://rdrr.io/r/stats/na.fail.html'>na.exclude</a></code> can be useful if it is desired to removed all individuals with some NA in any variable.</p></td>
     </tr>
     <tr>
       <th>y</th>
@@ -191,7 +212,7 @@
     </tr>
     <tr>
       <th>Xext</th>
-      <td><p>a data.frame or a matrix with the same rows / individuals contained in <code>X</code>, and maybe with different variables / columns than <code>X</code>. This argument is used by <code>compareGroups.default</code> in the sense that the variables specified in the argument <code>selec</code> are searched in <code>Xext</code> and/or in the <code><a href='https://www.rdocumentation.org/packages/base/topics/environment'>.GlobalEnv</a></code>. If <code>Xext</code> is <code>NULL</code>, then Xext is created from variables of <code>X</code> plus <code>y</code>. Default value is <code>NULL</code>.</p></td>
+      <td><p>a data.frame or a matrix with the same rows / individuals contained in <code>X</code>, and maybe with different variables / columns than <code>X</code>. This argument is used by <code>compareGroups.default</code> in the sense that the variables specified in the argument <code>selec</code> are searched in <code>Xext</code> and/or in the <code><a href='https://rdrr.io/r/base/environment.html'>.GlobalEnv</a></code>. If <code>Xext</code> is <code>NULL</code>, then Xext is created from variables of <code>X</code> plus <code>y</code>. Default value is <code>NULL</code>.</p></td>
     </tr>
     <tr>
       <th>selec</th>
@@ -208,7 +229,7 @@
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>double between 0 and 1. Significance threshold for the <code><a href='https://www.rdocumentation.org/packages/stats/topics/shapiro.test'>shapiro.test</a></code> normality test for continuous row-variables. Default value is 0.05.</p></td>
+      <td><p>double between 0 and 1. Significance threshold for the <code><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></code> normality test for continuous row-variables. Default value is 0.05.</p></td>
     </tr>
     <tr>
       <th>min.dis</th>
@@ -276,7 +297,7 @@
     </tr>
     <tr>
       <th>chisq.test.perm</th>
-      <td><p>logical. It applies a permutation chi squared test (<code><a href='https://www.rdocumentation.org/packages/stats/topics/chisq.test'>chisq.test</a></code>) instead of an exact Fisher test (<code><a href='https://www.rdocumentation.org/packages/stats/topics/fisher.test'>fisher.test</a></code>). It only applies when expected count in some cells are lower than 5.</p></td>
+      <td><p>logical. It applies a permutation chi squared test (<code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code>) instead of an exact Fisher test (<code><a href='https://rdrr.io/r/stats/fisher.test.html'>fisher.test</a></code>). It only applies when expected count in some cells are lower than 5.</p></td>
     </tr>
     <tr>
       <th>chisq.test.B</th>
@@ -288,11 +309,11 @@
     </tr>
     <tr>
       <th>Date.format</th>
-      <td><p>character indicating how the dates are shown. Default is "d-mon-Y". See <code><a href='https://www.rdocumentation.org/packages/chron/topics/chron'>chron</a></code> for more details.</p></td>
+      <td><p>character indicating how the dates are shown. Default is "d-mon-Y". See <code><a href='https://rdrr.io/pkg/chron/man/chron.html'>chron</a></code> for more details.</p></td>
     </tr>
     <tr>
       <th>var.equal</th>
-      <td><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href='https://www.rdocumentation.org/packages/stats/topics/anova'>anova</a></code> function is applied and <code><a href='https://www.rdocumentation.org/packages/stats/topics/oneway.test'>oneway.test</a></code> otherwise. Default value is TRUE.</p></td>
+      <td><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href='https://rdrr.io/r/stats/anova.html'>anova</a></code> function is applied and <code><a href='https://rdrr.io/r/stats/oneway.test.html'>oneway.test</a></code> otherwise. Default value is TRUE.</p></td>
     </tr>
     <tr>
       <th>conf.level</th>
@@ -384,46 +405,43 @@
     </tr>
     <tr>
       <th>extra.labels</th>
-      <td><p>character vector of 3 components corresponding to key legend to be appended to normal, non-normal and categorical row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("","","")</a></code>, "Mean (SD)", "Median [25th; 75th]" and "N (%)" are appended.</p></td>
+      <td><p>character vector of 4 components corresponding to key legend to be appended to normal, non-normal, categorical or survival row-variables labels. Default value is NA which appends no extra key. If it is set to <code><a href='https://rdrr.io/r/base/c.html'>c("","","","")</a></code>, "Mean (SD)", "Median [25th; 75th]", "N (%)" and "Incidence at time=timemax" are appended (see argument <code>timemax</code> from <code>compareGroups</code> function.</p></td>
     </tr>
     <tr>
       <th>all.last</th>
       <td><p>logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     
 
-<p>An object of class 'createTable' (see <code><a href='createTable.html'>createTable</a></code>).</p>
+<p>An object of class 'createTable' (see <code><a href='https://rdrr.io/pkg/compareGroups/man/createTable.html'>createTable</a></code>).</p>
 <p>So, all methods implemented for createTable class objects can be applied (such as plot, '[', etc.).</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     
-    <p>The use of descrTable function makes easier to build the table (it only needs one line), it may be preferable to build the descriptive table in two steps when computing descriptives and p-values takes some time: first use <code>compareGroups</code> function to store the descriptives and p-values in an object, and then apply <code>createTable</code> to the this object. The two steps strategy saves time since descriptives and p-values are not recomputed every time it is desired to costumize the descriptive table (number of digits, etc.).</p>
-    
+
+<p>The use of descrTable function makes easier to build the table (it only needs one line), it may be preferable to build the descriptive table in two steps when computing descriptives and p-values takes some time: first use <code>compareGroups</code> function to store the descriptives and p-values in an object, and then apply <code>createTable</code> to the this object. The two steps strategy saves time since descriptives and p-values are not recomputed every time it is desired to costumize the descriptive table (number of digits, etc.).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical Software, 57(12), 1-16. URL <a href='http://www.jstatsoft.org/v57/i12/'>http://www.jstatsoft.org/v57/i12/</a>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='createTable.html'>createTable</a></code>, <code><a href='compareGroups.html'>compareGroups</a></code>, <code><a href='export2latex.html'>export2latex</a></code>, <code><a href='export2csv.html'>export2csv</a></code>, <code><a href='export2html.html'>export2html</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/compareGroups/man/createTable.html'>createTable</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups.html'>compareGroups</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2latex.html'>export2latex</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2csv.html'>export2csv</a></code>, <code><a href='https://rdrr.io/pkg/compareGroups/man/export2html.html'>export2html</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>compareGroups</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'>compareGroups</span>)
 
 <span class='co'># load REGICOR data</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>regicor</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>regicor</span>)
 
 <span class='co'># perform descriptives by year and build the table.</span>
 <span class='co'># note the use of arguments from compareGroups (formula and data set) and</span>
 <span class='co'># arguments from createTable (hide.no and show.p.mul)</span>
-<span class='fu'>descrTable</span>(<span class='no'>year</span> ~ <span class='no'>.</span>, <span class='no'>regicor</span>, <span class='kw'>hide.no</span><span class='kw'>=</span><span class='st'>"no"</span>, <span class='kw'>show.p.mul</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/descrTable.html'>descrTable</a></span>(<span class='kw'>year</span> <span class='op'>~</span> <span class='kw'>.</span>, <span class='kw'>regicor</span>, hide.no=<span class='st'>"no"</span>, show.p.mul=<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
 #&gt; --------Summary descriptives table by 'Recruitment year'---------
 #&gt; 
 #&gt; _______________________________________________________________________________________________________________________________________________________ 
@@ -459,27 +477,15 @@
 #&gt; Days to cardiovascular event or end of follow-up    1784 (1101)       1686 (1080)    1793 (1072)   0.099       0.310          0.987          0.097      
 #&gt; Overall death                                       18 (4.65%)        81 (11.0%)     74 (7.23%)   &lt;0.001       0.002          0.103          0.012      
 #&gt; Days to overall death or end of follow-up           1713 (1042)       1674 (1050)    1758 (1055)   0.252       0.825          0.754          0.224      
-#&gt; ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </div><div class='input'>
-</div></pre>
+#&gt; ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </div><div class='input'></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -487,13 +493,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -33,7 +33,7 @@ An object of class 'cbind.createTable'.
 
 
 \references{
-  Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical Software, 57(12), 1-16. URL \url{http://www.jstatsoft.org/v57/i12/}.
+  Isaac Subirana, Hector Sanz, Joan Vila (2014). Building Bivariate Tables: The compareGroups Package for R. Journal of Statistical Software, 57(12), 1-16. URL \url{https://www.jstatsoft.org/v57/i12/}.
 }
 
 \seealso{
