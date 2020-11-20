@@ -806,7 +806,17 @@ ui <- fluidPage(
     
     ### footer ###
     footer = dashboardFooter(
-      left_text = HTML("<b>By Isaac Subirana</b><br>CIBERESP, IMIM-Parc de Salut Mar, Barcelona"), 
+      left_text = HTML("
+        <b>By Isaac Subirana</b><br>CIBERESP, IMIM-Parc de Salut Mar, Barcelona<br>
+        <hr>
+        <table style='margin-left: auto;margin-right: auto'>
+        <tr>
+        <td style='margin-left:5px'><a title='CIBERESP' href='https://www.ciberesp.es/'><img alt='CIBERESP' src='logo-ciberesp.png' width='80%'/></a></td>
+        <td style='margin-left:10px'><a title='IMIM' href='https://imim.cat/'><img alt='IMIM' src='logo_imim_capsalera.gif' width='80%'/></a></td>
+        <td style='margin-left:10px'><a title='REGICOR' href='https://regicor.cat//'><img alt='IMIM' src='regicor_logo125.png' width='80%'/></a></td>
+        </tr>
+        </table>               
+        "), 
       right_text = HTML("Powered by <a href='https://shiny.rstudio.com/'>Shiny</a>")
     ),
 
