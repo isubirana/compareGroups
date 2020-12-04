@@ -1,3 +1,6 @@
+# compareGroups 4.4.6
+- NAMESPACE: functions from importFrom(flextable,...) have been dropped.
+
 # compareGroups 4.4.5
 - SNPassoc removed from Suggests
 - SNPs.rda added to data folder and SNPs.rd help file taken from SNPassoc package and added to compareGroups man files.
