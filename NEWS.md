@@ -1,3 +1,6 @@
+# compareGroups 4.5.0
+- compareGroups, descrTable: new argument 'lab.missing' to specify label for missing cathegory.
+
 # compareGroups 4.4.6
 - NAMESPACE: functions from importFrom(flextable,...) have been dropped.
 

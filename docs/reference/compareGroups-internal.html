@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.6</span>
       </span>
     </div>
 
@@ -88,14 +88,14 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
     Home
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Articles
      
@@ -117,21 +117,21 @@
 </li>
 <li>
   <a href="../articles/wui.html">
-    <span class="fas fa fas fa-play"></span>
+    <span class="fas fa-play"></span>
      
     WUI
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa fas fa-list-ul"></span>
+    <span class="fas fa-list-ul"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa fas fa-wrench"></span>
+    <span class="fas fa-wrench"></span>
      
     Changelog
   </a>
@@ -140,13 +140,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/isubirana/compareGroups">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://groups.google.com/forum/#!forum/comparegroupsforum">
-    <span class="fas fa fas fa-comments"></span>
+    <span class="fas fa-comments"></span>
      
     Forum
   </a>
@@ -173,64 +173,74 @@
     <p>Internal compareGroups functions</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>chisq.test2</a></span>(<span class='kw'>obj</span>, <span class='kw'>chisq.test.perm</span>, <span class='kw'>chisq.test.B</span>, <span class='kw'>chisq.test.seed</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>combn2</a></span>(<span class='kw'>x</span>)
-<span class='fu'>compareGroups.fit</span>(<span class='kw'>X</span>, <span class='kw'>y</span>, <span class='kw'>Xext</span>, <span class='kw'>selec</span>, <span class='kw'>method</span>, <span class='kw'>timemax</span>, <span class='kw'>alpha</span>, <span class='kw'>min.dis</span>, <span class='kw'>max.ylev</span>, <span class='kw'>max.xlev</span>, 
-         <span class='kw'>include.label</span>, <span class='kw'>Q1</span>, <span class='kw'>Q3</span>, <span class='kw'>simplify</span>, <span class='kw'>ref</span>, <span class='kw'>ref.no</span>, <span class='kw'>fact.ratio</span>, <span class='kw'>ref.y</span>, <span class='kw'>p.corrected</span>, 
-         <span class='kw'>compute.ratio</span>, <span class='kw'>include.miss</span>, <span class='kw'>oddsratio.method</span>, <span class='kw'>chisq.test.perm</span>, <span class='kw'>byrow</span>, 
-         <span class='kw'>chisq.test.B</span>, <span class='kw'>chisq.test.seed</span>, <span class='kw'>Date.format</span>, <span class='kw'>var.equal</span>, <span class='kw'>conf.level</span>, <span class='kw'>surv</span>, 
-         <span class='kw'>riskratio</span>, <span class='kw'>riskratio.method</span>, <span class='kw'>compute.prop</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>compare.i</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>selec.i</span>, <span class='kw'>method.i</span>, <span class='kw'>timemax.i</span>, <span class='kw'>alpha</span>, <span class='kw'>min.dis</span>, <span class='kw'>max.xlev</span>, <span class='kw'>varname</span>, <span class='kw'>Q1</span>, <span class='kw'>Q3</span>, 
-          <span class='kw'>groups</span>, <span class='kw'>simplify</span>, <span class='kw'>Xext</span>, <span class='kw'>ref</span>, <span class='kw'>fact.ratio</span>, <span class='kw'>ref.y</span>, <span class='kw'>p.corrected</span>, <span class='kw'>compute.ratio</span>, 
-          <span class='kw'>include.miss</span>, <span class='kw'>oddsratio.method</span>, <span class='kw'>chisq.test.perm</span>, <span class='kw'>byrow</span>,<span class='kw'>chisq.test.B</span>, 
-          <span class='kw'>chisq.test.seed</span>, <span class='kw'>Date.format</span>, <span class='kw'>var.equal</span>, <span class='kw'>conf.level</span>, <span class='kw'>surv</span>, <span class='kw'>riskratio</span>, 
-          <span class='kw'>riskratio.method</span>, <span class='kw'>compute.prop</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>descripSurv</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>timemax</span>, <span class='kw'>surv</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>descrip</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>method</span>, <span class='kw'>Q1</span>, <span class='kw'>Q3</span>, <span class='kw'>conf.level</span>)
-<span class='fu'>confinterval</span>(<span class='kw'>x</span>, <span class='kw'>method</span>, <span class='kw'>conf.level</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>flip</a></span>(<span class='kw'>x</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>format2</a></span>(<span class='kw'>x</span>, digits = <span class='kw'>NULL</span>, <span class='kw'>...</span>)
-<span class='fu'>formula.compareGroups</span>(<span class='kw'>x</span>, <span class='kw'>...</span>) 
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>logrank.pval</a></span>(<span class='kw'>x</span>,<span class='kw'>y</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>signifdec.i</a></span>(<span class='kw'>x</span>, <span class='kw'>digits</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>signifdec</a></span>(<span class='kw'>x</span>, <span class='kw'>digits</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>summ.i</a></span>(<span class='kw'>x</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>table.i</a></span>(<span class='kw'>x</span>, <span class='kw'>hide.i</span>, <span class='kw'>digits</span>, <span class='kw'>digits.ratio</span>, <span class='kw'>type</span>, <span class='kw'>varname</span>, <span class='kw'>hide.i.no</span>, <span class='kw'>digits.p</span>, <span class='kw'>sd.type</span>, 
-        <span class='kw'>q.type</span>, <span class='kw'>spchar</span>, <span class='kw'>show.ci</span>)
-<span class='fu'>update.formula2</span>(<span class='kw'>old</span>, <span class='kw'>new</span>) 
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>KMg.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>var.label.y</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>Cox.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>var.label.y</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>bar2.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>var.label.y</span>, <span class='kw'>perc</span>, <span class='kw'>byrow</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>box.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>var.label.y</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>KM.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>bar.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>perc</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>norm.plot</a></span>(<span class='kw'>x</span>, <span class='kw'>file</span>, <span class='kw'>var.label.x</span>, <span class='kw'>z</span>, <span class='kw'>n.breaks</span>, <span class='kw'>...</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>prepare</a></span>(<span class='kw'>x</span>, <span class='kw'>nmax</span>, <span class='kw'>header.labels</span>)
-<span class='fu'>snpQC</span>(<span class='kw'>X</span>, <span class='kw'>sep</span>, <span class='kw'>verbose</span>)
-<span class='fu'>export2mdcbind</span>(<span class='kw'>x</span>, <span class='kw'>which.table</span>, <span class='kw'>nmax</span>, <span class='kw'>header.labels</span>, <span class='kw'>caption</span>, <span class='kw'>strip</span>, <span class='kw'>first.strip</span>, 
-      <span class='kw'>background</span>, <span class='kw'>width</span>, <span class='kw'>size</span>, <span class='kw'>landscape</span>, <span class='kw'>format</span>, <span class='kw'>header.background</span>, <span class='kw'>header.color</span>, 
-      <span class='kw'>position</span>, <span class='kw'>...</span>) 
-<span class='fu'>export2mdword</span>(<span class='kw'>x</span>, <span class='kw'>which.table</span>, <span class='kw'>nmax</span>, <span class='kw'>header.labels</span>, <span class='kw'>caption</span>, <span class='kw'>strip</span>, 
-      <span class='kw'>first.strip</span>, <span class='kw'>background</span>, <span class='kw'>size</span>, <span class='kw'>header.background</span>, <span class='kw'>header.color</span>)
-<span class='fu'>export2mdwordcbind</span>(<span class='kw'>x</span>, <span class='kw'>which.table</span>, <span class='kw'>nmax</span>, <span class='kw'>header.labels</span>, <span class='kw'>caption</span>, <span class='kw'>strip</span>, 
-      <span class='kw'>first.strip</span>, <span class='kw'>background</span>, <span class='kw'>size</span>, <span class='kw'>header.background</span>, <span class='kw'>header.color</span>)         
+    <pre class="usage"><span class='fu'>chisq.test2</span><span class='op'>(</span><span class='va'>obj</span>, <span class='va'>chisq.test.perm</span>, <span class='va'>chisq.test.B</span>, <span class='va'>chisq.test.seed</span><span class='op'>)</span>
+<span class='fu'>combn2</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>compareGroups.fit</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>y</span>, <span class='va'>Xext</span>, <span class='va'>selec</span>, <span class='va'>method</span>, <span class='va'>timemax</span>, <span class='va'>alpha</span>, <span class='va'>min.dis</span>, <span class='va'>max.ylev</span>, <span class='va'>max.xlev</span>, 
+         <span class='va'>include.label</span>, <span class='va'>Q1</span>, <span class='va'>Q3</span>, <span class='va'>simplify</span>, <span class='va'>ref</span>, <span class='va'>ref.no</span>, <span class='va'>fact.ratio</span>, <span class='va'>ref.y</span>, <span class='va'>p.corrected</span>, 
+         <span class='va'>compute.ratio</span>, <span class='va'>include.miss</span>, <span class='va'>oddsratio.method</span>, <span class='va'>chisq.test.perm</span>, <span class='va'>byrow</span>, 
+         <span class='va'>chisq.test.B</span>, <span class='va'>chisq.test.seed</span>, <span class='va'>Date.format</span>, <span class='va'>var.equal</span>, <span class='va'>conf.level</span>, <span class='va'>surv</span>, 
+         <span class='va'>riskratio</span>, <span class='va'>riskratio.method</span>, <span class='va'>compute.prop</span><span class='op'>)</span>
+<span class='fu'>compare.i</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>selec.i</span>, <span class='va'>method.i</span>, <span class='va'>timemax.i</span>, <span class='va'>alpha</span>, <span class='va'>min.dis</span>, <span class='va'>max.xlev</span>, <span class='va'>varname</span>, <span class='va'>Q1</span>, <span class='va'>Q3</span>, 
+          <span class='va'>groups</span>, <span class='va'>simplify</span>, <span class='va'>Xext</span>, <span class='va'>ref</span>, <span class='va'>fact.ratio</span>, <span class='va'>ref.y</span>, <span class='va'>p.corrected</span>, <span class='va'>compute.ratio</span>, 
+          <span class='va'>include.miss</span>, <span class='va'>oddsratio.method</span>, <span class='va'>chisq.test.perm</span>, <span class='va'>byrow</span>,<span class='va'>chisq.test.B</span>, 
+          <span class='va'>chisq.test.seed</span>, <span class='va'>Date.format</span>, <span class='va'>var.equal</span>, <span class='va'>conf.level</span>, <span class='va'>surv</span>, <span class='va'>riskratio</span>, 
+          <span class='va'>riskratio.method</span>, <span class='va'>compute.prop</span><span class='op'>)</span>
+<span class='fu'>descripSurv</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>timemax</span>, <span class='va'>surv</span><span class='op'>)</span>
+<span class='fu'>descrip</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>method</span>, <span class='va'>Q1</span>, <span class='va'>Q3</span>, <span class='va'>conf.level</span><span class='op'>)</span>
+<span class='fu'>confinterval</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>method</span>, <span class='va'>conf.level</span><span class='op'>)</span>
+<span class='fu'>flip</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>format2</span><span class='op'>(</span><span class='va'>x</span>, digits <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>formula.compareGroups</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span> 
+<span class='fu'>logrank.pval</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span><span class='op'>)</span>
+<span class='fu'>signifdec.i</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>digits</span><span class='op'>)</span>
+<span class='fu'>signifdec</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>digits</span><span class='op'>)</span>
+<span class='fu'>summ.i</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>table.i</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>hide.i</span>, <span class='va'>digits</span>, <span class='va'>digits.ratio</span>, <span class='va'>type</span>, <span class='va'>varname</span>, <span class='va'>hide.i.no</span>, <span class='va'>digits.p</span>, <span class='va'>sd.type</span>, 
+        <span class='va'>q.type</span>, <span class='va'>spchar</span>, <span class='va'>show.ci</span><span class='op'>)</span>
+<span class='fu'>update.formula2</span><span class='op'>(</span><span class='va'>old</span>, <span class='va'>new</span><span class='op'>)</span> 
+<span class='fu'>KMg.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>var.label.y</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>Cox.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>var.label.y</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>bar2.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>var.label.y</span>, <span class='va'>perc</span>, <span class='va'>byrow</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>box.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>var.label.y</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>KM.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>bar.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>perc</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>norm.plot</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>file</span>, <span class='va'>var.label.x</span>, <span class='va'>z</span>, <span class='va'>n.breaks</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='fu'>prepare</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>nmax</span>, <span class='va'>header.labels</span><span class='op'>)</span>
+<span class='fu'>snpQC</span><span class='op'>(</span><span class='va'>X</span>, <span class='va'>sep</span>, <span class='va'>verbose</span><span class='op'>)</span>
+<span class='fu'>export2mdcbind</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>which.table</span>, <span class='va'>nmax</span>, <span class='va'>header.labels</span>, <span class='va'>caption</span>, <span class='va'>strip</span>, <span class='va'>first.strip</span>, 
+      <span class='va'>background</span>, <span class='va'>width</span>, <span class='va'>size</span>, <span class='va'>landscape</span>, <span class='va'>format</span>, <span class='va'>header.background</span>, <span class='va'>header.color</span>, 
+      <span class='va'>position</span>, <span class='va'>...</span><span class='op'>)</span> 
+<span class='fu'>export2mdword</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>which.table</span>, <span class='va'>nmax</span>, <span class='va'>header.labels</span>, <span class='va'>caption</span>, <span class='va'>strip</span>, 
+      <span class='va'>first.strip</span>, <span class='va'>background</span>, <span class='va'>size</span>, <span class='va'>header.background</span>, <span class='va'>header.color</span><span class='op'>)</span>
+<span class='fu'>export2mdwordcbind</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>which.table</span>, <span class='va'>nmax</span>, <span class='va'>header.labels</span>, <span class='va'>caption</span>, <span class='va'>strip</span>, 
+      <span class='va'>first.strip</span>, <span class='va'>background</span>, <span class='va'>size</span>, <span class='va'>header.background</span>, <span class='va'>header.color</span><span class='op'>)</span>         
         
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/compareGroups-internal.html'>trim</a></span>(<span class='kw'>x</span>)
+<span class='fu'>trim</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>oddsratio</span>(<span class='kw'>x</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"midp"</span>, <span class='st'>"fisher"</span>, <span class='st'>"wald"</span>, <span class='st'>"small"</span>), conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>riskratio</span>(<span class='kw'>x</span>, method = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"wald"</span>, <span class='st'>"small"</span>, <span class='st'>"boot"</span>), conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>epitable</span>(<span class='kw'>...</span>, ncol = <span class='fl'>2</span>, byrow = <span class='fl'>TRUE</span>, rev = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"neither"</span>, <span class='st'>"rows"</span>, <span class='st'>"columns"</span>, <span class='st'>"both"</span>))
-<span class='fu'>table.margins</span>(<span class='kw'>x</span>)
-<span class='fu'>or.midp</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>, byrow = <span class='fl'>TRUE</span>, interval = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>1000</span>))
-<span class='fu'>tab2by2.test</span>(<span class='kw'>x</span>)
-<span class='fu'>ormidp.test</span>(<span class='kw'>a1</span>, <span class='kw'>a0</span>, <span class='kw'>b1</span>, <span class='kw'>b0</span>, or = <span class='fl'>1</span>)
-<span class='fu'>oddsratio.midp</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>oddsratio.fisher</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>oddsratio.wald</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>oddsratio.small</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>riskratio.small</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>riskratio.wald</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)
-<span class='fu'>riskratio.boot</span>(<span class='kw'>x</span>, conf.level = <span class='fl'>0.95</span>)</pre>
+<span class='fu'>oddsratio</span><span class='op'>(</span><span class='va'>x</span>, method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"midp"</span>, <span class='st'>"fisher"</span>, <span class='st'>"wald"</span>, <span class='st'>"small"</span><span class='op'>)</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>riskratio</span><span class='op'>(</span><span class='va'>x</span>, method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"wald"</span>, <span class='st'>"small"</span>, <span class='st'>"boot"</span><span class='op'>)</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>epitable</span><span class='op'>(</span><span class='va'>...</span>, ncol <span class='op'>=</span> <span class='fl'>2</span>, byrow <span class='op'>=</span> <span class='cn'>TRUE</span>, rev <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"neither"</span>, <span class='st'>"rows"</span>, <span class='st'>"columns"</span>, <span class='st'>"both"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>table.margins</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>or.midp</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span>, byrow <span class='op'>=</span> <span class='cn'>TRUE</span>, interval <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1000</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>tab2by2.test</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>ormidp.test</span><span class='op'>(</span><span class='va'>a1</span>, <span class='va'>a0</span>, <span class='va'>b1</span>, <span class='va'>b0</span>, or <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>oddsratio.midp</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>oddsratio.fisher</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>oddsratio.wald</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>oddsratio.small</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>riskratio.small</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>riskratio.wald</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+<span class='fu'>riskratio.boot</span><span class='op'>(</span><span class='va'>x</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>
+
+<span class='fu'>setupSNP2</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>colSNPs</span>, <span class='va'>sep</span><span class='op'>)</span>
+<span class='fu'>snp2</span><span class='op'>(</span><span class='va'>x</span>, sep <span class='op'>=</span> <span class='st'>"/"</span>, <span class='va'>name.genotypes</span>, reorder <span class='op'>=</span> <span class='st'>"common"</span>, 
+          remove.spaces <span class='op'>=</span> <span class='cn'>TRUE</span>, allow.partial.missing <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> 
+
+<span class='fu'>reorder.snp2</span><span class='op'>(</span><span class='va'>x</span>, ref <span class='op'>=</span> <span class='st'>"common"</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>summary.snp2</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>SNPHWE2</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -252,7 +262,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

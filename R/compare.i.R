@@ -2,7 +2,7 @@ compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
          chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv, 
-         riskratio, riskratio.method, compute.prop) {
+         riskratio, riskratio.method, compute.prop, lab.missing) {
 
   x.orig <- x
   y.orig <- y
@@ -24,7 +24,7 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
   
   if (is.factor(x) && include.miss){
     x <- addNA(x)
-    levels(x)[nlevels(x)] <- "'Missing'"
+    levels(x)[nlevels(x)] <- lab.missing #"'Missing'"
   }
 
   xlong <- x  

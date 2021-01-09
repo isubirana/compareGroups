@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.6</span>
       </span>
     </div>
 
@@ -88,14 +88,14 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
     Home
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Articles
      
@@ -117,21 +117,21 @@
 </li>
 <li>
   <a href="../articles/wui.html">
-    <span class="fas fa fas fa-play"></span>
+    <span class="fas fa-play"></span>
      
     WUI
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa fas fa-list-ul"></span>
+    <span class="fas fa-list-ul"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa fas fa-wrench"></span>
+    <span class="fas fa-wrench"></span>
      
     Changelog
   </a>
@@ -140,13 +140,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/isubirana/compareGroups">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://groups.google.com/forum/#!forum/comparegroupsforum">
-    <span class="fas fa fas fa-comments"></span>
+    <span class="fas fa-comments"></span>
      
     Forum
   </a>
@@ -173,7 +173,7 @@
     <p>This function creates a report of raw data in your data set. For each variable an ordered list of the unique entries (read as strings), useful for checking for input errors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/radiograph.html'>radiograph</a></span>(<span class='kw'>file</span>, header = <span class='fl'>TRUE</span>, save=<span class='fl'>FALSE</span>, out.file=<span class='st'>""</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>radiograph</span><span class='op'>(</span><span class='va'>file</span>, header <span class='op'>=</span> <span class='cn'>TRUE</span>, save<span class='op'>=</span><span class='cn'>FALSE</span>, out.file<span class='op'>=</span><span class='st'>""</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -208,19 +208,20 @@
 <p>Isaac Subirana (isubirana&lt;at&gt;imim.es)</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/compareGroups/man/report.html'>report</a></code></p></div>
+    <div class='dont-index'><p><code><a href='report.html'>report</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'>compareGroups</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>compareGroups</span><span class='op'>)</span>
 
 <span class='co'># read example data of regicor in plain text format with variables separated by '\t'.</span>
-<span class='kw'>datafile</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"exdata/regicor.txt"</span>, package=<span class='st'>"compareGroups"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/compareGroups/man/radiograph.html'>radiograph</a></span>(<span class='kw'>datafile</span>)
+<span class='va'>datafile</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"exdata/regicor.txt"</span>, package<span class='op'>=</span><span class='st'>"compareGroups"</span><span class='op'>)</span>
+<span class='fu'>radiograph</span><span class='op'>(</span><span class='va'>datafile</span><span class='op'>)</span>
 
-}
+<span class='op'>}</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -237,7 +238,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

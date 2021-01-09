@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.6</span>
       </span>
     </div>
 
@@ -88,14 +88,14 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
     Home
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Articles
      
@@ -117,21 +117,21 @@
 </li>
 <li>
   <a href="../articles/wui.html">
-    <span class="fas fa fas fa-play"></span>
+    <span class="fas fa-play"></span>
      
     WUI
   </a>
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fas fa fas fa-list-ul"></span>
+    <span class="fas fa-list-ul"></span>
      
     Reference
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fas fa fas fa-wrench"></span>
+    <span class="fas fa-wrench"></span>
      
     Changelog
   </a>
@@ -140,13 +140,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/isubirana/compareGroups">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="https://groups.google.com/forum/#!forum/comparegroupsforum">
-    <span class="fas fa fas fa-comments"></span>
+    <span class="fas fa-comments"></span>
      
     Forum
   </a>
@@ -173,7 +173,7 @@
     <p>This function allows the user to build tables in an easy and intuitive way and to modify several options, using a graphical interface.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cGroupsGUI</span>(<span class='kw'>X</span>)</pre>
+    <pre class="usage"><span class='fu'>cGroupsGUI</span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,13 +194,14 @@
 <p>If a data.frame or a matrix is passed through 'X' argument or is loaded by the 'Load data' GUI menu, this object is placed in the <code>.GlobalEnv</code>. Manipulating this data.frame or matrix while GUI is opened may produce an error in executing the GUI operations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>cGroupsWUI</code>, <code>compareGroups</code>, <code>createTable</code></p></div>
+    <div class='dont-index'><p><code><a href='cGroupsWUI.html'>cGroupsWUI</a></code>, <code><a href='compareGroups.html'>compareGroups</a></code>, <code><a href='createTable.html'>createTable</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='kw'>regicor</span>)
-<span class='fu'>cGroupsGUI</span>(<span class='kw'>regicor</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>regicor</span><span class='op'>)</span>
+<span class='fu'>cGroupsGUI</span><span class='op'>(</span><span class='va'>regicor</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -216,7 +217,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
