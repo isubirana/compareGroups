@@ -222,7 +222,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
                             conf.level=conf.level, surv=surv, riskratio=riskratio, riskratio.method=riskratio.method,
                             compute.prop=compute.prop, lab.missing=lab.missing),
                   silent=TRUE)
-     if (inherits(ans.i, "try-error")) print(ans.i)
+     #if (inherits(ans.i, "try-error")) print(ans.i)
      ans.i
    })
    
