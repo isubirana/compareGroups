@@ -26,7 +26,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
         }
       }
     }
-    
+
     call <- match.call()
     if (missing(data))
         data <- environment(formula)
@@ -39,7 +39,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
         vl <- sapply(data, attr, which="labels", exact=TRUE) # store value.labels
       }
     }
-    
+
     # remove labelled class (for incompatibility with haven and Hmisc)
     for (i in 1:ncol(data)){
       if (inherits(data[,i],"labelled"))
@@ -67,14 +67,14 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
       }
     }
 
-    if (is.null(frame.call$drop.unused.levels)) 
-      frame.call$drop.unused.levels <- TRUE
+    #if (is.null(frame.call$drop.unused.levels)) 
+    frame.call$drop.unused.levels <- simplify #TRUE
     if (is.null(frame.call$na.action)) 
       frame.call$na.action = na.pass
     frame.call[["data"]] <- data # in data, non standard characters in names are replaced by . (tibbles)
 
     m <- eval(frame.call, sys.parent())
-    
+
     if (is.environment(data))
       data <- m
     

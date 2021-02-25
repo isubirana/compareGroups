@@ -1,5 +1,7 @@
 # compareGroups 4.5.0
 - compareGroups, descrTable: new argument 'lab.missing' to specify label for missing cathegory.
+- export2md.Rd: in the argument 'width' now it is mentioned explicitely that this argument is ignored when exporting the descriptive table to Word.
+- compareGroups.R: bug fixed when simplify = FALSE and empty catogories for groups variables are now kept. 
 
 # compareGroups 4.4.6
 - NAMESPACE: functions from importFrom(flextable,...) have been dropped.

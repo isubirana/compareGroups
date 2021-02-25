@@ -29,7 +29,7 @@ export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = 
 
  \item{format}{character with three options: 'html', 'latex' or 'markdown'. If missing, it tries to guess the default options of Rmarkdown file in which the table in inserted, or html if it is not in a Rmarkdown file or format not specified.}
  
- \item{width}{character string to specify the width of first column of descriptive table. Default value is \code{Inf} which makes the first column to autoadjust to variable names. Other examples are '10cm', '3in' or '30em'.}
+ \item{width}{character string to specify the width of first column of descriptive table. It is ignored when exporting to Word. Default value is \code{Inf} which makes the first column to autoadjust to variable names. Other examples are '10cm', '3in' or '30em'.}
 
  \item{strip}{logical. It shadows table lines corresponding to each variable.}
  
