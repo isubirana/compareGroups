@@ -120,7 +120,8 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (landscape) ans <- landscape(ans)
     if (format=="latex"){
       ans <- kable_styling(ans, latex_options = c("repeat_header"), font_size=size, position=position)
-      if (n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
+      #if (n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
+      if (n.exists) ans <- gsub("\\\\midrule\n\\\\endfirsthead", "\\\\endfirsthead", ans) # remove lines after N
       if (strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     }
     if (format=="html"){

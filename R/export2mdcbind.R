@@ -124,7 +124,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     if (format=="latex"){
       ans <- add_header_above(ans, structure(c(1, ncols), names=c(" ", attr(x, "caption"))))    
       ans <- kable_styling(ans, latex_options = c("repeat_header"), font_size = size, position = position)
-      if (n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
+      #if (n.exists) ans <- gsub("\\\\midrule", "", ans) # remove lines after N
+      if (n.exists) ans <- gsub("\\\\midrule\n\\\\endfirsthead", "\\\\endfirsthead", ans) # remove lines after N
       if (strip) ans <- gsub("\\textbackslash{}vphantom\\{\\}", "\\vphantom{}", ans, fixed=TRUE)
     }
     

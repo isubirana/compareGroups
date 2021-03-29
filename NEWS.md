@@ -1,3 +1,6 @@
+# compareGroups 4.5.1
+- export2md: add bottom header line when compiling to PDF.
+
 # compareGroups 4.5.0
 - compareGroups, descrTable: new argument 'lab.missing' to specify label for missing category.
 - export2md.Rd: in the argument 'width' now it is mentioned explicitly that this argument is ignored when exporting the descriptive table to Word.
