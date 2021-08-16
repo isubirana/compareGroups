@@ -1,3 +1,7 @@
+# compareGroups 4.5.2
+- missingTable: bug fixed when applying this function to a descriptive table obtained by descrTable function.
+- export2latex: it can handle more than one '&' or '%' characters.
+
 # compareGroups 4.5.1
 - export2md: add bottom header line when compiling to PDF.
 
