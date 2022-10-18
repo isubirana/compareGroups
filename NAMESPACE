@@ -70,7 +70,8 @@ compareSNPs,
 print.compareSNPs,
 missingTable,
 printTable,
-getResults
+getResults,
+padjustCompareGroups
 )
 
 

@@ -7,20 +7,21 @@
 #' @export                padjustCompareGroups
 #' @examples
 #' # Define simulated data 
-#' N<-100
-#' M<-10
-#' groups<-2
-#' data<-matrix( rnorm(N*M,mean=0,sd=1), N, M) 
-#' rbinom(N,1,0.5)
-#' sim_data<-data.frame(data,Y=rbinom(N,1,0.5))
+#' set.seed(123)
+#' N_obs<-100
+#' N_vars<-50 
+#' data<-matrix(rnorm(N_obs*N_vars), N_obs, N_vars) 
+#' 
+#' sim_data<-data.frame(data,Y=rbinom(N_obs,1,0.5))
 #' 
 #' # Execute compareGroups
-#' res<-compareGroups::compareGroups(Y~X1+X2+X3+X4+X5+X6+X7+X8+X9+X10,data=sim_data)
+#' res<-compareGroups(Y~.,data=sim_data)
 #' res
 #' 
 #' # update p values
-#' res_adjusted<-compareGroups::padjustCompareGroups(res)
+#' res_adjusted<-padjustCompareGroups(res)
 #' res_adjusted
+#' 
 padjustCompareGroups<-function(objecte_compare,p="p.overall",method ="BH") {
   
   # objecte_compare=res
