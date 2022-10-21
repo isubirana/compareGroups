@@ -45,4 +45,4 @@ LazyLoad: yes
 Encoding: latin1
 BuildVignettes: true
 VignetteBuilder: knitr
-
+RoxygenNote: 7.1.2
