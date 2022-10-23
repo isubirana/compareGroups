@@ -120,7 +120,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
     if (!length(pos) > 0)
         stop("no row-variables selected")
 
-    Xext <- data[rownames(m), ]
+    Xext <- data[rownames(m), ,drop=FALSE]# bug fixed (drop=FALSE missed)
 
     names(pos) <- names(data)[pos]
     pos <- pos[rv]

@@ -10,6 +10,8 @@ library(shinyWidgets, quietly=TRUE)
 library(DT, quietly=TRUE)
 library(shinyhelper, quietly=TRUE)
 
+
+# devtools::install_version("shinydashboardPlus","0.7.0")
 library(shinydashboard, quietly=TRUE)
 library(shinydashboardPlus, quietly=TRUE)
 library(haven, quietly=TRUE)

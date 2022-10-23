@@ -22,15 +22,17 @@ Summarize genetic data (Single Nucleotide Polymorphisms) data displaying Allele 
 \tabular{ll}{
 Package: \tab compareGroups\cr
 Type: \tab Package\cr
-Version: \tab 4.5.2\cr
-Date: \tab 2021-08-16\cr
+Version: \tab 4.6.1\cr
+Date: \tab 2022-10-19\cr
 License: \tab GPL version 2 or newer\cr
 LazyLoad: \tab yes\cr
 }
 Main functions: 
 \code{\link{compareGroups}}, 
 \code{\link{compareSNPs}}, 
-\code{\link{createTable}}, 
+\code{\link{createTable}},
+\code{\link{descrTable}},
+\code{\link{strataTable}},
 \code{\link{missingTable}}, 
 \code{\link{export2latex}},
 \code{\link{export2html}}, 
@@ -42,7 +44,7 @@ Main functions:
 \code{\link{report}}, 
 \code{\link{radiograph}}, 
 \code{\link{cGroupsGUI}}, 
-\code{\link{cGroupsWUI}}     
+\code{\link{cGroupsWUI}}
 }
 
 

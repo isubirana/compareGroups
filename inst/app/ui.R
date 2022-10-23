@@ -31,7 +31,8 @@ ui <- fluidPage(
   
   titlePanel(HTML("<p style='margin-top:-20px'></p>"), windowTitle="compareGroups | Explore and Summarise Epidemiological Data in R"),
   
-  dashboardPagePlus(
+  # dashboardPagePlus(
+  dashboardPage(
     # md = TRUE,
     loading_duration=0,
     skin="blue",
