@@ -9,8 +9,11 @@ padjustCompareGroups(object_compare, p = "p.overall", method = "BH")
 }
 
 \arguments{
+
 \item{object_compare}{object of class \code{compareGroups}}
-\item{p}{character string. Specify which p-value must be corrected. Possible values are 'p.overall' and 'p.trend' (default: 'p.overall')}.
+
+\item{p}{character string. Specify which p-value must be corrected. Possible values are 'p.overall' and 'p.trend' (default: 'p.overall')}
+
 \item{method}{Correction method, a character string. Can be abbreviated (see \code{\link[stats]{p.adjust}}).}
 }
 
@@ -21,6 +24,7 @@ compareGroups class with corrected p-values
 \description{
 Given a compareGroups object, returns their p-values adjusted using one of several methods (stats::p.adjust)
 }
+
 
 \examples{
 # Define simulated data 
@@ -42,6 +46,5 @@ res_adjusted
 # update p values using FDR method
 res_adjusted<-padjustCompareGroups(res, method ="fdr")
 res_adjusted
-
 
 }

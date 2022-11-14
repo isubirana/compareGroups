@@ -44,5 +44,3 @@ padjustCompareGroups<-function(object_compare,p="p.overall",method ="BH") {
   # return object
   object_compare
 }
-
-
