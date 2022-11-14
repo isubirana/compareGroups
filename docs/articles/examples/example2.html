@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">4.4.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.6.0</span>
       </span>
     </div>
 
@@ -46,13 +48,13 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../../index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
     Home
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-book"></span>
      
     Articles
@@ -64,7 +66,8 @@
       <a href="../../articles/compareGroups_vignette.html">package manual</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Examples:</li>
+    </li>
+<li class="dropdown-header">Examples:</li>
     <li>
       <a href="../../articles/examples/example1.html">Example 1</a>
     </li>
@@ -98,12 +101,12 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/isubirana/compareGroups">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://groups.google.com/forum/#!forum/comparegroupsforum">
+  <a href="https://groups.google.com/forum/#!forum/comparegroupsforum" class="external-link">
     <span class="fas fa-comments"></span>
      
     Forum
@@ -119,7 +122,7 @@
 
       
 
-      </header><script src="example2_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Example 2: Exploring your data graphically.</h1>
@@ -132,69 +135,94 @@
 
     
     
-<p>Barplots, boxplots or normality plots are displayed according to the nature of described variable. These plots are useful to explore visually whether a continuous variable follows a normal distribution or to identify possible outliers or rare categories, etc.</p>
-<div id="step-1--install-the-package" class="section level1">
-<h1 class="hasAnchor">
-<a href="#step-1--install-the-package" class="anchor"></a>Step 1. Install the package</h1>
-<p>Install <strong><code>compareGroups</code></strong> package from CRAN and then load it by typing:</p>
+<p>Barplots, boxplots or normality plots are displayed according to the
+nature of described variable. These plots are useful to explore visually
+whether a continuous variable follows a normal distribution or to
+identify possible outliers or rare categories, etc.</p>
+<div class="section level2">
+<h2 id="step-1--install-the-package">Step 1. Install the package<a class="anchor" aria-label="anchor" href="#step-1--install-the-package"></a>
+</h2>
+<p>Install <strong><code>compareGroups</code></strong> package from CRAN
+and then load it by typing:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"compareGroups"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">compareGroups</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"compareGroups"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">compareGroups</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="step-2--load-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#step-2--load-data" class="anchor"></a>Step 2. Load data</h1>
-<p>Load the PREDIMED example data available in <strong><code>compareGroups</code></strong> package:</p>
+<div class="section level2">
+<h2 id="step-2--load-data">Step 2. Load data<a class="anchor" aria-label="anchor" href="#step-2--load-data"></a>
+</h2>
+<p>Load the REGICOR example data available in
+<strong><code>compareGroups</code></strong> package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">predimed</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="setp-3--computations" class="section level1">
-<h1 class="hasAnchor">
-<a href="#setp-3--computations" class="anchor"></a>Setp 3. Computations</h1>
-<p>First use <code>compareGroups</code> function to store all values used to perform plots afterwards.</p>
+<div class="section level2">
+<h2 id="setp-3--computations">Setp 3. Computations<a class="anchor" aria-label="anchor" href="#setp-3--computations"></a>
+</h2>
+<p>First use <code>compareGroups</code> function to store all values
+used to perform plots afterwards.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">group</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">toevent</span>, data <span class="op">=</span> <span class="va">predimed</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span>  , data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <p><br></p>
-<p>You can use <font style="color:blue"><code>varinfo</code></font> function to recover the original name of variables (not labels which are displayed in the results).</p>
+<p>You can use <font style="color:blue"><code>varinfo</code></font>
+function to recover the original name of variables (not labels which are
+displayed in the results).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/varinfo.html">varinfo</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../../reference/varinfo.html">varinfo</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --- Analyzed variable names ----
 
-   Orig varname Shown varname                  
-1  group        Intervention group             
-2  sex          Sex                            
-3  age          Age                            
-4  smoke        Smoking                        
-5  bmi          Body mass index                
-6  waist        Waist circumference            
-7  wth          Waist-to-height ratio          
-8  htn          Hypertension                   
-9  diab         Type-2 diabetes                
-10 hyperchol    Dyslipidemia                   
-11 famhist      Family history of premature CHD
-12 hormo        Hormone-replacement therapy    
-13 p14          MeDiet Adherence score         
-14 event        AMI, stroke, or CV Death       </code></pre>
+   Orig varname Shown varname                                   
+1  year         Recruitment year                                
+2  id           Individual id                                   
+3  age          Age                                             
+4  sex          Sex                                             
+5  smoker       Smoking status                                  
+6  sbp          Systolic blood pressure                         
+7  dbp          Diastolic blood pressure                        
+8  histhtn      History of hypertension                         
+9  txhtn        Hypertension treatment                          
+10 chol         Total cholesterol                               
+11 hdl          HDL cholesterol                                 
+12 triglyc      Triglycerides                                   
+13 ldl          LDL cholesterol                                 
+14 histchol     History of hyperchol.                           
+15 txchol       Cholesterol treatment                           
+16 height       Height (cm)                                     
+17 weight       Weight (Kg)                                     
+18 bmi          Body mass index                                 
+19 phyact       Physical activity (Kcal/week)                   
+20 pcs          Physical component                              
+21 mcs          Mental component                                
+22 cv           Cardiovascular event                            
+23 tocv         Days to cardiovascular event or end of follow-up
+24 death        Overall death                                   
+25 todeath      Days to overall death or end of follow-up       </code></pre>
 </div>
-<div id="step-4--perform-plots" class="section level1">
-<h1 class="hasAnchor">
-<a href="#step-4--perform-plots" class="anchor"></a>Step 4. Perform plots</h1>
-<p>by using the <code>plot</code> method which takes the results created by <font style="color:blue"><code>compareGroups</code></font> function. Inside “[” brackets you can select which variable to plot. And, indicating <code>bivar=TRUE</code> a bivariate plot is performed, i.e. stratifying by groups.</p>
+<div class="section level2">
+<h2 id="step-4--perform-plots">Step 4. Perform plots<a class="anchor" aria-label="anchor" href="#step-4--perform-plots"></a>
+</h2>
+<p>by using the <code>plot</code> method which takes the results created
+by <font style="color:blue"><code>compareGroups</code></font> function.
+Inside “[” brackets you can select which variable to plot. And,
+indicating <code>bivar=TRUE</code> a bivariate plot is performed,
+i.e. stratifying by groups.</p>
 <ol style="list-style-type: lower-alpha">
-<li>For categorical variables a barplot is performed, stratifying by groups (right plot) or not (left plot):</li>
+<li>For categorical variables a barplot is performed, stratifying by
+groups (right plot) or not (left plot):</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'diab'</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'diab'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><img src="example2a.png"><img src="example2b.png"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="var1sex.png"><img src="var2sex.png"></p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>For continuous variables boxplots or normality plots are performed depending whether groups are considered or not, respectively.</li>
+<li>For continuous variables boxplots or normality plots are performed
+depending whether groups are considered or not, respectively.</li>
 </ol>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><img src="example2c.png"><img src="example2d.png"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="var1bmi.png"><img src="var2bmi.png"></p>
 </div>
   </div>
 
@@ -209,11 +237,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Isaac Subirana.</p>
+  <p></p>
+<p>Developed by Isaac Subirana.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -221,6 +251,8 @@
 
   
 
+
+  
 
   </body>
 </html>

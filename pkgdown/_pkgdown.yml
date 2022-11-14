@@ -61,6 +61,9 @@ home:
   path: pkgdown/index.Rmd      
       
 reference:
+  - title: "compareGropus package"
+    contents:
+      - compareGroups-package
   - title: "Computing descriptives"
     contents:
       - compareGroups
@@ -86,8 +89,9 @@ reference:
       - radiograph
       - report
       - varinfo
-      - missingTable      
+      - missingTable 
+      - padjustCompareGroups
   - title: "compareGroups Datasets"
     contents:
-      - predimed
+      - SNPs
       - regicor

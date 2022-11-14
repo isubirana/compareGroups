@@ -174,12 +174,12 @@ Since version 4.0, a new function called **`descrTable`** has been implemented w
 # Data used as example {#data}
 
 
-To illustrate how this package works we sampled 85% data from the participants in [the PREDIMED study](http://www.predimed.es/) [@PREDIMED]. PREDIMED is a multicenter trial in Spain, were randomly assigned participants who were at high cardiovascular risk, but with no cardiovascular disease at enrolment, to one of three diets: a Mediterranean diet supplemented with extra-virgin olive oil (MedDiet+VOO), a Mediterranean diet supplemented with mixed nuts (MedDiet+Nuts), or a control diet (advice to reduce dietary fat). Participants received quarterly individual and group educational sessions and, depending on group assignment, free provision of extra-virgin olive oil, mixed nuts, or small non-food gifts. The primary end point was the rate of major cardiovascular events (myocardial infarction, stroke, or death from cardiovascular causes.
+To illustrate how this package works we took a sample from [REGICOR study](http://www.regicor.cat). REGICOR is a cross-sectional study with participants from a north-east region of Spain from whom different sets of variables were collected: demographic (age, sex, ...), anthropomorphic (height, weight, waist, ...), lipid profile (total and cholesterol, triglycerides, ...), questionnaires (physical activity, quality of life, ...), etc. Also, cardiovascular events and mortality were obtained from hospital and official registries and reports along more than 10 years.
 
 
-First of all, load PREDIMED data typing:
+First of all, load REGICOR data typing:
 ```{r}
-data(predimed)
+data(regicor)
 ```
 
 <p style="margin-top:50px"></p>
@@ -188,9 +188,9 @@ Variables and labels in this data frame are:
 
 ```{r,echo=FALSE,results="asis"}
 dicc <- data.frame(
-"Name"=I(names(predimed)),
-"Label"=I(unlist(lapply(predimed, attr, which="label", exact=TRUE))),
-"Codes"=I(unlist(lapply(predimed, function(x) paste(levels(x),collapse="; "))))
+"Name"=I(names(regicor)),
+"Label"=I(unlist(lapply(regicor, attr, which="label", exact=TRUE))),
+"Codes"=I(unlist(lapply(regicor, function(x) paste(levels(x),collapse="; "))))
 )
 dicc$Codes <- sub(">=","$\\\\geq$",dicc$Codes)
 kable(dicc, align=rep("l",4), row.names=FALSE, format = "html")
@@ -218,11 +218,11 @@ A variable of class `Surv` must be created to deal with time-to-event variables 
 
 ```{r}
 library(survival)
-predimed$tmain <- with(predimed, Surv(toevent, event == 'Yes'))
-attr(predimed$tmain,"label") <- "AMI, stroke, or CV Death"
+regicor$tmain <- with(regicor, Surv(tocv, cv == 'Yes'))
+attr(regicor$tmain,"label") <- "Time to CV event or censoring"
 ```
 
-Note that variables _tmain_ and _tcv_ are created as time-to-death and time-to-cardiovascular event, respectively, both taking into account censoring (i.e. they are of class Surv).
+Note that variable _tcv_ are created as time-to-death and time-to-cardiovascular event taking into account censoring (i.e. they are of class Surv).
 
 
 <p style="margin-top:50px"></p>
@@ -236,11 +236,12 @@ Note that variables _tmain_ and _tcv_ are created as time-to-death and time-to-c
 
 `compareGroups` is the main function which does all the calculus. It is needed to store results in an object. Later, applying the function `createTable` (Section 4.2) to this object will create tables of the analysis results.
 
-For example, to perform a univariate analysis with the _predimed_ data between _group_ ("response" variable) and all other variables ("explanatory" variables), this formula is required:
+For example, to perform a univariate analysis with the _regicor_ data between _year_ ("response" variable) and all other variables ("explanatory" variables), this formula is required:
 
 ```{r, results='hide'}
-compareGroups(group ~ . , data=predimed)
+compareGroups(year ~ . , data=regicor)
 ```
+
 
 <p style="margin-top:50px"></p>
 
@@ -250,24 +251,24 @@ compareGroups(group ~ . , data=predimed)
 If only a dot occurs on the right side of the `~` all variables in the data frame will be used.
 
 
-To remove the variable _toevent_ and _event_ from the analysis:
+To remove the variable _id_ from the analysis, use `-` in the formula:
 
 ```{r, results='hide'}
-compareGroups(group ~ . -toevent - event, data=predimed)
+compareGroups(year ~ . - id, data=regicor)
 ```
 
-To select some explanatory variables (e.g., _age_, _sex_ and _waist_) and store results in an object of class `compareGroups`:
+To select some explanatory variables (e.g., _age_, _sex_ and _bmi_) and store results in an object of class `compareGroups`:
 
 ```{r}
-res<-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)
+res<-compareGroups(year ~ age + sex + bmi, data=regicor)
 res
 ```
 
-Note: Although we have full data (n= `r nrow(predimed)`) for Age, Sex and Waist circumference, there are some missing data in Hormone-replacement therapy (probably male participants).
+Note: Although we have full data (n= `r nrow(regicor)`) for Age and Sex, there are some missing data in body mass index (bmi).
 
-Diet groups have some differences in Smoking and Hormone-replacement therapy  although those don't reach statistical significance (p-value=0.714 and 0.859, repectively); although Age, Sex and Waist circumference are clearly different.
+Mean values of body mass index is statistically different among recruitment years (p-value < 0.05), while Age and Sex are not statistically related to recruitment year (p-value > 0.05).
 
-Age & Waist circumference has been used as continuous and normal distributed. Sex, Smoking & Hormone-replacement therapy as categorical.
+Age & BMI has been used as continuous and normal distributed, while sex as categorical.
 
 No filters have been used (e.g., selecting only treated patients); therefore, the _selection_ column lists "ALL" (for all variables).
 
@@ -279,32 +280,35 @@ No filters have been used (e.g., selecting only treated patients); therefore, th
 To perform the analysis in a subset of participants (e.g., "female" participants):
 
 ```{r}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, subset = sex=='Female')
+compareGroups(year ~ age + smoker + bmi, data=regicor, subset = sex=='Female')
 ```
 
 Note that only results for female participants are shown.
 
-To subset specific variable/s (e.g., _hormo_ and _waist_):
+To subset specific variable/s (e.g., _age_ and _bmi_):
 
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed, selec = list(hormo= sex=="Female", waist = waist>20 ))
+compareGroups(year ~ age + bmi + smoker, data=regicor, selec = list(age= sex=="Female", bmi = age>50 ))
 ```
+
+In this case, age distribution are computed among females, while BMI among people older than 50 years.
+
 
 Combinations are also allowed, e.g.:
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, selec = list(waist= !is.na(hormo)), subset = sex=="Female")
+compareGroups(year ~ age + smoker + bmi, data=regicor, selec = list(bmi=age>50), subset = sex=="Female")
 ```
 
 
 A variable can appear twice in the formula, e.g.:
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + sex + bmi + bmi + waist + hormo, data=predimed, selec = list(bmi.1=!is.na(hormo)))
+compareGroups(year ~ age + sex + bmi + bmi, data=regicor, selec = list(bmi.1=txhtn=='Yes'))
 ```
 
-In this case results for _bmi_ will be reported for all participants (n= 6324) and also for only those with no missing in Hormone-replacement therapy  (!is.na(hormo)). Note that "bmi.1" in the `selec` argument refers to the second time that _bmi_ appears in the formula.
+In this case results for _bmi_ will be reported for all participants (n= `r nrow(regicor)`) and also for only those recieving no hypertension treatment. Note that "bmi.1" in the `selec` argument refers to the second time that _bmi_ appears in the formula.
 
 
 <p style="margin-top:50px"></p>
@@ -312,11 +316,11 @@ In this case results for _bmi_ will be reported for all participants (n= 6324) a
 ### Methods for continuous variables
 
 
-By default continuous variables are analyzed as normal-distributed. When a table is built (see `createTable` function, Section 4.2), continuous variables will be described with mean and standard deviation. To change default options, e.g., "waist" used as non-normal distributed:
+By default continuous variables are analyzed as normal-distributed. When a table is built (see `createTable` function, Section 4.2), continuous variables will be described with mean and standard deviation. To change default options, e.g., "tryglic" used as non-normal distributed:
 
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, method = c(waist=2))
+compareGroups(year ~ age + smoker + triglyc, data=regicor, method = c(triglyc=2))
 ```
 
 Note that "continuous non-normal" is shown in the _method_ column for the variable Hormone-replacement therapy.
@@ -332,54 +336,53 @@ Possible values in  methods statement are:
 * NA: performs a Shapiro-Wilks test to decide between normal or non-normal
 
 
-If the `method` argument is stated as `NA` for a variable, then a Shapiro-Wilk test for normality is used to decide if the variable is normal or non-normal distributed. To change the significance threshold:
+If the `method` argument is stated as `NA` for a variable, then a Shapiro-Wilks test for normality is used to decide if the variable is normal or non-normal distributed. To change the significance threshold:
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, method = c(waist=NA), alpha= 0.01)
+compareGroups(year ~ age + smoker + triglyc, data=regicor, method = c(triglyc=NA), alpha= 0.01)
 ```
 
-According to Shapiro-Wilk test, stating the cutpoint at 0.01 level, "Hormone-replacement therapy" departed significantly from the normal distribution and therefore the method for this variable will be "continuous non-normal".
+According to Shapiro-Wilks test, stating the cutpoint at 0.01 significance level, triglycerides departed significantly from the normal distribution and therefore the method for this variable will be "continuous non-normal".
 
 
 All non factor variables are considered as continuous. Exception is made (by default) for those that have fewer than 5 different values. This threshold can be changed in the **min.dis** statement:
 
 ```{r, echo=TRUE}
-predimed$age7gr<-as.integer(cut(predimed$age, breaks=c(-Inf,55,60,65,70,75,80,Inf), right=TRUE))
-compareGroups(group ~ age7gr, data=predimed, method = c(age7gr=NA))
-compareGroups(group ~ age7gr, data=predimed, method = c(age7gr=NA), min.dis=8)
+regicor$age7gr<-as.integer(cut(regicor$age, breaks=c(-Inf,40,45,50,55,65,70,Inf), right=TRUE))
+compareGroups(year ~ age7gr, data=regicor, method = c(age7gr=NA))
+compareGroups(year ~ age7gr, data=regicor, method = c(age7gr=NA), min.dis=8)
 ```
 
 To avoid errors the maximum categories for the response variable is set at 5 in this example (default value). If this variable has more than 5 different values, the function `compareGroups` returns an error message. For example:
 
 ```{r,eval=FALSE}
-compareGroups(age7gr ~ sex + bmi + waist , data=predimed)
+regicor$var6cat <- factor(sample(1:5, nrow(regicor), replace=TRUE))
+compareGroups(age7gr ~ sex + bmi + smoker, data=regicor)
 ```
 
 <div style="color:red">
 ```{r,echo=FALSE}
-cat("Error en compareGroups.default(X = X, y = y, include.label = include.label,  :
-number of groups must be less or equal to 5
-")
+cat("Error in compareGroups.fit(X = X, y = y, include.label = include.label, : 
+number of groups must be less or equal to 5")
 ```
 </div>
 
 Defaults setting can be changed with the **max.ylev** statement:
 
 ```{r,echo=TRUE}
-compareGroups(age7gr ~ sex + bmi + waist, data=predimed, max.ylev=7)
+compareGroups(age7gr ~ sex + bmi + smoker, data=regicor, max.ylev=7)
 ```
 
 Similarly, by default there is a limit for the maximum number of levels for an explanatory variable. If this level is exceeded, the variable is removed from the analysis and a warning message is printed:
 
 ```{r, echo=TRUE, eval=FALSE}
-compareGroups(group ~ sex + age7gr, method= (age7gr=3), data=predimed, max.xlev=5)
+compareGroups(year ~ sex + age7gr, method=c(age7gr=3), data=regicor, max.xlev=5)
 ```
 
 <div style="color:blue">
 ```{r,echo=FALSE}
-cat("Warning in compareGroups.default(X = X, y = y, include.label = include.label,  :
-Variables 'age7gr' have been removed since some errors ocurred
-")
+cat("Warning in compareGroups.fit(X = X, y = y, include.label = include.label,  :
+  Variables 'age7gr' have been removed since some errors occurred")
 ```
 </div>
 
@@ -393,68 +396,54 @@ Although the options described in this section correspond to `compareGroups` fun
 * **`include.label`:** By default the variable labels are shown in the output (if there is no label the name will be printed). Changing the statement include.label from "= TRUE" (default) to "= FALSE" will cause variable names to be printed instead.
 
 ```{r, echo=TRUE}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, include.label= FALSE)
+compareGroups(year ~ age + smoker + bmi, data=regicor, include.label= FALSE)
 ```
 
 * **`Q1`, `Q3`:** When the method for a variable is stated as "2" (i.e., to be analyzed as continuous non-normal; see section 4.1.3), by default the median and quartiles 1 and 3 will be shown in the final results, after applying the function `createTable` (see Section 4.2).
 
 
 ```{r, echo=TRUE}
-resu1<-compareGroups(group ~ age + waist, data=predimed, method = c(waist=2))
+resu1<-compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2))
 createTable(resu1)
 ```
 
-Note: percentiles 25 and 75 are calculated for "Waist circumference".
+Note: percentiles 25 and 75 are calculated for "triglycerides".
 
 To get instead percentile 2.5% and 97.5%:
   
 ```{r, echo=TRUE}
-resu2<-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, method = c(waist=2), Q1=0.025, Q3=0.975)
+resu2<-compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2), Q1=0.025, Q3=0.975)
 createTable(resu2)
 ```
 
-Note: percentiles 2.5% and 97.5% are calculated for Follow-up.
 
 To get minimum and maximum:
   
 ```{r, echo=TRUE, results='hide'}
-compareGroups(group ~ age + smoke + waist + hormo, data=predimed, method = c(waist=2), Q1=0, Q3=1)
+compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2), Q1=0, Q3=1)
 ```
 
 
 * **`simplify`:**  Sometimes a categorical variable has no individuals for a specific group. For example, _smoker_ has 3 levels. As an example and to illustrate this problem, we have created a new variable _smk_ with a new category ("Unknown"):
   
 ```{r, echo=TRUE}
-predimed$smk<-predimed$smoke
-levels(predimed$smk)<- c("Never smoker", "Current or former < 1y", "Never or former >= 1y", "Unknown")
-attr(predimed$smk,"label")<-"Smoking 4 cat."
-cbind(table(predimed$smk))
+regicor$smk<-regicor$smoker
+levels(regicor$smk)<- c("Never smoker", "Current or former < 1y", "Former >= 1y", "Unknown")
+attr(regicor$smk,"label")<-"Smoking 4 cat."
+cbind(table(regicor$smk))
 ```
 
 Note that this new category ("unknown") has no individuals: 
 
-```{r, eval=FALSE}
-compareGroups(group ~ age + smk + waist + hormo, data=predimed)
+```{r, echo=TRUE}
+compareGroups(year ~ age + smk + bmi, data=regicor)
 ```
 
 <div style="font-color:blue">
+
 ```{r,echo=FALSE}
-cat("
--------- Summary of results by groups of 'Intervention group'---------
-
-
-  var                         N    p.value method            selection
-1 Age                         6324 0.001** continuous normal ALL      
-2 Smoking 4 cat.              6324 0.714   categorical       ALL      
-3 Waist circumference         6324 0.019** continuous normal ALL      
-4 Hormone-replacement therapy 5650 0.859   categorical       ALL      
------
-Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 
-
-Warning message:
-In compare.i(X[, i], y = y, selec.i = selec[i], method.i = method[i],  :
-  Some levels of 'smk' are removed since no observation in that/those levels
-")
+cat("Warning in compare.i(X[, i], y = y, selec.i = selec[i], method.i = method[i],  :
+  Some levels of 'smk' are removed since no observation in that/those levels")
 ```
 </div>
 
@@ -463,32 +452,11 @@ Note that a "Warning" message is printed related to the problem with _smk_.
 
 To avoid using empty categories, `simplify` must be stated as `TRUE` (Default value).
 
-```{r, echo=TRUE, results='hide'}
-compareGroups(group ~ age + smk, data=predimed, simplify=FALSE)
+```{r, echo=TRUE}
+compareGroups(year ~ age + smk + bmi, data=regicor, simplify=FALSE)
 ```
 
-<div style="font-color:blue">
-```{r, echo=FALSE}
-cat("
--------- Summary of results by groups of 'Intervention group'---------
-
-
-  var            N    p.value method            selection
-1 Age            6324 0.001** continuous normal ALL      
-2 Smoking 4 cat. 6324 .       categorical       ALL      
------
-Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 
-
-Warning messages:
-1: In chisq.test(obj, simulate.p.value = TRUE) :
-  cannot compute simulated p-value with zero marginals
-2: In chisq.test(obj, simulate.p.value = TRUE) :
-  Chi-squared approximation may be incorrect
-")
-```
-</div>
-
-Nota that a "warning" message is shown and no p-values are calculated for "Smoking".
+Note that no p-values are calculated for "Smoking" since Chi-squared nor F-Fisher test cannot be computed with a zero row.
 
 
 <p style="margin-top:50px"></p>
@@ -499,11 +467,11 @@ Nota that a "warning" message is shown and no p-values are calculated for "Smoki
 Applying the `summary` function to an object of class `createTable` will obtain a more detailed output:
 
 ```{r, echo=TRUE}
-res<-compareGroups(group ~ age + sex + smoke + waist + hormo, method = c(waist=2), data=predimed)
-summary(res[c(1, 2, 4)])
+res<-compareGroups(year ~ age + sex + smoker + bmi + triglyc, method = c(triglyc=2), data=regicor)
+summary(res[c(1, 2, 5)])
 ```
 
-Note that because only variables 1, 3 and 4 are selected, only results for Age, Sex and Waist circumference are shown. Age is summarized by the mean and the standard deviation, Sex by frequencies and percentage, and Waist circumference (method =2) by the median and quartiles.
+Note that because only variables 1, 3 and 4 are selected, only results for Age, Sex and Triglycerides are shown. Age is summarized by the mean and the standard deviation, Sex by frequencies and percentage, and Triglycerides (method=2) by the median and quartiles.
 
 
 <p style="margin-top:50px"></p>
@@ -539,7 +507,7 @@ plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 The object from `compareGroups` can later be updated. For example:
 
 ```{r}
-res<-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)
+res<-compareGroups(year ~ age + sex + smoker + bmi, data=regicor)
 res
 ```
 
@@ -547,11 +515,11 @@ The object `res` is updated using:
 
 
 ```{r, echo=TRUE, results='hide'}
-res<-update(res, . ~. - sex +  bmi + toevent, subset = sex=='Female', method = c(waist=2, tovent=2), selec = list(bmi=!is.na(hormo)))
+res<-update(res, . ~. - sex + triglyc + cv + tocv, subset = sex=='Female', method = c(triglyc=2, tocv=2), selec = list(triglyc=txchol=='No'))
 res
 ```
 
-Note that "Sex" is removed as an explanatory variable but used as a filter, subsetting only "Female" participants. Variable "Waist circumference" has been changed to "continuous non-normal". Two new variables have been added: Body mass index and Follow-up (stated continuous non-normal). For Body mass index is stated to show only data of participants with non-missing values in Hormone-replacement therapy.
+Note that "Sex" is removed as an explanatory variable but used as a filter, subsetting only "Female" participants. Three new variables have been added: Triglycerides, cardiovascular event (yes/no) and time to cardiovascular event or censoring (stated continuous non-normal). For Triglycerides is stated to show only data of participants with no treatment for cholesterol.
 
 
 <p style="margin-top:50px"></p>
@@ -572,6 +540,8 @@ p.adjust(pvals, method = "BH")
 
 <p style="margin-top:50px"></p>
 
+
+
 ### Odds Ratios and Hazard Ratios
 
 
@@ -581,7 +551,7 @@ When the response variable is binary, the Odds Ratio (OR) can be printed in the 
 * **`ref`:**  This statement can be used to change the reference category:
 
 ```{r, echo=TRUE}
-res1<-compareGroups(htn ~ age + sex + bmi + smoke, data=predimed, ref=1)
+res1<-compareGroups(cv ~ age + sex + bmi + smoker, data=regicor, ref=1)
 createTable(res1, show.ratio=TRUE)
 ```
 
@@ -590,7 +560,7 @@ Note that for categorical response variables the reference category is the first
 
 
 ```{r, echo=TRUE}
-res2<-compareGroups(htn ~ age + sex + bmi + smoke, data=predimed, ref=c(smoke=1, sex=2))
+res2<-compareGroups(cv ~ age + sex + bmi + smoker, data=regicor, ref=c(smoker=1, sex=2))
 createTable(res2, show.ratio=TRUE)
 ```
 
@@ -601,7 +571,7 @@ Note that the reference category for Smoking status is the first and for Sex the
 * **`ref.no`:** Similarly to the `ref` statement, `ref.no` is used to state "no" as the reference category for all variables with this category:
 
 ```{r, echo=TRUE}
-res<-compareGroups(htn ~ age + sex + bmi + hormo + hyperchol, data=predimed, ref.no='NO')
+res<-compareGroups(cv ~ age + sex + bmi + histhtn + txhtn, data=regicor, ref.no='NO')
 createTable(res, show.ratio=TRUE)
 ```
 
@@ -611,15 +581,15 @@ Note: "no", "No" or "NO" will produce the same results; the coding is not case s
 * **`fact.ratio`**: By default OR or HR for continuous variables are calculated for each unit increase. It can be changed by the `fact.or` statement:
 
 ```{r, echo=TRUE}
-res<-compareGroups(htn ~ age + bmi, data=predimed)
+res<-compareGroups(cv ~ age + bmi, data=regicor)
 createTable(res, show.ratio=TRUE)
 ```
 
-Here the OR is for the increase of one unit for Age and Systolic blood pressure.
+Here the OR is for the increase of one unit for Age and "Body mass index".
 
 
 ```{r, echo=TRUE}
-res<-compareGroups(htn ~ age + bmi, data=predimed, fact.ratio= c(age=10, bmi=2))
+res<-compareGroups(cv ~ age + bmi, data=regicor, fact.ratio= c(age=10, bmi=2))
 createTable(res, show.ratio=TRUE)
 ```
 
@@ -630,26 +600,27 @@ Here the OR is for the increase of 10 years for Age and 2 units for "Body mass i
 * **`ref.y`:** By default when OR or HR are calculated, the reference category for the response variable is the first. The reference category could be changed using the `ref.y` statement:
 
 ```{r, echo=TRUE}
-res<-compareGroups(htn ~ age + sex + bmi + hyperchol, data=predimed)
+res<-compareGroups(cv ~ age + sex + bmi + txhtn, data=regicor)
 createTable(res, show.ratio=TRUE)
 ```
 
-Note: This output shows the OR of having hypertension. Therefore, "Non-hypertension" is the reference category.
+Note: This output shows the OR of having a cardiovascular event. Therefore, having no event is the reference category.
 
 
 ```{r, echo=TRUE}
-res<-compareGroups(htn ~ age + sex + bmi + hyperchol, data=predimed, ref.y=2)
+res<-compareGroups(cv ~ age + sex + bmi + txhtn, data=regicor, ref.y=2)
 createTable(res, show.ratio=TRUE)
 ```
 
-Note: This output shows the OR of having No hypertension, and 'Hypertension' is now the reference category.
+Note: This output shows the OR of having no event, and event is now the reference category.
 
 
 When the response variable is of class `Surv`, the bivariate `plot` function returns a Kaplan-Meier figure if the explanatory variable is categorical. For continuous variables the function returns a line for each individual, ending with a circle for censored and with a plus sign for uncensored.
 
+
 ```{r}
-plot(compareGroups(tmain ~ sex, data=predimed), bivar=TRUE, file="./figures/bivarsurv/", type="png")
-plot(compareGroups(tmain ~ age, data=predimed), bivar=TRUE, file="./figures/bivarsurv/", type="png")
+plot(compareGroups(tmain ~ sex, data=regicor), bivar=TRUE, file="./figures/bivarsurv/", type="png")
+plot(compareGroups(tmain ~ age, data=regicor), bivar=TRUE, file="./figures/bivarsurv/", type="png")
 ```
 
 ![alt text](./figures/bivarsurv/age.png)
@@ -667,11 +638,11 @@ When a variable of class `Surv` (see Section 3.1) is used as explanatory it will
 
 
 ```{r, echo=TRUE, results='hide'}
-res<-compareGroups(sex ~  age + tmain, timemax=c(tmain=3), data=predimed)
+res<-compareGroups(sex ~  age + tmain, timemax=c(tmain=3*365.25), data=regicor)
 res
 ```
 
-Note that `tmain` is calculated at 3 years (see section 3.1).
+Note that `tmain` is calculated at 3 years, i.e. 3*365.25 days (see section 3.1).
 
 
 The `plot` function applied to a variable of class `Surv` returns a Kaplan-Meier figure. The figure can be stratified by the grouping variable.
@@ -695,7 +666,7 @@ The `createTable` function, applied to an object of `compareGroups` class, retur
 
 
 ```{r,echo=TRUE}
-res<-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed, selec = list(hormo=sex=="Female"))
+res<-compareGroups(year ~ age + sex + smoker + bmi + sbp, data=regicor, selec = list(sbp=txhtn=="No"))
 restab<-createTable(res)
 ```
 
@@ -731,7 +702,7 @@ By default, only the descriptives table is shown. Stating "both" in `which.table
 
 ### Dressing up tables
 
-* **`hide`:** If the explanatory variable is dichotomous, one of the categories often is hidden in the results displayed (i.e., if `r paste(round(prop.table(table(predimed$sex))[1], 3)*100,"%",sep="")` are male, obviously `r paste(round(prop.table(table(predimed$sex))[2], 3)*100,"%",sep="")` are female). To hide some category, e.g., "Male":
+* **`hide`:** If the explanatory variable is dichotomous, one of the categories often is hidden in the results displayed (i.e., if `r paste(round(prop.table(table(regicor$sex))[1], 3)*100,"%",sep="")` are male, obviously `r paste(round(prop.table(table(regicor$sex))[2], 3)*100,"%",sep="")` are female). To hide some category, e.g., "Male":
 
 ```{r}
 update(restab, hide = c(sex="Male"))
@@ -742,7 +713,7 @@ Note that the percentage of males is hidden.
 * **`hide.no`:** Similarly, as explained above, if the category "no" is to be hidden for all variables:
 
 ```{r}
-res<-compareGroups(group ~ age + sex + htn + diab, data=predimed)
+res<-compareGroups(year ~ age + sex + histchol + histhtn, data=regicor)
 createTable(res, hide.no='no', hide = c(sex="Male"))
 ```
 
@@ -830,46 +801,48 @@ Note: Tukey method is used when explanatory variable is normal-distributed and B
 * **`show.ratio`:** If response variable is dichotomous or has been defined as class `survival` (see Section 3.1), Odds Ratios and Hazard Ratios can be displayed in the results by stating `TRUE` at the show.ratio option:
 
 ```{r}
-createTable(update(res, subset= group!="Control"), show.ratio=TRUE)
+createTable(update(res, subset= year!=1995), show.ratio=TRUE)
 ```
 
 
 
-Note that category "Control diet" of the response variable has been omitted in order to have only two categories (i.e., a dichotomous variable). No Odds Ratios would be calculated if response variable has more than two categories.
+Note that recruitment year 1995 of the response variable has been omitted in order to have only two categories (i.e., a dichotomous variable). No Odds Ratios would be calculated if response variable has more than two categories.
 
 
 
 Note that when response variable is of class `Surv`, Hazard Ratios are calculated instead of Odds Ratios.
 
 ```{r}
-createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.ratio=TRUE)
+createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=TRUE)
 ```
 
 
 * **`digits.ratio`:** The number of decimal places for Odds/Hazard ratios can be changed by the `digits.ratio` argument:
 
 ```{r}
-createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.ratio=TRUE, digits.ratio= 3)
+createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=TRUE, digits.ratio= 3)
 ```
 
 
 * **`header.labels`:** Change some key table header, such as the p.overall, etc. Note that this is done when printing the table changing the argument in the `print` function and not in the `createTable` function. This argument is also present in other function that exports the table to pdf, plain text, etc.
 
 ```{r}
-tab<-createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.all = TRUE)
+tab<-createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.all = TRUE)
 print(tab, header.labels = c("p.overall" = "p-value", "all" = "All"))
 ```
 
 
 <p style="margin-top:50px"></p>
 
+
+
 ### Combining tables by row (groups of variable)
 
 Tables made with the same response variable can be combined by row:
 
 ```{r}
-restab1 <- createTable(compareGroups(group ~ age + sex, data=predimed))
-restab2 <- createTable(compareGroups(group ~ bmi + smoke, data=predimed))
+restab1 <- createTable(compareGroups(year ~ age + sex, data=regicor))
+restab2 <- createTable(compareGroups(year ~ bmi + smoker, data=regicor))
 rbind("Non-modifiable risk factors"=restab1, "Modifiable risk factors"=restab2)
 ```
 
@@ -902,7 +875,7 @@ Columns from tables built with the same explanatory and response variables but d
 
 
 ```{r}
-res<-compareGroups(group ~ age +  smoke + bmi + htn , data=predimed)
+res<-compareGroups(year ~ age +  smoker + bmi + histhtn , data=regicor)
 alltab <- createTable(res,  show.p.overall = FALSE)
 femaletab <- createTable(update(res,subset=sex=='Female'), show.p.overall = FALSE)
 maletab <- createTable(update(res,subset=sex=='Male'), show.p.overall = FALSE)
@@ -920,18 +893,6 @@ cbind("ALL"=alltab,"FEMALE"=femaletab,"MALE"=maletab)
 </div>
 
 
-With the argument `caption` set to `NULL` no name is displayed for columns.
-
-```{r, eval=FALSE}
-cbind(alltab,femaletab,maletab,caption=NULL)
-```
-
-<div class="small-code">
-
-```{r, echo=FALSE}
-cbind(alltab,femaletab,maletab,caption=NULL)
-```
-</div>
 
 By default the name of the table is displayed for each set of columns.
 
@@ -957,7 +918,7 @@ Since version 4.0, it exists the function **`strataTable`** to build tables with
 1. first build the table with descriptives by groups:
 
 ```{r}
-res <- compareGroups(group ~ . -sex, predimed)
+res <- compareGroups(year ~ age + bmi + smoker + histchol + histhtn, regicor)
 restab <- createTable(res, hide.no="no")
 ```
 
@@ -988,26 +949,26 @@ In this section some other `createTable` options and methods are discussed:
 * **`print`:** By default only the table with the descriptives is printed. With `which.table` argument it can be changed: "avail" returns data available and "both" returns both tables:
 
 ```{r}
-print(createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)), which.table='both')
+print(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)), which.table='both')
 ```
 
 With the `print` method setting `nmax` argument to `FALSE`, the total maximum "n" in the available data is omitted in the first row.
 
 ```{r}
-print(createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)),  nmax=FALSE)
+print(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)),  nmax=FALSE)
 ```
 
 * **`summary`:** returns the same table as that generated with `print` method setting `which.table='avail'`:
 
 ```{r}
-summary(createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)))
+summary(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)))
 ```
 
 * **`update`:** An object of class `createTable` can be updated:
 
 ```{r}
-res<-compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed)
-restab<-createTable(res, type=1, show.ratio=TRUE )
+res<-compareGroups(year ~ age + sex + smoker + bmi, data=regicor)
+restab<-createTable(res, type=1)
 restab
 update(restab, show.n=TRUE)
 ```
@@ -1021,14 +982,14 @@ update(restab, x = update(res, subset=c(sex=='Female')), show.n=TRUE)
 Note that the `compareGroups` object (_res_) is updated, selecting only "Female"" participants, and the _createTable_ class object (_restab_) is updated to add a column with the maximum available data for each explanatory variable.
 
 
-* **`subsetting`:** Objects from `createTable` function can also be subsetted using "[":
+* **`subsetting`:** Objects from `createTable` function can also be subset using "[":
 
 ```{r}
-createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed))
+createTable(compareGroups(year ~ age + sex + smoker + bmi + histhtn, data=regicor))
 ```
 
 ```{r}
-createTable(compareGroups(group ~ age + sex + bmi, data=predimed))[1:2, ]
+createTable(compareGroups(year ~ age + sex + smoker + bmi + histhtn, data=regicor))[1:2, ]
 ```
 
 
@@ -1039,36 +1000,36 @@ Making use of **`descrTable`** the user can build descriptive table in one step.
 The result is the same as if the user first call compareGroups and then createTable. Therefore one can use the same methods and functions avaiable for createTable objects (subsetting, ploting, printing, exporting, etc.)
 
 
-To describe all varaible from predimed, just type:
+To describe all varaible from regicor dataset, just type:
 
 ```{r}
-descrTable(predimed)
+descrTable(regicor)
 ```
 
-To describe some varaibles, make use of formula argument (just as using `compareGroups` function)
+To describe some variables, make use of formula argument (just as using `compareGroups` function)
 
 
 ```{r}
-descrTable(~ age + sex, predimed)
+descrTable(~ age + sex, regicor)
 ```
 
 To hide "no" category from yes-no variables, use the `hide.no` argument from `createTable`:
 
 ```{r}
-descrTable(predimed, hide.no="no")
+descrTable(regicor, hide.no="no")
 ```
 
 To report descriptives by group as well as the descriptives of the entire cohort:
 
 ```{r}
-descrTable(group ~ ., predimed, hide.no="no", show.all=TRUE)
+descrTable(year ~ ., regicor, hide.no="no", show.all=TRUE)
 ```
 
 
 Or you can select individuals using the `subset` argument.
 
 ```{r}
-descrTable(predimed, subset=age>65)
+descrTable(regicor, subset=age>65)
 ```
 
 
@@ -1101,6 +1062,7 @@ Note that, since version 3.0, it is necessary write the extension of the file.
 
 <p style="margin-top:50px"></p>
 
+
 ### General exporting options
 
 * **`which.table`:** By default only the table with the descriptives is exported. This can be changed with the `which.table` argument:
@@ -1116,6 +1078,7 @@ Note that, since version 3.0, it is necessary write the extension of the file.
 
 <p style="margin-top:50px"></p>
 
+
 ### Exporting to LaTeX
 
 A special case of exporting is when tables are exported to LaTeX. The function `export2latex` returns an object with the tex code as a character that can be changed in the **`R`** session.
@@ -1124,7 +1087,7 @@ A special case of exporting is when tables are exported to LaTeX. The function `
 * **`file`:** If `file` argument in `export2latex` is missing, the code is printed in the **`R`** console. This can be useful when **`R`** code is inserted in a LaTeX document chunk to be processed with **`Sweave`** package.
 
 ```{r}
-restab<-createTable(compareGroups(group ~ age + sex + smoke + waist + hormo, data=predimed))
+restab<-createTable(compareGroups(year ~ age + sex + smoker + bmi + histchol, data=regicor))
 export2latex(restab)
 ```
 
@@ -1141,19 +1104,19 @@ export2latex(restab)
 * **`label`:** Used to cite tables in a LaTeX document. If `which.table` is set to "both" the first element of "label" will be assigned to the descriptives table and the second to the available data table. Default value is `NULL`, which assigns no label to the table/s.
 
 
-* **`landscape`:** Table is placed in horizontal way. This option is specially usefull when table contains many columns and/or they are too wide to be placed vertically.
+* **`landscape`:** Table is placed in horizontal way. This option is specially useful when table contains many columns and/or they are too wide to be placed vertically.
 
 
 ### Exporting to Rmarkdown
 
-Since 4.0 version, `export2md` supports `cbind.createTable` class objects, i.e. when exporting stratified descriptive tables. Also, nicer and more costumizable tables can be reported making use of `kableExtra` package (such as size, strip rows, etc.).
+Since 4.0 version, `export2md` supports `cbind.createTable` class objects, i.e. when exporting stratified descriptive tables. Also, nicer and more customizable tables can be reported making use of `kableExtra` package (such as size, strip rows, etc.).
 
 Following, there are some examples when exporting to HTML.
 
-First create the descriptive table of PREDIMED variables by intervention groups.
+First create the descriptive table of REGICOR variables by recruitment year.
 
 ```{r}
-res <- compareGroups(group ~ ., predimed)
+res <- compareGroups(year ~ ., regicor)
 restab <- createTable(res, hide.no="no")
 ```
 
@@ -1184,11 +1147,7 @@ export2md(restab, width="400px")
 * **Stratified table:**
 
 ```{r}
-resMales <- compareGroups(group ~ . -sex, predimed, subset=sex=="Male", simplify=FALSE)
-resFemales <- compareGroups(group ~ . -sex, predimed, subset=sex=="Female", simplify=FALSE)
-restabMales <- createTable(resMales, hide.no="no")
-restabFemales <- createTable(resFemales, hide.no="no")
-restab <- cbind("Males"=restabMales, "Females"=restabFemales)
+restab <- strataTable(descrTable(year ~ . -id, regicor), "sex")
 ```
 
 ```{r}
@@ -1201,7 +1160,7 @@ export2md(restab, size=8)
 
 Since version 2.0 of **`compareGroups`** package, there is a function called `report` which automatically generates a PDF document with the "descriptive" table as well as the corresponding "available"" table. In addition, plots of all analysed variables are shown.
 
-In order to make easier to navigate throught the document, an index with hyperlinks is inserted in the document.
+In order to make easier to navigate through the document, an index with hyperlinks is inserted in the document.
 
 See the help file of this function where you can find an example with the REGICOR data (the other example data set contained in the **`compareGroups`** package)
 
@@ -1213,7 +1172,7 @@ See the help file of this function where you can find an example with the REGICO
 ?regicor
 ```
 
-Also, you can use the function `radiograph` that dumps the raw values on a plain text file. This may be usefull to identify possible wrong codes or non-valid values in the data set.
+Also, you can use the function `radiograph` that dumps the raw values on a plain text file. This may be useful to identify possible wrong codes or non-valid values in the data set.
 
 
 <p style="margin-top:50px"></p>
@@ -1222,7 +1181,8 @@ Also, you can use the function `radiograph` that dumps the raw values on a plain
 ## Dealing with missing values
 
 Many times, it is important to be aware of the missingness contained in each variable, possibly by groups.
-Althought "available" table shows the number of the non-missing values for each row-variable and in each group, it would be desirable to test whether the frequency of non-available data is different between groups.
+Although "available" table shows the number of the non-missing values for each row-variable and in each group, it would be desirable to test whether the frequency of non-available data is different between groups.
+
 For this porpose, a new function has been implemented in the **`compareGroups`** package, which is called `missingTable`. This function applies to both `compareGroups` and `createTable` class objects. This last option is useful when the table is already created. To illustrate it, we will use the REGICOR data set, comparing missing rates of all variables by year:
 
 ```{r}
@@ -1291,25 +1251,27 @@ res
 <p style="margin-top:50px"></p>
 <p style="margin-top:50px"></p>
 
+
+
 # Using the Graphical User Inferface (GUI) - tcltk {#gui}
 
 Once the **`compareGroups`** package is loaded, a Graphical User Interface (GUI) is displayed in response to typing `cGroupsGUI(predimed)`. The GUI is meant to make it feasible for users who are unfamiliar with **`R`** to construct bivariate tables.
-Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the PREDIMED data by typing `data(predimed)` before calling `cGroupsGUI` function.
+Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the REGICOR data by typing `data(regicor)` before calling `cGroupsGUI` function.
 
 
-In this section we illustrate, step by step, how to construct a bivariate table containing descriptives by groups from the _predimed_ data  using the GUI:
+In this section we illustrate, step by step, how to construct a bivariate table containing descriptives by groups from the _regicor_ data  using the GUI:
 
 
 ```{r, echo=FALSE, results='asis'}
-export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + wth + htn + diab + hyperchol + famhist + hormo + p14 + toevent + event, data=predimed), hide.no="No",hide = c(sex="Male")))
+export2md(descrTable(year ~  age + sex + smoker + sbp + dbp + histhtn + txhtn + chol + hdl + triglyc + ldl + histchol + txchol + bmi, data=regicor, method=c(triglyc=2), hide.no="No",hide = c(sex="Male")))
 ```
 
 
 <p style="margin-top:50px"></p>
 
-* **Step 1.** Browse for and select the data to be loaded. Valid file types include SPSS or **`R`** format, CSV plain text file or a _data.frame_ already existing in the Workspace. By default, the _predimed_ example data is loaded when the GUI is opened.
+* **Step 1.** Browse for and select the data to be loaded. Valid file types include SPSS or **`R`** format, CSV plain text file or a _data.frame_ already existing in the Workspace. You need to specify a data set. In this example the _regicor_ data is loaded.
 
-![](./figures/GUI/step1_load_data.JPG)
+![](./figures/GUI/step1_load_data.PNG)
 
 
 <p style="margin-top:50px"></p>
@@ -1321,7 +1283,7 @@ export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + w
 
 <p style="margin-top:50px"></p>
 
-* **Step 3.** If descriptives by group are desired (for example), move the variable _group_ to the GUI top frame, making it the factor variable. To report descriptives for the whole sample (i.e., no groups), click on the "none" button.
+* **Step 3.** If descriptives by recruitment year are desired (for example), move the variable _year_ to the GUI top frame, making it the factor variable. To report descriptives for the whole sample (i.e., no groups), click on the "none" button.
 
 ![](./figures/GUI/step3_select_group_variable.png)
 
@@ -1335,14 +1297,14 @@ export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + w
 
 <p style="margin-top:50px"></p>
 
-* **Step 5.** For each continuous variable, it is possible to specify whether to treat it as normal or non-normal or to transform a numerical variable into a categorical one. This last option can be interesting if a categorical variable has been coded as numerical. By default, all continuous variables are treated as normal. In this example, Waist circumference will be treated as non-normal, i.e., median and quartiles will be reported instead of mean and standard deviation.
+* **Step 5.** For each continuous variable, it is possible to specify whether to treat it as normal or non-normal or to transform a numerical variable into a categorical one. This last option can be interesting if a categorical variable has been coded as numerical. By default, all continuous variables are treated as normal. In this example, triglycerides will be treated as non-normal, i.e., median and quartiles will be reported instead of mean and standard deviation.
 
 ![](./figures/GUI/step5_select_method.png)
 
 
 <p style="margin-top:50px"></p>
 
-* **Step 6.** For each row-variable, it is possible to select a subset of individuals from the data set to be included. In this example, descriptives of Body mass index, Waist circumference and Waist-to-height ratio will be reported only for Female participants. Also, it is possible to specify criteria to select a subset of individuals to be included for all row-variables: type the logical condition (selection criteria of individuals) on the "Global subset" window instead of "Variable subset".
+* **Step 6.** For each row-variable, it is possible to select a subset of individuals from the data set to be included. In this example, descriptives of systolic and diastolic blood pressure (_sbp_ and _dbp_) be reported only for those with no htn treatment. Also, it is possible to specify criteria to select a subset of individuals to be included for all row-variables: type the logical condition (selection criteria of individuals) on the "Global subset" window instead of "Variable subset".
 
 ![](./figures/GUI/step6_subsetting.png)
 
@@ -1364,12 +1326,15 @@ export2md(createTable(compareGroups(group ~  age + sex + smoke + bmi + waist + w
 
 <p style="margin-top:50px"></p>
 
+
+
 ## Computing Odds Ratio
 
-For a case-control study, it may be necessary to report the Odds Ratio between cases and controls for each variable. The table below contains Odds Ratios for each row-variable by hypertension status.
+
+For a case-control study, it may be necessary to report the Odds Ratio between cases and controls for each variable. The table below contains Odds Ratios for cardiovascular event for each row-variable.
 
 ```{r, echo=FALSE, results='asis'}
-export2md(createTable(compareGroups(htn ~  age + sex + smoke + bmi + waist + wth + diab + hyperchol + famhist + hormo + p14 + toevent + event, data=predimed), hide.no="No",hide = c(sex="Male"), show.ratio=TRUE, show.descr=FALSE))
+export2md(descrTable(cv ~  age + sex + smoker + bmi + chol + triglyc + ldl + sbp + dbp + txhtn, data=regicor, method=c(triglyc=2), hide.no="No",hide = c(sex="Male"), show.ratio=TRUE, show.descr=FALSE))
 ```
 
 To build this table, as illustrated in the screens below, you would select _htn_ variable (Hypertension status) as the factor variable, indicate "no" category on the "reference" pull-down menu, and mark "Show odds/hazard ratio" in the "Report Options" menu before exporting the table.
@@ -1384,10 +1349,10 @@ To build this table, as illustrated in the screens below, you would select _htn_
 In a cohort study, it may be more informative to compute hazard ratio taking into account time-to-event.
 
 ```{r, echo=FALSE, results='asis'}
-export2md(createTable(compareGroups(tmain ~  group + age + sex, data=predimed), show.ratio=TRUE))
+export2md(createTable(compareGroups(tcv ~  year + age + sex, data=regicor), show.ratio=TRUE))
 ```
 
-To generate this table, select _toevent_ variable and _event_, indicating the time-to-event and the status, respectively, and select the event category for the status variable. Finally, as for Odds Ratios, mark 'Show odds/hazard ratio' in the 'Report Options' menu before exporting the table.
+To generate this table, select _tocv_ variable and _cv_, indicating the time-to-event and the status, respectively, and select the event category for the status variable. Finally, as for Odds Ratios, mark 'Show odds/hazard ratio' in the 'Report Options' menu before exporting the table.
 
 ![](./figures/GUI/toevent.png)
 

@@ -16,6 +16,8 @@ library(knitr)
 compareGroups <img src="man/figures/logo.png" align="right" style="margin-top:30px" width="80px"/>
 =========
 
+
+
 **_package to create descriptive tables_**
 
 
@@ -95,30 +97,32 @@ devtools::install_github(repo = "isubirana/compareGroups")
 
 ## Costumizing the table
 
-In the following table, some variables from the PREDIMED study ([http://www.predimed.es/](http://www.predimed.es/)) are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
+In the following table, some variables from the REGICOR ("Registre Gironí del Cor") project ([www.regicor.cat](https://www.regicor.cat)) data set available in the package are analysed. We illustrate the syntax of **`compareGroups`** functions to display tables containing descriptives or possible tests to compare groups.
 
 
 Following, to describe all the variables of the data set just type:
 
 ```{r}
 library(compareGroups) # load compareGroups package
-data(predimed) # load example data
-descrTable(predimed)
+data(regicor) # load example data
+descrTable(regicor)
 ```
 
 
 **Example**
 
-In the following table, variables are described by intervention group. 
-Some variables such as Waist-to-height ratio (`wth`) and MeDiet Adherence score (`p14`) have been treated as non-normal distributed, and medians and quantiles within square brackets instead of means and standard deviations within round brackets are displayed.
+In the following table, variables are described by year of recruitment. 
+Some variables such as tryglicerides (`triglyc`), physical activity (`phyact`), days to cardiovascular event (`tocv`) or days to death (`todeath`) have been treated as non-normal distributed, and medians and quantiles within square brackets instead of means and standard deviations within round brackets are displayed.
 Also, individuals older than 55 years old are selected. Appropiate tests to compare means, medians or proportions are performed.
-For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for diabetes you may want to see simply "diabetes" instead of "diabetes: yes". This is possible by `hide.no` argument.
+For those binary variables of type "yes/no", you may desire to show only the proportion of "yes" category without showing "yes" but only the variable name or label. For example, for "Cholesterol treatment" you may want to see simply "Cholesterol treatment" instead of "Cholesterol treatment: yes". This is possible by `hide.no` argument.
+Finally, patient id (`id`) has been removed using `-` from the formula environment.
 
 Note the simplicity of the syntax. Also, note the use of `formula` to select the variables, and the use of `subset` to filter some individuals as usual in many other R funcions.
 
 
 ```{r}
-tab <- descrTable(group ~ . , predimed, hide.no="no", method=c(wth=2, p14=2), subset=age>55)
+tab <- descrTable(year ~ . - id, regicor, hide.no="no", method=c(triglyc=2, tocv=2, todeath=2), 
+                  subset=age>55)
 tab
 ```
 
@@ -137,9 +141,15 @@ plot(tab["sex"]) # barplot
 plot(tab["age"]) # histogram and normality plot
 ```
 
+```{r, echo=FALSE}
+plot(tab["sex"],file="./man/figures/var1") # barplot
+plot(tab["age"],file="./man/figures/var1") # histogram and normality plot
+```
+
+
 |                                     |                                      |
 |:-----------------------------------:|:------------------------------------:|
-|![](./man/figures/plot1.png) | ![](./man/figures/plot2.png) |
+|![](./man/figures/var1sex.png) | ![](./man/figures/var1age.png) |
 
 
 
@@ -164,7 +174,7 @@ Also, by using `export2md` function a descriptive table can be inserted in a Rma
 ```{r, results="asis"}
 export2md(tab, strip = TRUE, first = TRUE, 
           header.background = "blue", header.color = "white", 
-          caption = "Description of variables by intervention groups",
+          caption = "Description of variables by recruitment year",
           size=10)
 ```
 
@@ -179,7 +189,7 @@ After creating a table you may want to repeat the descriptives within stratas. F
 tabestr <- strataTable(tab, strata="sex")
 
 # remove sex variable from the table
-tabestr[-1]
+tabestr[-2]
 ```
 
 
@@ -210,11 +220,13 @@ descrTable(casco ~ .-id, SNPs, show.ratio=TRUE, show.p.overall=FALSE)[1:4]
 ```{r, eval=FALSE}
 # create a Surv response:
 library(survival)
-predimed$tevent <- Surv(predimed$toevent, predimed$event=="Yes")
+regicor$tcv <- Surv(regicor$tocv, regicor$cv=="Yes")
 
 # perform descriptive table placing the Surv object as the response (left side of ~):
-tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
-           hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+tab <- descrTable(tcv ~ .-id-cv-tocv, regicor, 
+           method=c(triglyc=2, tocv=2, todeath=2),
+           hide.no="no", ref.no="no",
+           show.ratio=TRUE, show.p.overall=FALSE)
 
 # print table on R console
 print(tab, header.label=c("p.ratio"="p-value"))           
@@ -223,14 +235,16 @@ print(tab, header.label=c("p.ratio"="p-value"))
 ```{r, echo=FALSE}
 # create a Surv response:
 library(survival)
-predimed$tevent <<- Surv(predimed$toevent, predimed$event=="Yes")
+regicor$tcv <- Surv(regicor$tocv, regicor$cv=="Yes")
 
 # perform descriptive table placing the Surv object as the response (left side of ~):
-tab <- descrTable(tevent ~ .-toevent-event, predimed, method=c(wth=2,p14=2), 
-           hide.no="no", show.ratio=TRUE, show.p.overall=FALSE)
+tab <- descrTable(tcv ~ .-id-cv-tocv, regicor, 
+           method=c(triglyc=2, tocv=2, todeath=2),
+           hide.no="no", ref.no="no",
+           show.ratio=TRUE, show.p.overall=FALSE)
 
 # print table on R console
-print(tab, header.label=c("p.ratio"="p-value"))           
+print(tab, header.label=c("p.ratio"="p-value"))          
 ```
 
 

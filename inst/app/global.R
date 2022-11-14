@@ -11,7 +11,10 @@ library(DT, quietly=TRUE)
 library(shinyhelper, quietly=TRUE)
 
 
-# devtools::install_version("shinydashboardPlus","0.7.0")
+# devtools::install_version("shinydashboardPlus","0.7.5")
+#devtools::install_version("shinydashboard","0.7.1")
+#devtools::install_github("RinteRface/shinydashboardPlus")
+
 library(shinydashboard, quietly=TRUE)
 library(shinydashboardPlus, quietly=TRUE)
 library(haven, quietly=TRUE)
@@ -20,7 +23,7 @@ library(survival, quietly=TRUE)
 
 source("flipBox.R")
 
-data(predimed); data(regicor); data(SNPs)
+data(regicor); data(SNPs)
 
 
 # source("dashboard_theme.R")

@@ -1,12 +1,12 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.17.1.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   compareGroups_vignette: compareGroups_vignette.html
-  examples/example1: example1.html
-  examples/example2: example2.html
+  example1: examples/example1.html
+  example2: examples/example2.html
   wui: wui.html
-last_built: 2020-12-22T22:41Z
+last_built: 2022-10-27T14:31Z
 urls:
   reference: https://github.com/isubirana/compareGroups/reference
   article: https://github.com/isubirana/compareGroups/articles

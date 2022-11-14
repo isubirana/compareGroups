@@ -35,7 +35,7 @@
 
 <br>
 
-#### **Step 1.** Load your data from a file (SPSS, Excel, TXT, Stata, or R).
+#### **Step 1.** Load your data from a file (SPSS, Excel, TXT, Stata, or R), or use one of the two example data sets available in the package.
 
 <br>
 

@@ -88,14 +88,14 @@ knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
 
 ```{r}
 library(compareGroups)
-data(predimed)
-res <- compareGroups(group~., predimed)
+data(regicor)
+res <- compareGroups(year~., regicor)
 restab <- createTable(res)
 ```
 
 ## Report section
 
-The following table contains descriptives of **PREDIMED** data
+The following table contains descriptives of **REGICOR** data
 
 ```{r}
 export2md(restab, strip = TRUE, first.strip = TRUE)

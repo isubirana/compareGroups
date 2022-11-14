@@ -12,7 +12,7 @@ This function creates automatically a PDF with the table. Also, the LaTeX code i
 \usage{
 export2pdf(x, file, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL,   
   width=Inf, strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL,  
-  landscape=FALSE, numcompiled=2)
+  landscape=FALSE, numcompiled=2, header.background=NULL, header.color=NULL)
 }
 
 \arguments{
@@ -42,8 +42,11 @@ export2pdf(x, file, which.table="descr", nmax=TRUE, header.labels=c(), caption=N
  \item{landscape}{logical. It determines whether to place the table in landscape (horizontal) format. It only applies when format is 'latex'. Default value is FALSE.}
  
  \item{numcompiled}{integer. Number of times LaTeX code is compiled. When creating the table it may be necessary to execute the code several times in order to fit the columns widths. By default it is compiled twice.}
+ 
+  \item{header.background}{color character for table header or 'NULL'. Default value is 'NULL'.}
+ 
+  \item{header.color}{color character for table header text. Default color is 'NULL'.}
 
-  
 }
 
 

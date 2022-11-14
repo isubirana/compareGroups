@@ -13,7 +13,8 @@ server <- function(input, output, session) {
     # cat("-----------------\n")
     # cat("summary(rv$datasetorigfiltered)\n")
     # print(summary(rv$datasetorigfiltered)) 
-    print(input$sepSNPs)
+    # print(input$sepSNPs)
+    input$rightPanel
   })
   
   output$github <- renderUser({
@@ -25,14 +26,7 @@ server <- function(input, output, session) {
       )        
     )
   })
-  
-  # observeEvent(input$showci,{
-  #   if (!is.null(input$showci) && input$showci)
-  #     hide("formatAccordion")
-  #   else
-  #     show("formatAccordion")
-  # })
-  
+
   observe({
     type <- if(is.null(input$type)) 1 else as.character(input$type)
     showci <- if(is.null(input$showci)) FALSE else input$showci
@@ -97,35 +91,19 @@ server <- function(input, output, session) {
     else
       shinyjs::hide("dropdownDescriptives")
   })
-
-
-  output$leftPanelAspect <- renderUI({
-    HTML(paste0("<style type='text/css'> #leftPanel{color:white;background-color:rgba(60,141,188,1);width:",input$leftPanelWidth,"%</style>"))
-  })
-
-  output$rightPanelAspect <- renderUI({
-    leftPanelWidth <- input$leftPanelWidth
-    if (leftPanelWidth>70)
-      rightPanelWidth <- 100
-    else
-      rightPanelWidth <- 100 - leftPanelWidth
-    if (input$leftmenu=='Home'){
-      rightPanelWidth <- 100
-    }
-    HTML(paste0("<style type='text/css'> #rightPanel{padding-left:3%;width:",rightPanelWidth,"%;height:50%</style>"))
-  })
-
-  observeEvent(input$leftPanelWidth, {
-    if (input$leftPanelWidth<5)
-      shinyjs::hide("leftPanel")
-    else
-      shinyjs::show("leftPanel")
-  })
-
+  
+  # right panel
   observeEvent(input$leftmenu,{
-    updateSliderInput(session, "leftPanelWidth", value=30)
+    if (input$leftmenu=='Home'){
+      if (input$rightPanel){ # close right panel
+        updateControlbar("rightPanel")  
+      }
+    }else{
+      if (!input$rightPanel){ # open right panel
+        updateControlbar("rightPanel")  
+      }
+    }
   })
-
 
   ## when data is loaded show the rest of menuItems
   observeEvent(rv$datasetorig, {
@@ -342,42 +320,6 @@ server <- function(input, output, session) {
     cc <- rv$SNPsHeaderColor
     HTML(paste0("<i style='margin-left:10px; color:",cc,"' class='fa fa-dna'></i><format style='color:",cc,"; font-weight:bold; padding-left:10px; font-size:20px'>SNPs</format>"))
   })   
-  
-  
-  observeEvent(input$toggleLeftPanel,{
-    shinyjs::hide("leftPanel",anim=FALSE)
-    updateSliderInput(session, "leftPanelWidth", value=0)  
-  })
-  
-  # observe({
-  #   if (is.null(input$dimension) || is.null(input$toggleLeftPanel)) return(NULL)
-  #   if (input$toggleLeftPanel%%2==0){
-  #     shinyjs::show("leftPanel",anim=FALSE)
-  #     widthLeftPanel <- 30
-  #     if (input$leftmenu=='Home')
-  #       widthLeftPanel <- 0
-  #     else {
-  #       if (input$dimension[1]<900) widthLeftPanel <- 100
-  #       # if (input$dimension[1]>=600 & input$dimension[1]<900) widthLeftPanel <- 50
-  #       # if (input$dimension[1]>=900) widthLeftPanel <- 30
-  #     }
-  #     updateSliderInput(session, "leftPanelWidth", value=widthLeftPanel)
-  #   } else {
-  #     shinyjs::hide("leftPanel",anim=FALSE)
-  #     updateSliderInput(session, "leftPanelWidth", value=0)
-  #   }
-  # })
-
-  observeEvent(input$leftmenu,{
-    if (input$leftmenu=='Home'){
-      shinyjs::hide("leftPanel")
-      # updateCheckboxInput(session, "toggleLeftPanel", value=FALSE)
-    }else{
-      shinyjs::show("leftPanel")
-      # updateCheckboxInput(session, "toggleLeftPanel", value=TRUE)
-    }
-  })
-
 
   ##### hide show load data options #####
 
@@ -662,7 +604,6 @@ server <- function(input, output, session) {
   observeEvent(input$resetbtn,{
     on.exit({shinyjs::hide("resetbtnPanel")})
     # reset all inputs!!!
-    # shinyjs::reset("leftPanel")
     rv$selevars<-rv$method<-rv$descdigits<-rv$ratiodigits<-rv$refratiocat<-rv$factratio<-rv$xhide<-rv$varsubset<-NULL
     rv$initial<-FALSE
     rv$datasetorig <- rv$dataset <- rv$datasetorigfiltered <- data.frame()
@@ -700,10 +641,6 @@ server <- function(input, output, session) {
       if (input$exampledata=='REGICOR'){
         data(regicor)
         dataset <- regicor
-      }
-      if (input$exampledata=='PREDIMED'){
-        data(predimed)
-        dataset <- predimed
       }
       if (input$exampledata=='SNPS'){
         # data(SNPs,package="SNPassoc")
@@ -1947,9 +1884,8 @@ server <- function(input, output, session) {
                             "huge" = 24.88,
                             "Huge" = 24.88)
           export2pdf(restab,file=ff, size=sizepdf, landscape=input$landscape, header.labels=header.labels, caption=captionlabel,
-                     width=paste0(input$htmlwidthrestab,'cm'), strip=input$strip, first.strip=TRUE, background=input$strip.color)
-                     # ,
-                     # header.color=input$header.color,header.background=input$header.background)
+                     width=paste0(input$htmlwidthrestab,'cm'), strip=input$strip, first.strip=TRUE, background=input$strip.color,
+                     header.color=input$header.color,header.background=input$header.background)
         }
         if (input$downloadtabletype=='HTML'){
           ans <- export2md(restab,format='html',header.labels=header.labels,caption=captionlabel,

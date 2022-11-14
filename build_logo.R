@@ -4,7 +4,7 @@ library(hexSticker)
 
 
 library(compareGroups)
-data(predimed)
+data(regicor)
 
 
 png("man/figures/favicon.png", 480*10/7, 480*7/7)
@@ -70,5 +70,5 @@ build_site()
 
 
 
-export2md(descrTable(group~., predimed, hide.no="no", type=1, sd.type=3)[1:5],strip = TRUE, 
+export2md(descrTable(year~., regicor, hide.no="no", type=1, sd.type=3)[1:5],strip = TRUE, 
           first=TRUE,background=grey(0.9),header.background="blue",header.color="white", header.label=c("p.overall"="p-value"))

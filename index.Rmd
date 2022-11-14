@@ -49,7 +49,7 @@ Also, **compareGroups** package has been published in Journal of Statistical Sof
 
 <img style="float:left; padding:10px" width="20%" src="../man/figures/logo_regicor.jpg" />
 
-As the driving force behind the [REGICOR study](www.regicor.org), URLEC has extensive experience in statistical epidemiology, and is a national reference centre for research into cardiovascular diseases and their risk factors.
+As the driving force behind the [REGICOR study](https://www.regicor.org), URLEC has extensive experience in statistical epidemiology, and is a national reference centre for research into cardiovascular diseases and their risk factors.
 
 
 <br><br>
@@ -77,11 +77,13 @@ devtools::install_github("isubirana/compareGroups")
 ```{r}
 library(compareGroups)
 
-data(predimed)
+data(regicor)
 
-tab <- descrTable(group ~ . , predimed, hide.no = "no", method = c(wth = 2, p14 = 2), sd.type = 3)
+tab <- descrTable(year ~ . -id , regicor, hide.no = "no", 
+                  method=c(triglyc=2, tocv=2, todeath=2), sd.type = 3)
 
-export2md(tab, header.background = "black", header.color = "white", caption = "Summary by intervention group")
+export2md(tab, header.background = "black", header.color = "white", 
+          caption = "Summary by intervention group")
 ```
 
 ### Stratified table
@@ -99,15 +101,15 @@ export2md(tabstrat, header.background = "black", header.color = "white", size=9)
 ### Visual exploration
 
 ```{r, echo=FALSE, fig.show="hide"}
-plot(tab["sex"], "./man/figures/var", type="png") 
-plot(tab["age"], "./man/figures/var", type="png")
+plot(tab["sex"], "./man/figures/var1", type="png") 
+plot(tab["age"], "./man/figures/var1", type="png")
 ```
 
 
 |            |              |
 |:----------:|:------------:|
 | `plot(tab["sex"])` | `plot(tab["age"])` |
-| ![](../man/figures/varsex.png) | ![](../man/figures/varage.png) |
+| ![](./man/figures/var1sex.png) | ![](./man/figures/var1age.png) |
 
 
 
@@ -125,12 +127,16 @@ export2md(tabor[1:4])
 
 ```{r}
 library(survival)
-predimed$tevent <- with(predimed, Surv(toevent, event=='Yes'))
+regicor$tcv <- Surv(regicor$tocv, regicor$cv=="Yes")
 
-tabhr <- descrTable(tevent ~ ., predimed, hide.no = "no", method = c(wth = 2, p14 = 2), sd.type = 3,  
-                    show.ratio=TRUE, show.p.overall=FALSE)
+tabhr <- descrTable(tcv ~ .-id-cv-tocv, regicor, 
+           method=c(triglyc=2, tocv=2, todeath=2),
+           hide.no="no", ref.no="no",
+           show.ratio=TRUE, show.p.overall=FALSE)
 
-export2md(tabhr[1:10])
+
+export2md(tabhr[1:10], header.label=c("p.ratio"="p-value"),
+          caption="Descriptives by cardiovascular event")  
 ```
 
 
@@ -140,6 +146,6 @@ For those not familiar to R syntax, a Web User Interface (**WUI**) has been impl
 
 
 
-![](../man/figures/WUI.png)
+![](./man/figures/WUI.png)
 
 Try the WUI compareGroups [here](https://isubirana.shinyapps.io/compareGroups/)

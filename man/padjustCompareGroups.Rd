@@ -1,16 +1,17 @@
 \name{padjustCompareGroups}
 \alias{padjustCompareGroups}
 \title{Update p values according multiple comparisons}
-\author{Jordi Real}
+\author{Jordi Real \email{jordireal<at>gmail.com}}
+
 
 \usage{
-padjustCompareGroups(objecte_compare, p = "p.overall", method = "BH")
+padjustCompareGroups(object_compare, p = "p.overall", method = "BH")
 }
 
 \arguments{
-\item{objecte_compare}{compareGroups class}
-\item{p}{character string (Default: 'p.overall')}
-\item{method}{Correction method, a character string. Can be abbreviated (see stats::p.adjust).}
+\item{object_compare}{object of class \code{compareGroups}}
+\item{p}{character string. Specify which p-value must be corrected. Possible values are 'p.overall' and 'p.trend' (default: 'p.overall')}.
+\item{method}{Correction method, a character string. Can be abbreviated (see \code{\link[stats]{p.adjust}}).}
 }
 
 \value{

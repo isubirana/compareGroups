@@ -1,11 +1,16 @@
 "[.compareGroups" <- function(x, i, ...)
 {
-# i <- 1:2
-# x <- compareGroups(~age+age+sex, predimed, method=c("age.1"=2))
+  if (is.character(i)){
+    oo<-attr(x,"varnames.orig")
+    oo<-structure(1:length(oo),names=oo)
+    if (!all(i%in%names(oo)))
+      warning("some specified variables in subsetting don't exist.\nBe sure to specify the name of selected variables by the 'original name' and not their label")
+    i<-oo[i]
+    i<-i[!is.na(i)]
+  } 
   cg <- unclass(x)
   cg.list <- cg[i]
   names(cg.list) <- names(cg)[i]
-  # attr(cg.list,"call") <- attr(cg, "call")
   attr(cg.list,"ny") <- attr(cg, "ny")
   attr(cg.list,"varnames.orig") <- attr(cg, "varnames.orig")[i]
   attr(cg.list,"yname") <- attr(cg, "yname")
@@ -18,9 +23,7 @@
   attr(cg.list,"Q1") <- attr(cg, "Q1")
   attr(cg.list,"Q3") <- attr(cg, "Q3")
   attr(cg.list,"byrow") <- attr(cg, "byrow")
-  # attr(cg.list,"class") <- attr(cg, "class")
   class(cg.list) <- "compareGroups"
-  # attr(cg.list,"form") <- attr(cg, "form")
   return(cg.list)
 }
 

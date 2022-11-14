@@ -30,10 +30,10 @@ library(compareGroups)
 
 # Step 2. Load data
 
-Load the PREDIMED example data available in **`compareGroups`** package:
+Load the REGICOR example data available in **`compareGroups`** package:
 
 ```{r}
-data(predimed)
+data(regicor)
 ```
 
 
@@ -42,7 +42,7 @@ data(predimed)
 First use `compareGroups` function to store all values used to perform plots afterwards.
 
 ```{r}
-res <- compareGroups(group ~ . - toevent, data = predimed)
+res <- compareGroups(year ~ .  , data = regicor)
 ```
 
 <br>
@@ -62,21 +62,18 @@ a. For categorical variables a barplot is performed, stratifying by groups (righ
 
 
 ```{r,echo=FALSE,results="hide"}
-plot(res['diab'],file="xxx",type="png")
-file.copy(file.path(getwd(),"xxxdiab.png"),"C:/programs/Dropbox/CompareGroups/web/markdown/examples/example2a.png",overwrite=TRUE)
-file.remove(file.path(getwd(),"xxxdiab.png"))
-plot(res['diab'],file="xxx",type="png",bivar=TRUE)
-file.copy(file.path(getwd(),"xxxdiab.png"),"C:/programs/Dropbox/CompareGroups/web/markdown/examples/example2b.png",overwrite=TRUE)
-file.remove(file.path(getwd(),"xxxdiab.png"))
+plot(res['sex'],file="var1",type="png")
+plot(res['sex'],file="var2",type="png",bivar=TRUE)
+
 ```
 
 ```{r,eval=FALSE}
-plot(res['diab'])
-plot(res['diab'],bivar=TRUE)
+plot(res['sex'])
+plot(res['sex'],bivar=TRUE)
 ```
 
-![](example2a.png)
-![](example2b.png)
+![](var1sex.png)
+![](var2sex.png)
 
 
 
@@ -85,12 +82,8 @@ b. For continuous variables boxplots or normality plots are performed depending 
 
 
 ```{r,echo=FALSE,results="hide"}
-plot(res['bmi'],file="xxx",type="png")
-file.copy(file.path(getwd(),"xxxbmi.png"),"C:/programs/Dropbox/CompareGroups/web/markdown/examples/example2c.png",overwrite=TRUE)
-file.remove(file.path(getwd(),"xxxbmi.png"))
-plot(res['bmi'],file="xxx",type="png",bivar=TRUE)
-file.copy(file.path(getwd(),"xxxbmi.png"),"C:/programs/Dropbox/CompareGroups/web/markdown/examples/example2d.png",overwrite=TRUE)
-file.remove(file.path(getwd(),"xxxbmi.png"))
+plot(res['bmi'],file="var1",type="png")
+plot(res['bmi'],file="var2",type="png",bivar=TRUE)
 ```
 
 
@@ -99,6 +92,6 @@ plot(res['bmi'])
 plot(res['bmi'],bivar=TRUE)
 ```
 
-![](example2c.png)
-![](example2d.png)
+![](var1bmi.png)
+![](var2bmi.png)
 
