@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/isubirana/compareGroups/404.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/about.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/compareGroups_vignette.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/example1.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/example2.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/example3.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/example4.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/example5.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/examples/examples.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/articles/wui.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/authors.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/isubirana/compareGroups/index.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/index.knit.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/news/index.html</loc>
   </url>
   <url>
     <loc>https://github.com/isubirana/compareGroups/reference/cGroupsGUI.html</loc>
@@ -52,7 +94,13 @@
     <loc>https://github.com/isubirana/compareGroups/reference/getResults.html</loc>
   </url>
   <url>
+    <loc>https://github.com/isubirana/compareGroups/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/isubirana/compareGroups/reference/missingTable.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/isubirana/compareGroups/reference/padjustCompareGroups.html</loc>
   </url>
   <url>
     <loc>https://github.com/isubirana/compareGroups/reference/predimed.html</loc>
@@ -77,17 +125,5 @@
   </url>
   <url>
     <loc>https://github.com/isubirana/compareGroups/reference/varinfo.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/isubirana/compareGroups/articles/compareGroups_vignette.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/isubirana/compareGroups/articles/examples/example1.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/isubirana/compareGroups/articles/examples/example2.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/isubirana/compareGroups/articles/wui.html</loc>
   </url>
 </urlset>
