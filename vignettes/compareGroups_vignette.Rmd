@@ -541,6 +541,18 @@ p.adjust(pvals, method = "BH")
 <p style="margin-top:50px"></p>
 
 
+Alternatively, since 4.6.0 version, a new function called **`padjustCompareGroups`** created by Jordi Real <jordireal<at>gmail.com> can be used to compute p-values considering multiple testing. The methods are the same from `p.adjust` function, i.e. Bonferroni, False Discovery Rate, etc.
+
+This function takes the `compareGroups` object and re-computes the p-values. To obtain the same table as above with the p-values correted by "BH" method:
+
+```{r}
+cg <- compareGroups(casco ~ snp10001 + snp10002 + snp10005 + snp10008 + snp10009, SNPs)
+createTable(padjustCompareGroups(cg, method="BH"))
+```
+
+
+<p style="margin-top:50px"></p>
+
 
 ### Odds Ratios and Hazard Ratios
 
@@ -1255,7 +1267,7 @@ res
 
 # Using the Graphical User Inferface (GUI) - tcltk {#gui}
 
-Once the **`compareGroups`** package is loaded, a Graphical User Interface (GUI) is displayed in response to typing `cGroupsGUI(predimed)`. The GUI is meant to make it feasible for users who are unfamiliar with **`R`** to construct bivariate tables.
+Once the **`compareGroups`** package is loaded, a Graphical User Interface (GUI) is displayed in response to typing `cGroupsGUI(regicor)`. The GUI is meant to make it feasible for users who are unfamiliar with **`R`** to construct bivariate tables.
 Note that, since version 3.0, it is necessary to specifiy an existing data.frame as input. So, for example, you can load the REGICOR data by typing `data(regicor)` before calling `cGroupsGUI` function.
 
 

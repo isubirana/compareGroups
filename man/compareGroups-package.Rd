@@ -48,10 +48,11 @@ Main functions:
 }
 
 
-\author{
-Main functions: Isaac Subirana <isubirana<at>imim.es>, Joan Vila <jvila<at>imim.es>, H\'ector Sanz <hsrodenas<at>gmail.com>, Gavin Lucas <gavin.lucas<at>cleargenetics.com> and David Gim\'enez <dgimenez1<at>imim.es>\cr
 
-Web User Interface: Isaac Subirana <isubirana<at>imim.es>, Judith Pe\~nafiel <jpenafiel<at>imim.es>, Gavin Lucas <gavin.lucas<at>cleargenetics.com> and David Gim\'enez <dgimenez1<at>imim.es> \cr
+\author{
+Main functions: Isaac Subirana <isubirana<at>imim.es>, Joan Vila <jvila<at>imim.es>, Héctor Sanz <hsrodenas<at>gmail.com>, Gavin Lucas <gavin.lucas<at>cleargenetics.com> and David Giménez <dgimenez1<at>imim.es>\cr
+
+Web User Interface: Isaac Subirana <isubirana<at>imim.es>, Judith Peñafiel <jpenafiel<at>imim.es>, Gavin Lucas <gavin.lucas<at>cleargenetics.com> and David Giménez <dgimenez1<at>imim.es> \cr
 
 Maintainer: Isaac Subirana <isubirana<at>imim.es>
 }

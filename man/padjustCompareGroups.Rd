@@ -1,7 +1,7 @@
 \name{padjustCompareGroups}
 \alias{padjustCompareGroups}
 \title{Update p values according multiple comparisons}
-\author{Jordi Real \email{jordireal<at>gmail.com}}
+\author{Jordi Real <jordireal<at>gmail.com>}
 
 
 \usage{
