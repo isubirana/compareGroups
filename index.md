@@ -31,7 +31,7 @@ Statistical Software \[Subirana et al, 2014\]
 
 ## Who we are
 
-<img style="float:right; padding:10px" width="25%" src="../man/figures/prbb.jpg" />
+<img style="float:right; padding:10px" width="25%" src="./man/figures/prbb.jpg" />
 
 **`compareGroups`** is developed and maintained by Isaac Subirana,
 Hector Sanz, Joan Vila and collaborators at the cardiovascular
@@ -40,7 +40,7 @@ Research Park (PRBB)](http://www.prbb.org/) .
 
 <br><br><br><br><br>
 
-<img style="float:left; padding:10px" width="20%" src="../man/figures/logo_regicor.jpg" />
+<img style="float:left; padding:10px" width="20%" src="./man/figures/logo_regicor.jpg" />
 
 As the driving force behind the [REGICOR
 study](https://www.regicor.org), URLEC has extensive experience in
