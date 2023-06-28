@@ -1,6 +1,6 @@
-update.formula2<-function(old, new)
+update.formula2<-function(object, new, ...)
 {
-  old <- as.formula(old)
+  old <- as.formula(object)
   new <- as.formula(new)
   ii.old <- if(length(old)>2) 3 else 2
   ii.new <- if(length(new)>2) 3 else 2

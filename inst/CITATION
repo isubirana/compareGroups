@@ -1,8 +1,8 @@
 citHeader("To cite compareGroups in publications use:")
 
-citEntry(entry = "Article",
+bibentry(bibtype = "Article",
   title        = "Building Bivariate Tables: The {compareGroups} Package for {R}",
-  author       = personList(as.person("Isaac Subirana"),
+  author       = c(as.person("Isaac Subirana"),
                    as.person("H\\'ector Sanz"),
                    as.person("Joan Vila")),
   journal      = "Journal of Statistical Software",

@@ -1,6 +1,5 @@
 importFrom(chron, chron)
 importFrom(survival, Surv, survfit, survdiff, coxph)
-#importFrom(epitools, oddsratio, riskratio)
 importFrom(tools, texi2pdf)
 importFrom(HardyWeinberg, HWChisqMat)
 importFrom(rmarkdown, render, word_document)
@@ -15,25 +14,9 @@ importFrom(utils, combn, read.csv, read.csv2, read.table, sessionInfo, write.tab
 importFrom(methods, formalArgs)
 importFrom(writexl, write_xlsx)
 importFrom(officer, fp_border)
-#import(SNPassoc)
-#import(kableExtra, except=c(footnote,as_image))
-#import(flextable, except=c(footnote,as_image))
-#importFrom(flextable, add_footer,add_footer_lines,add_footer_row,add_header,add_header_lines,add_header_row,align,
-#           align_nottext_col,align_text_col,as_b,as_bracket,as_chunk,as_flextable,as_grouped_data,as_i,as_paragraph,
-#           as_raster,as_sub,as_sup,autofit,bg,body_add_flextable,body_replace_flextable_at_bkm,bold,border,
-#           border_inner,border_inner_h,border_inner_v,border_outer,border_remove,colformat_char,colformat_int,
-#           colformat_lgl,colformat_num,color,compose,delete_part,dim_pretty,display,docx_value,empty_blanks,
-#           fit_to_width,fix_border_issues,flextable,flextable_dim,font,fontsize,footers_flextable_at_bkm,
-#           headers_flextable_at_bkm,height,height_all,hline,hline_bottom,hline_top,htmltools_value,hyperlink_text,
-#           italic,linerange,merge_at,merge_h,merge_h_range,merge_none,merge_v,minibar,mk_par,padding,ph_with_flextable,
-#           ph_with_flextable_at,proc_freq,qflextable,regulartable,rotate,save_as_html,save_as_image,set_caption,
-#           set_footer_df,set_formatter,set_formatter_type,set_header_df,set_header_labels,style,theme_alafoli,
-#           theme_booktabs,theme_box,theme_tron,theme_tron_legacy,theme_vader,theme_vanilla,theme_zebra,valign,vline,
-#           vline_left,vline_right,void,width,xtable_to_flextable)
 importFrom(flextable, add_header,align,as_chunk,as_flextable,as_grouped_data,as_i,as_paragraph,autofit,bg,bold,
            color,compose,fontsize,hline,hline_top,italic,merge_h,set_header_df,width,
            flextable, set_caption)
-#%>%,
 importFrom(kableExtra, add_footnote,add_header_above,add_indent,auto_index,cell_spec,collapse_rows,column_spec,
            footnote_marker_alphabet,footnote_marker_number,footnote_marker_symbol,group_rows,html_dependency_bsTable,
            html_dependency_kePrint,kable,kable_as_image,kable_as_xml,kable_styling,kableExtra_latex_packages,landscape,

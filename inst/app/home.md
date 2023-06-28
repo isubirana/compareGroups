@@ -1,4 +1,4 @@
-<img src='fig/cglogo.png' align="right" height="139" />
+<img src='cglogo.png' align="right" height="139" />
 
 -----
 

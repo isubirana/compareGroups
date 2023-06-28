@@ -481,6 +481,19 @@ server <- function(input, output, session) {
     rv$dataset <- rv$datasetorig
     rv$recodedvars <- c(rv$recodedvars, input$newvarname)
   })
+  
+  # convert to factor
+  observeEvent(rv$dataset,{
+    if (nrow(rv$dataset)==0) return(invisible(NULL))
+    vv <- names(rv$dataset)[sapply(rv$dataset, function(x) !is.Surv(x) & is.numeric(x))]
+    updateSelectInput(session, "vartofactor", choices=vv, selected=input$vartofactor)
+  })
+  observeEvent(input$vartofactorbtn, {
+    if (nrow(rv$dataset)==0) return(invisible(NULL))
+    lab <- attr(rv$dataset[,input$vartofactor], "label")
+    rv$dataset[,input$vartofactor] <- as.factor(rv$dataset[,input$vartofactor])
+    attr(rv$dataset[,input$vartofactor], "label") <- lab
+  })
 
   observeEvent(input$removenewvarok,{
     updateTextInput(session, "newvarname", value="")
@@ -1806,12 +1819,18 @@ server <- function(input, output, session) {
           dd$"respsurv"<-Surv(times,cens)
           form <- paste0("respsurv ~ ",input$plotselevars)
         }
+        if (!is.Surv(dd[,input$plotselevars]) & is.numeric(dd[,input$plotselevars])){
+          if (length(unique(dd[,input$plotselevars]))<5) showModal(modalDialog("Variable contains less than 5 unique values.\nConsider to convert it to factor"))
+          validate(need(length(unique(dd[,input$plotselevars]))>=5, ""))
+        }
         cg <- compareGroups(as.formula(form), dd)
+        print(cg)
         plot(cg,bivar=TRUE,perc=perc)
         # shinyjs::show("downPlotOptionsPanel")
         incProgress(1,detail="")
       })
       rv$plotcreated <- TRUE
+      if (!is.Surv(dd[,input$plotselevars]) & is.numeric(dd[,input$plotselevars]) & length(unique(dd[,input$plotselevars]))<5) rv$plotcreated <- FALSE
     })
   })
 

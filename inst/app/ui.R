@@ -342,7 +342,10 @@ ui <- fluidPage(
             tags$td(shinyBS::bsButton("removenewvarok", "Clean", icon=icon("brush"), width=80, style="warning"))
           )
         ),
-        br()
+        br(),
+        hr(),
+        selectInput("vartofactor","Choose variable to convert to factor",choices = NULL),
+        actionButton("vartofactorbtn","Convert")
       ),
              
       #### Described variables ######
@@ -752,7 +755,7 @@ ui <- fluidPage(
     ### footer ###
     footer = dashboardFooter(
       left = HTML("
-        <b>By Isaac Subirana</b><br>CIBERESP, IMIM-Parc de Salut Mar, Barcelona<br>
+        <b>By Isaac Subirana</b><br>CIBERCV, IMIM-Parc de Salut Mar, Barcelona<br>
         <hr>
         <table style='margin-left: auto;margin-right: auto'>
         <tr>

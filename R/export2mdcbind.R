@@ -130,7 +130,10 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     }
     
     if (format=="html"){
-      ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))))  #use the line above when kableExtra is submitted to CRAN    
+      # ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))))  #use the line above when kableExtra is submitted to CRAN 
+      
+      ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+      
       ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, if (sum(sapply(x, function(x.i) sum(unlist(attr(x.i, which="nmax.pos")))))>0) 1 else 0, 
@@ -183,8 +186,6 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     ans <- add_indent(ans, integer())
     ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
     
-    # if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
-
     if (strip) ans <- row_spec(ans, which(rep(0:1, nrow(table2))[1:nrow(table2)]==!first.strip), background = background) 
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)
     if (landscape) ans <- landscape(ans)
@@ -195,7 +196,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     }
     
     if (format=="html"){
-      ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption")))) #use the line above when kableExtra is submitted to CRAN    
+      ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))))   
       ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width = FALSE, font_size = size, position = position)
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
       ans <- row_spec(ans, 0, italic=FALSE, extra_css = "border-bottom: 1px solid grey")

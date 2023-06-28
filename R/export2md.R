@@ -144,7 +144,6 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     colnames(table2)[-1] <- trim(table2[1, -1])
     table2 <- table2[-1, ,drop=FALSE]
     ans <- knitr::kable(table2, align = align, row.names = FALSE, caption=caption[1], format=format, booktabs=format=="latex", longtable=TRUE, ...)
-    # ans <- knitr::kable(table2, align = align, row.names = FALSE, caption=caption[1], format=format, booktabs=format=="latex")
     # groups    
     if (!is.null(cc)){
       for (cci in 1:length(cc)){

@@ -46,14 +46,14 @@ descrip(x, y, method, Q1, Q3, conf.level)
 confinterval(x, method, conf.level)
 flip(x)
 format2(x, digits = NULL, ...)
-formula.compareGroups(x, ...) 
+\method{formula}{compareGroups}(x, ...) 
 logrank.pval(x,y)
 signifdec.i(x, digits)
 signifdec(x, digits)
 summ.i(x)
 table.i(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, 
         q.type, spchar, show.ci)
-update.formula2(old, new) 
+\method{update}{formula2}(object, new, ...) 
 KMg.plot(x, y, file, var.label.x, var.label.y, ...)
 Cox.plot(x, y, file, var.label.x, var.label.y, ...)
 bar2.plot(x, y, file, var.label.x, var.label.y, perc, byrow, ...)
@@ -94,7 +94,7 @@ snp2(x, sep = "/", name.genotypes, reorder = "common",
 
 reorder.snp2(x, ref = "common", ...)
 
-summary.snp2(object, ...)
+\method{summary}{snp2}(object, ...)
 
 SNPHWE2(x)
 

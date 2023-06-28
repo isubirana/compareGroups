@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 4.6.0
-Date: 2022-10-19
+Version: 4.7.0
+Date: 2023-05-25
 Depends: 
     R (>= 3.5.0)
 Imports: 
@@ -42,7 +42,7 @@ Description: Create data summaries for quality control, extensive reports for ex
 License: GPL (>=2)
 URL: www.comparegroups.eu
 LazyLoad: yes
-Encoding: latin1
+Encoding: UTF-8
 BuildVignettes: true
 VignetteBuilder: knitr
 RoxygenNote: 7.2.0

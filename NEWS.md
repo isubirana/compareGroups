@@ -1,3 +1,11 @@
+# compareGroups 4.7.0
+- WUI: new functionality to convert to factors integer variables. Useful to plot numeric variables with few values as bar plots.
+- export2md, export2word, export2pdf, export2html: bug fixed in coloring all header lines for stratified tables
+MINOR
+- update.formula2 method: new ... argument added.
+- CITATION file: citEntry() and personList() replaced by bibentry() and c(), respectively.
+- DESCRIPTION file: Encoding field changed from latin1 to UTF-8
+
 # compareGroups 4.6.0
 - new function padjustCompareGroups to adjust p-values for multiple testing
 - predimed example data has been removed from the package
