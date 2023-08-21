@@ -1,3 +1,6 @@
+# compareGroups 4.7.1
+- version info fixed (DESCRIPTION vs MAN)
+
 # compareGroups 4.7.0
 - WUI: new functionality to convert to factors integer variables. Useful to plot numeric variables with few values as bar plots.
 - export2md, export2word, export2pdf, export2html: bug fixed in coloring all header lines for stratified tables
