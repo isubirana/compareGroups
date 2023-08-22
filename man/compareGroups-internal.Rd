@@ -24,6 +24,35 @@
 \alias{norm.plot}
 \alias{prepare}
 \alias{trim}
+\alias{compareGroups.fit}
+\alias{confinterval}
+\alias{formula.compareGroups}
+\alias{update.formula2}
+\alias{snpQC}
+\alias{export2mdcbind}
+\alias{export2mdword}
+\alias{export2mdwordcbind}
+\alias{oddsratio}
+\alias{riskratio}
+\alias{epitable}
+\alias{table.margins}
+\alias{or.midp}
+\alias{tab2by2.test}
+\alias{ormidp.test}
+\alias{oddsratio.midp}
+\alias{oddsratio.fisher}
+\alias{oddsratio.wald}
+\alias{oddsratio.small}
+\alias{riskratio.small}
+\alias{riskratio.wald}
+\alias{riskratio.boot}
+\alias{setupSNP2}
+\alias{snp2}
+\alias{reorder.snp2}
+\alias{summary.snp2}
+\alias{SNPHWE2}
+
+
 
 
 \title{Internal compareGroups functions}

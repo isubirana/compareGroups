@@ -1,5 +1,6 @@
 # compareGroups 4.7.1
 - version info fixed (DESCRIPTION vs MAN)
+- missing functions in alias argument from compareGroups-internals.Rd document incorporated
 
 # compareGroups 4.7.0
 - WUI: new functionality to convert to factors integer variables. Useful to plot numeric variables with few values as bar plots.
