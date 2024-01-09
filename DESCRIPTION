@@ -40,7 +40,8 @@ Authors@R: c(
 Maintainer: Isaac Subirana <isubirana@imim.es>
 Description: Create data summaries for quality control, extensive reports for exploring data, as well as publication-ready univariate or bivariate tables in several formats (plain text, HTML,LaTeX, PDF, Word or Excel. Create figures to quickly visualise the distribution of your data (boxplots, barplots, normality-plots, etc.). Display statistics (mean, median, frequencies, incidences, etc.). Perform the appropriate tests (t-test, Analysis of variance, Kruskal-Wallis, Fisher, log-rank, ...) depending on the nature of the described variable (normal, non-normal or qualitative). Summarize genetic data (Single Nucleotide Polymorphisms) data displaying Allele Frequencies and performing Hardy-Weinberg Equilibrium tests among other typical statistics and tests for these kind of data.
 License: GPL (>=2)
-URL: www.comparegroups.eu
+URL: https://isubirana.github.io/compareGroups/, https://github.com/isubirana/compareGroups
+BugReports: https://github.com/isubirana/compareGroups/issues
 LazyLoad: yes
 Encoding: UTF-8
 BuildVignettes: true
