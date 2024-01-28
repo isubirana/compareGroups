@@ -1,4 +1,4 @@
-pandoc: 2.17.1.1
+pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   example1: examples/example1.html
   example2: examples/example2.html
   wui: wui.html
-last_built: 2023-08-22T13:05Z
+last_built: 2024-01-28T22:01Z
 urls:
   reference: https://github.com/isubirana/compareGroups/reference
   article: https://github.com/isubirana/compareGroups/articles

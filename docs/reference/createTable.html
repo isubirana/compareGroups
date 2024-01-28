@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.7.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.8.0</span>
       </span>
     </div>
 
@@ -106,7 +106,7 @@
 <span>           <span class="va">show.all</span>, <span class="va">show.p.trend</span>, show.p.mul <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">show.n</span>, show.ratio <span class="op">=</span></span>
 <span>           <span class="cn">FALSE</span>, show.descr <span class="op">=</span> <span class="cn">TRUE</span>, show.ci <span class="op">=</span> <span class="cn">FALSE</span>, hide.no <span class="op">=</span> <span class="cn">NA</span>, digits.ratio <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>           show.p.ratio <span class="op">=</span> <span class="va">show.ratio</span>, digits.p <span class="op">=</span> <span class="fl">3</span>, sd.type <span class="op">=</span> <span class="fl">1</span>, q.type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>           extra.labels <span class="op">=</span> <span class="cn">NA</span>, all.last <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>           extra.labels <span class="op">=</span> <span class="cn">NA</span>, all.last <span class="op">=</span> <span class="cn">FALSE</span>, lab.ref <span class="op">=</span> <span class="st">"Ref."</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for createTable</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, which.table <span class="op">=</span> <span class="st">"descr"</span>, nmax <span class="op">=</span> <span class="cn">TRUE</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for createTable</span></span>
@@ -195,6 +195,11 @@
 <dd><p>logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.</p></dd>
 
   
+  <dt>lab.ref</dt>
+<dd><p>character. String shown for reference category. "Ref." as default value.</p></dd>
+
+  
+  
   <dt>which.table</dt>
 <dd><p>character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), printing descriptives by groups table, availability data table or both tables, respectively. Default value is 'descr'.</p></dd>
 
@@ -205,7 +210,7 @@
 
   <dt>header.labels</dt>
 <dd><p>a character named vector with 'all', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' components indicating the label for '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' (available data), respectively. Default is a zero length vector which makes no changes, i.e. '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' labels appear for descriptives of entire cohort, global p-value, p-value for trend, HR/OR and p-value of each HR/OR and available data, respectively.</p></dd>
-  
+ 
 
   <dt>...</dt>
 <dd><p>other arguments passed to <code><a href="https://rdrr.io/r/base/print.default.html" class="external-link">print.default</a></code>.</p></dd>
@@ -271,7 +276,7 @@ This discordance may also be present when computing the p-value corresponding to
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">compareGroups</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://isubirana.github.io/compareGroups/" class="external-link">compareGroups</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># load REGICOR data</span></span></span>

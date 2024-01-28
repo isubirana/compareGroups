@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">compareGroups</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.7.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.8.0</span>
       </span>
     </div>
 
@@ -154,22 +154,22 @@
 <h2 id="gets-started">Gets started<a class="anchor" aria-label="anchor" href="#gets-started"></a>
 </h2>
 <p>Install the package from CRAN</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"compareGroups"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"compareGroups"</span>)</span></code></pre></div>
 <p>or the lattest version from Github</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"isubirana/compareGroups"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"isubirana/compareGroups"</span>)</span></code></pre></div>
 <div class="section level3">
 <h3 id="building-the-descriptive-table">Building the descriptive table<a class="anchor" aria-label="anchor" href="#building-the-descriptive-table"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(compareGroups)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(regicor)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(year <span class="sc">~</span> . <span class="sc">-</span>id , regicor, <span class="at">hide.no =</span> <span class="st">"no"</span>, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method=</span><span class="fu">c</span>(<span class="at">triglyc=</span><span class="dv">2</span>, <span class="at">tocv=</span><span class="dv">2</span>, <span class="at">todeath=</span><span class="dv">2</span>), <span class="at">sd.type =</span> <span class="dv">3</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">export2md</span>(tab, <span class="at">header.background =</span> <span class="st">"black"</span>, <span class="at">header.color =</span> <span class="st">"white"</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption =</span> <span class="st">"Summary by intervention group"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">library</span>(compareGroups)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">data</span>(regicor)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(year <span class="sc">~</span> . <span class="sc">-</span>id , regicor, <span class="at">hide.no =</span> <span class="st">"no"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>                  <span class="at">method=</span><span class="fu">c</span>(<span class="at">triglyc=</span><span class="dv">2</span>, <span class="at">tocv=</span><span class="dv">2</span>, <span class="at">todeath=</span><span class="dv">2</span>), <span class="at">sd.type =</span> <span class="dv">3</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">export2md</span>(tab, <span class="at">header.background =</span> <span class="st">"black"</span>, <span class="at">header.color =</span> <span class="st">"white"</span>, </span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>          <span class="at">caption =</span> <span class="st">"Summary by intervention group"</span>)</span></code></pre></div>
 <table class="table table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Summary by intervention group
@@ -677,22 +677,22 @@ Days to overall death or end of follow-up
 <div class="section level3">
 <h3 id="stratified-table">Stratified table<a class="anchor" aria-label="anchor" href="#stratified-table"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tabstrat <span class="ot">&lt;-</span> <span class="fu">strataTable</span>(<span class="fu">update</span>(tab, . <span class="sc">~</span> . <span class="sc">-</span>sex), <span class="st">"sex"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export2md</span>(tabstrat, <span class="at">header.background =</span> <span class="st">"black"</span>, <span class="at">header.color =</span> <span class="st">"white"</span>, <span class="at">size=</span><span class="dv">9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>tabstrat <span class="ot">&lt;-</span> <span class="fu">strataTable</span>(<span class="fu">update</span>(tab, . <span class="sc">~</span> . <span class="sc">-</span>sex), <span class="st">"sex"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">export2md</span>(tabstrat, <span class="at">header.background =</span> <span class="st">"black"</span>, <span class="at">header.color =</span> <span class="st">"white"</span>, <span class="at">size=</span><span class="dv">9</span>)</span></code></pre></div>
 <table class="table table table-striped table-condensed" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Summary descriptive tables
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="1">
 <p><br></p>
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="4">
 <p>Male</p>
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="4">
 <p>Female</p>
 </th>
 </tr>
@@ -1493,11 +1493,11 @@ Days to overall death or end of follow-up
 <div class="section level3">
 <h3 id="computing-odds-ratios">Computing Odds Ratios<a class="anchor" aria-label="anchor" href="#computing-odds-ratios"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(SNPs)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tabor <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(casco <span class="sc">~</span> .<span class="sc">-</span>id, SNPs, <span class="at">show.ratio=</span><span class="cn">TRUE</span>, <span class="at">show.p.overall=</span><span class="cn">FALSE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">export2md</span>(tabor[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">data</span>(SNPs)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>tabor <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(casco <span class="sc">~</span> .<span class="sc">-</span>id, SNPs, <span class="at">show.ratio=</span><span class="cn">TRUE</span>, <span class="at">show.p.overall=</span><span class="cn">FALSE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">export2md</span>(tabor[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <table class="table table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Summary descriptives table by groups of `casco’
@@ -1684,17 +1684,17 @@ TT
 <div class="section level3">
 <h3 id="computing-hazard-ratios">Computing Hazard Ratios<a class="anchor" aria-label="anchor" href="#computing-hazard-ratios"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>regicor<span class="sc">$</span>tcv <span class="ot">&lt;-</span> <span class="fu">Surv</span>(regicor<span class="sc">$</span>tocv, regicor<span class="sc">$</span>cv<span class="sc">==</span><span class="st">"Yes"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>tabhr <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(tcv <span class="sc">~</span> .<span class="sc">-</span>id<span class="sc">-</span>cv<span class="sc">-</span>tocv, regicor, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">method=</span><span class="fu">c</span>(<span class="at">triglyc=</span><span class="dv">2</span>, <span class="at">tocv=</span><span class="dv">2</span>, <span class="at">todeath=</span><span class="dv">2</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">hide.no=</span><span class="st">"no"</span>, <span class="at">ref.no=</span><span class="st">"no"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.ratio=</span><span class="cn">TRUE</span>, <span class="at">show.p.overall=</span><span class="cn">FALSE</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">export2md</span>(tabhr[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">header.label=</span><span class="fu">c</span>(<span class="st">"p.ratio"</span><span class="ot">=</span><span class="st">"p-value"</span>),</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption=</span><span class="st">"Descriptives by cardiovascular event"</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>regicor<span class="sc">$</span>tcv <span class="ot">&lt;-</span> <span class="fu">Surv</span>(regicor<span class="sc">$</span>tocv, regicor<span class="sc">$</span>cv<span class="sc">==</span><span class="st">"Yes"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>tabhr <span class="ot">&lt;-</span> <span class="fu">descrTable</span>(tcv <span class="sc">~</span> .<span class="sc">-</span>id<span class="sc">-</span>cv<span class="sc">-</span>tocv, regicor, </span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>           <span class="at">method=</span><span class="fu">c</span>(<span class="at">triglyc=</span><span class="dv">2</span>, <span class="at">tocv=</span><span class="dv">2</span>, <span class="at">todeath=</span><span class="dv">2</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>           <span class="at">hide.no=</span><span class="st">"no"</span>, <span class="at">ref.no=</span><span class="st">"no"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>           <span class="at">show.ratio=</span><span class="cn">TRUE</span>, <span class="at">show.p.overall=</span><span class="cn">FALSE</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="fu">export2md</span>(tabhr[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], <span class="at">header.label=</span><span class="fu">c</span>(<span class="st">"p.ratio"</span><span class="ot">=</span><span class="st">"p-value"</span>),</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>          <span class="at">caption=</span><span class="st">"Descriptives by cardiovascular event"</span>)  </span></code></pre></div>
 <table class="table table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Descriptives by cardiovascular event
@@ -2030,7 +2030,7 @@ HDL cholesterol
 <div class="section level3">
 <h3 id="web-based-user-interface">Web-based User Interface<a class="anchor" aria-label="anchor" href="#web-based-user-interface"></a>
 </h3>
-<p>For those not familiar to R syntax, a Web User Interface (<strong>WUI</strong>) has been implemented using <a href="https://shiny.rstudio.com/" class="external-link">Shiny</a> tools, which can be used remotely just accessing the <a href="http://www.comparegroups.eu" class="external-link"><strong>compareGroups project website</strong></a></p>
+<p>For those not familiar to R syntax, a Web User Interface (<strong>WUI</strong>) has been implemented using <a href="https://shiny.rstudio.com/" class="external-link">Shiny</a> tools, which can be used remotely just accessing the <a href="https://isubirana.github.io/compareGroups" class="external-link"><strong>compareGroups project website</strong></a></p>
 <p><img src="./reference/figures/WUI.png"></p>
 <p>Try the WUI compareGroups <a href="https://isubirana.shinyapps.io/compareGroups/" class="external-link">here</a></p>
 </div>
