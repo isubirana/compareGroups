@@ -81,7 +81,7 @@ signifdec.i(x, digits)
 signifdec(x, digits)
 summ.i(x)
 table.i(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, 
-        q.type, spchar, show.ci)
+        q.type, spchar, show.ci, lab.ref)
 \method{update}{formula2}(object, new, ...) 
 KMg.plot(x, y, file, var.label.x, var.label.y, ...)
 Cox.plot(x, y, file, var.label.x, var.label.y, ...)

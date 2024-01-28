@@ -311,19 +311,19 @@ N=540
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Age
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 65.0 (5.41)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.7 (5.48)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.3 (5.57)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.235
 </td>
 </tr>
@@ -374,65 +374,65 @@ Female
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Smoking status:
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Never smoker
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 127 (64.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 220 (63.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 326 (61.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Current or former &lt; 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 29 (14.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 84 (24.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 71 (13.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Former &gt;= 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 42 (21.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 44 (12.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 132 (25.0%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -453,19 +453,19 @@ Systolic blood pressure
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Diastolic blood pressure
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 79.5 (9.88)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 83.5 (9.93)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 81.2 (10.6)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -487,19 +487,19 @@ History of hypertension
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Hypertension treatment
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 57 (28.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 101 (27.7%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 198 (38.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.002
 </td>
 </tr>
@@ -521,19 +521,19 @@ Total cholesterol
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 HDL cholesterol
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 52.4 (14.5)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 52.2 (15.3)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 53.5 (14.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.403
 </td>
 </tr>
@@ -555,19 +555,19 @@ Triglycerides
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 LDL cholesterol
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 154 (37.5)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 153 (38.3)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 139 (39.6)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -589,19 +589,19 @@ History of hyperchol.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Cholesterol treatment
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 22 (10.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 55 (15.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 111 (21.3%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.002
 </td>
 </tr>
@@ -623,19 +623,19 @@ Height (cm)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Weight (Kg)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 73.1 (11.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 75.2 (12.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 74.1 (12.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.157
 </td>
 </tr>
@@ -657,19 +657,19 @@ Body mass index
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Physical activity (Kcal/week)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 491 (380)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 429 (317)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 373 (370)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -691,19 +691,19 @@ Physical component
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Mental component
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 49.2 (11.6)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 49.8 (11.0)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 47.6 (10.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.016
 </td>
 </tr>
@@ -725,19 +725,19 @@ Cardiovascular event
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Days to cardiovascular event or end of follow-up
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1710 \[804;2769\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1577 \[640;2564\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1752 \[824;2739\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.137
 </td>
 </tr>
@@ -759,19 +759,19 @@ Overall death
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Days to overall death or end of follow-up
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1620 \[808;2631\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1483 \[732;2323\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1751 \[782;2640\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.106
 </td>
 </tr>
@@ -837,17 +837,17 @@ Summary descriptive tables
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: blue !important;" colspan="1">
 
 <br>
 
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: blue !important;" colspan="4">
 
 Male
 
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: blue !important;" colspan="4">
 
 Female
 
@@ -910,31 +910,31 @@ N=289
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Age
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 65.4 (5.36)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.7 (5.39)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.6 (5.62)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.453
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.7 (5.47)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.6 (5.58)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.1 (5.53)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.403
 </td>
 </tr>
@@ -1016,107 +1016,107 @@ Female
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Smoking status:
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.007
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Never smoker
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 23 (25.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 50 (28.9%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 70 (28.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 104 (96.3%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 170 (97.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 256 (90.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Current or former &lt; 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 25 (27.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 80 (46.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 57 (23.3%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 4 (3.70%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 4 (2.29%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 14 (4.93%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Former &gt;= 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 42 (46.7%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 43 (24.9%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 118 (48.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0 (0.00%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1 (0.57%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 14 (4.93%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -1149,31 +1149,31 @@ Systolic blood pressure
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Diastolic blood pressure
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 79.8 (8.79)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 84.8 (9.50)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 82.5 (10.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 79.3 (10.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 82.2 (10.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 80.0 (10.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.028
 </td>
 </tr>
@@ -1207,31 +1207,31 @@ History of hypertension
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Hypertension treatment
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 25 (26.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 39 (21.5%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 96 (39.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 32 (29.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 62 (33.7%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 102 (36.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.398
 </td>
 </tr>
@@ -1265,31 +1265,31 @@ Total cholesterol
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 HDL cholesterol
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 47.6 (14.3)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 46.9 (11.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 49.1 (12.7)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.225
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 56.8 (13.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 57.6 (16.5)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 57.4 (14.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.913
 </td>
 </tr>
@@ -1323,31 +1323,31 @@ Triglycerides
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 LDL cholesterol
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 151 (38.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 152 (39.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 134 (34.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 157 (36.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 154 (36.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 144 (43.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.006
 </td>
 </tr>
@@ -1381,31 +1381,31 @@ History of hyperchol.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Cholesterol treatment
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 12 (12.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 30 (16.9%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 44 (18.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.498
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 10 (9.17%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 25 (14.0%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 67 (24.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.001
 </td>
 </tr>
@@ -1439,31 +1439,31 @@ Height (cm)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Weight (Kg)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 76.6 (12.6)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 81.1 (11.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 78.8 (10.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.005
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 70.1 (10.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 69.2 (11.1)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 69.9 (12.6)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.773
 </td>
 </tr>
@@ -1497,31 +1497,31 @@ Body mass index
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Physical activity (Kcal/week)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 499 (462)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 399 (342)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 492 (449)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.054
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 483 (299)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 458 (289)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 269 (240)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -1555,31 +1555,31 @@ Physical component
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Mental component
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 52.6 (10.3)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 52.5 (9.49)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 50.1 (9.94)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.033
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 46.1 (11.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 47.2 (11.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 45.3 (11.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.263
 </td>
 </tr>
@@ -1613,31 +1613,31 @@ Cardiovascular event
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Days to cardiovascular event or end of follow-up
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1606 \[793;2735\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1608 \[537;2492\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1882 \[920;2827\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.105
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1739 \[834;2768\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1573 \[686;2655\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1723 \[701;2673\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.512
 </td>
 </tr>
@@ -1671,31 +1671,31 @@ Overall death
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Days to overall death or end of follow-up
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1625 \[1015;2655\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1442 \[769;2247\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1684 \[715;2518\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.290
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1501 \[725;2515\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1507 \[679;2408\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1811 \[890;2721\]
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.174
 </td>
 </tr>
@@ -1793,18 +1793,18 @@ transversal or case-control studies, or Hazard Ratios for cohort studies
 For those not familiar to R syntax, a Web User Interface (**WUI**) has
 been implemented using [Shiny](https://shiny.rstudio.com/) tools, which
 can be used remotely just accessing the [**compareGroups project
-website**](http://www.comparegroups.eu)
+website**](https://isubirana.github.io/compareGroups)
 
 ![](./man/figures/WUI.png)
 
-Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
+Try the WUI compareGroups
+[here](https://isubirana.github.io/compareGroups/articles/wui.html)
 
 <br>
 
 # Citation
 
     citation("compareGroups")
-
 
     To cite compareGroups in publications use:
 

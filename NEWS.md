@@ -1,3 +1,11 @@
+# compareGroups 4.8.0
+- <comparegroups.eu> URL replaced by <isubirana.github.io/compareGroups>
+- importFrom("stats", "model.frame") included in NAMESPACE
+- descrTable, createTAble: new argument added "lab.ref" to change label for reference category
+
+# compareGroups 4.7.2
+- export2md: table format bug fixed in exporting to HTML when nmax=FALSE
+
 # compareGroups 4.7.1
 - version info fixed (DESCRIPTION vs MAN)
 - missing functions in alias argument from compareGroups-internals.Rd document incorporated

@@ -29,7 +29,8 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
 
     call <- match.call()
     if (missing(data))
-        data <- environment(formula)
+        # data <- environment(formula)
+        data <- model.frame(formula)
     else{   # needed to handle tibbles
       if (!inherits(data, "data.frame"))
         stop("data must be a data.frame")
@@ -39,6 +40,8 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
         vl <- sapply(data, attr, which="labels", exact=TRUE) # store value.labels
       }
     }
+    
+    #print(str(data))
 
     # remove labelled class (for incompatibility with haven and Hmisc)
     for (i in 1:ncol(data)){

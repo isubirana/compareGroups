@@ -69,6 +69,54 @@ choices_brewer <- list(
 )
 
 
+# this function has been deprecated from shinyWidgets and code must be sourced
+setShadow <- function(id = NULL, class = NULL) {
+  
+  # shadow css
+  cssShadow <- paste0(
+    " box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      border-radius: 5px;
+   ")
+  
+  cssShadow <- if (!is.null(id)) {
+    if (!is.null(class)) {
+      paste0("#", id, " .", class, " {", cssShadow, "}")
+    } else {
+      paste0("#", id, " {", cssShadow, "}")
+    }
+  } else {
+    if (!is.null(class)) {
+      paste0(".", class, " {", cssShadow, "}")
+    } else {
+      NULL
+    }
+  }
+  
+  # hover effect css
+  cssHover <- "box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);"
+  
+  cssHover <- if (!is.null(id)) {
+    if (!is.null(class)) {
+      paste0("#", id, ":hover .", class, ":hover {", cssHover, "}")
+    } else {
+      paste0("#", id, ":hover", " {", cssHover, "}")
+    }
+  } else {
+    if (!is.null(class)) {
+      paste0(".", class, ":hover", " {", cssHover, "}")
+    } else {
+      NULL
+    }
+  }
+  
+  css <- paste(cssShadow, cssHover)
+  
+  # wrap everything in the head
+  htmltools::tags$head(
+    htmltools::tags$style(css)
+  )
+}
 
 
 # setwd(system.file("app", package = "compareGroups"))

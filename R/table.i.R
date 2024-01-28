@@ -1,5 +1,5 @@
 table.i <-
-function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci){
+function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci, lab.ref){
 
   method<-attr(x,"method")
   compute.prop <- attr(x, "compute.prop")
@@ -32,13 +32,13 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     ci <- ifelse(is.nan(ci),".",format2(ci,digits.ratio))
     ci <- t(ci)
     ci <- apply(ci,2,function(vv) paste(vv[1]," [",vv[2],";",vv[3],"]",sep="")) 
-    ci[rr]<-"Ref."
+    ci[rr]<-lab.ref
   } else  
     ci <- NA
   if (!is.null(p.ratio)){
     rr <- is.na(p.ratio) & !is.nan(p.ratio)
     p.ratio <- ifelse(is.nan(p.ratio),".",format2(p.ratio,digits.p))
-    p.ratio[rr]<-"Ref."
+    p.ratio[rr]<-lab.ref
   }else 
     p.ratio <- NA
   

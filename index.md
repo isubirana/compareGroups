@@ -592,17 +592,17 @@ Summary descriptive tables
 </caption>
 <thead>
 <tr>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="1">
 
 <br>
 
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="4">
 
 Male
 
 </th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; color: white !important;padding-right: 4px; padding-left: 4px; background-color: black !important;" colspan="4">
 
 Female
 
@@ -1943,7 +1943,7 @@ HDL cholesterol
 For those not familiar to R syntax, a Web User Interface (**WUI**) has
 been implemented using [Shiny](https://shiny.rstudio.com/) tools, which
 can be used remotely just accessing the [**compareGroups project
-website**](http://www.comparegroups.eu)
+website**](https://isubirana.github.io/compareGroups)
 
 ![](./man/figures/WUI.png)
 
