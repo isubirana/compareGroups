@@ -2,6 +2,11 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
                     strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, 
                     header.background=NULL, header.color=NULL, position="center", ...){
 
+  # x=descrTable(iris); which.table="descr"; nmax=TRUE; header.labels=c(); caption=NULL; format="html"; width=Inf; 
+  # strip=FALSE; first.strip=FALSE; background="#D2D2D2"; size=NULL; landscape=FALSE; 
+  # header.background=NULL; header.color=NULL; position="center"
+  
+  
   # compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
   # 
   # if (inherits(compiled.format, "try-error") || is.null(compiled.format)){
@@ -127,7 +132,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     if (format=="html"){
       ans <- kable_styling(ans, bootstrap_options=c(if (!strip) "striped" else NULL, "condensed"), full_width=FALSE, font_size=size, position=position)  
       ans <- row_spec(ans, 0, background=header.background, color=header.color)
-      ans <- row_spec(ans, if (sum(unlist(attr(x, "nmax.pos")))>0) 1 else 0, italic=sum(unlist(attr(x, "nmax.pos")))>0, extra_css = "border-bottom: 1px solid grey")      
+      if (nmax) ans <- row_spec(ans, if (sum(unlist(attr(x, "nmax.pos")))>0) 1 else 0, italic=sum(unlist(attr(x, "nmax.pos")))>0, extra_css = "border-bottom: 1px solid grey")      
     }
     return(ans)
   }      

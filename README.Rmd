@@ -251,14 +251,14 @@ print(tab, header.label=c("p.ratio"="p-value"))
 
 # Web-based User Interface
 
-For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](https://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](http://www.comparegroups.eu)
+For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](https://shiny.rstudio.com/) tools, which can be used remotely just accessing the [**compareGroups project website**](https://isubirana.github.io/compareGroups)
 
 
 
 
 ![](./man/figures/WUI.png)
 
-Try the WUI compareGroups [here](http://www.comparegroups.eu/wui)
+Try the WUI compareGroups [here](https://isubirana.github.io/compareGroups/articles/wui.html)
 
 <br>
 

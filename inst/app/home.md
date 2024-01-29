@@ -117,4 +117,4 @@ Accessing the **`compareGroups` WUI** page starts a dedicated session of R to re
 
 When you close your browser window, the R session is terminated, and all data are lost. To can verify this for yourself by simply re-loading the WUI page, after which you will see that no data are loaded. The **`compareGroups`** developers only have access to the underlying R code that generates that WUI and performes the calculations, and can never gain access to data that have been loaded into a remote session.
 
-If you have any further concerns or questions about the security of your data when using the compareGroups WUI, please get in touch with us via the <a href="http://www.comparegroups.eu/contact">contact form</a>.
+If you have any further concerns or questions about the security of your data when using the compareGroups WUI, please write to `compareGroups` package maintainer.

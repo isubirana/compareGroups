@@ -22,7 +22,7 @@ importFrom(kableExtra, add_footnote,add_header_above,add_indent,auto_index,cell_
            html_dependency_kePrint,kable,kable_as_image,kable_as_xml,kable_styling,kableExtra_latex_packages,landscape,
            linebreak,magic_mirror,pack_rows,rmd_format,row_spec,save_kable,scroll_box,spec_angle,spec_color,
            spec_font_size,spec_popover,spec_tooltip,text_spec,usepackage_latex,xml_as_kable,xtable2kable)
-
+importFrom(stats, model.frame)
 
 export(
 compareGroups,

@@ -21,7 +21,7 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
   FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
-  extra.labels = NA, all.last = FALSE)
+  extra.labels = NA, all.last = FALSE, lab.ref="Ref.")
 }
 
 \arguments{
@@ -142,7 +142,9 @@ Arguments from \code{\link{createTable}} function:
   
   \item{extra.labels}{character vector of 4 components corresponding to key legend to be appended to normal, non-normal, categorical or survival row-variables labels. Default value is NA which appends no extra key. If it is set to \code{c("","","","")}, "Mean (SD)", "Median [25th; 75th]", "N (\%)" and "Incidence at time=timemax" are appended (see argument \code{timemax} from \code{compareGroups} function.}
   
-  \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.}  
+  \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.} 
+  
+  \item{lab.ref}{character. String shown for reference category. "Ref." as default value.}
 
 }
 
