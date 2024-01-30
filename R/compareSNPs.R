@@ -9,7 +9,7 @@ compareSNPs <- function(formula, data, subset, na.action = NULL, sep = "", verbo
         if (!is.null(call[[i]])) {
             frame.call[[i]] <- call[[i]]
             k <- k + 1
-            if (is.R()) 
+            if (exists("version") && !is.null(version$language) && version$language == "R") # is.R() code function
                 names(frame.call)[k] = i
         }
     }

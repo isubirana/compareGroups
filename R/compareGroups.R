@@ -61,11 +61,10 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
 
     k = length(frame.call)
     for (i in c("data", "subset", "na.action", "drop.unused.levels")) {
-    # for (i in c("subset", "na.action", "drop.unused.levels")) {
       if (!is.null(call[[i]])) {
         frame.call[[i]] <- call[[i]]
         k <- k + 1
-        if (is.R()) 
+        if (exists("version") && !is.null(version$language) && version$language == "R") # is.R() code function
           names(frame.call)[k] = i
       }
     }

@@ -2,6 +2,7 @@
 - <comparegroups.eu> URL replaced by <isubirana.github.io/compareGroups>
 - importFrom("stats", "model.frame") included in NAMESPACE
 - descrTable, createTAble: new argument added "lab.ref" to change label for reference category
+- createTable, compareGroups functions: isR() removed
 
 # compareGroups 4.7.2
 - export2md: table format bug fixed in exporting to HTML when nmax=FALSE
