@@ -3,7 +3,7 @@ title: "Example 2: Exploring your data graphically."
 output:
   rmdformats::html_clean:
     highlight: tango
-    self_contained: no
+    self_contained: yes
 ---
 
 Barplots, boxplots or normality plots are displayed according to the nature of described variable. These plots are useful to explore visually whether a continuous variable follows a normal distribution or to identify possible outliers or rare categories, etc.
@@ -76,7 +76,7 @@ plot(res['sex'], bivar=TRUE)
 b. For continuous variables boxplots or normality plots are performed depending whether groups are considered or not, respectively.
 
 
-```{r,echo=FALSE,results="hide"}
+```{r,echo=FALSE,results="hide", eval=FALSE}
 plot(res['bmi'],file="var1",type="png")
 plot(res['bmi'],file="var2",type="png",bivar=TRUE)
 ```
@@ -87,6 +87,5 @@ plot(res['bmi'])
 plot(res['bmi'],bivar=TRUE)
 ```
 
-![](var1bmi.png)
-![](var2bmi.png)
+
 
