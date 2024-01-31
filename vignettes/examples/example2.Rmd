@@ -76,14 +76,12 @@ plot(res['sex'], bivar=TRUE)
 b. For continuous variables boxplots or normality plots are performed depending whether groups are considered or not, respectively.
 
 
-```{r,echo=FALSE,results="hide", eval=FALSE}
-plot(res['bmi'],file="var1",type="png")
-plot(res['bmi'],file="var2",type="png",bivar=TRUE)
+```{r}
+plot(res['bmi'])
 ```
 
 
 ```{r}
-plot(res['bmi'])
 plot(res['bmi'],bivar=TRUE)
 ```
 
