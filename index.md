@@ -1942,10 +1942,9 @@ HDL cholesterol
 
 For those not familiar to R syntax, a Web User Interface (**WUI**) has
 been implemented using [Shiny](https://shiny.rstudio.com/) tools, which
-can be used remotely just accessing the [**compareGroups project
-website**](https://isubirana.github.io/compareGroups)
+can be used off line by typing `cGroupsWUI()` after having
+`compareGroups` package installed and loaded, or remotely just accessing
+the application hosted in a [shinyapp.io
+server](https://isubirana.shinyapps.io/compareGroups/).
 
 ![](./man/figures/WUI.png)
-
-Try the WUI compareGroups
-[here](https://isubirana.shinyapps.io/compareGroups/)
