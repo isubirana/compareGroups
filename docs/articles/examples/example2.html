@@ -212,17 +212,19 @@ i.e. stratifying by groups.</p>
 groups (right plot) or not (left plot):</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="var1sex.png"><img src="var2sex.png"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example2_files/figure-html/unnamed-chunk-6-1.png" width="480"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'sex'</span><span class="op">]</span>, bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example2_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>For continuous variables boxplots or normality plots are performed
 depending whether groups are considered or not, respectively.</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <p><img src="example2_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="st">'bmi'</span><span class="op">]</span>,bivar<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="example2_files/figure-html/unnamed-chunk-9-2.png" width="700"></p>
 <p><img src="var1bmi.png"><img src="var2bmi.png"></p>

@@ -61,19 +61,14 @@ by using the `plot` method which takes the results created by <font style="color
 a. For categorical variables a barplot is performed, stratifying by groups (right plot) or not (left plot):
 
 
-```{r,echo=FALSE,results="hide"}
-plot(res['sex'],file="var1",type="png")
-plot(res['sex'],file="var2",type="png",bivar=TRUE)
-
-```
-
-```{r,eval=FALSE}
+```{r, fig.width=5, figh.height=5}
 plot(res['sex'])
-plot(res['sex'],bivar=TRUE)
 ```
 
-![](var1sex.png)
-![](var2sex.png)
+
+```{r, fig.width=7, fig.height=5}
+plot(res['sex'], bivar=TRUE)
+```
 
 
 
