@@ -20,8 +20,7 @@ compareGroups <img src="man/figures/logo.png" align="right" style="margin-top:30
 
 **_package to create descriptive tables_**
 
-
-[![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+![CRAN version](http://www.r-pkg.org/badges/version/compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 
 -   [Overview](#overview)
@@ -256,7 +255,7 @@ For those not familiar to R syntax, a Web User Interface (**WUI**) has been impl
 
 
 
-![](./man/figures/WUI.png)
+![ ](./man/figures/WUI.png)
 
 Try the WUI compareGroups [here](https://isubirana.github.io/compareGroups/articles/wui.html)
 
