@@ -146,5 +146,5 @@ For those not familiar to R syntax, a Web User Interface (**WUI**) has been impl
 
 
 
-![](./man/figures/WUI.png)
+![ ](./man/figures/WUI.png)
 
