@@ -44,7 +44,62 @@ You will find an extensive manual describing all **compareGropus** capabilities 
 
 Also, **compareGroups** package has been published in Journal of Statistical Software [Subirana et al, 2014 [http://www.jstatsoft.org/v57/i12/.](https://www.jstatsoft.org/v57/i12/.)].
 
+
 ## News
+
+**_Version 4.9_**
+
+- new argument `nmax.method` to compute the N shown in the header. By default N is computed as the number of rows with at least one valid value in the described variables, but also N can be computed as the total number of rows in the data set or in each group regardless the available data in the described variables. 
+
+- new argument `stars` to show significance levels asterisks beside p-values.
+
+- new argument `p.trend.method`  to choose between Spearman, Kendall or "Cuzick's trend test for non-normal numerical variables.
+
+
+
+**_Version 4.8_**
+
+- new argument added "lab.ref" to change label for reference category.
+
+
+**_Version 4.7_**
+
+- WUI: new functionality to convert to factors integer variables. Useful to plot numeric variables with few values as bar plots.
+
+
+**_Version 4.6_**
+
+- new function `padjustCompareGroups` to adjust p-values for multiple testing.
+
+- new arguments `header.background` and `header.color` to change header colors when exporting to PDF.
+
+
+**_Version 4.5_**
+
+- new argument 'lab.missing' to specify label for missing category.
+
+
+**_Version 4.4_**
+
+- new argument 'compute.prop' to compute proportions instead of percentages for categorical row-variables.
+
+- new argument 'all.last' added to place descriptives of the whole sample after descriptives by groups.
+
+
+**_Version 4.3_**
+
+- `export2word` supports stratified tables
+
+- Risk Ratios are now computed.
+
+
+**_Version 4.2_**
+
+- **`flextable`** package dependency
+
+- `export2md` supports tables and stratified tables to export to word in nicer format using flextable.
+
+
 
 **_Version 4.1_**
 

@@ -40,6 +40,62 @@ Statistical Software \[Subirana et al, 2014
 
 ## News
 
+***Version 4.9***
+
+-   new argument `nmax.method` to compute the N shown in the header. By
+    default N is computed as the number of rows with at least one valid
+    value in the described variables, but also N can be computed as the
+    total number of rows in the data set or in each group regardless the
+    available data in the described variables.
+
+-   new argument `stars` to show significance levels asterisks beside
+    p-values.
+
+-   new argument `p.trend.method` to choose between Spearman, Kendall or
+    “Cuzick’s trend test for non-normal numerical variables.
+
+***Version 4.8***
+
+-   new argument added “lab.ref” to change label for reference category.
+
+***Version 4.7***
+
+-   WUI: new functionality to convert to factors integer variables.
+    Useful to plot numeric variables with few values as bar plots.
+
+***Version 4.6***
+
+-   new function `padjustCompareGroups` to adjust p-values for multiple
+    testing.
+
+-   new arguments `header.background` and `header.color` to change
+    header colors when exporting to PDF.
+
+***Version 4.5***
+
+-   new argument ‘lab.missing’ to specify label for missing category.
+
+***Version 4.4***
+
+-   new argument ‘compute.prop’ to compute proportions instead of
+    percentages for categorical row-variables.
+
+-   new argument ‘all.last’ added to place descriptives of the whole
+    sample after descriptives by groups.
+
+***Version 4.3***
+
+-   `export2word` supports stratified tables
+
+-   Risk Ratios are now computed.
+
+***Version 4.2***
+
+-   **`flextable`** package dependency
+
+-   `export2md` supports tables and stratified tables to export to word
+    in nicer format using flextable.
+
 ***Version 4.1***
 
 -   Compute confidence intervals of means, medians, proporcions or
