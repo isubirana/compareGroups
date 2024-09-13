@@ -20,6 +20,8 @@ compareGroups <img src="man/figures/logo.png" align="right" style="margin-top:30
 
 **_package to create descriptive tables_**
 
+hola què tal!!
+
 ![CRAN version](http://www.r-pkg.org/badges/version/compareGroups) ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups) ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 
