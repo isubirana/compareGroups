@@ -2,9 +2,6 @@
 
 ***package to create descriptive tables***
 
-hola què tal!!
-
-![CRAN version](http://www.r-pkg.org/badges/version/compareGroups)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
 ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
