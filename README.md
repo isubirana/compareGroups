@@ -1,9 +1,11 @@
 # compareGroups <img src="man/figures/logo.png" align="right" style="margin-top:30px" width="80px"/>
 
+***package to create descriptive tables***
+
+[![CRAN
+version](http://www.r-pkg.org/badges/version/compareGroups)](http://cran.r-project.org/package=compareGroups)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
 ![](http://cranlogs.r-pkg.org/badges/last-month/compareGroups)
-
-***package to create descriptive tables***
 
 -   [Overview](#overview)
 -   [News](#news)
