@@ -1,5 +1,5 @@
 table.i <-
-function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci, lab.ref){
+function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, q.type, spchar, show.ci, lab.ref, stars){
 
   method<-attr(x,"method")
   compute.prop <- attr(x, "compute.prop")
@@ -15,7 +15,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
 
   pvals<-c(x$p.overall,x$p.trend,x$p.mul)
   names(pvals)[1:2]<-c("p.overall","p.trend")
-  pvals<-format2(pvals,digits.p)
+  pvals<-format2(pvals,digits.p,stars=stars)
   pvals<-ifelse(is.na(pvals) | is.nan(pvals),".",pvals)
   N<-x$sam[1]
   or<-attr(x,"OR")
@@ -37,7 +37,7 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
     ci <- NA
   if (!is.null(p.ratio)){
     rr <- is.na(p.ratio) & !is.nan(p.ratio)
-    p.ratio <- ifelse(is.nan(p.ratio),".",format2(p.ratio,digits.p))
+    p.ratio <- ifelse(is.nan(p.ratio),".",format2(p.ratio,digits.p,stars=stars))
     p.ratio[rr]<-lab.ref
   }else 
     p.ratio <- NA

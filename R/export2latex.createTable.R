@@ -1,4 +1,4 @@
-export2latex.createTable<-function(x, file, which.table='descr', size='same', nmax = TRUE, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...){  
+export2latex.createTable<-function(x, file, which.table='descr', size='same', nmax = TRUE, nmax.method=1, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...){  
 
   if (!inherits(x,"createTable"))
     stop("x must be of class 'createTable'")
@@ -112,8 +112,8 @@ export2latex.createTable<-function(x, file, which.table='descr', size='same', nm
   
   if (ww %in% c(1,3)){
 
-    pp<-prepare(x,nmax=nmax,header.labels)
-    table1<-prepare(x,nmax=nmax,header.labels)[[1]]
+    pp<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels)
+    table1<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]]
     cc<-unlist(attr(pp,"cc"))
     if (!is.null(cc)){
       cc<-gsub("\\$","\\\\$",cc)
@@ -223,7 +223,7 @@ export2latex.createTable<-function(x, file, which.table='descr', size='same', nm
   
   if (ww%in%c(2,3)){
 
-    table2<-prepare(x,nmax=nmax,c())[[2]]
+    table2<-prepare(x,nmax=nmax,nmax.method=nmax.method,c())[[2]]
     rownames(table2)<-gsub("\\$","\\\\$",rownames(table2))
     rownames(table2)<-gsub("%","\\\\%",rownames(table2))  
     rownames(table2)<-gsub("&","\\\\&",rownames(table2))  

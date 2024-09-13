@@ -24,7 +24,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
   Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
   riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, 
-  lab.missing = "'Missing'")
+  lab.missing = "'Missing'", p.trend.method = "spearman")
 \method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
   n.breaks = "Sturges", perc = FALSE, ...)
 }
@@ -106,6 +106,8 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   
   \item{lab.missing}{character. Label for missing cathegory. Only applied when \code{include.missing = TRUE}. Default value is 'Missing'.} 
   
+  \item{p.trend.method}{Character indicating the name of test to use for p-value for trend. It only applies for numerical non-normal variables. Possible values are "spearman", "kendall" or "cuzick". Default value is "spearman". See section details for more info.}
+  
 Arguments passed to \code{plot} method.  
   
   \item{x}{an object of class 'compareGroups'.}  
@@ -135,7 +137,8 @@ Depending whether the row-variable is considered as continuous normal-distribute
 Also, a row-variable can be of class 'Surv'. Then the probability of 'event' at a fixed time (set up with 'timemax' argument) is computed and a logrank test is performed.\cr 
 
 When there are more than 2 groups, it also performs pairwise comparisons adjusting for multiple testing (Tukey when row-variable is normal-distributed and Benjamini & Hochberg method otherwise), and computes p-value for trend. 
-The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. 
+The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. Also, for continuous non normal distributed variables, it is possible to compute the p-value for trend using the Kendall's test (\code{method='kendall'} from \code{\link{cor.test}}) or Cuzick's test (\code{\link[PMCMRplus]{cuzickTest}}). 
+If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. 
 If the row-variable is categorical, the p-value for trend is computed from Mantel-Haenszel test of trend.
 
 If there are two groups, the Odds Ratio or Risk Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed. 

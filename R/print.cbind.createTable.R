@@ -1,4 +1,4 @@
-print.cbind.createTable <- function(x, which.table="descr", nmax=TRUE, header.labels=c(), ...)
+print.cbind.createTable <- function(x, which.table="descr", nmax=TRUE, nmax.method=1, header.labels=c(), ...)
 {
 
   if (!inherits(x,"cbind.createTable"))
@@ -23,9 +23,9 @@ print.cbind.createTable <- function(x, which.table="descr", nmax=TRUE, header.la
   
   caption<-attr(x,"caption")
   
-  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,header.labels)[[1]])
-  nmax <- any(unlist(lapply(x,function(vv) attr(prepare(vv,nmax=nmax,header.labels),"nmax"))))
-  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,c())[[2]])  
+  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]])
+  nmax <- any(unlist(lapply(x,function(vv) attr(prepare(vv,nmax=nmax,nmax.method=nmax.method,header.labels),"nmax"))))
+  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,c())[[2]])  
   nc.desc<-lapply(desc,ncol)
   if (all(nc.desc==0))
     stop("Stratified table cannot be printed since no columns are displayed")
@@ -36,7 +36,7 @@ print.cbind.createTable <- function(x, which.table="descr", nmax=TRUE, header.la
     caption<-caption[-which(nc.desc==0)]
   }
 
-  cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")
+  cc<-attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels),"cc")
 
   nmax.i<-unlist(lapply(desc,function(vv) rownames(vv)[2]==''))
   if (diff(range(nmax.i))!=0){

@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 4.8.0
-Date: 2024-01-27
+Version: 4.9.0
+Date: 2024-08-19
 Depends: 
     R (>= 3.5.0)
 Imports: 
@@ -17,7 +17,8 @@ Imports:
     stats,
     writexl,
     flextable,
-    officer
+    officer,
+    PMCMRplus
 Suggests: 
     tcltk2,
     shiny,

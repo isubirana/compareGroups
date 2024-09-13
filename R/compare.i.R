@@ -2,7 +2,7 @@ compare.i <-
 function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, groups, 
          simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, include.miss, oddsratio.method, 
          chisq.test.perm, byrow, chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv, 
-         riskratio, riskratio.method, compute.prop, lab.missing) {
+         riskratio, riskratio.method, compute.prop, lab.missing, p.trend.method) {
 
   x.orig <- x
   y.orig <- y
@@ -405,7 +405,9 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               } else
                 names(p.mul) <- paste("p.",levels(y)[1]," vs ",levels(y)[1],sep="")       
             } else {
-              p.trend<-try(cor.test(x,as.integer(y),method="spearman")$p.value,silent=TRUE)
+              if (p.trend.method=="spearman") p.trend<-try(cor.test(x,as.integer(y),method="spearman")$p.value,silent=TRUE)
+              if (p.trend.method=="kendall") p.trend<-try(cor.test(x,as.integer(y),method="kendall")$p.value,silent=TRUE)
+              if (p.trend.method=="cuzick") p.trend<-try(cuzickTest(x,y)$p.value,silent=TRUE)
               if (inherits(p.trend,"try-error"))
                 p.trend <- NaN        
               if (is.na(p.trend))

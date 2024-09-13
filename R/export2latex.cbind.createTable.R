@@ -1,4 +1,4 @@
-export2latex.cbind.createTable<-function(x, file, which.table='descr', size='same', nmax = TRUE, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...){   
+export2latex.cbind.createTable<-function(x, file, which.table='descr', size='same', nmax = TRUE, nmax.method=1, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...){   
 
 
   if (!inherits(x,"cbind.createTable"))
@@ -78,8 +78,8 @@ export2latex.cbind.createTable<-function(x, file, which.table='descr', size='sam
   cap<-gsub("<","$<$",cap) 
   cap<-gsub(intToUtf8(0xB1L),"$\\\\pm$",cap)   
   
-  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,header.labels)[[1]])
-  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,c())[[2]])
+  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]])
+  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,c())[[2]])
   nc.desc<-lapply(desc,ncol)
   nc.avail<-lapply(avail,ncol)
   if (all(nc.desc==0))
@@ -115,7 +115,7 @@ export2latex.cbind.createTable<-function(x, file, which.table='descr', size='sam
 
   if (ww %in% c(1,3)){
 
-    cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")  
+    cc<-attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels),"cc")  
     if (!is.null(cc)){
       cc<-gsub("\\$","\\\\$",cc)
       cc<-gsub("%","\\\\%",cc)  

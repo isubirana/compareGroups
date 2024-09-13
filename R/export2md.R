@@ -1,22 +1,7 @@
-export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), caption=NULL, format="html", width=Inf, 
+export2md<-function(x, which.table="descr", nmax=TRUE, nmax.method=1, header.labels=c(), caption=NULL, format="html", width=Inf, 
                     strip=FALSE, first.strip=FALSE, background="#D2D2D2", size=NULL, landscape=FALSE, 
                     header.background=NULL, header.color=NULL, position="center", ...){
 
-  # x=descrTable(iris); which.table="descr"; nmax=TRUE; header.labels=c(); caption=NULL; format="html"; width=Inf; 
-  # strip=FALSE; first.strip=FALSE; background="#D2D2D2"; size=NULL; landscape=FALSE; 
-  # header.background=NULL; header.color=NULL; position="center"
-  
-  
-  # compiled.format <- try(rmarkdown::all_output_formats(knitr::current_input())[1],silent=TRUE)
-  # 
-  # if (inherits(compiled.format, "try-error") || is.null(compiled.format)){
-  #   warning("you are using export2md out of Rmarkdown context...")
-  # } else {
-  #   if (compiled.format%in%c("html_document","ioslides_presentation","slidy_presentation")) format <- "html"
-  #   if (compiled.format%in%c("pdf_document","beamer_presentation")) format <- "latex"
-  #   if (compiled.format=="word_document") format <- "markdown"
-  # }
-  
   if (missing(format)){
     format <- NA
     if (!interactive()){ # execute inside Rmarkdown
@@ -32,12 +17,12 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
       format <- "html"
     }
   }
-
+  
   if (format == "markdown") 
-    return(export2mdword(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
+    return(export2mdword(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
 
   if (inherits(x, "cbind.createTable")) 
-    return(export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position,...))
+    return(export2mdcbind(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position, ...))
 
   extras <- list(...)
   if (!inherits(x, "createTable")) 
@@ -75,8 +60,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
         caption<-"Available data"
     }  
   }    
-  # pp <- compareGroups:::prepare(x, nmax = nmax, header.labels)
-  pp <- prepare(x, nmax = nmax, header.labels)
+  pp <- prepare(x, nmax = nmax,nmax.method=nmax.method, header.labels)
   cc <- unlist(attr(pp, "cc"))  
   if (ww %in% c(1)) {  
     table1 <- pp[[1]]
@@ -137,8 +121,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     return(ans)
   }      
   if (ww %in% c(2)){
-    # table2 <- compareGroups:::prepare(x, nmax = nmax, c())[[2]]
-    table2 <- prepare(x, nmax = nmax, c())[[2]]
+    table2 <- prepare(x, nmax = nmax,nmax.method=nmax.method, c())[[2]]
     table2 <- cbind(rownames(table2), table2)
     if (!is.null(attr(x, "caption"))) {
       cc <- unlist(attr(x, "caption"))
@@ -149,6 +132,7 @@ export2md<-function(x, which.table="descr", nmax=TRUE, header.labels=c(), captio
     colnames(table2)[-1] <- trim(table2[1, -1])
     table2 <- table2[-1, ,drop=FALSE]
     ans <- knitr::kable(table2, align = align, row.names = FALSE, caption=caption[1], format=format, booktabs=format=="latex", longtable=TRUE, ...)
+
     # groups    
     if (!is.null(cc)){
       for (cci in 1:length(cc)){

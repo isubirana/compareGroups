@@ -64,24 +64,24 @@ compareGroups.fit(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, 
          include.label, Q1, Q3, simplify, ref, ref.no, fact.ratio, ref.y, p.corrected, 
          compute.ratio, include.miss, oddsratio.method, chisq.test.perm, byrow, 
          chisq.test.B, chisq.test.seed, Date.format, var.equal, conf.level, surv, 
-         riskratio, riskratio.method, compute.prop, lab.missing)
+         riskratio, riskratio.method, compute.prop, lab.missing, p.trend.method)
 compare.i(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, Q1, Q3, 
           groups, simplify, Xext, ref, fact.ratio, ref.y, p.corrected, compute.ratio, 
           include.miss, oddsratio.method, chisq.test.perm, byrow,chisq.test.B, 
           chisq.test.seed, Date.format, var.equal, conf.level, surv, riskratio, 
-          riskratio.method, compute.prop, lab.missing)
+          riskratio.method, compute.prop, lab.missing, p.trend.method)
 descripSurv(x, y, timemax, surv)
 descrip(x, y, method, Q1, Q3, conf.level)
 confinterval(x, method, conf.level)
 flip(x)
-format2(x, digits = NULL, ...)
+format2(x, digits = NULL, stars = FALSE, ...)
 \method{formula}{compareGroups}(x, ...) 
 logrank.pval(x,y)
 signifdec.i(x, digits)
 signifdec(x, digits)
 summ.i(x)
 table.i(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd.type, 
-        q.type, spchar, show.ci, lab.ref)
+        q.type, spchar, show.ci, lab.ref, stars)
 \method{update}{formula2}(object, new, ...) 
 KMg.plot(x, y, file, var.label.x, var.label.y, ...)
 Cox.plot(x, y, file, var.label.x, var.label.y, ...)
@@ -90,15 +90,15 @@ box.plot(x, y, file, var.label.x, var.label.y, ...)
 KM.plot(x, file, var.label.x, ...)
 bar.plot(x, file, var.label.x, perc, ...)
 norm.plot(x, file, var.label.x, z, n.breaks, ...)
-prepare(x, nmax, header.labels)
+prepare(x, nmax, nmax.method, header.labels)
 snpQC(X, sep, verbose)
-export2mdcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, 
-      background, width, size, landscape, format, header.background, header.color, 
-      position, ...) 
-export2mdword(x, which.table, nmax, header.labels, caption, strip, 
+export2mdcbind(x, which.table, nmax, nmax.method, header.labels, caption, 
+      strip, first.strip, background, width, size, landscape, format, 
+      header.background, header.color, position, ...)
+export2mdword(x, which.table, nmax, nmax.method, header.labels, caption, strip, 
       first.strip, background, size, header.background, header.color)
-export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, 
-      first.strip, background, size, header.background, header.color)         
+export2mdwordcbind(x, which.table, nmax, nmax.method, header.labels, caption, 
+      strip, first.strip, background, size, header.background, header.color)         
         
 trim(x)
 

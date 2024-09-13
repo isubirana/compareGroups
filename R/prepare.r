@@ -1,12 +1,7 @@
 prepare<-
-function (x, nmax, header.labels) 
+function (x, nmax, nmax.method, header.labels) 
 {
   
-# x <- tab[1:3]
-# nmax <- TRUE
-# header.labels <- c()
-# names(attributes(x))
-
     show.all <- attr(x, "show.all")
     show.descr <- attr(x, "show.descr")
     groups <- attr(x, "groups")
@@ -24,7 +19,10 @@ function (x, nmax, header.labels)
     if (length(nmax.pos[[1]]) > 0 & length(nmax.pos[[2]]) == 0) nmax.avail.pos <- 1
     if (length(nmax.pos[[1]]) > 0 & length(nmax.pos[[2]]) > 0) nmax.avail.pos <- c(1, nmax.pos[[2]])
     if (length(nmax.avail.pos) > 0 && nmax) {
+      if (nmax.method==1)
         Nmax <- apply(avail[, nmax.avail.pos, drop = FALSE],2, function(x) max(as.double(x)))
+      else
+        Nmax <- table(attr(x, "ylong"))
     } else {
         Nmax <- NULL
         nmax <- FALSE

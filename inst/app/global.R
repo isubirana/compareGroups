@@ -9,6 +9,7 @@ library(shinyjs, quietly=TRUE)
 library(shinyWidgets, quietly=TRUE)
 library(DT, quietly=TRUE)
 library(shinyhelper, quietly=TRUE)
+library(googlesheets4, quietly=TRUE)
 
 
 # devtools::install_version("shinydashboardPlus","0.7.5")
@@ -22,6 +23,13 @@ library(haven, quietly=TRUE)
 library(survival, quietly=TRUE)
 
 source("flipBox.R")
+
+
+# insert entires logs
+sheet_id <- "https://docs.google.com/spreadsheets/d/11nVz8IjpLTwSJUDPK8uG5yG_rfNWc3nK6pE-TKx84BY/"
+gs4_auth(cache = ".secrets", email = "isubirana@datarus.eu", subject = "isubirana@datarus.eu",scope="spreadsheets", use_oob = TRUE)
+
+
 
 data(regicor); data(SNPs)
 

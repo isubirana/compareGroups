@@ -1,10 +1,11 @@
-export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, width, size, landscape, format, header.background, header.color, position, ...){   
+export2mdcbind <- function(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, 
+                           width, size, landscape, format, header.background, header.color, position, ...){   
 
   if (!inherits(x,"cbind.createTable"))
     stop("'x' must be of class 'cbind.createTable'")
   
   if (format=="markdown")
-    return(export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
+    return(export2mdwordcbind(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, size, header.background, header.color))
 
   ww <- charmatch(which.table, c("descr","avail"))
   if (is.na(ww))
@@ -37,8 +38,8 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
     }
   }
 
-  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,header.labels)[[1]])
-  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,c())[[2]])
+  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]])
+  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,c())[[2]])
   nc.desc<-lapply(desc,ncol)
   nc.avail<-lapply(avail,ncol)
   if (all(nc.desc==0))
@@ -73,7 +74,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
 
   if (ww == 1){
 
-    cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")  
+    cc<-attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels),"cc")  
     desc <-aux.desc
     desc<-cbind(rownames(desc),desc)
 
@@ -111,14 +112,13 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
       }
     }
     if (strip){
-      nr <- attr(prepare(x[[1]], nmax, header.labels), "nr")
+      nr <- attr(prepare(x[[1]], nmax,nmax.method=nmax.method, header.labels), "nr")
       ans <- row_spec(ans, which(nr==!first.strip)+n.exists, background = background)
     }
     if (n.exists){
       ans <- row_spec(ans, 1, hline_after=TRUE)
     }
-    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table1))
-    # if (format=="html") ans <- add_header_above(ans, structure(c(1, ncols), names=c("\n", attr(x, "caption"))), background=header.background, color=header.color)
+    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE,nmax.method=nmax.method, header.labels=character())$table1))
     if (landscape) ans <- landscape(ans)
 
     if (format=="latex"){
@@ -151,7 +151,6 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
 
   if (ww == 2){  
     
-    # cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")  
     avail <-aux.avail
     avail<-cbind(rownames(avail),avail)
     table2 <- avail
@@ -184,7 +183,7 @@ export2mdcbind <- function(x, which.table, nmax, header.labels, caption, strip, 
       }
     }
     ans <- add_indent(ans, integer())
-    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
+    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE,nmax.method=nmax.method, header.labels=character())$table2))
     
     if (strip) ans <- row_spec(ans, which(rep(0:1, nrow(table2))[1:nrow(table2)]==!first.strip), background = background) 
     if (width!=Inf) ans <- column_spec(ans, 1, width = width)

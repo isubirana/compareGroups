@@ -1,3 +1,8 @@
+# compareGroups 4.9.0
+- new argument `nmax.method` to compute the N shown in the header. By default N is computed as the number of rows with at least one valid value in the described variables, but also N can be computed as the total number of rows in the data set or in each group regardless the available data in the described variables. 
+- new argument `stars` in `descrTable` and `createTable` functions to show significance levels asterisks beside p-values.
+- new argument `p.trend.method` in `compareGroups` and `descrTable` functions to choose between Spearman, Kendall or "Cuzick's trend test for non-normal numerical variables.
+
 # compareGroups 4.8.0
 - <comparegroups.eu> URL replaced by <isubirana.github.io/compareGroups>
 - importFrom("stats", "model.frame") included in NAMESPACE

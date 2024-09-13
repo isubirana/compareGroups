@@ -8,7 +8,8 @@ Exporting descriptives table to HTML format
 This function takes the result of \code{createTable} and exports the tables to HTML format.
 }
 \usage{
-export2html(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
+export2html(x, file, which.table="descr", nmax = TRUE, nmax.method = 1, 
+            header.labels = c(), ...)
 }
 
 \arguments{
@@ -21,6 +22,8 @@ export2html(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
 
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
   
+  \item{nmax.method}{integer with two possible values: 1-number of observation with valid values in at least one row-variable; 2-total number of observations or rows in the data set or in the group. Default value is 1.}
+  
   \item{header.labels}{see the 'header.labels' argument from \code{\link{createTable}}.}   
              
   \item{\ldots}{currently ignored.}
@@ -30,7 +33,7 @@ export2html(x, file, which.table="descr", nmax = TRUE, header.labels = c(), ...)
 
 \note{
 
-The way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (<1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').
+The default way to compute the 'N' shown in the bivariate table header, controlled by 'nmax' argument, has been changed from previous versions (<1.3). In the older versions 'N' was computed as the maximum across the cells withing each column (group) from the 'available data' table ('avail').
 
 }
 

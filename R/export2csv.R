@@ -1,4 +1,4 @@
-export2csv<-function(x, file, which.table="descr", sep=",", nmax = TRUE, header.labels=c(), ...){
+export2csv<-function(x, file, which.table="descr", sep=",", nmax = TRUE, nmax.method=1, header.labels=c(), ...){
 
   if (!inherits(x,"createTable"))
     stop("x must be of class 'createTable'")
@@ -11,8 +11,8 @@ export2csv<-function(x, file, which.table="descr", sep=",", nmax = TRUE, header.
     stop(" argument 'which.table' must be either 'descr', 'avail' or 'both'")    
     
   if (ww%in%c(1,3)){
-    pp<-prepare(x,nmax=nmax,header.labels)
-    table1<-prepare(x,nmax=nmax,header.labels)[[1]]
+    pp<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels)
+    table1<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]]
     cc<-unlist(attr(pp,"cc"))
     ii<-ifelse(rownames(table1)[2]=='',2,1)
     table1<-cbind(rownames(table1),table1)
@@ -32,7 +32,7 @@ export2csv<-function(x, file, which.table="descr", sep=",", nmax = TRUE, header.
   }
 
   if (ww%in%c(2,3)){  
-    table2<-prepare(x,nmax=nmax,c())[[2]]
+    table2<-prepare(x,nmax=nmax,nmax.method=nmax.method,c())[[2]]
     table2<-cbind(rownames(table2),table2)
     if (!is.null(attr(x,"caption"))){
       cc<-unlist(attr(x,"caption"))

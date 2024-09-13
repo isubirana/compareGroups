@@ -8,7 +8,7 @@ Exporting descriptives table to Exel format (.xlsx or .xls)
 This function takes the result of \code{createTable} and exports the tables to Excel format (.xlsx or .xls).
 }
 \usage{
-export2xls(x, file, which.table="descr", nmax=TRUE, header.labels=c())
+export2xls(x, file, which.table="descr", nmax=TRUE, nmax.method=1, header.labels=c())
 }
 
 \arguments{
@@ -20,6 +20,8 @@ export2xls(x, file, which.table="descr", nmax=TRUE, header.labels=c())
   \item{which.table}{character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), exporting descriptives by groups table, availability data table or both tables, respectively. In the latter case ('both'), two sheets are built, one for each table. Default value is 'descr'.}
 
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
+  
+  \item{nmax.method}{integer with two possible values: 1-number of observation with valid values in at least one row-variable; 2-total number of observations or rows in the data set or in the group. Default value is 1.}
   
   \item{header.labels}{see the 'header.labels' argument from \code{\link{createTable}}.}   
 

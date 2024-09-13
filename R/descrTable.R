@@ -5,10 +5,10 @@ function(
   simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, 
   include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, 
   chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE, 
-  riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, lab.missing = "'Missing'",
+  riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, lab.missing = "'Missing'", p.trend.method = "spearman",
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE, show.all, show.p.trend, show.p.mul = FALSE, show.n, 
   show.ratio = FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA, show.p.ratio = show.ratio, 
-  digits.p = 3, sd.type = 1, q.type = c(1, 1), extra.labels = NA, all.last = FALSE, lab.ref = "Ref.")
+  digits.p = 3, sd.type = 1, q.type = c(1, 1), extra.labels = NA, all.last = FALSE, lab.ref = "Ref.", stars = FALSE)
 {
 
   call <- match.call()

@@ -4,6 +4,20 @@ server <- function(input, output, session) {
   #   tags$style(HTML(paste0(".main-sidebar{width: ", input$sidebarwidth,"%;}")))
   # })
   
+  # register entrance and exit time entries
+  observe({
+    dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
+    googlesheets4::sheet_append(sheet_id, dd)
+  })
+  onStop(
+    function(){
+      dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
+      #print(dd)
+      googlesheets4::sheet_append(sheet_id, dd)
+      #print("xxxx")
+    }
+  )
+
   output$xxx <- renderPrint({
     # cat("summary(rv$dataset)\n")
     # print(summary(rv$dataset))
@@ -1799,14 +1813,14 @@ server <- function(input, output, session) {
       validate(need(dd, "Data not loaded yet"))
       validate(need(input$plotselevars, "Select one variable"))
       perc<-if (is.null(input$perc)) FALSE else input$perc
-      if (!inherits(dd[,input$plotselevars],"factor"))
+      if (!inherits(dd[,input$plotselevars],"factor") | input$plotresptype=='Survival')
         hide("perc") 
       else 
         show("perc")
       if (!inherits(dd[,input$plotselevars],"Surv"))
-        updateRadioGroupButtons(session, "plotresptype", choices=c("None","Group","Survival")) 
+        updateRadioGroupButtons(session, "plotresptype", choices=c("None","Group","Survival"),selected=input$plotresptype) #@@
       else 
-        updateRadioGroupButtons(session, "plotresptype", choices=c("None","Group"))      
+        updateRadioGroupButtons(session, "plotresptype", choices=c("None","Group"),selected=input$plotresptype) #@@      
       withProgress(message = 'Making plot', value = 0, {
         if (is.null(input$plotresptype) || input$plotresptype=='None')
           form <- paste0("~",input$plotselevars)

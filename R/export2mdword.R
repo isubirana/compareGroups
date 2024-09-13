@@ -1,10 +1,10 @@
-export2mdword<-function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color){
+export2mdword<-function(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, size, header.background, header.color){
 
   if (!inherits(x, "createTable"))
     stop("x must be of class 'createTable'")
 
   if (inherits(x, "cbind.createTable"))
-    return(export2mdwordcbind(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color))   
+    return(export2mdwordcbind(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, size, header.background, header.color))   
 
   ww <- charmatch(which.table, c("descr", "avail"))
 
@@ -36,7 +36,7 @@ export2mdword<-function(x, which.table, nmax, header.labels, caption, strip, fir
     }  
   }    
   
-  pp <- prepare(x, nmax = nmax, header.labels)
+  pp <- prepare(x, nmax = nmax,nmax.method=nmax.method, header.labels)
   cc <- unlist(attr(pp, "cc"))
   
   if (ww %in% c(1)) {  

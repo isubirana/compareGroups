@@ -1,6 +1,6 @@
 createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE, show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio = FALSE, show.descr = TRUE, 
                         show.ci = FALSE, hide.no = NA, digits.ratio = NA, show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1,1), extra.labels = NA, all.last = FALSE,
-                        lab.ref= "Ref.")
+                        lab.ref = "Ref.", stars = FALSE)
 {
   
   os<-sessionInfo()$platform
@@ -119,7 +119,7 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
   nr<-NULL
   k<-1
   for (i in 1:length(x)){
-    t.i<-t(table.i(x[[i]],hide.i=hide[[i]],digits=digits[i],digits.ratio=digits.ratio[i],type=type,varname=varnames[i],hide.no,digits.p=digits.p,sd.type=sd.type,q.type=q.type,spchar=spchar,show.ci=show.ci, lab.ref=lab.ref))
+    t.i<-t(table.i(x[[i]],hide.i=hide[[i]],digits=digits[i],digits.ratio=digits.ratio[i],type=type,varname=varnames[i],hide.no,digits.p=digits.p,sd.type=sd.type,q.type=q.type,spchar=spchar,show.ci=show.ci, lab.ref=lab.ref, stars=stars))
     nr<-c(nr,nrow(t.i))
     ans$descr<-rbind(ans$descr,t.i)
     s.i<-attr(x[[i]],"selec")
@@ -128,6 +128,7 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
   }
 
   rownames(ans$avail)<-varnames
+
   nc<-ncol(ans$avail)
   colnames(ans$avail)[(nc-2):nc]<-c("method","select","Fact OR/HR")
   ans$avail[-grep("continuous",ans$avail[,"method"]),"Fact OR/HR"]<-"--"

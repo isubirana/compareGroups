@@ -632,8 +632,8 @@ time-to-event variables (i.e., time to Cardiovascular event/censored in
 our example):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span>
-<span><span class="va">regicor</span><span class="op">$</span><span class="va">tmain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regicor</span>, <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">tocv</span>, <span class="va">cv</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">tmain</span>, <span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Time to CV event or censoring"</span></span></code></pre></div>
+<span><span class="va">regicor</span><span class="op">$</span><span class="va">tmain</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regicor</span>, <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">tocv</span>, <span class="va">cv</span> <span class="op">==</span> <span class="st">'Yes'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">tmain</span>,<span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Time to CV event or censoring"</span></span></code></pre></div>
 <p>Note that variable <em>tcv</em> are created as time-to-death and
 time-to-cardiovascular event taking into account censoring (i.e. they
 are of class Surv).</p>
@@ -660,7 +660,7 @@ create tables of the analysis results.</p>
 all other variables (“explanatory” variables), this formula is
 required:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> , data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <p style="margin-top:50px">
 </p>
 <div class="section level4">
@@ -671,12 +671,12 @@ variables in the data frame will be used.</p>
 <p>To remove the variable <em>id</em> from the analysis, use
 <code>-</code> in the formula:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">id</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">id</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <p>To select some explanatory variables (e.g., <em>age</em>,
 <em>sex</em> and <em>bmi</em>) and store results in an object of class
 <code>compareGroups</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <pre><code>
 
@@ -708,7 +708,7 @@ variables).</p>
 <p>To perform the analysis in a subset of participants (e.g., “female”
 participants):</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, subset <span class="op">=</span> <span class="va">sex</span><span class="op">==</span><span class="st">'Female'</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'year'---------
@@ -724,7 +724,7 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>To subset specific variable/s (e.g., <em>age</em> and
 <em>bmi</em>):</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>age <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span>, bmi <span class="op">=</span> <span class="va">age</span> <span class="op">&gt;</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>age<span class="op">=</span> <span class="va">sex</span><span class="op">==</span><span class="st">"Female"</span>, bmi <span class="op">=</span> <span class="va">age</span><span class="op">&gt;</span><span class="fl">50</span> <span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -740,7 +740,7 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 among people older than 50 years.</p>
 <p>Combinations are also allowed, e.g.:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bmi <span class="op">=</span> <span class="va">age</span> <span class="op">&gt;</span> <span class="fl">50</span><span class="op">)</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bmi<span class="op">=</span><span class="va">age</span><span class="op">&gt;</span><span class="fl">50</span><span class="op">)</span>, subset <span class="op">=</span> <span class="va">sex</span><span class="op">==</span><span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'year'---------
@@ -754,7 +754,7 @@ among people older than 50 years.</p>
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>A variable can appear twice in the formula, e.g.:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bmi.1 <span class="op">=</span> <span class="va">txhtn</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bmi.1<span class="op">=</span><span class="va">txhtn</span><span class="op">==</span><span class="st">'Yes'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -783,7 +783,7 @@ When a table is built (see <code>createTable</code> function, Section
 deviation. To change default options, e.g., “tryglic” used as non-normal
 distributed:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">triglyc</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">triglyc</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -810,7 +810,7 @@ a variable, then a Shapiro-Wilks test for normality is used to decide if
 the variable is normal or non-normal distributed. To change the
 significance threshold:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">triglyc</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">triglyc</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="cn">NA</span><span class="op">)</span>, alpha<span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -831,8 +831,8 @@ made (by default) for those that have fewer than 5 different values.
 This threshold can be changed in the <strong>min.dis</strong>
 statement:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">age7gr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">age</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">40</span>, <span class="fl">45</span>, <span class="fl">50</span>, <span class="fl">55</span>, <span class="fl">65</span>, <span class="fl">70</span>, <span class="cn">Inf</span><span class="op">)</span>, right <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age7gr</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">age7gr</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">age</span>, breaks<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>,<span class="fl">40</span>,<span class="fl">45</span>,<span class="fl">50</span>,<span class="fl">55</span>,<span class="fl">65</span>,<span class="fl">70</span>,<span class="cn">Inf</span><span class="op">)</span>, right<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age7gr</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr<span class="op">=</span><span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -843,7 +843,7 @@ statement:</p>
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age7gr</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>, min.dis <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age7gr</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr<span class="op">=</span><span class="cn">NA</span><span class="op">)</span>, min.dis<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -858,8 +858,8 @@ set at 5 in this example (default value). If this variable has more than
 5 different values, the function <code>compareGroups</code> returns an
 error message. For example:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">var6cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">)</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">age7gr</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">var6cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">)</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">age7gr</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <div style="color:red">
 <pre><code>Error in compareGroups.fit(X = X, y = y, include.label = include.label, : 
 number of groups must be less or equal to 5</code></pre>
@@ -867,7 +867,7 @@ number of groups must be less or equal to 5</code></pre>
 <p>Defaults setting can be changed with the <strong>max.ylev</strong>
 statement:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">age7gr</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span>, max.ylev <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">age7gr</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span>, max.ylev<span class="op">=</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'age7gr'---------
@@ -884,7 +884,7 @@ levels for an explanatory variable. If this level is exceeded, the
 variable is removed from the analysis and a warning message is
 printed:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">age7gr</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">regicor</span>, max.xlev <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">age7gr</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age7gr<span class="op">=</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span><span class="va">regicor</span>, max.xlev<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div style="color:blue">
 <pre><code>Warning in compareGroups.fit(X = X, y = y, include.label = include.label,  :
   Variables 'age7gr' have been removed since some errors occurred</code></pre>
@@ -907,7 +907,7 @@ printed). Changing the statement include.label from “= TRUE” (default)
 to “= FALSE” will cause variable names to be printed instead.</li>
 </ul>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, include.label <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, include.label<span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'year'---------
@@ -928,7 +928,7 @@ and 3 will be shown in the final results, after applying the function
 <code>createTable</code> (see Section 4.2).</li>
 </ul>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">resu1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">resu1</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">resu1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
@@ -943,7 +943,7 @@ Triglycerides 94.0 [71.0;136] 98.0 [72.0;133] 98.0 [72.0;139]   0.762
 <p>Note: percentiles 25 and 75 are calculated for “triglycerides”.</p>
 <p>To get instead percentile 2.5% and 97.5%:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">resu2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, Q1 <span class="op">=</span> <span class="fl">0.025</span>, Q3 <span class="op">=</span> <span class="fl">0.975</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">resu2</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span><span class="op">)</span>, Q1<span class="op">=</span><span class="fl">0.025</span>, Q3<span class="op">=</span><span class="fl">0.975</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">resu2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
@@ -957,7 +957,7 @@ Triglycerides 94.0 [47.0;292] 98.0 [47.0;278] 98.0 [42.0;293]   0.762
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To get minimum and maximum:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data <span class="op">=</span> <span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, Q1 <span class="op">=</span> <span class="fl">0</span>, Q3 <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">triglyc</span>, data<span class="op">=</span><span class="va">regicor</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span><span class="op">)</span>, Q1<span class="op">=</span><span class="fl">0</span>, Q3<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>
 <strong><code>simplify</code>:</strong> Sometimes a categorical
@@ -967,9 +967,9 @@ problem, we have created a new variable <em>smk</em> with a new category
 (“Unknown”):</li>
 </ul>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span> <span class="op">&lt;-</span> <span class="va">regicor</span><span class="op">$</span><span class="va">smoker</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Never smoker"</span>, <span class="st">"Current or former &lt; 1y"</span>, <span class="st">"Former &gt;= 1y"</span>, <span class="st">"Unknown"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span>, <span class="st">"label"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Smoking 4 cat."</span></span>
+<code class="sourceCode R"><span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span><span class="op">&lt;-</span><span class="va">regicor</span><span class="op">$</span><span class="va">smoker</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span><span class="op">)</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Never smoker"</span>, <span class="st">"Current or former &lt; 1y"</span>, <span class="st">"Former &gt;= 1y"</span>, <span class="st">"Unknown"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span>,<span class="st">"label"</span><span class="op">)</span><span class="op">&lt;-</span><span class="st">"Smoking 4 cat."</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">$</span><span class="va">smk</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>                       [,1]
 Never smoker           1201
@@ -978,7 +978,7 @@ Former &gt;= 1y            439
 Unknown                   0</code></pre>
 <p>Note that this new category (“unknown”) has no individuals:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smk</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smk</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -999,7 +999,7 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>To avoid using empty categories, <code>simplify</code> must be stated
 as <code>TRUE</code> (Default value).</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smk</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smk</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, simplify<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 -------- Summary of results by groups of 'Recruitment year'---------
@@ -1022,7 +1022,7 @@ nor F-Fisher test cannot be computed with a zero row.</p>
 <p>Applying the <code>summary</code> function to an object of class
 <code>createTable</code> will obtain a more detailed output:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">triglyc</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">triglyc</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span><span class="op">)</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
  --- Descriptives of each row-variable by groups of 'Recruitment year' ---
@@ -1068,12 +1068,12 @@ according to whether the variable is continuous or categorical. Plots
 can be seen on-screen or saved in different formats (BMP, JPG’, PNG, TIF
 or PDF). To specify the format use the argument `type’.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>, file <span class="op">=</span> <span class="st">"./figures/univar/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span>, file<span class="op">=</span><span class="st">"./figures/univar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/univar/age.png" alt="alt text"><img src="figures/univar/sex.png" alt="alt text"></p>
 <p>Plots also can be done according to grouping variable. In this case
 only a boxplot is shown for continuous variables:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>, bivar <span class="op">=</span> <span class="cn">TRUE</span>, file <span class="op">=</span> <span class="st">"./figures/bivar/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/bivar/age.png" alt="alt text"><img src="figures/bivar/sex.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -1084,7 +1084,7 @@ only a boxplot is shown for continuous variables:</p>
 <p>The object from <code>compareGroups</code> can later be updated. For
 example:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <pre><code>
 
@@ -1100,7 +1100,7 @@ example:</p>
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>The object <code>res</code> is updated using:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">.</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">triglyc</span> <span class="op">+</span> <span class="va">cv</span> <span class="op">+</span> <span class="va">tocv</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="fl">2</span>, tocv <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>triglyc <span class="op">=</span> <span class="va">txchol</span> <span class="op">==</span> <span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">.</span> <span class="op">~</span><span class="va">.</span> <span class="op">-</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">triglyc</span> <span class="op">+</span> <span class="va">cv</span> <span class="op">+</span> <span class="va">tocv</span>, subset <span class="op">=</span> <span class="va">sex</span><span class="op">==</span><span class="st">'Female'</span>, method <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="fl">2</span>, tocv<span class="op">=</span><span class="fl">2</span><span class="op">)</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>triglyc<span class="op">=</span><span class="va">txchol</span><span class="op">==</span><span class="st">'No'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <p>Note that “Sex” is removed as an explanatory variable but used as a
 filter, subsetting only “Female” participants. Three new variables have
@@ -1145,7 +1145,7 @@ re-computes the p-values. To obtain the same table as above with the
 p-values correted by “BH” method:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cg</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">casco</span> <span class="op">~</span> <span class="va">snp10001</span> <span class="op">+</span> <span class="va">snp10002</span> <span class="op">+</span> <span class="va">snp10005</span> <span class="op">+</span> <span class="va">snp10008</span> <span class="op">+</span> <span class="va">snp10009</span>, <span class="va">SNPs</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/padjustCompareGroups.html">padjustCompareGroups</a></span><span class="op">(</span><span class="va">cg</span>, method <span class="op">=</span> <span class="st">"BH"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/padjustCompareGroups.html">padjustCompareGroups</a></span><span class="op">(</span><span class="va">cg</span>, method<span class="op">=</span><span class="st">"BH"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'casco'---------
 
@@ -1189,8 +1189,8 @@ printed in the final table. If the response variable is time-to-event
 change the reference category:</li>
 </ul>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span>, ref <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res1</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res1</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span>, ref<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res1</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1211,8 +1211,8 @@ Smoking status:                                                               &l
 <p>Note that for categorical response variables the reference category
 is the first one in the statement:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span>, ref <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>smoker <span class="op">=</span> <span class="fl">1</span>, sex <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res2</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res2</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span>, ref<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>smoker<span class="op">=</span><span class="fl">1</span>, sex<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res2</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1239,8 +1239,8 @@ for Sex the second.</p>
 the reference category for all variables with this category:</li>
 </ul>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span> <span class="op">+</span> <span class="va">txhtn</span>, data <span class="op">=</span> <span class="va">regicor</span>, ref.no <span class="op">=</span> <span class="st">"NO"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span> <span class="op">+</span> <span class="va">txhtn</span>, data<span class="op">=</span><span class="va">regicor</span>, ref.no<span class="op">=</span><span class="st">'NO'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1269,8 +1269,8 @@ continuous variables are calculated for each unit increase. It can be
 changed by the <code>fact.or</code> statement:</li>
 </ul>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1284,8 +1284,8 @@ Body mass index 27.6 (4.56) 28.1 (4.48) 1.02 [0.98;1.07]  0.313    0.307
 <p>Here the OR is for the increase of one unit for Age and “Body mass
 index”.</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span>, fact.ratio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">10</span>, bmi <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span>, fact.ratio<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age<span class="op">=</span><span class="fl">10</span>, bmi<span class="op">=</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1306,8 +1306,8 @@ first. The reference category could be changed using the
 <code>ref.y</code> statement:</li>
 </ul>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">txhtn</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">txhtn</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1327,8 +1327,8 @@ Hypertension treatment:                                                     0.27
 <p>Note: This output shows the OR of having a cardiovascular event.
 Therefore, having no event is the reference category.</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">txhtn</span>, data <span class="op">=</span> <span class="va">regicor</span>, ref.y <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">cv</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">txhtn</span>, data<span class="op">=</span><span class="va">regicor</span>, ref.y<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -1353,8 +1353,8 @@ the explanatory variable is categorical. For continuous variables the
 function returns a line for each individual, ending with a circle for
 censored and with a plus sign for uncensored.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span>, bivar <span class="op">=</span> <span class="cn">TRUE</span>, file <span class="op">=</span> <span class="st">"./figures/bivarsurv/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span>, bivar <span class="op">=</span> <span class="cn">TRUE</span>, file <span class="op">=</span> <span class="st">"./figures/bivarsurv/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivarsurv/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">age</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivarsurv/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/bivarsurv/age.png" alt="alt text"><img src="figures/bivarsurv/sex.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -1372,7 +1372,7 @@ calculated at the median of the follow-up period. <code>timemax</code>
 option allows us to change at what time probability is calculated.</li>
 </ul>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">tmain</span>, timemax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>tmain <span class="op">=</span> <span class="fl">3</span> <span class="op">*</span> <span class="fl">365.25</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">~</span>  <span class="va">age</span> <span class="op">+</span> <span class="va">tmain</span>, timemax<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>tmain<span class="op">=</span><span class="fl">3</span><span class="op">*</span><span class="fl">365.25</span><span class="op">)</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <p>Note that <code>tmain</code> is calculated at 3 years, i.e. 3*365.25
 days (see section 3.1).</p>
@@ -1380,8 +1380,8 @@ days (see section 3.1).</p>
 <code>Surv</code> returns a Kaplan-Meier figure. The figure can be
 stratified by the grouping variable.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, file <span class="op">=</span> <span class="st">"./figures/univar/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, bivar <span class="op">=</span> <span class="cn">TRUE</span>, file <span class="op">=</span> <span class="st">"./figures/bivar/"</span>, type <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, file<span class="op">=</span><span class="st">"./figures/univar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures/univar/tmain.png" alt="alt text"><img src="figures/bivar/tmain.png" alt="alt text"></p>
 <p style="margin-top:50px">
 </p>
@@ -1395,15 +1395,15 @@ stratified by the grouping variable.</p>
 can be displayed on-screen or exported to CSV, LaTeX, HTML, Word or
 Excel.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">sbp</span>, data <span class="op">=</span> <span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sbp <span class="op">=</span> <span class="va">txhtn</span> <span class="op">==</span> <span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">sbp</span>, data<span class="op">=</span><span class="va">regicor</span>, selec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sbp<span class="op">=</span><span class="va">txhtn</span><span class="op">==</span><span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">restab</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>Two tables are created with the <code>createTable</code> function:
 one with the descriptives and the other with the available data. The
 <code>print</code> method applied to an object of class
 <code>createTable</code> prints one or both tables on the
 <strong><code>R</code></strong> console:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">restab</span>, which.table <span class="op">=</span> <span class="st">"descr"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">restab</span>,which.table<span class="op">=</span><span class="st">'descr'</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1424,7 +1424,7 @@ Systolic blood pressure    129 (17.4)  130 (20.1)  124 (16.9)   &lt;0.001
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that the option “descr” prints descriptive tables.</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">restab</span>, which.table <span class="op">=</span> <span class="st">"avail"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">restab</span>,which.table<span class="op">=</span><span class="st">'avail'</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 
@@ -1456,7 +1456,7 @@ displayed (i.e., if 48% are male, obviously 52% are female). To hide
 some category, e.g., “Male”:</li>
 </ul>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, hide <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, hide <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sex<span class="op">=</span><span class="st">"Male"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1480,8 +1480,8 @@ Systolic blood pressure    129 (17.4)  130 (20.1)  124 (16.9)   &lt;0.001
 above, if the category “no” is to be hidden for all variables:</li>
 </ul>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">histchol</span> <span class="op">+</span> <span class="va">histhtn</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">"no"</span>, hide <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="st">"Male"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">histchol</span> <span class="op">+</span> <span class="va">histhtn</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no<span class="op">=</span><span class="st">'no'</span>, hide <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sex<span class="op">=</span><span class="st">"Male"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1502,7 +1502,7 @@ not case sensitive.</p>
 appear in the results can be changed, e.g:</li>
 </ul>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, digits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">2</span>, sex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, digits<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>age<span class="op">=</span><span class="fl">2</span>, sex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1530,7 +1530,7 @@ are summarized by frequencies and percentages. This can be changed by
 the <code>type</code> argument:</li>
 </ul>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1551,7 +1551,7 @@ History of hypertension:                                      &lt;0.001
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that only percentages are displayed.</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1580,7 +1580,7 @@ is set to <code>TRUE</code> a column with available data for each
 variable appears in the results:</li>
 </ul>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.n <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.n<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1606,7 +1606,7 @@ History of hypertension:                                      &lt;0.001   2286
 displayed:</li>
 </ul>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.descr <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.descr<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1631,7 +1631,7 @@ argument is set to <code>TRUE</code> a column is displayed with
 descriptives for all data:</li>
 </ul>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1657,7 +1657,7 @@ History of hypertension:                                                   &lt;0
 p-values are omitted from the table:</li>
 </ul>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.overall<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1684,7 +1684,7 @@ Results are displayed if the <code>show.p.trend</code> argument is set
 to <code>TRUE</code>:</li>
 </ul>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.trend <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.trend<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1719,7 +1719,7 @@ displayed if the <code>show.p.mul</code> argument is set to
 <code>TRUE</code>:</li>
 </ul>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.mul <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.mul<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
@@ -1751,7 +1751,7 @@ Section 3.1), Odds Ratios and Hazard Ratios can be displayed in the
 results by stating <code>TRUE</code> at the show.ratio option:</li>
 </ul>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset <span class="op">=</span> <span class="va">year</span> <span class="op">!=</span> <span class="fl">1995</span><span class="op">)</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset<span class="op">=</span> <span class="va">year</span><span class="op">!=</span><span class="fl">1995</span><span class="op">)</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'year'---------
 
@@ -1777,7 +1777,7 @@ more than two categories.</p>
 <p>Note that when response variable is of class <code>Surv</code>,
 Hazard Ratios are calculated instead of Odds Ratios.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span>  <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1801,7 +1801,7 @@ places for Odds/Hazard ratios can be changed by the
 <code>digits.ratio</code> argument:</li>
 </ul>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span>, show.ratio <span class="op">=</span> <span class="cn">TRUE</span>, digits.ratio <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span>  <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, show.ratio<span class="op">=</span><span class="cn">TRUE</span>, digits.ratio<span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1828,8 +1828,8 @@ present in other function that exports the table to pdf, plain text,
 etc.</li>
 </ul>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span>, show.all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tab</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>p.overall <span class="op">=</span> <span class="st">"p-value"</span>, all <span class="op">=</span> <span class="st">"All"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">tab</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span>  <span class="va">year</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, show.all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tab</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"p.overall"</span> <span class="op">=</span> <span class="st">"p-value"</span>, <span class="st">"all"</span> <span class="op">=</span> <span class="st">"All"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1855,9 +1855,9 @@ Sex:                                                     0.696
 <p>Tables made with the same response variable can be combined by
 row:</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">restab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">restab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>`Non-modifiable risk factors` <span class="op">=</span> <span class="va">restab1</span>, `Modifiable risk factors` <span class="op">=</span> <span class="va">restab2</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">restab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">restab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="st">"Non-modifiable risk factors"</span><span class="op">=</span><span class="va">restab1</span>, <span class="st">"Modifiable risk factors"</span><span class="op">=</span><span class="va">restab2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1886,8 +1886,8 @@ which can be subset but not updated. It inherits the class
 the <code>createTable</code> function cannot be modified:</p>
 <p>To select only Age and Smoking:</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>`Non-modifiable` <span class="op">=</span> <span class="va">restab1</span>, Modifiable <span class="op">=</span> <span class="va">restab2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>`Non-modifiable` <span class="op">=</span> <span class="va">restab1</span>, Modifiable <span class="op">=</span> <span class="va">restab2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="st">"Non-modifiable"</span><span class="op">=</span><span class="va">restab1</span>,<span class="st">"Modifiable"</span><span class="op">=</span><span class="va">restab2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="st">"Non-modifiable"</span><span class="op">=</span><span class="va">restab1</span>,<span class="st">"Modifiable"</span><span class="op">=</span><span class="va">restab2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1905,7 +1905,7 @@ Modifiable:
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To change the order:</p>
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>Modifiable <span class="op">=</span> <span class="va">restab1</span>, `Non-modifiable` <span class="op">=</span> <span class="va">restab2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="st">"Modifiable"</span><span class="op">=</span><span class="va">restab1</span>,<span class="st">"Non-modifiable"</span><span class="op">=</span><span class="va">restab2</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1935,12 +1935,12 @@ Modifiable:
 variables but done with a different subset (i.e. “ALL”, “Male” and
 “Female”, strata) can be combined:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="va">alltab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">femaletab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span><span class="op">)</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">maletab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset <span class="op">=</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"Male"</span><span class="op">)</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span>  <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span> , data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="va">alltab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>,  show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">femaletab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>,subset<span class="op">=</span><span class="va">sex</span><span class="op">==</span><span class="st">'Female'</span><span class="op">)</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">maletab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>,subset<span class="op">=</span><span class="va">sex</span><span class="op">==</span><span class="st">'Male'</span><span class="op">)</span>, show.p.overall <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>ALL <span class="op">=</span> <span class="va">alltab</span>, FEMALE <span class="op">=</span> <span class="va">femaletab</span>, MALE <span class="op">=</span> <span class="va">maletab</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="st">"ALL"</span><span class="op">=</span><span class="va">alltab</span>,<span class="st">"FEMALE"</span><span class="op">=</span><span class="va">femaletab</span>,<span class="st">"MALE"</span><span class="op">=</span><span class="va">maletab</span><span class="op">)</span></span></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -1965,7 +1965,7 @@ History of hypertension:
 <p>By default the name of the table is displayed for each set of
 columns.</p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">alltab</span>, <span class="va">femaletab</span>, <span class="va">maletab</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">alltab</span>,<span class="va">femaletab</span>,<span class="va">maletab</span><span class="op">)</span></span></code></pre></div>
 <div class="small-code">
 <pre><code>
 --------Summary descriptives table ---------
@@ -2003,7 +2003,7 @@ gender:</p>
 </ol>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">histchol</span> <span class="op">+</span> <span class="va">histhtn</span>, <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no<span class="op">=</span><span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>and then apply the <code>strataTable</code> function on the
 table:</li>
@@ -2044,7 +2044,7 @@ can be changed: “avail” returns data available and “both” returns both
 tables:</li>
 </ul>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span>, which.table <span class="op">=</span> <span class="st">"both"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span>, which.table<span class="op">=</span><span class="st">'both'</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2079,7 +2079,7 @@ Body mass index 2259  423  771  1065 continuous-normal  ALL
 to <code>FALSE</code>, the total maximum “n” in the available data is
 omitted in the first row.</p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span>, nmax <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span>,  nmax<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2103,7 +2103,7 @@ that generated with <code>print</code> method setting
 <code>which.table='avail'</code>:</li>
 </ul>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
 
@@ -2123,8 +2123,8 @@ Body mass index 2259  423  771  1065 continuous-normal  ALL
 <code>createTable</code> can be updated:</li>
 </ul>
 <div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="va">restab</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, type<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">restab</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
@@ -2144,7 +2144,7 @@ Smoking status:                                                 &lt;0.001
 Body mass index            27.0 (4.15) 28.1 (4.62) 27.6 (4.63)  &lt;0.001   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, show.n <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, show.n<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2165,7 +2165,7 @@ Body mass index            27.0 (4.15) 28.1 (4.62) 27.6 (4.63)  &lt;0.001   2259
 <p>In just one statement it is possible to update an object of class
 <code>compareGroups</code> and <code>createTable</code>:</p>
 <div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">==</span> <span class="st">"Female"</span><span class="op">)</span><span class="op">)</span>, show.n <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">restab</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">res</span>, subset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">sex</span><span class="op">==</span><span class="st">'Female'</span><span class="op">)</span><span class="op">)</span>, show.n<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'year'---------
 
@@ -2192,7 +2192,7 @@ variable.</p>
 <code>createTable</code> function can also be subset using “[”:</li>
 </ul>
 <div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2214,7 +2214,7 @@ History of hypertension:                                        &lt;0.001
     No                     320 (74.2%) 553 (70.4%) 690 (64.5%)           
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histhtn</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2303,7 +2303,7 @@ Smoking 4 cat.:                                                          2233
 <p>To describe some variables, make use of formula argument (just as
 using <code>compareGroups</code> function)</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="op">~</span><span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span>, <span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -2319,7 +2319,7 @@ Sex:                    2294
 <p>To hide “no” category from yes-no variables, use the
 <code>hide.no</code> argument from <code>createTable</code>:</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">regicor</span>, hide.no <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">regicor</span>, hide.no<span class="op">=</span><span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -2370,7 +2370,7 @@ Smoking 4 cat.:                                                          2233
 <p>To report descriptives by group as well as the descriptives of the
 entire cohort:</p>
 <div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">regicor</span>, hide.no <span class="op">=</span> <span class="st">"no"</span>, show.all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">regicor</span>, hide.no<span class="op">=</span><span class="st">"no"</span>, show.all<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2417,7 +2417,7 @@ Smoking 4 cat.:                                                                 
 <p>Or you can select individuals using the <code>subset</code>
 argument.</p>
 <div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">regicor</span>, subset <span class="op">=</span> <span class="va">age</span> <span class="op">&gt;</span> <span class="fl">65</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">regicor</span>, subset<span class="op">=</span><span class="va">age</span><span class="op">&gt;</span><span class="fl">65</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table ---------
 
@@ -2542,7 +2542,7 @@ chunk to be processed with <strong><code>Sweave</code></strong>
 package.</li>
 </ul>
 <div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histchol</span>, data <span class="op">=</span> <span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">restab</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">smoker</span> <span class="op">+</span> <span class="va">bmi</span> <span class="op">+</span> <span class="va">histchol</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/export2latex.html">export2latex</a></span><span class="op">(</span><span class="va">restab</span><span class="op">)</span></span></code></pre></div>
 <pre><code>    
     \begin{longtable}{lcccc}\caption{Summary descriptives table by groups of `Recruitment year'}\\
@@ -2622,7 +2622,7 @@ size, strip rows, etc.).</p>
 recruitment year.</p>
 <div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no<span class="op">=</span><span class="st">"no"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li><strong>Default export2md to HTML:</strong></li>
 </ul>
@@ -3248,7 +3248,7 @@ Former &gt;= 1y
 <li><strong>Add strip rows, colouring rows by variables:</strong></li>
 </ul>
 <div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, strip <span class="op">=</span> <span class="cn">TRUE</span>, first.strip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, strip<span class="op">=</span><span class="cn">TRUE</span>, first.strip<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Summary descriptives table by groups of `Recruitment year’
@@ -3286,19 +3286,19 @@ N=1077
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Individual id
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1000002914 (1242)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 3000104610 (2379)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 1996 (1161)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.000
 </td>
 </tr>
@@ -3320,49 +3320,49 @@ Age
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Sex:
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.506
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Male
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 206 (47.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 390 (49.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 505 (46.9%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Female
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 225 (52.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 396 (50.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 572 (53.1%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
@@ -3428,19 +3428,19 @@ Former &gt;= 1y
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Systolic blood pressure
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 133 (19.2)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 133 (21.3)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 129 (19.8)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3462,19 +3462,19 @@ Diastolic blood pressure
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 History of hypertension
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 111 (25.8%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 233 (29.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 379 (35.5%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3496,19 +3496,19 @@ Hypertension treatment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Total cholesterol
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 225 (43.1)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 224 (44.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 213 (45.9)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3530,19 +3530,19 @@ HDL cholesterol
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Triglycerides
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 114 (74.4)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 114 (70.7)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 117 (76.0)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.582
 </td>
 </tr>
@@ -3564,19 +3564,19 @@ LDL cholesterol
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 History of hyperchol.
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 97 (22.5%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 256 (33.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 356 (33.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3598,19 +3598,19 @@ Cholesterol treatment
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Height (cm)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 163 (9.21)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 162 (9.39)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 163 (9.05)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.003
 </td>
 </tr>
@@ -3632,19 +3632,19 @@ Weight (Kg)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Body mass index
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 27.0 (4.15)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 28.1 (4.62)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 27.6 (4.63)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3666,19 +3666,19 @@ Physical activity (Kcal/week)
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Physical component
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 49.3 (8.08)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 49.0 (9.63)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 50.1 (8.91)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.032
 </td>
 </tr>
@@ -3700,19 +3700,19 @@ Mental component
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Cardiovascular event
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 10 (2.51%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 35 (4.72%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 47 (4.59%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.161
 </td>
 </tr>
@@ -3734,19 +3734,19 @@ Days to cardiovascular event or end of follow-up
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Overall death
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 18 (4.65%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 81 (11.0%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 74 (7.23%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
@@ -3768,19 +3768,19 @@ Days to overall death or end of follow-up
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Time to CV event or censoring
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 2.69%
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 4.70%
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 5.01%
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 0.157
 </td>
 </tr>
@@ -3802,65 +3802,65 @@ age7gr
 </td>
 </tr>
 <tr>
-<td style="text-align:left;background-color: #D2D2D2 !important;">
+<td style="text-align:left;background-color: rgba(210, 210, 210, 255) !important;">
 Smoking 4 cat.:
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 &lt;0.001
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Never smoker
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 234 (56.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 414 (54.6%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 553 (52.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Current or former &lt; 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 109 (26.3%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 267 (35.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 217 (20.5%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;padding-left: 2em;background-color: #D2D2D2 !important;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;background-color: rgba(210, 210, 210, 255) !important;" indentlevel="1">
 Former &gt;= 1y
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 72 (17.3%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 77 (10.2%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 290 (27.4%)
 </td>
-<td style="text-align:center;background-color: #D2D2D2 !important;">
+<td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 </td>
 </tr>
 </tbody>
@@ -3869,7 +3869,7 @@ Former &gt;= 1y
 <li><strong>Change size:</strong></li>
 </ul>
 <div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, size <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, size<span class="op">=</span><span class="fl">6</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped table-condensed" style="font-size: 6px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Summary descriptives table by groups of `Recruitment year’
@@ -4490,7 +4490,7 @@ Former &gt;= 1y
 <li><strong>Making variable names column wider:</strong></li>
 </ul>
 <div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, width <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, width<span class="op">=</span><span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Summary descriptives table by groups of `Recruitment year’
@@ -5111,9 +5111,9 @@ Former &gt;= 1y
 <li><strong>Stratified table:</strong></li>
 </ul>
 <div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/strataTable.html">strataTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">id</span>, <span class="va">regicor</span><span class="op">)</span>, <span class="st">"sex"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/strataTable.html">strataTable</a></span><span class="op">(</span><span class="fu"><a href="../reference/descrTable.html">descrTable</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span><span class="va">id</span>, <span class="va">regicor</span><span class="op">)</span>, <span class="st">"sex"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export2md.html">export2md</a></span><span class="op">(</span><span class="va">restab</span>, size<span class="op">=</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped table-condensed" style="font-size: 8px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Summary descriptive tables
@@ -6478,9 +6478,10 @@ the REGICOR data (the other example data set contained in the
 <strong><code>compareGroups</code></strong> package)</p>
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># to know more about report function</span></span>
-<span><span class="fu">`?`</span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">report</span></span>
+<span></span>
 <span><span class="co"># info about REGICOR data set</span></span>
-<span><span class="fu">`?`</span><span class="op">(</span><span class="va">regicor</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">?</span><span class="va">regicor</span></span></code></pre></div>
 <p>Also, you can use the function <code>radiograph</code> that dumps the
 raw values on a plain text file. This may be useful to identify possible
 wrong codes or non-valid values in the data set.</p>
@@ -6505,7 +6506,7 @@ of all variables by year:</p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># from a compareGroups object</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">regicor</span><span class="op">)</span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">id</span>, <span class="va">regicor</span><span class="op">)</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">year</span> <span class="op">~</span> <span class="va">.</span><span class="op">-</span><span class="va">id</span>, <span class="va">regicor</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/missingTable.html">missingTable</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 
@@ -6571,7 +6572,7 @@ todeath  44 (10.2%) 48 (6.11%)  54 (5.01%)   0.001
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># or from createTable objects</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span>
+<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">'no'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/missingTable.html">missingTable</a></span><span class="op">(</span><span class="va">restab</span><span class="op">)</span></span></code></pre></div>
 <p>Perhaps a NA value of a categorical variable may mean something
 different from just non available. For example, patients admitted for
@@ -6586,10 +6587,10 @@ been implemented which does it automatically. Let’s see an example with
 all variables from REGICOR data set by cardiovascular event.</p>
 <div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># first create time-to-cardiovascular event</span></span>
-<span><span class="va">regicor</span><span class="op">$</span><span class="va">tcv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regicor</span>, <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">tocv</span>, <span class="va">cv</span> <span class="op">==</span> <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">regicor</span><span class="op">$</span><span class="va">tcv</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regicor</span>,<span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">tocv</span>,<span class="va">cv</span><span class="op">==</span><span class="st">'Yes'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># create the table</span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tcv</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span> <span class="va">id</span> <span class="op">-</span> <span class="va">tocv</span> <span class="op">-</span> <span class="va">cv</span> <span class="op">-</span> <span class="va">todeath</span> <span class="op">-</span> <span class="va">death</span>, <span class="va">regicor</span>, include.miss <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">"no"</span><span class="op">)</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tcv</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span><span class="va">id</span><span class="op">-</span><span class="va">tocv</span><span class="op">-</span><span class="va">cv</span><span class="op">-</span><span class="va">todeath</span><span class="op">-</span><span class="va">death</span>, <span class="va">regicor</span>, include.miss <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">restab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/createTable.html">createTable</a></span><span class="op">(</span><span class="va">res</span>, hide.no <span class="op">=</span> <span class="st">'no'</span><span class="op">)</span></span>
 <span><span class="va">restab</span></span></code></pre></div>
 <pre><code>
 --------Summary descriptives table by 'tcv'---------
@@ -6691,7 +6692,7 @@ separator can be any character. If so, this must be specified in the
 Genetic variables are those whose names begin with “snp”. If we want to
 summarize the first three SNPs by case control status:</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareSNPs.html">compareSNPs</a></span><span class="op">(</span><span class="va">casco</span> <span class="op">~</span> <span class="va">snp10001</span> <span class="op">+</span> <span class="va">snp10002</span> <span class="op">+</span> <span class="va">snp10003</span>, data <span class="op">=</span> <span class="va">SNPs</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareSNPs.html">compareSNPs</a></span><span class="op">(</span><span class="va">casco</span> <span class="op">~</span> <span class="va">snp10001</span> <span class="op">+</span> <span class="va">snp10002</span> <span class="op">+</span> <span class="va">snp10003</span>, data<span class="op">=</span><span class="va">SNPs</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <pre><code>*********** Summary of genetic data (SNPs) by groups ***********
 
@@ -6739,7 +6740,7 @@ separating by groups, leave the left side of formula in blank, as in
 <code>compareGroups</code> function. In this case, a single table is
 displayed and no missingness test is performed.</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareSNPs.html">compareSNPs</a></span><span class="op">(</span><span class="op">~</span><span class="va">snp10001</span> <span class="op">+</span> <span class="va">snp10002</span> <span class="op">+</span> <span class="va">snp10003</span>, data <span class="op">=</span> <span class="va">SNPs</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/compareSNPs.html">compareSNPs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">snp10001</span> <span class="op">+</span> <span class="va">snp10002</span> <span class="op">+</span> <span class="va">snp10003</span>, data<span class="op">=</span><span class="va">SNPs</span><span class="op">)</span></span>
 <span><span class="va">res</span></span></code></pre></div>
 <pre><code>*********** Summary of genetic data (SNPs) ***********
 _____________________________________________________ 
@@ -7652,7 +7653,7 @@ for <span>R</span>.”</span> <em>Journal of Statistical Software</em> 57
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

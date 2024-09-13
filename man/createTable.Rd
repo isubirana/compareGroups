@@ -16,8 +16,9 @@ createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
            show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
            FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
            show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
-           extra.labels = NA, all.last = FALSE, lab.ref = "Ref.")
-\method{print}{createTable}(x, which.table = "descr", nmax = TRUE, header.labels = c(), ...)
+           extra.labels = NA, all.last = FALSE, lab.ref = "Ref.", stars = FALSE)
+\method{print}{createTable}(x, which.table = "descr", nmax = TRUE, nmax.method = 1,
+           header.labels = c(), ...)
 \method{plot}{createTable}(x, ...)
 }
 
@@ -65,13 +66,17 @@ createTable(x, hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   
   \item{lab.ref}{character. String shown for reference category. "Ref." as default value.}
   
+  \item{stars}{logical, indicating whether to append stars beside p-values; '**': p-value < 0.05, '*' 0.05 <= p-value < 0.1; '' p-value >=0.1. Default value is FALSE}
+  
   
   \item{which.table}{character indicating which table is printed. Possible values are 'descr', 'avail' or 'both' (partial matching allowed), printing descriptives by groups table, availability data table or both tables, respectively. Default value is 'descr'.}
   
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
+  
+  \item{nmax.method}{integer with two possible values: 1-number of observation with valid values in at least one row-variable; 2-total number of observations or rows in the data set or in the group. Default value is 1.}
 
   \item{header.labels}{a character named vector with 'all', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' components indicating the label for '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' (available data), respectively. Default is a zero length vector which makes no changes, i.e. '[ALL]', 'p.overall', 'p.trend', 'ratio', 'p.ratio' and 'N' labels appear for descriptives of entire cohort, global p-value, p-value for trend, HR/OR and p-value of each HR/OR and available data, respectively.} 
-
+  
   \item{...}{other arguments passed to \code{\link[base]{print.default}}.}
   
 }

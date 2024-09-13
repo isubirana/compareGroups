@@ -16,12 +16,12 @@ descrTable(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL,
   Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv = FALSE,
   riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, 
-  lab.missing = "'Missing'",
+  lab.missing = "'Missing'", p.trend.method = "spearman",
   hide = NA, digits = NA, type = NA, show.p.overall = TRUE,
   show.all, show.p.trend, show.p.mul = FALSE, show.n, show.ratio =
   FALSE, show.descr = TRUE, show.ci = FALSE, hide.no = NA, digits.ratio = NA,
   show.p.ratio = show.ratio, digits.p = 3, sd.type = 1, q.type = c(1, 1),
-  extra.labels = NA, all.last = FALSE, lab.ref="Ref.")
+  extra.labels = NA, all.last = FALSE, lab.ref="Ref.", stars = FALSE)
 }
 
 \arguments{
@@ -103,6 +103,8 @@ Arguments from \code{\link{compareGroups}} function:
   
   \item{lab.missing}{character. Label for missing cathegory. Only applied when \code{include.missing = TRUE}. Default value is 'Missing'.}   
 
+  \item{p.trend.method}{Character indicating the name of test to use for p-value for trend. It only applies for numerical non-normal variables. Possible values are "spearman", "kendall" or "cuzick". Default value is "spearman".}
+
 
 Arguments from \code{\link{createTable}} function:
 
@@ -145,6 +147,8 @@ Arguments from \code{\link{createTable}} function:
   \item{all.last}{logical. Descriptives of the whole sample is placed after the descriptives by groups. Default value is FALSE which places the descriptives of whole cohort at first.} 
   
   \item{lab.ref}{character. String shown for reference category. "Ref." as default value.}
+  
+  \item{stars}{logical, indicating whether to append stars beside p-values; '**': p-value < 0.05, '*' 0.05 <= p-value < 0.1; '' p-value >=0.1. Default value is FALSE}
 
 }
 

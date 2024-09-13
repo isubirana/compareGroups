@@ -14,11 +14,11 @@ This function takes the result of \code{createTable} and exports the tables to L
 \usage{
 export2latex(x, ...)
 \method{export2latex}{createTable}(x, file, which.table = 'descr', size = 'same', 
-    nmax = TRUE, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, 
-    landscape = NA, colmax = 10, ...)
+    nmax = TRUE, nmax.method = 1, header.labels = c(), caption = NULL, 
+    loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...)
 \method{export2latex}{cbind.createTable}(x, file, which.table = 'descr', size = 'same', 
-    nmax = TRUE, header.labels = c(), caption = NULL, loc.caption = 'top', label = NULL, 
-    landscape = NA, colmax = 10, ...)
+    nmax = TRUE, nmax.method = 1, header.labels = c(), caption = NULL, 
+    loc.caption = 'top', label = NULL, landscape = NA, colmax = 10, ...)
 }
 
 \arguments{
@@ -32,6 +32,8 @@ export2latex(x, ...)
   \item{size}{character indicating the size of the table elements. Possible values are: 'tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE','huge', 'Huge' or 'same' (partial matching allowed). Default value is 'same' which means that font size of the table is the same as specified in the main LaTeX document.}  
 
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
+  
+  \item{nmax.method}{integer with two possible values: 1-number of observation with valid values in at least one row-variable; 2-total number of observations or rows in the data set or in the group. Default value is 1.}
   
   \item{header.labels}{see the 'header.labels' argument from \code{\link{createTable}}.}   
 

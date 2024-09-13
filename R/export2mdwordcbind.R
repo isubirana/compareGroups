@@ -1,4 +1,4 @@
-export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, strip, first.strip, background, size, header.background, header.color){   
+export2mdwordcbind <- function(x, which.table, nmax, nmax.method, header.labels, caption, strip, first.strip, background, size, header.background, header.color){   
 
   ww <- charmatch(which.table, c("descr","avail"))
   if (is.na(ww))
@@ -31,8 +31,8 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
     }
   }
 
-  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,header.labels)[[1]])
-  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,c())[[2]])
+  desc<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]])
+  avail<-lapply(x,function(vv) prepare(vv,nmax=nmax,nmax.method=nmax.method,c())[[2]])
   nc.desc<-lapply(desc,ncol)
   nc.avail<-lapply(avail,ncol)
   if (all(nc.desc==0))
@@ -67,7 +67,7 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
 
   if (ww == 1){
 
-    cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")  
+    cc<-attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels),"cc")  
     desc <-aux.desc
     desc<-cbind(rownames(desc),desc)
 
@@ -82,7 +82,7 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
     n.exists <- nrow(table1) > 1 && length(grep("^N=", trim(table1[1, 2]))) 
     table1 <- rbind(colnames(table1), table1)
     # add stratas in header
-    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table1))
+    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE,nmax.method=nmax.method, header.labels=character())$table1))
     table1 <- rbind(c("",rep(names(ncols), ncols)), table1)
     colnames(table1) <- NULL
 
@@ -108,7 +108,7 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
     }
     
     body <- as.data.frame(aux)
-    nr <- attr(prepare(x[[1]],nmax=nmax,header.labels), "nr")  # to strip variables
+    nr <- attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels), "nr")  # to strip variables
     
     # header
     header <- data.frame(cbind(
@@ -191,7 +191,6 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
 
   if (ww == 2){  
     
-    # cc<-attr(prepare(x[[1]],nmax=nmax,header.labels),"cc")  
     avail <-aux.avail
     avail<-cbind(rownames(avail),avail)
     table2 <- avail
@@ -202,7 +201,7 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
       table2 <- cbind(NA, table2)
     }
     
-    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE, header.labels=character())$table2))
+    ncols <- sapply(x, function(x.i) ncol(prepare(x.i, nmax=TRUE,nmax.method=nmax.method, header.labels=character())$table2))
     table2 <- rbind(c("", "", rep(names(ncols), ncols)), table2)
     colnames(table2) <- NULL
     
@@ -221,7 +220,7 @@ export2mdwordcbind <- function(x, which.table, nmax, header.labels, caption, str
     }
     
     body <- as.data.frame(aux)
-    nr <- attr(prepare(x[[1]],nmax=nmax,header.labels), "nr")  # to strip variables
+    nr <- attr(prepare(x[[1]],nmax=nmax,nmax.method=nmax.method,header.labels), "nr")  # to strip variables
     
     # header
     header <- data.frame(cbind(

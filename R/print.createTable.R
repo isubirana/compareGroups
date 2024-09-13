@@ -1,5 +1,5 @@
 print.createTable <-
-function(x, which.table="descr", nmax=TRUE, header.labels=c(), ...){
+function(x, which.table="descr", nmax=TRUE, nmax.method=1, header.labels=c(), ...){
 
   if (!inherits(x,"createTable"))
     stop("x must be of class 'createTable'")
@@ -27,8 +27,8 @@ function(x, which.table="descr", nmax=TRUE, header.labels=c(), ...){
   yname<-attr(x,"yname")   
   
   if (ww%in%c(1,3)){
-    pp<-prepare(x,nmax=nmax,c())
-    table1<-prepare(x,nmax=nmax,header.labels)[[1]]
+    pp<-prepare(x,nmax=nmax,nmax.method=nmax.method,c())
+    table1<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels)[[1]]
     cc<-attr(pp,"cc")
     if (attr(x,"groups"))
       if (inherits(x,"missingTable"))
@@ -70,7 +70,7 @@ function(x, which.table="descr", nmax=TRUE, header.labels=c(), ...){
   }
   
   if (ww%in%c(2,3)){
-    table2<-prepare(x,nmax=nmax,header.labels=c())[[2]]  
+    table2<-prepare(x,nmax=nmax,nmax.method=nmax.method,header.labels=c())[[2]]  
     if (!is.null(attr(x,"caption")))
       rownames(table2)<-paste("   ",rownames(table2))
     cat("\n\n\n---Available data----\n\n")

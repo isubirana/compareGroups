@@ -15,7 +15,8 @@
 ^README.md$
 ^\.travis\.yml$
 ^index_files$
-^./inst/app/rsconnect$
+^inst/app/rsconnect$
+^inst/app/\.secrets$
 ^_pkgdown\.yml$
 
 ^README\.Rmd$

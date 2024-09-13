@@ -8,10 +8,10 @@ Exporting descriptives table to Markdown format
 This function takes the result of \code{createTable} and exports the tables to markdown format. It may be useful when inserting R code chunks in a Markdown file (.Rmd).
 }
 \usage{
-export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = NULL, 
-          format = "html", width = Inf, strip = FALSE, first.strip = FALSE, 
-          background = "#D2D2D2", size = NULL, landscape=FALSE, header.background=NULL, 
-          header.color=NULL, position="center",...)
+export2md(x, which.table = "descr", nmax = TRUE, nmax.method = 1, header.labels = c(),
+          caption = NULL, format = "html", width = Inf, strip = FALSE, 
+          first.strip = FALSE, background = "#D2D2D2", size = NULL, landscape=FALSE, 
+          header.background=NULL, header.color=NULL, position="center", ...)
 
 }
 
@@ -22,6 +22,8 @@ export2md(x, which.table = "descr", nmax = TRUE, header.labels = c(), caption = 
   \item{which.table}{character indicating which table is printed. Possible values are 'descr' or 'avail'(partial matching allowed), exporting descriptives by groups table or availability data table, respectively. Default value is 'descr'.}
 
   \item{nmax}{logical, indicating whether to show the number of subjects with at least one valid value across all row-variables. Default value is TRUE.}
+  
+  \item{nmax.method}{integer with two possible values: 1-number of observation with valid values in at least one row-variable; 2-total number of observations or rows in the data set or in the group. Default value is 1.}
   
   \item{header.labels}{see the 'header.labels' argument from \code{\link{createTable}}.}   
 

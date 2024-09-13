@@ -755,16 +755,36 @@ ui <- fluidPage(
     ### footer ###
     footer = dashboardFooter(
       left = HTML("
-        <b>By Isaac Subirana</b><br>CIBERCV, IMIM-Parc de Salut Mar, Barcelona<br>
+        <b>By Isaac Subirana</b><br>CIBERCV; Hospital del Mar-Research Institute, Barcelona<br>
         <hr>
-        <table style='margin-left: auto;margin-right: auto'>
+        <table style='position:float-right;'>
         <tr>
-        <td style='margin-left:5px'><a title='CIBERCV' href='https://www.cibercv.es/'><img alt='CIBERCV' src='logo-cibercv.png' width='80%'/></a></td>
-        <td style='margin-left:10px'><a title='IMIM' href='https://imim.cat/'><img alt='IMIM' src='logo_imim_capsalera.gif' width='80%'/></a></td>
-        <td style='margin-left:10px'><a title='REGICOR' href='https://regicor.cat//'><img alt='IMIM' src='regicor_logo125.png' width='80%'/></a></td>
+        <td style='width:37%;padding-left:10px;'>
+        <a href= 'https://www.imim.cat', target= '_blank'><img src='imim.png' alt='' height='50px'></a>
+        </td>
+        <td style='width:23%; padding-left:10px'>
+        <a href= 'https://www.cibercv.es', target= '_blank'><img src='ciberCV.png' alt='' height='50px'></a>
+        </td>
+        <td style='width:20%; padding-left:10px'>
+        <a href= 'https://www.regicor.cat', target= '_blank'><img src='ReGiCor.jpg' alt='' height='50px'></a>
+        </td>
+        <td style='width:20%; padding-left:10px'>
+        <a href= 'https://www.datarus.eu/ca/', target= '_blank'><img src='datarus.jpg' alt='' height='50px'></a>
+        </td>
         </tr>
-        </table>               
-        "), 
+        </table>
+      "),
+       # left = HTML("
+       #  <b>By Isaac Subirana</b><br>CIBERCV, IMIM-Parc de Salut Mar, Barcelona<br>
+       #  <hr>
+       #  <table style='margin-left: auto;margin-right: auto'>
+       #  <tr>
+       #  <td style='margin-left:5px'><a title='CIBERCV' href='https://www.cibercv.es/'><img alt='CIBERCV' src='logo-cibercv.png' width='80%'/></a></td>
+       #  <td style='margin-left:10px'><a title='IMIM' href='https://imim.cat/'><img alt='IMIM' src='logo_imim_capsalera.gif' width='80%'/></a></td>
+       #  <td style='margin-left:10px'><a title='REGICOR' href='https://regicor.cat//'><img alt='IMIM' src='regicor_logo125.png' width='80%'/></a></td>
+       #  </tr>
+       #  </table>               
+       #  "), 
       right = HTML("Powered by <a href='https://shiny.rstudio.com/'>Shiny</a>")
     )
     # ,
