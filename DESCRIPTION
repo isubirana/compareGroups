@@ -2,7 +2,7 @@ Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
 Version: 4.9.0
-Date: 2024-08-19
+Date: 2024-09-13
 Depends: 
     R (>= 3.5.0)
 Imports: 

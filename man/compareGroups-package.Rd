@@ -23,7 +23,7 @@ Summarize genetic data (Single Nucleotide Polymorphisms) data displaying Allele 
 Package: \tab compareGroups\cr
 Type: \tab Package\cr
 Version: \tab 4.9.0\cr
-Date: \tab 2024-08-19\cr
+Date: \tab 2024-09-13\cr
 License: \tab GPL version 2 or newer\cr
 LazyLoad: \tab yes\cr
 }
