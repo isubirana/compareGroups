@@ -2,7 +2,10 @@
 
 ***package to create descriptive tables***
 
-<img src="http://www.r-pkg.org/badges/version/compareGroups">
+[![CRAN
+version](https://www.r-pkg.org/badges/version/compareGroups)](https://cran.r-project.org/package=compareGroups)
+![](https://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
+![](https://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 -   [Overview](#overview)
 -   [News](#news)
