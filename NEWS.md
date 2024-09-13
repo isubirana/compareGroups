@@ -59,9 +59,7 @@ MINOR
 - SNPassoc moved from Depends to Suggests
 
 # compareGroups 4.4.3
-MAJOR
 - WUI (cGroupsWUI) renewed based on shinydashboardPlus layout and more options.
-MINOR
 - wrong description of file argument from export2xls function fixed.
 - bug fixed in getResults(, "ratio") when only one variable is described.
 - bug fixed in xlab and ylab in box.plot internal function.

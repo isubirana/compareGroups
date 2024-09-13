@@ -1,8 +1,9 @@
-url: https://github.com/isubirana/compareGroups
+url: https://isubirana.github.io/compareGroups/index.html
 
 template:
   params:
     bootswatch: spacelab
+  bootstrap: 5
     
 title: compareGroups
 

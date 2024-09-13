@@ -486,8 +486,8 @@ plot(res[c(1,2)], file="./figures/univar/", type="png")
 ```
 
 
-![alt text](./figures/univar/age.png)
-![alt text](./figures/univar/sex.png)
+![ ](./figures/univar/age.png)
+![ ](./figures/univar/sex.png)
 
 
 Plots also can be done according to grouping variable. In this case only a boxplot is shown for continuous variables:
@@ -496,8 +496,8 @@ Plots also can be done according to grouping variable. In this case only a boxpl
 plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 ```
 
-![alt text](./figures/bivar/age.png)
-![alt text](./figures/bivar/sex.png)
+![ ](./figures/bivar/age.png)
+![ ](./figures/bivar/sex.png)
 
 
 <p style="margin-top:50px"></p>
@@ -635,8 +635,8 @@ plot(compareGroups(tmain ~ sex, data=regicor), bivar=TRUE, file="./figures/bivar
 plot(compareGroups(tmain ~ age, data=regicor), bivar=TRUE, file="./figures/bivarsurv/", type="png")
 ```
 
-![alt text](./figures/bivarsurv/age.png)
-![alt text](./figures/bivarsurv/sex.png)
+![ ](./figures/bivarsurv/age.png)
+![ ](./figures/bivarsurv/sex.png)
 
 
 <p style="margin-top:50px"></p>
@@ -664,8 +664,8 @@ plot(res[2], file="./figures/univar/", type="png")
 plot(res[2], bivar=TRUE, file="./figures/bivar/", type="png")
 ```
 
-![alt text](./figures/univar/tmain.png)
-![alt text](./figures/bivar/tmain.png)
+![ ](./figures/univar/tmain.png)
+![ ](./figures/bivar/tmain.png)
 
 
 
@@ -1304,35 +1304,35 @@ export2md(descrTable(year ~  age + sex + smoker + sbp + dbp + histhtn + txhtn + 
 
 * **Step 4.** It is possible to hide the first, last or no categories of a categorical row-variable. In this example, "Male" levels will be hidden for Sex; conversely, all categories will be shown for other categorical variables.
 
-![](./figures/GUI/step4_hide_categ.png)
+![ ](./figures/GUI/step4_hide_categ.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Step 5.** For each continuous variable, it is possible to specify whether to treat it as normal or non-normal or to transform a numerical variable into a categorical one. This last option can be interesting if a categorical variable has been coded as numerical. By default, all continuous variables are treated as normal. In this example, triglycerides will be treated as non-normal, i.e., median and quartiles will be reported instead of mean and standard deviation.
 
-![](./figures/GUI/step5_select_method.png)
+![ ](./figures/GUI/step5_select_method.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Step 6.** For each row-variable, it is possible to select a subset of individuals from the data set to be included. In this example, descriptives of systolic and diastolic blood pressure (_sbp_ and _dbp_) be reported only for those with no htn treatment. Also, it is possible to specify criteria to select a subset of individuals to be included for all row-variables: type the logical condition (selection criteria of individuals) on the "Global subset" window instead of "Variable subset".
 
-![](./figures/GUI/step6_subsetting.png)
+![ ](./figures/GUI/step6_subsetting.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Step 7.** Some bivariate table characteristics can be set by clicking on "Report options" from the main menu, such as to report descriptives (mean, frequencies, medians, etc.), display the p-trend, and show only relative frequencies.
 
-![](./figures/GUI/step7_report_options.png)
+![ ](./figures/GUI/step7_report_options.png)
 
 
 <p style="margin-top:50px"></p>
 
 * **Step 8.** Finally, specify the bivariate table format (LaTeX, CVS plain text or HTML). Clicking on "print"" will then display the bivariate table, as well as a summary (available data, etc.), on the **`R`** console. The table can also be exported to the file formats listed.
 
-![](./figures/GUI/step8_export_table.png)
+![ ](./figures/GUI/step8_export_table.png)
 
 
 
@@ -1351,7 +1351,7 @@ export2md(descrTable(cv ~  age + sex + smoker + bmi + chol + triglyc + ldl + sbp
 
 To build this table, as illustrated in the screens below, you would select _htn_ variable (Hypertension status) as the factor variable, indicate "no" category on the "reference" pull-down menu, and mark "Show odds/hazard ratio" in the "Report Options" menu before exporting the table.
 
-![](./figures/GUI/or_rr.png)
+![ ](./figures/GUI/or_rr.png)
 
 
 <p style="margin-top:50px"></p>
@@ -1366,7 +1366,7 @@ export2md(createTable(compareGroups(tcv ~  year + age + sex, data=regicor), show
 
 To generate this table, select _tocv_ variable and _cv_, indicating the time-to-event and the status, respectively, and select the event category for the status variable. Finally, as for Odds Ratios, mark 'Show odds/hazard ratio' in the 'Report Options' menu before exporting the table.
 
-![](./figures/GUI/toevent.png)
+![ ](./figures/GUI/toevent.png)
 
 
 <p style="margin-top:1cm"></p>
