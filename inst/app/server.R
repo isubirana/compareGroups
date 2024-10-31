@@ -4,19 +4,21 @@ server <- function(input, output, session) {
   #   tags$style(HTML(paste0(".main-sidebar{width: ", input$sidebarwidth,"%;}")))
   # })
   
-  # register entrance and exit time entries
-  observe({
-    dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
-    googlesheets4::sheet_append(sheet_id, dd)
-  })
-  onStop(
-    function(){
-      dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
-      #print(dd)
+  if (!runAppLocal){
+    # register entrance and exit time entries
+    observe({
+      dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
       googlesheets4::sheet_append(sheet_id, dd)
-      #print("xxxx")
-    }
-  )
+    })
+    onStop(
+      function(){
+        dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
+        #print(dd)
+        googlesheets4::sheet_append(sheet_id, dd)
+        #print("xxxx")
+      }
+    )
+  }
 
   output$xxx <- renderPrint({
     # cat("summary(rv$dataset)\n")

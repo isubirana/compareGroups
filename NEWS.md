@@ -1,3 +1,6 @@
+# compareGroups 4.9.1
+- bug fixed in cGroupsWUI()
+
 # compareGroups 4.9.0
 - new argument `nmax.method` to compute the N shown in the header. By default N is computed as the number of rows with at least one valid value in the described variables, but also N can be computed as the total number of rows in the data set or in each group regardless the available data in the described variables. 
 - new argument `stars` in `descrTable` and `createTable` functions to show significance levels asterisks beside p-values.
