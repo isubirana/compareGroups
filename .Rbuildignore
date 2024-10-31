@@ -22,3 +22,4 @@
 ^README\.Rmd$
 ^README\.html$
 ^index\.md$
+^\.github$

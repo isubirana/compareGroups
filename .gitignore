@@ -6,3 +6,4 @@ inst/app/rsconnect
 inst/app/.secrets
 ^README\.Rmd$
 
+docs
