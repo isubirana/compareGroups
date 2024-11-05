@@ -71,9 +71,13 @@ export2md<-function(x, which.table="descr", nmax=TRUE, nmax.method=1, header.lab
     colnames(table1) <- table1[1, ]
     colnames(table1)[-1] <- trim(colnames(table1)[-1])
     table1 <- table1[-1, , drop = FALSE]
-    table1[,2:ncol(table1)] <- apply(table1[,-1,drop=FALSE],2,trim)
+    if (ncol(table1)>1) # v4.9.2
+      table1[,2:ncol(table1)] <- apply(table1[,-1,drop=FALSE],2,trim)
     # N in the second row
-    n.exists <- nrow(table1) > 1 && length(grep("^N=", trim(table1[1, 2])))    
+    if (ncol(table1)<2) # 4.9.2
+      n.exists <- FALSE
+    else
+      n.exists <- nrow(table1) > 1 && length(grep("^N=", trim(table1[1, 2])))    
     if (format=="latex" & strip) 
       table1[((1+n.exists):nrow(table1)),ncol(table1)] <- ifelse(table1[((1+n.exists):nrow(table1)),ncol(table1)]=="", "\\vphantom{}", table1[((1+n.exists):nrow(table1)),ncol(table1)])
     if (format=="latex") caption <- gsub("%","\\\\%",caption)

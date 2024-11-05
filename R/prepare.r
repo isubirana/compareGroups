@@ -103,12 +103,15 @@ function (x, nmax, nmax.method, header.labels)
         ww.N<-rev(ww.N)[1]
         table1[1,ww.N]<-header.labels["N"]
       }
-    }          
-    table1 <- apply(table1, 2, format, justify = "centre")
-    colnames(table1) <- rep("", ncol(table1))
-    
+    }      
 
-    
+    #if (ncol(table1)==0) stop("You must request some information from the table. Try to set 'show.n', 'show.descr', etc. to TRUE in 'createTable' or 'descrTable' function.")
+    # v4.9.2
+    if (ncol(table1)>0){
+      table1 <- apply(table1, 2, format, justify = "centre")
+      colnames(table1) <- rep("", ncol(table1))
+    }
+
     table2 <- x[[2]]
     table2 <- as.matrix(table2)
     table2 <- ifelse(is.na(table2), "", table2)
