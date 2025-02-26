@@ -3,6 +3,7 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
                         lab.ref = "Ref.", stars = FALSE)
 {
   
+  
   os<-sessionInfo()$platform
   locale<-sessionInfo()$locale
   locale<-strsplit(locale,";")[[1]]
@@ -66,7 +67,9 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
      temp<-rep(digits[".else"],length(x))
      digits<-digits[-which(names(digits)==".else")]
    }
+
    names(temp)<-attr(x,"varnames.orig")     
+
    if (!all(names(digits)%in%names(temp)))
      warning(paste("variables",paste(names(digits)[!names(digits)%in%names(temp)],collapse=", "),"specified in 'digits' not found"))
    kkk<-names(digits)[names(digits)%in%attr(x,"varnames.orig")]
@@ -149,7 +152,7 @@ createTable <- function(x, hide = NA, digits = NA, type = NA, show.p.overall = T
 
   elim.pos<-NULL
   dd.pos<-NULL
-
+  
   if (attr(x,"groups")){
     if (missing(show.all))
       show.all<-FALSE

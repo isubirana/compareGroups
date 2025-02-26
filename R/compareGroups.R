@@ -158,6 +158,10 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
 
     ans <- eval(parse(text=cmd))
     
+    # erase variables that could not be described
+    if (length(elim <- attr(ans,"elim"))>0)  X <- X[,-elim,drop=FALSE]
+    print(elim)
+
     if (attr(ans, "groups")) {
         if (!is.null(attr(y, "label")) & include.label) 
             attr(ans, "yname") <- attr(y, "label")

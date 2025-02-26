@@ -211,6 +211,27 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
    if (NROW(X)!=NROW(y))
     stop("data doesn't mach")
    
+   elim <- numeric()
+   ans <- list()
+   for (i in 1:nvars){
+   # ans <- lapply(1:nvars, function(i){
+     ans.i <- try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], 
+                            alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], 
+                            Q1=Q1, Q3=Q3, groups=groups, simplify=simplify, Xext=Xext, ref=ref[i], 
+                            fact.ratio=fact.ratio[i], ref.y=ref.y, p.corrected=p.corrected, 
+                            compute.ratio=compute.ratio, include.miss=include.miss, oddsratio.method=oddsratio.method, 
+                            chisq.test.perm=chisq.test.perm, byrow=byrow, chisq.test.B=chisq.test.B, 
+                            chisq.test.seed=chisq.test.seed, Date.format=Date.format, var.equal=var.equal, 
+                            conf.level=conf.level, surv=surv, riskratio=riskratio, riskratio.method=riskratio.method,
+                            compute.prop=compute.prop, lab.missing=lab.missing, p.trend.method=p.trend.method),
+                  silent=TRUE)
+     #if (inherits(ans.i, "try-error")) print(ans.i)
+     # ans.i
+   # })
+     if (inherits(ans.i, "try-error")) elim <- c(elim, i)
+     ans[[i]] <- ans.i
+   }
+   
    ans <- lapply(1:nvars, function(i){
      ans.i <- try(compare.i(X[,i],y=y, selec.i=selec[i], method.i=method[i], timemax.i=timemax[i], 
                             alpha=alpha, min.dis=min.dis, max.xlev=max.xlev, varname=names(X)[i], 
@@ -225,6 +246,8 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
      #if (inherits(ans.i, "try-error")) print(ans.i)
      ans.i
    })
+   
+   
    
    names(ans)<-names.X    
 
@@ -272,6 +295,7 @@ function(X, y, Xext, selec, method, timemax, alpha, min.dis, max.ylev, max.xlev,
    attr(ans,"Q1")<-Q1
    attr(ans,"Q3")<-Q3
    attr(ans,"byrow")<-byrow
+   attr(ans, "elim") <- elim
 
    class(ans)<-"compareGroups"
    

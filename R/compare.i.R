@@ -194,9 +194,10 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
         if (inherits(p.trend,"try-error"))
           p.trend <- NaN      
         if (is.na(p.trend))
-          p.trend <- NaN                             
+          p.trend <- NaN 
+        # p.mult
         pp<-np<-NULL
-        for (i in 1:(ny-1))
+        for (i in 1:(ny-1)){
           for (j in (i+1):ny) {
             np<-c(np,paste(levels(y)[i],levels(y)[j],sep=" vs "))
             p.ij<-try(chisq.test2(t(tt[c(i,j),]), chisq.test.perm, chisq.test.B, chisq.test.seed),silent=TRUE)
@@ -204,12 +205,25 @@ function(x, y, selec.i, method.i, timemax.i, alpha, min.dis, max.xlev, varname, 
               p.ij<-NaN
             pp<-c(pp,p.ij)
           }    
+        }
         if (p.corrected)
           p.mul <- structure(p.adjust(pp,"BH"),names=paste("p",np,sep="."))
         else
           p.mul <- structure(pp,names=paste("p",np,sep="."))
+        # p.ref
+        if (ref>nlevels(x)){
+          ref<-1
+          warning(paste("Variable",varname,": reference > nlevels, reference set to 1"))
+        } 
+        p.ref <- rep(NA, nlevels(x))
+        temp <- sapply((1:ncol(tt))[-ref], function(i){
+          res<-try(chisq.test2(tt[,c(ref,i)], chisq.test.perm, chisq.test.B, chisq.test.seed),silent=TRUE)
+          if (inherits(res,"try-error")) return(NaN)
+          res
+        })
+        p.ref[-ref] <- temp
       }
-      ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul, lower=lower, upper=upper)
+      ans<-list(descriptive=nn, prop=prop, sam=rowSums(nn), p.overall=p.overall, p.trend=p.trend, p.mul=p.mul, lower=lower, upper=upper,p.ratio=p.ref)
       attr(ans, "method") <- "categorical" 
     } else { ## x - not a factor
       
