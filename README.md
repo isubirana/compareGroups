@@ -295,7 +295,7 @@ function applied on the table:
 <col style="width: 50%" />
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;"><img
 src="./man/figures/var1sex.png" /></td>
 <td style="text-align: center;"><img
