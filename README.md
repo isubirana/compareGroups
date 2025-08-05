@@ -20,6 +20,8 @@ version](https://www.r-pkg.org/badges/version/compareGroups)](https://cran.r-pro
 
 ## Overview
 
+xxxxxx
+
 **compareGroups** is an R package available on CRAN which performs
 descriptive tables displaying means, standard deviation, quantiles or
 frequencies of several variables. Also, p-value to test equality between
