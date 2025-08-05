@@ -36,7 +36,8 @@ function(x, hide.i, digits, digits.ratio, type, varname, hide.i.no, digits.p, sd
   } else  
     ci <- NA
   if (!is.null(p.ratio)){
-    rr <- is.na(p.ratio) & !is.nan(p.ratio)
+    #rr <- is.na(p.ratio) & !is.nan(p.ratio) # ja ho ha calculat del ci!!! 4.9.3
+    p.ratio[!rr] <- ifelse(is.na(p.ratio[!rr]), NaN, p.ratio[!rr]) # 4.9.3. si no es pot calcular, que posi NaN (així ho posa a ".")
     p.ratio <- ifelse(is.nan(p.ratio),".",format2(p.ratio,digits.p,stars=stars))
     p.ratio[rr]<-lab.ref
   }else 
