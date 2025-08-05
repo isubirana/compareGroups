@@ -1384,11 +1384,11 @@ Days to overall death or end of follow-up
 
 <table>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;"><code>plot(tab["sex"])</code></td>
 <td style="text-align: center;"><code>plot(tab["age"])</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;"><img
 src="./man/figures/var1sex.png" /></td>
 <td style="text-align: center;"><img
