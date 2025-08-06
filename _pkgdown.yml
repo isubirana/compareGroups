@@ -1,5 +1,101 @@
-url: https://isubirana.github.io/compareGroups/
+url: https://isubirana.github.io/compareGroups/index.html
+
 template:
+  params:
+    bootswatch: cerulean
   bootstrap: 5
-  bootswatch: cerulean
+    
+title: compareGroups
+
+author: Isaac Subirana Cachinero
+navbar:
+  type: inverse
+  structure:
+    left:
+    - home
+    - articles
+    - wui
+    - reference
+    - news
+    right: 
+    - search
+    - github
+    - forum   
+  components:
+    home:
+      icon: fa-home fa-lg    
+      text: Home
+      href: index.html  
+    reference:
+      icon: fas fa-list-ul
+      text: Reference
+      href: reference/index.html
+    articles:
+      icon: fas fa-book 
+      text: Articles
+      menu:
+      - text: "package manual"
+        href: articles/compareGroups_vignette.html
+      - text: -------
+      - text: "Examples:"
+      - text: "Example 1"
+        href: articles/examples/example1.html
+      - text: "Example 2"
+        href: articles/examples/example2.html
+    news:
+      icon: fas fa-wrench
+      text: Changelog
+      href: news/index.html
+    github:
+      icon: fa-github fa-lg
+      href: https://github.com/isubirana/compareGroups
+      aria-label: "github"
+    forum:
+      icon: fas fa-comments
+      text: 'Forum'
+      href: https://groups.google.com/forum/#!forum/comparegroupsforum   
+    wui:
+      icon: fas fa-play
+      text: 'WUI'
+      href: articles/wui.html
+      
+home:
+  path: pkgdown/index.Rmd      
+      
+reference:
+  - title: "compareGropus package"
+    contents:
+      - compareGroups-package
+  - title: "Computing descriptives"
+    contents:
+      - compareGroups
+      - compareSNPs
+  - title: "Building descriptive tables"
+    contents: 
+      - createTable 
+      - descrTable
+      - strataTable
+  - title: "Exporting and saving descriptive tables"
+    contents:
+      - starts_with("export2")
+  - title: "Retrieving results from a descriptive tables"
+    contents:
+      - getResults
+  - title: "Graphical user interfaces"
+    contents: 
+      - cGroupsGUI
+      - cGroupsWUI
+  - title: "Miscelania functions"
+    contents:
+      - printTable
+      - radiograph
+      - report
+      - varinfo
+      - missingTable 
+      - padjustCompareGroups
+  - title: "compareGroups Datasets"
+    contents:
+      - SNPs
+      - regicor  
+  
 

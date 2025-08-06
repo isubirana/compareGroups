@@ -25,8 +25,6 @@ library(knitr)
 
 ## Overview
 
-xxxxxx
-
 **compareGroups** is an R package available on CRAN which performs descriptive tables displaying means, standard deviation, quantiles or frequencies of several variables. Also, p-value to test equality between groups is computed using the appropiate test. <br>
 
 With a very simple code, nice, compact and ready-to-publish descriptives table are displayed on R console. They can also be exported to different formats, such as Word, Excel, PDF or inserted in a R-Sweave or R-markdown document.<br>
@@ -147,6 +145,7 @@ export2md(tabhr[1:10], header.label=c("p.ratio"="p-value"),
 For those not familiar to R syntax, a Web User Interface (**WUI**) has been implemented using [Shiny](https://shiny.rstudio.com/) tools, which can be used off line by typing `cGroupsWUI()` after having `compareGroups` package installed and loaded, or remotely just accessing the application hosted in a [shinyapp.io server](https://isubirana.shinyapps.io/compareGroups/).
 
 
+![](./man/figures/WUI.png)
 
-![ ](./man/figures/WUI.png)
+
 

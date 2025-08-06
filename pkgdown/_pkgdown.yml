@@ -8,7 +8,6 @@ template:
 title: compareGroups
 
 author: Isaac Subirana Cachinero
-
 navbar:
   type: inverse
   structure:
@@ -20,12 +19,12 @@ navbar:
     - news
     right: 
     - github
-    - forum
+    - forum   
   components:
     home:
       icon: fa-home fa-lg    
       text: Home
-      href: index.html
+      href: index.html  
     reference:
       icon: fas fa-list-ul
       text: Reference
