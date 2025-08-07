@@ -23,7 +23,7 @@ navbar:
     - forum   
   components:
     home:
-      icon: fa-home fa-lg    
+      icon: fa-solid fa-house   
       text: Home
       href: index.html  
     reference:
@@ -49,6 +49,7 @@ navbar:
     github:
       icon: fa-github fa-lg
       href: https://github.com/isubirana/compareGroups
+      aria-label: Go to github package repository
     forum:
       icon: fas fa-comments
       text: 'Forum'
