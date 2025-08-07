@@ -2,7 +2,7 @@ url: https://isubirana.github.io/compareGroups/index.html
 
 template:
   params:
-    bootswatch: spacelab
+    bootswatch: cerulean
   bootstrap: 5
     
 title: compareGroups
@@ -18,20 +18,20 @@ navbar:
     - reference
     - news
     right: 
+    - search
     - github
     - forum   
   components:
     home:
-      icon: fa-home fa-lg
+      icon: fa-home   
       text: Home
       href: index.html  
-      
     reference:
-      icon: fas fa-list-ul
+      icon: fa-list
       text: Reference
       href: reference/index.html
     articles:
-      icon: fas fa-book 
+      icon: fa-book
       text: Articles
       menu:
       - text: "package manual"
@@ -43,19 +43,20 @@ navbar:
       - text: "Example 2"
         href: articles/examples/example2.html
     news:
-      icon: fas fa-wrench
+      icon: fa-wrench
       text: Changelog
       href: news/index.html
     github:
-      icon: fa-github fa-lg
+      icon: fa-github
+      text: github
       href: https://github.com/isubirana/compareGroups
       aria-label: Go to github package repository
     forum:
-      icon: fas fa-comments
+      icon: fa-comments
       text: 'Forum'
       href: https://groups.google.com/forum/#!forum/comparegroupsforum   
     wui:
-      icon: fas fa-play
+      icon: fa-play
       text: 'WUI'
       href: articles/wui.html
       
@@ -96,4 +97,4 @@ reference:
   - title: "compareGroups Datasets"
     contents:
       - SNPs
-      - regicor
+      - regicor  
