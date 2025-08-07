@@ -23,15 +23,15 @@ navbar:
     - forum   
   components:
     home:
-      icon: fa-solid fa-house   
+      icon: fa-home   
       text: Home
       href: index.html  
     reference:
-      icon: fa-solid fa-list
+      icon: fa-list
       text: Reference
       href: reference/index.html
     articles:
-      icon: fa-solid fa-book
+      icon: fa-book
       text: Articles
       menu:
       - text: "package manual"
@@ -43,20 +43,20 @@ navbar:
       - text: "Example 2"
         href: articles/examples/example2.html
     news:
-      icon: fa-solid fa-wrench
+      icon: fa-wrench
       text: Changelog
       href: news/index.html
     github:
-      icon: fa-brands fa-github
+      icon: fa-github
       text: github
       href: https://github.com/isubirana/compareGroups
       aria-label: Go to github package repository
     forum:
-      icon: fa-solid fa-comments
+      icon: fa-comments
       text: 'Forum'
       href: https://groups.google.com/forum/#!forum/comparegroupsforum   
     wui:
-      icon: fa-solid fa-play
+      icon: fa-play
       text: 'WUI'
       href: articles/wui.html
       
