@@ -24,6 +24,7 @@ importFrom(kableExtra, add_footnote,add_header_above,add_indent,auto_index,cell_
            spec_font_size,spec_popover,spec_tooltip,text_spec,usepackage_latex,xml_as_kable,xtable2kable)
 importFrom(stats, model.frame)
 importFrom(PMCMRplus, cuzickTest)
+importFrom(rmdformats, html_clean)
 
 export(
 compareGroups,

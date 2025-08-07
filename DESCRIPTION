@@ -18,7 +18,8 @@ Imports:
     writexl,
     flextable,
     officer,
-    PMCMRplus
+    PMCMRplus,
+    rmdformats
 Suggests: 
     tcltk2,
     shiny,
