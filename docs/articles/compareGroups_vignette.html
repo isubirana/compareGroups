@@ -236,9 +236,8 @@ Markdown, Word or Excel, respectively.</li>
 classes and methods.</p>
 <p style="margin-top:50px">
 </p>
-<div class="float">
-<img src="figures/classes.png" alt="Figure 1. Diagram of package structure."><div class="figcaption">Figure 1. Diagram of package structure.</div>
-</div>
+<p>`</p>
+<p><img src="figures/classes.png" alt="image not found" title="Figure 1. Diagram of package structure."></p>
 <p style="margin-top:50px">
 </p>
 <p>Since version 4.0, a new function called
@@ -1011,12 +1010,14 @@ can be seen on-screen or saved in different formats (BMP, JPG’, PNG, TIF
 or PDF). To specify the format use the argument `type’.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span>, file<span class="op">=</span><span class="st">"./figures/univar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures/univar/age.png"><img src="figures/univar/sex.png"></p>
+<p><img src="figures/univar/age.png" alt="image not found"></p>
+<p><img src="figures/univar/sex.png" alt="image not found"></p>
 <p>Plots also can be done according to grouping variable. In this case
 only a boxplot is shown for continuous variables:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures/bivar/age.png"><img src="figures/bivar/sex.png"></p>
+<p><img src="figures/bivar/age.png" alt="image not found"></p>
+<p><img src="figures/bivar/sex.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -1297,7 +1298,8 @@ censored and with a plus sign for uncensored.</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">sex</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivarsurv/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="../reference/compareGroups.html">compareGroups</a></span><span class="op">(</span><span class="va">tmain</span> <span class="op">~</span> <span class="va">age</span>, data<span class="op">=</span><span class="va">regicor</span><span class="op">)</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivarsurv/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures/bivarsurv/age.png"><img src="figures/bivarsurv/sex.png"></p>
+<p><img src="figures/bivarsurv/age.png" alt="image not found"></p>
+<p><img src="figures/bivarsurv/sex.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -1324,7 +1326,8 @@ stratified by the grouping variable.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, file<span class="op">=</span><span class="st">"./figures/univar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, bivar<span class="op">=</span><span class="cn">TRUE</span>, file<span class="op">=</span><span class="st">"./figures/bivar/"</span>, type<span class="op">=</span><span class="st">"png"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures/univar/tmain.png"><img src="figures/bivar/tmain.png"></p>
+<p><img src="figures/univar/tmain.png" alt="image not found"></p>
+<p><img src="figures/bivar/tmain.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -7044,7 +7047,7 @@ format, CSV plain text file or a <em>data.frame</em> already existing in
 the Workspace. You need to specify a data set. In this example the
 <em>regicor</em> data is loaded.</li>
 </ul>
-<p><img src="figures/GUI/step1_load_data.PNG"></p>
+<p><img src="figures/GUI/step1_load_data.PNG" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7052,7 +7055,7 @@ the Workspace. You need to specify a data set. In this example the
 <strong>Step 2.</strong> Choose the variables to be described
 (row-variables).</li>
 </ul>
-<p><img src="figures/GUI/step2_select_row_variables.png"></p>
+<p><img src="figures/GUI/step2_select_row_variables.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7062,7 +7065,7 @@ desired (for example), move the variable <em>year</em> to the GUI top
 frame, making it the factor variable. To report descriptives for the
 whole sample (i.e., no groups), click on the “none” button.</li>
 </ul>
-<p><img src="figures/GUI/step3_select_group_variable.png"></p>
+<p><img src="figures/GUI/step3_select_group_variable.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7072,7 +7075,7 @@ no categories of a categorical row-variable. In this example, “Male”
 levels will be hidden for Sex; conversely, all categories will be shown
 for other categorical variables.</li>
 </ul>
-<p><img src="figures/GUI/step4_hide_categ.png"></p>
+<p><img src="figures/GUI/step4_hide_categ.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7086,7 +7089,7 @@ In this example, triglycerides will be treated as non-normal, i.e.,
 median and quartiles will be reported instead of mean and standard
 deviation.</li>
 </ul>
-<p><img src="figures/GUI/step5_select_method.png"></p>
+<p><img src="figures/GUI/step5_select_method.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7100,7 +7103,7 @@ of individuals to be included for all row-variables: type the logical
 condition (selection criteria of individuals) on the “Global subset”
 window instead of “Variable subset”.</li>
 </ul>
-<p><img src="figures/GUI/step6_subsetting.png"></p>
+<p><img src="figures/GUI/step6_subsetting.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7110,7 +7113,7 @@ set by clicking on “Report options” from the main menu, such as to
 report descriptives (mean, frequencies, medians, etc.), display the
 p-trend, and show only relative frequencies.</li>
 </ul>
-<p><img src="figures/GUI/step7_report_options.png"></p>
+<p><img src="figures/GUI/step7_report_options.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <ul>
@@ -7121,7 +7124,7 @@ the bivariate table, as well as a summary (available data, etc.), on the
 <strong><code>R</code></strong> console. The table can also be exported
 to the file formats listed.</li>
 </ul>
-<p><img src="figures/GUI/step8_export_table.png"></p>
+<p><img src="figures/GUI/step8_export_table.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 <div class="section level3">
@@ -7332,7 +7335,7 @@ select <em>htn</em> variable (Hypertension status) as the factor
 variable, indicate “no” category on the “reference” pull-down menu, and
 mark “Show odds/hazard ratio” in the “Report Options” menu before
 exporting the table.</p>
-<p><img src="figures/GUI/or_rr.png"></p>
+<p><img src="figures/GUI/or_rr.png" alt="image not found"></p>
 <p style="margin-top:50px">
 </p>
 </div>
@@ -7535,7 +7538,7 @@ Female
 and select the event category for the status variable. Finally, as for
 Odds Ratios, mark ‘Show odds/hazard ratio’ in the ‘Report Options’ menu
 before exporting the table.</p>
-<p><img src="figures/GUI/toevent.png"></p>
+<p><img src="figures/GUI/toevent.png" alt="image not found"></p>
 <p style="margin-top:1cm">
 </p>
 <p>To return to the <strong><code>R</code></strong> console, just close

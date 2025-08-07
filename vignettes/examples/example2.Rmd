@@ -61,12 +61,12 @@ by using the `plot` method which takes the results created by <font style="color
 a. For categorical variables a barplot is performed, stratifying by groups (right plot) or not (left plot):
 
 
-```{r, fig.width=5, fig.height=5}
+```{r, fig.width=5, fig.height=5,fig.alt="image not found"}
 plot(res['sex'])
 ```
 
 
-```{r, fig.width=7, fig.height=5}
+```{r, fig.width=7, fig.height=5,fig.alt="image not found"}
 plot(res['sex'], bivar=TRUE)
 ```
 
@@ -76,12 +76,12 @@ plot(res['sex'], bivar=TRUE)
 b. For continuous variables boxplots or normality plots are performed depending whether groups are considered or not, respectively.
 
 
-```{r, fig.width=7, fig.height=7}
+```{r, fig.width=7, fig.height=7,fig.alt="image not found"}
 plot(res['bmi'])
 ```
 
 
-```{r, fig.width=7, fig.height=5}
+```{r, fig.width=7, fig.height=5,fig.alt="image not found"}
 plot(res['bmi'],bivar=TRUE)
 ```
 

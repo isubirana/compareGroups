@@ -4,8 +4,10 @@
 
 [![CRAN
 version](https://www.r-pkg.org/badges/version/compareGroups)](https://cran.r-project.org/package=compareGroups)
-![](https://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
-![](https://cranlogs.r-pkg.org/badges/last-month/compareGroups)
+![image not
+found](https://cranlogs.r-pkg.org/badges/grand-total/compareGroups)
+![image not
+found](https://cranlogs.r-pkg.org/badges/last-month/compareGroups)
 
 ## Overview
 
@@ -31,7 +33,7 @@ Statistical Software \[Subirana et al, 2014\]
 
 ## Who we are
 
-<img style="float:right; padding:10px" width="25%" src="./man/figures/prbb.jpg" />
+<img style="float:right; padding:10px" width="25%" src="./man/figures/prbb.jpg" alt="image not found"/>
 
 **`compareGroups`** is developed and maintained by Isaac Subirana,
 Hector Sanz, Joan Vila and collaborators at the cardiovascular
@@ -40,7 +42,7 @@ Research Park (PRBB)](http://www.prbb.org/) .
 
 <br><br><br><br><br>
 
-<img style="float:left; padding:10px" width="20%" src="./man/figures/logo_regicor.jpg" />
+<img style="float:left; padding:10px" width="20%" src="./man/figures/logo_regicor.jpg" alt="image not found"/>
 
 As the driving force behind the [REGICOR
 study](https://www.regicor.org), URLEC has extensive experience in
@@ -1383,16 +1385,20 @@ Days to overall death or end of follow-up
 ### Visual exploration
 
 <table>
+<colgroup>
+<col style="width: 46%" />
+<col style="width: 53%" />
+</colgroup>
 <tbody>
 <tr>
 <td style="text-align: center;"><code>plot(tab["sex"])</code></td>
 <td style="text-align: center;"><code>plot(tab["age"])</code></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img
-src="./man/figures/var1sex.png" /></td>
-<td style="text-align: center;"><img
-src="./man/figures/var1age.png" /></td>
+<td style="text-align: center;"><img src="./man/figures/var1sex.png"
+alt="image not found" /></td>
+<td style="text-align: center;"><img src="./man/figures/var1age.png"
+alt="image not found" /></td>
 </tr>
 </tbody>
 </table>
@@ -1947,4 +1953,4 @@ can be used off line by typing `cGroupsWUI()` after having
 the application hosted in a [shinyapp.io
 server](https://isubirana.shinyapps.io/compareGroups/).
 
-![](./man/figures/WUI.png)
+<img src="./man/figures/WUI.png" alt="image not found"/>
