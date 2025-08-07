@@ -27,11 +27,11 @@ navbar:
       text: Home
       href: index.html  
     reference:
-      icon: fas fa-list-ul
+      icon: fa-solid fa-list
       text: Reference
       href: reference/index.html
     articles:
-      icon: fas fa-book 
+      icon: fa-solid fa-book
       text: Articles
       menu:
       - text: "package manual"
@@ -43,19 +43,20 @@ navbar:
       - text: "Example 2"
         href: articles/examples/example2.html
     news:
-      icon: fas fa-wrench
+      icon: fa-solid fa-wrench
       text: Changelog
       href: news/index.html
     github:
-      icon: fa-github fa-lg
+      icon: fa-brands fa-github
+      text: github
       href: https://github.com/isubirana/compareGroups
       aria-label: Go to github package repository
     forum:
-      icon: fas fa-comments
+      icon: fa-solid fa-comments
       text: 'Forum'
       href: https://groups.google.com/forum/#!forum/comparegroupsforum   
     wui:
-      icon: fas fa-play
+      icon: fa-solid fa-play
       text: 'WUI'
       href: articles/wui.html
       
