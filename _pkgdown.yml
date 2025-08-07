@@ -49,7 +49,6 @@ navbar:
     github:
       icon: fa-github fa-lg
       href: https://github.com/isubirana/compareGroups
-      aria-label: "github"
     forum:
       icon: fas fa-comments
       text: 'Forum'
