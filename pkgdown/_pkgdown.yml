@@ -23,7 +23,7 @@ navbar:
     - forum   
   components:
     home:
-      icon: fas fa-home fa-lg  
+      icon: fa-solid fa-house  
       text: Home
       href: index.html  
     reference:
