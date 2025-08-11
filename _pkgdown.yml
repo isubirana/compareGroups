@@ -39,9 +39,9 @@ navbar:
       - text: -------
       - text: "Examples:"
       - text: "Example 1"
-        href: articles/examples/example1.html
+        href: articles/example1.html
       - text: "Example 2"
-        href: articles/examples/example2.html
+        href: articles/example2.html
     news:
       icon: fas fa-wrench fa-lg
       text: Changelog
