@@ -69,7 +69,7 @@ print(restab, header.labels = c(p.overall = "p-value"))
 
 ### Exporting to different formats
 
-<img src="example1pdf.png" alt="image not found"/>
+<img src="./figures/example1pdf.png" alt="image not found"/>
 
 -   **Word**
 
@@ -79,7 +79,7 @@ Export to a Word.
 export2word(restab, file = "example1.docx", header.labels = c(p.overall = "p-value"))
 ```
 
-<img src="example1docx.png" alt="image not found"/>
+<img src="./figures/example1docx.png" alt="image not found"/>
 
 -   **PDF**
 
@@ -89,7 +89,7 @@ If you want to create a PDF document with the table in a publish-ready format
 export2pdf(restab, file = "example1.pdf", header.labels = c(p.overall = "p-value"))
 ```
 
-<img src="example1pdf.png" alt="image not found"/>
+<img src="./figures/example1pdf.png" alt="image not found"/>
 
 *Note: To create tables in PDF you must have some LaTeX compiler installed on your computer.*
 
@@ -102,7 +102,7 @@ export2xls(restab, file = "example1.xlsx", header.labels = c(p.overall = "p-valu
 ```
 
 
-<img src="./example1xlsx.png" alt="image not found"/>
+<img src="./figures/example1xlsx.png" alt="image not found"/>
 
 
 *Note: You must have `writexlR` package installed.*

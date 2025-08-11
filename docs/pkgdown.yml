@@ -3,10 +3,10 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   compareGroups_vignette: compareGroups_vignette.html
-  examples/example1: examples/example1.html
-  examples/example2: examples/example2.html
+  example1: example1.html
+  example2: example2.html
   wui: wui.html
-last_built: 2025-08-11T09:32Z
+last_built: 2025-08-11T09:55Z
 urls:
   reference: https://isubirana.github.io/compareGroups/index.html/reference
   article: https://isubirana.github.io/compareGroups/index.html/articles

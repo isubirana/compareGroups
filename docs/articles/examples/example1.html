@@ -228,14 +228,14 @@ Days to overall death or end of follow-up        1557 [812;2689] 1609 [734;2549]
 <div class="section level3">
 <h3 id="exporting-to-different-formats">Exporting to different formats<a class="anchor" aria-label="anchor" href="#exporting-to-different-formats"></a>
 </h3>
-<p><img src="example1pdf.png" alt="image not found"></p>
+<p><img src="../figures/example1pdf.png" alt="image not found"></p>
 <ul>
 <li><strong>Word</strong></li>
 </ul>
 <p>Export to a Word.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/export2word.html">export2word</a></span><span class="op">(</span><span class="va">restab</span>, file <span class="op">=</span> <span class="st">"example1.docx"</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>p.overall <span class="op">=</span> <span class="st">"p-value"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="example1docx.png" alt="image not found"></p>
+<p><img src="../figures/example1docx.png" alt="image not found"></p>
 <ul>
 <li><strong>PDF</strong></li>
 </ul>
@@ -243,7 +243,7 @@ Days to overall death or end of follow-up        1557 [812;2689] 1609 [734;2549]
 publish-ready format</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/export2pdf.html">export2pdf</a></span><span class="op">(</span><span class="va">restab</span>, file <span class="op">=</span> <span class="st">"example1.pdf"</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>p.overall <span class="op">=</span> <span class="st">"p-value"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="example1pdf.png" alt="image not found"></p>
+<p><img src="../figures/example1pdf.png" alt="image not found"></p>
 <p><em>Note: To create tables in PDF you must have some LaTeX compiler
 installed on your computer.</em></p>
 <ul>
@@ -252,7 +252,7 @@ installed on your computer.</em></p>
 <p>If you want export the descriptive table to an Excel file:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/export2xls.html">export2xls</a></span><span class="op">(</span><span class="va">restab</span>, file <span class="op">=</span> <span class="st">"example1.xlsx"</span>, header.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>p.overall <span class="op">=</span> <span class="st">"p-value"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="./example1xlsx.png" alt="image not found"></p>
+<p><img src="../figures/example1xlsx.png" alt="image not found"></p>
 <p><em>Note: You must have <code>writexlR</code> package
 installed.</em></p>
 <ul>
