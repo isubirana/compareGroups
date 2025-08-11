@@ -23,7 +23,7 @@ navbar:
     - forum   
   components:
     home:
-      icon: fa-solid fa-house-chimney
+      icon: fa-solid fa-house
       text: Home
       href: index.html  
     reference:
