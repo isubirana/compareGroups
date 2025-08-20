@@ -25,6 +25,7 @@ importFrom(kableExtra, add_footnote,add_header_above,add_indent,auto_index,cell_
 importFrom(stats, model.frame)
 importFrom(PMCMRplus, cuzickTest)
 importFrom(rmdformats, html_clean)
+importFrom(rstatix,games_howell_test)
 
 export(
 compareGroups,

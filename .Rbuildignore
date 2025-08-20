@@ -5,7 +5,8 @@
 ^_config\.yml$
 ^build_logo\.R$
 ^vignettes/about.Rmd$
-^vignettes/examples$
+^vignettes/example1.Rmd$
+^vignettes/example2.Rmd$
 ^vignettes/wui.Rmd$
 ^README.css$
 ^README_files$
@@ -18,8 +19,8 @@
 ^inst/app/rsconnect$
 ^inst/app/\.secrets$
 ^_pkgdown\.yml$
-
 ^README\.Rmd$
 ^README\.html$
 ^index\.md$
 ^\.github$
+^\.secrets$

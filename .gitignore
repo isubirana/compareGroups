@@ -4,4 +4,4 @@
 .Ruserdata
 inst/app/rsconnect
 inst/app/.secrets
-
+.secrets

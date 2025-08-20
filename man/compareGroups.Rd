@@ -22,7 +22,7 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, 
   compute.ratio = TRUE, include.miss = FALSE, oddsratio.method = "midp", 
   chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, chisq.test.seed = NULL, 
-  Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
+  Date.format = "d-mon-Y", var.equal = FALSE, conf.level = 0.95, surv=FALSE,
   riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, 
   lab.missing = "'Missing'", p.trend.method = "spearman")
 \method{plot}{compareGroups}(x, file, type = "pdf", bivar = FALSE, z=1.5, 
@@ -93,8 +93,8 @@ compareGroups(formula, data, subset, na.action = NULL, y = NULL, Xext = NULL,
   
   \item{Date.format}{character indicating how the dates are shown. Default is "d-mon-Y". See \code{\link[chron]{chron}} for more details.} 
   
-  \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE \code{\link{anova}} function is applied and \code{\link{oneway.test}} otherwise. Default value is TRUE.}   
-
+  \item{var.equal}{logical, indicating whether to consider equal variances when comparing means on normal distributed variables. Default value is FALSE. See details section for more information.}
+  
   \item{conf.level}{double. Conficende level of confidence interval for means, medians, proportions or incidence, and hazard, odds and risk ratios. Default value is 0.95.}
   
   \item{surv}{logical. Compute survival (TRUE) or incidence (FALSE) for time-to-event row-variables. Default value is FALSE.} 
@@ -136,7 +136,11 @@ Depending whether the row-variable is considered as continuous normal-distribute
   3- or absolute and relative frequencies and chi-squared or exact Fisher test when the expected frequencies is less than 5 in some cell\cr
 Also, a row-variable can be of class 'Surv'. Then the probability of 'event' at a fixed time (set up with 'timemax' argument) is computed and a logrank test is performed.\cr 
 
-When there are more than 2 groups, it also performs pairwise comparisons adjusting for multiple testing (Tukey when row-variable is normal-distributed and Benjamini & Hochberg method otherwise), and computes p-value for trend. 
+When there are more than two groups, it also performs pairwise comparisons adjusting for multiple testing 
+(Tukey or Games-Howell test when row-variable is normal-distributed and Benjamini & Hochberg method otherwise), and computes p-value for trend. 
+
+When variances are assumed different for normal distributed row-variables, Welch correccion is applied and Games Howell test (\code{\link[rstatix]{games_howell_test}}) for pairwise comparison p-values is performed.
+
 The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. Also, for continuous non normal distributed variables, it is possible to compute the p-value for trend using the Kendall's test (\code{method='kendall'} from \code{\link{cor.test}}) or Cuzick's test (\code{\link[PMCMRplus]{cuzickTest}}). 
 If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor. 
 If the row-variable is categorical, the p-value for trend is computed from Mantel-Haenszel test of trend.
@@ -185,6 +189,8 @@ Subjects selection criteria specified in 'selec' and 'subset' arguments are comb
 Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see \code{\link[grDevices]{pdf}}, \code{\link[grDevices:png]{bmp}}, \code{\link[grDevices:png]{jpeg}}, \code{\link[grDevices]{png}} or \code{\link[grDevices:png]{tiff}}.\cr
 
 Since version 4.0, date variables are supported. For this kind of variables only method==2 is applied, i.e. non-parametric tests for continuous variables are applied. However, the descriptive statistics (medians and quantiles) are displayed in date format instead of numeric format.
+
+Since version 4.10, `var.equal` default value has been changed to FALSE and does not apply only when comparing three or more groups but also when comparing two groups. Therefore, p-values may change when comparing more than two groups for normal distributed row-variables with respecto to previous versions.
 
 }
 

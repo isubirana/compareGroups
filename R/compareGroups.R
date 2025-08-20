@@ -3,7 +3,7 @@ function (formula, data, subset, na.action = NULL, y = NULL, Xext = NULL, selec 
           timemax = NA, alpha = 0.05, min.dis = 5, max.ylev = 5, max.xlev = 10, include.label = TRUE, Q1 = 0.25, Q3 = 0.75, 
           simplify = TRUE, ref = 1, ref.no = NA, fact.ratio = 1, ref.y = 1, p.corrected = TRUE, compute.ratio = TRUE, 
           include.miss = FALSE, oddsratio.method = "midp", chisq.test.perm = FALSE, byrow = FALSE, chisq.test.B = 2000, 
-          chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = TRUE, conf.level = 0.95, surv=FALSE,
+          chisq.test.seed = NULL, Date.format = "d-mon-Y", var.equal = FALSE, conf.level = 0.95, surv=FALSE,
           riskratio = FALSE, riskratio.method = "wald", compute.prop = FALSE, lab.missing = "'Missing'",
           p.trend.method = "spearman") 
 {

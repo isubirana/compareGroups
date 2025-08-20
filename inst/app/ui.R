@@ -2,7 +2,7 @@ ui <- fluidPage(
 
   useShinyjs(),
 
-  # verbatimTextOutput("xxx"),
+  #verbatimTextOutput("xxx"),
 
   HTML("<style type='text/css'> #ResponseVariableORPanel, #LoadDataOptionsExcel, #LoadDataOptionsTxt, #extralabelsPanel {color:white;background-color:rgba(60,141,188,1)}</style>"),
   HTML("<style type='text/css'> #ratioAccordion, #formatAccordion, #decimalsAccordion {color:rgba(60,141,188,1)}</style>"),
@@ -114,7 +114,7 @@ ui <- fluidPage(
         hidden(div(id="dropdownPlot",
           fluidRow(
             column(6,
-              shinyWidgets::dropdownButton(circle=FALSE,icon = icon("down"),label = HTML("<format style='font-size:13pt'>Download</format>"),inputId = "downPlotOptionsBtn", status="primary",
+              shinyWidgets::dropdownButton(circle=FALSE,icon = icon("down-long"),label = HTML("<format style='font-size:13pt'>Download</format>"),inputId = "downPlotOptionsBtn", status="primary",
                 tooltip = "Click here to download the plot. You can choose also the format.",
                 selectInput("downloadplottype", "Select format", choices = c('pdf','bmp','jpg','png','tif'), selectize=FALSE),
                 div(style="width:80px",downloadButton('actiondownloadplot', 'OK'))

@@ -24,15 +24,17 @@ library(survival, quietly=TRUE)
 
 source("flipBox.R")
 
-if (!exists("runAppLocal",envir = as.environment("package:compareGroups"))) runAppLocal <- FALSE
+# if (!exists("runAppLocal",envir = as.environment("package:compareGroups"))) runAppLocal <- FALSE
+# cat("runAppLocal: ",runAppLocal,"\n") 
 
-cat("runAppLocal: ",runAppLocal,"\n") 
 
-
-if (!runAppLocal){
+#if (!runAppLocal){
+if (dir.exists(".secrets")){
   # insert entires logs
   sheet_id <- "https://docs.google.com/spreadsheets/d/11nVz8IjpLTwSJUDPK8uG5yG_rfNWc3nK6pE-TKx84BY/"
   gs4_auth(cache = ".secrets", email = "isubirana@datarus.eu", subject = "isubirana@datarus.eu",scope="spreadsheets", use_oob = TRUE)
+} else {
+  print("Running app from cGroupsWUI()")
 }
 
 

@@ -1,8 +1,17 @@
+# compareGroups 4.10.1
+- bug fixed in cGroupsWUI()
+
+# compareGroups 4.10.0
+argument `var.equal` argument of `compareGroups` and `descrTable` functions:
+- default value has been change to FALSE.
+- now applies also when comparing two groups and for non-corrected pairwise comparisons.
+- when `var.equal` is set to FALSE and there are more than two groups Games-Howell test is applied instead of a Tukey test for normal distributed variables.
+
 # compareGroups 4.9.3
-- table.i: bug fixed when no p-values cannot be computed for categorical variables for survival outcomes (p.ratio)
+- `table.i`: bug fixed when no p-values cannot be computed for categorical variables for survival outcomes (p.ratio)
 
 # compareGroups 4.9.2
-- bug fixed in compareGroups.fit when some variables cannot be described
+- bug fixed in `compareGroups.fit` when some variables cannot be described
 
 # compareGroups 4.9.1
 - bug fixed in cGroupsWUI()

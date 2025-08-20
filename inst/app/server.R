@@ -4,20 +4,23 @@ server <- function(input, output, session) {
   #   tags$style(HTML(paste0(".main-sidebar{width: ", input$sidebarwidth,"%;}")))
   # })
   
-  if (!runAppLocal){
-    # register entrance and exit time entries
+
+  # register entrance and exit time entries
+  if (dir.exists(".secrets")){
     observe({
-      dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
+      # port <- session$clientData$url_port
+      # if (port==""){
+        nomapp <- "compareGroups" # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a isubirana o regicor respectivament 
+      # } else {
+      #   nomapp <- "compareGroups_cGroupsWUI"
+      # }  
+      dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app=nomapp)
       googlesheets4::sheet_append(sheet_id, dd)
-    })
-    onStop(
-      function(){
-        dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app="compareGroups") # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a regicor o isubirana
-        #print(dd)
+      onStop(function(){
+        dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app=nomapp)
         googlesheets4::sheet_append(sheet_id, dd)
-        #print("xxxx")
-      }
-    )
+      })
+    })
   }
 
   output$xxx <- renderPrint({
@@ -30,7 +33,8 @@ server <- function(input, output, session) {
     # cat("summary(rv$datasetorigfiltered)\n")
     # print(summary(rv$datasetorigfiltered)) 
     # print(input$sepSNPs)
-    input$rightPanel
+    # input$rightPanel
+    session$clientData$url_port
   })
   
   output$github <- renderUser({

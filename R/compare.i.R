@@ -91,14 +91,13 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
             method.i <- 2
         else method.i <- ifelse(sh$p.value > alpha, 1, 2)
     }
-    if (inherits(x, "Surv") & inherits(y, "Surv")) 
-        stop(paste("variable '", varname, "' not analysed since both response and row-variable are of class 'Surv'", 
+    if (inherits(x, "Surv") & inherits(y, "Surv")) ## x: survival, y: survival
+        stop(paste("variable '", varname, "' not analysed since both response 
+                   and row-variable are of class 'Surv'", 
             sep = ""))
-    if (!inherits(x, "Surv") && (is.factor(x) & length(levels(x)) > 
-        max.xlev)) 
-        stop(paste("too many values for variable '", varname, 
-            "'", sep = ""))
-    if (NROW(x) == 0) {
+    if (!inherits(x, "Surv") && (is.factor(x) & length(levels(x)) > max.xlev)) 
+        stop(paste("too many values for variable '", varname, "'", sep = ""))
+    if (NROW(x) == 0) { ## no data
         sam <- rep(0, ny + 1)
         names(sam) <- c("[ALL]", levels(y))
         nn <- matrix(NaN, ncol = 1, nrow = ny + 1)
@@ -127,8 +126,8 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
             p.trend = NaN, p.mul = p.mul)
         attr(ans, "method") <- "no-data"
     }
-    else {
-        if (is.factor(x)) {
+    else { ## some data
+        if (is.factor(x)) { ## x: factor
             if (inherits(y, "Surv")) 
                 tt <- table(gy, x)
             else tt <- table(y, x)
@@ -162,8 +161,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                 }
             }
             if (!compute.prop) 
-                colnames(prop) <- paste(colnames(prop), "%", 
-                  sep = "")
+                colnames(prop) <- paste(colnames(prop), "%", sep = "")
             rownames(nn)[1] <- rownames(prop)[1] <- "[ALL]"
             colnames(lower) <- colnames(upper) <- colnames(prop)
             rownames(lower) <- rownames(upper) <- rownames(prop)
@@ -220,7 +218,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
             attr(ans, "method") <- "categorical"
         }
         else {
-            if (inherits(x, "Surv")) {
+            if (inherits(x, "Surv")) { ## x: survival
                 tt <- descripSurv(x, y, timemax.i, surv)
                 p.overall <- try(logrank.pval(y, x), silent = TRUE)
                 if (inherits(p.overall, "try-error")) 
@@ -267,7 +265,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                 attr(ans, "method") <- c("Surv", timemax.i)
             }
             else {
-                if (inherits(x, "Date") || inherits(x, "dates")) {
+                if (inherits(x, "Date") || inherits(x, "dates")) { ## x: dates
                   if (method.i != 2) 
                     warning(paste("for variable", varname, "method 2 is applied since it is a date."))
                   x <- as.numeric(x)
@@ -333,19 +331,20 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                 }
                 else {
                   x <- as.double(x)
-                  if (method.i == 1) {
+                  if (method.i == 1) { ## x: normal
                     if (inherits(y, "Surv")) 
                       tt <- descrip(x, gy, method = "param", 
                         Q1, Q3, conf.level)
                     else tt <- descrip(x, y, method = "param", 
                       Q1, Q3, conf.level)
-                    if (ny <= 2) {
+                    if (ny <= 2) { ## 2 groups
                       if (groups) {
                         if (inherits(y, "Surv")) 
                           p.overall <- try(coef(summary(coxph(y ~ 
                             x)))[, "Pr(>|z|)"], silent = TRUE)
-                        else p.overall <- try(t.test(x ~ y)$p.value, 
-                          silent = TRUE)
+                        else 
+                          p.overall <- try(t.test(x ~ y, 
+                                 var.equal=var.equal)$p.value, silent = TRUE) # v4.10
                         if (inherits(p.overall, "try-error")) 
                           p.overall <- NaN
                       }
@@ -362,7 +361,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                       else names(p.mul) <- paste("p.", levels(y)[1], 
                         " vs ", levels(y)[1], sep = "")
                     }
-                    else {
+                    else { ## > 2 groups
                       if (var.equal) 
                         p.overall <- try(anova(lm(x ~ y), lm(x ~ 
                           1))[2, "Pr(>F)"], silent = TRUE)
@@ -377,13 +376,18 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                       if (is.na(p.trend)) 
                         p.trend <- NaN
                       if (p.corrected) {
-                        temp <- try(TukeyHSD(aov(x ~ y)), silent = TRUE)
+                        if (var.equal)
+                          temp <- try(TukeyHSD(aov(x ~ y)), silent = TRUE)
+                        else 
+                          temp <- as.data.frame(games_howell_test(x ~ y, data=data.frame(x,y))) # v4.10
                         p.mul <- rep(NaN, choose(ny, 2))
                         names(p.mul) <- apply(combn2(levels(y)), 
                           2, function(nnn) paste(rev(nnn), collapse = "-"))
                         if (!inherits(temp, "try-error")) {
-                          p.mul[rownames(temp$y)] <- temp[[1]][, 
-                            4]
+                          if (var.equal)
+                            p.mul[rownames(temp$y)] <- temp[[1]][,4]
+                          else
+                            p.mul[paste(temp[,"group2"],temp[,"group1"],sep="-")] <- temp[,"p.adj"] # v4.10
                         }
                         names(p.mul) <- paste("p", apply(combn2(levels(y)), 
                           2, function(nnn) paste(nnn, collapse = " vs ")), 
@@ -396,7 +400,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                             np <- c(np, paste(levels(y)[i], levels(y)[j], 
                               sep = " vs "))
                             ss.ij <- y %in% c(levels(y)[i], levels(y)[j])
-                            p.ij <- try(t.test(x[ss.ij] ~ y[ss.ij])$p.value, 
+                            p.ij <- try(t.test(x[ss.ij] ~ y[ss.ij], var.equal=var.equal)$p.value, # v4.10 
                               silent = TRUE)
                             if (inherits(p.ij, "try-error")) 
                               p.ij <- NaN
@@ -412,7 +416,7 @@ function (x, y, selec.i, method.i, timemax.i, alpha, min.dis,
                       p.mul = p.mul)
                     attr(ans, "method") <- c("continuous", "normal")
                   }
-                  else {
+                  else { ## x: no normal
                     if (inherits(y, "Surv")) 
                       tt <- descrip(x, gy, method = "no", Q1, 
                         Q3, conf.level)
