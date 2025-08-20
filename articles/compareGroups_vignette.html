@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">compareGroups</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.9.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.10.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
                         <h4 data-toc-skip class="author">Isaac Subirana,
 Joan Vila and Héctor Sanz</h4>
             
-            <h4 data-toc-skip class="date">2025-08-11</h4>
+            <h4 data-toc-skip class="date">2025-08-20</h4>
       
 
       <div class="d-none name"><code>compareGroups_vignette.Rmd</code></div>
@@ -625,7 +625,7 @@ variables in the data frame will be used.</p>
 
 
   var             N    p.value  method            selection
-1 Age             2294 0.078*   continuous normal ALL      
+1 Age             2294 0.079*   continuous normal ALL      
 2 Sex             2294 0.506    categorical       ALL      
 3 Body mass index 2259 &lt;0.001** continuous normal ALL      
 -----
@@ -656,9 +656,9 @@ participants):</p>
 
 
   var             N    p.value  method            selection      
-1 Age             1193 0.351    continuous normal sex == "Female"
+1 Age             1193 0.355    continuous normal sex == "Female"
 2 Smoking status  1162 &lt;0.001** categorical       sex == "Female"
-3 Body mass index 1169 0.084*   continuous normal sex == "Female"
+3 Body mass index 1169 0.079*   continuous normal sex == "Female"
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>Note that only results for female participants are shown.</p>
@@ -672,7 +672,7 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 
 
   var             N    p.value  method            selection      
-1 Age             1193 0.351    continuous normal sex == "Female"
+1 Age             1193 0.355    continuous normal sex == "Female"
 2 Body mass index 1367 0.002**  continuous normal age &gt; 50       
 3 Smoking status  2233 &lt;0.001** categorical       ALL            
 -----
@@ -688,9 +688,9 @@ among people older than 50 years.</p>
 
 
   var             N    p.value  method            selection                     
-1 Age             1193 0.351    continuous normal sex == "Female"               
+1 Age             1193 0.355    continuous normal sex == "Female"               
 2 Smoking status  1162 &lt;0.001** categorical       sex == "Female"               
-3 Body mass index  709 0.308    continuous normal (sex == "Female") &amp; (age &gt; 50)
+3 Body mass index  709 0.311    continuous normal (sex == "Female") &amp; (age &gt; 50)
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>A variable can appear twice in the formula, e.g.:</p>
@@ -702,10 +702,10 @@ Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 
 
   var             N    p.value  method            selection     
-1 Age             2294 0.078*   continuous normal ALL           
+1 Age             2294 0.079*   continuous normal ALL           
 2 Sex             2294 0.506    categorical       ALL           
 3 Body mass index 2259 &lt;0.001** continuous normal ALL           
-4 Body mass index  420 0.008**  continuous normal txhtn == "Yes"
+4 Body mass index  420 0.006**  continuous normal txhtn == "Yes"
 -----
 Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 </code></pre>
 <p>In this case results for <em>bmi</em> will be reported for all
@@ -731,7 +731,7 @@ distributed:</p>
 
 
   var            N    p.value  method                selection
-1 Age            2294 0.078*   continuous normal     ALL      
+1 Age            2294 0.079*   continuous normal     ALL      
 2 Smoking status 2233 &lt;0.001** categorical           ALL      
 3 Triglycerides  2231 0.762    continuous non-normal ALL      
 -----
@@ -758,7 +758,7 @@ significance threshold:</p>
 
 
   var            N    p.value  method                selection
-1 Age            2294 0.078*   continuous normal     ALL      
+1 Age            2294 0.079*   continuous normal     ALL      
 2 Smoking status 2233 &lt;0.001** categorical           ALL      
 3 Triglycerides  2231 0.762    continuous non-normal ALL      
 -----
@@ -855,7 +855,7 @@ to “= FALSE” will cause variable names to be printed instead.</li>
 
 
   var    N    p.value  method            selection
-1 age    2294 0.078*   continuous normal ALL      
+1 age    2294 0.079*   continuous normal ALL      
 2 smoker 2233 &lt;0.001** categorical       ALL      
 3 bmi    2259 &lt;0.001** continuous normal ALL      
 -----
@@ -878,7 +878,7 @@ _______________________________________________________________________
                    1995            2000            2005       p.overall 
                    N=431           N=786          N=1077                
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age             54.1 (11.7)     54.3 (11.2)     55.3 (10.6)     0.078   
+Age             54.1 (11.7)     54.3 (11.2)     55.3 (10.6)     0.079   
 Triglycerides 94.0 [71.0;136] 98.0 [72.0;133] 98.0 [72.0;139]   0.762   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note: percentiles 25 and 75 are calculated for “triglycerides”.</p>
@@ -893,7 +893,7 @@ _______________________________________________________________________
                    1995            2000            2005       p.overall 
                    N=431           N=786          N=1077                
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age             54.1 (11.7)     54.3 (11.2)     55.3 (10.6)     0.078   
+Age             54.1 (11.7)     54.3 (11.2)     55.3 (10.6)     0.079   
 Triglycerides 94.0 [47.0;292] 98.0 [47.0;278] 98.0 [42.0;293]   0.762   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>To get minimum and maximum:</p>
@@ -926,7 +926,7 @@ Unknown                   0</code></pre>
 
 
   var             N    p.value  method            selection
-1 Age             2294 0.078*   continuous normal ALL      
+1 Age             2294 0.079*   continuous normal ALL      
 2 Smoking 4 cat.  2233 &lt;0.001** categorical       ALL      
 3 Body mass index 2259 &lt;0.001** continuous normal ALL      
 -----
@@ -947,7 +947,7 @@ as <code>TRUE</code> (Default value).</p>
 
 
   var             N    p.value  method            selection
-1 Age             2294 0.078*   continuous normal ALL      
+1 Age             2294 0.079*   continuous normal ALL      
 2 Smoking 4 cat.  2233 .        categorical       ALL      
 3 Body mass index 2259 &lt;0.001** continuous normal ALL      
 -----
@@ -973,7 +973,7 @@ row-variable: Age
 
       N    mean     sd       lower    upper    p.overall p.trend  p.1995 vs 2000 p.1995 vs 2005 p.2000 vs 2005
 [ALL] 2294 54.73627 11.04926 54.28388 55.18866                                                                
-1995  431  54.09745 11.7172  52.98813 55.20677 0.077837  0.031665 0.930249       0.143499       0.161195      
+1995  431  54.09745 11.7172  52.98813 55.20677 0.078588  0.031665 0.936          0.163          0.158         
 2000  786  54.33715 11.21814 53.55168 55.12262                                                                
 2005  1077 55.28319 10.62606 54.64786 55.91853                                                                
 
@@ -1035,7 +1035,7 @@ example:</p>
 
 
   var             N    p.value  method            selection
-1 Age             2294 0.078*   continuous normal ALL      
+1 Age             2294 0.079*   continuous normal ALL      
 2 Sex             2294 0.506    categorical       ALL      
 3 Smoking status  2233 &lt;0.001** categorical       ALL      
 4 Body mass index 2259 &lt;0.001** continuous normal ALL      
@@ -1356,7 +1356,7 @@ ________________________________________________________________________
                               1995        2000        2005     p.overall 
                               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                             0.506   
     Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -1409,7 +1409,7 @@ ________________________________________________________________________
                               1995        2000        2005     p.overall 
                               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex: Female                225 (52.2%) 396 (50.4%) 572 (53.1%)   0.506   
 Smoking status:                                                 &lt;0.001   
     Never smoker           234 (56.4%) 414 (54.6%) 553 (52.2%)           
@@ -1434,7 +1434,7 @@ _____________________________________________________________________
                            1995        2000        2005     p.overall 
                            N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                     54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                     54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex: Female             225 (52.2%) 396 (50.4%) 572 (53.1%)   0.506   
 History of hyperchol.   97 (22.5%)  256 (33.2%) 356 (33.2%)  &lt;0.001   
 History of hypertension 111 (25.8%) 233 (29.6%) 379 (35.5%)  &lt;0.001   
@@ -1455,7 +1455,7 @@ ____________________________________________________________________________
                              1995          2000          2005      p.overall 
                              N=431         N=786        N=1077               
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.10 (11.72) 54.34 (11.22) 55.28 (10.63)   0.078   
+Age                      54.10 (11.72) 54.34 (11.22) 55.28 (10.63)   0.079   
 Sex:                                                                 0.506   
     Male                 206 (47.796%) 390 (49.618%) 505 (46.890%)           
     Female               225 (52.204%) 396 (50.382%) 572 (53.110%)           
@@ -1483,7 +1483,7 @@ ______________________________________________________________________
                             1995        2000        2005     p.overall 
                             N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                           0.506   
     Male                    47.8%       49.6%       46.9%              
     Female                  52.2%       50.4%       53.1%              
@@ -1504,7 +1504,7 @@ ______________________________________________________________________
                             1995        2000        2005     p.overall 
                             N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                           0.506   
     Male                     206         390         505               
     Female                   225         396         572               
@@ -1533,7 +1533,7 @@ ___________________________________________________________________________
                             1995        2000        2005     p.overall  N   
                             N=431       N=786      N=1077                   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   2294 
+Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   2294 
 Sex:                                                           0.506   2294 
     Male                 206 (47.8%) 390 (49.6%) 505 (46.9%)                
     Female               225 (52.2%) 396 (50.4%) 572 (53.1%)                
@@ -1558,7 +1558,7 @@ displayed:</li>
 __________________________________ 
                          p.overall 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        0.078   
+Age                        0.079   
 Sex:                               
     Male                   0.506   
     Female                         
@@ -1584,7 +1584,7 @@ ________________________________________________________________________________
                             [ALL]        1995        2000        2005     p.overall 
                             N=2294       N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.7 (11.0)  54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                      54.7 (11.0)  54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                                        0.506   
     Male                 1101 (48.0%) 206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female               1193 (52.0%) 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -1637,7 +1637,7 @@ ______________________________________________________________________________
                             1995        2000        2005     p.overall p.trend 
                             N=431       N=786      N=1077                      
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078    0.032  
+Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079    0.032  
 Sex:                                                           0.506    0.544  
     Male                 206 (47.8%) 390 (49.6%) 505 (46.9%)                   
     Female               225 (52.2%) 396 (50.4%) 572 (53.1%)                   
@@ -1673,7 +1673,7 @@ ________________________________________________________________________________
                             1995        2000        2005     p.overall p.1995 vs 2000 p.1995 vs 2005 p.2000 vs 2005 
                             N=431       N=786      N=1077                                                           
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078       0.930          0.143          0.161      
+Age                      54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079       0.936          0.163          0.158      
 Sex:                                                           0.506       0.794          0.794          0.792      
     Male                 206 (47.8%) 390 (49.6%) 505 (46.9%)                                                        
     Female               225 (52.2%) 396 (50.4%) 572 (53.1%)                                                        
@@ -1811,7 +1811,7 @@ ____________________________________________________________________________
                                   N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 Non-modifiable risk factors:
-    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
     Sex:                                                             0.506   
         Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
         Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -1841,7 +1841,7 @@ ____________________________________________________________________________
                                   N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 Non-modifiable:
-    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Modifiable:
     Smoking status:                                                 &lt;0.001   
         Never smoker           234 (56.4%) 414 (54.6%) 553 (52.2%)           
@@ -1868,7 +1868,7 @@ Modifiable:
     Sex:                                                             0.506   
         Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
         Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
-    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+    Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p style="margin-top:50px">
 </p>
@@ -1965,8 +1965,8 @@ ________________________________________________________________________________
                               1995        2000        2005     p.overall     1995        2000        2005     p.overall 
                               N=206       N=390       N=505                  N=225       N=396       N=572              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-Age                        54.1 (11.8) 54.3 (11.2) 55.4 (10.7)   0.212    54.1 (11.7) 54.4 (11.2) 55.2 (10.6)   0.351   
-Body mass index            26.9 (3.64) 28.2 (3.89) 27.9 (3.58)  &lt;0.001    27.2 (4.57) 28.0 (5.25) 27.3 (5.39)   0.084   
+Age                        54.1 (11.8) 54.3 (11.2) 55.4 (10.7)   0.211    54.1 (11.7) 54.4 (11.2) 55.2 (10.6)   0.355   
+Body mass index            26.9 (3.64) 28.2 (3.89) 27.9 (3.58)  &lt;0.001    27.2 (4.57) 28.0 (5.25) 27.3 (5.39)   0.079   
 Smoking status:                                                 &lt;0.001                                         &lt;0.001   
     Never smoker           52 (26.5%)  112 (29.7%) 137 (27.5%)            182 (83.1%) 302 (79.3%) 416 (74.0%)           
     Current or former &lt; 1y 77 (39.3%)  199 (52.8%) 134 (26.9%)            32 (14.6%)  68 (17.8%)  83 (14.8%)            
@@ -1997,7 +1997,7 @@ ________________________________________________________________________
                               1995        2000        2005     p.overall 
                               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                             0.506   
     Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -2031,7 +2031,7 @@ omitted in the first row.</p>
 ________________________________________________________________________ 
                               1995        2000        2005     p.overall 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                             0.506   
     Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -2078,7 +2078,7 @@ ________________________________________________________________________
                               1995        2000        2005     p.overall 
                               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                             0.506   
     Male                      47.8%       49.6%       46.9%              
     Female                    52.2%       50.4%       53.1%              
@@ -2097,7 +2097,7 @@ _____________________________________________________________________________
                               1995        2000        2005     p.overall  N   
                               N=431       N=786      N=1077                   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   2294 
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   2294 
 Sex:                                                             0.506   2294 
     Male                      47.8%       49.6%       46.9%                   
     Female                    52.2%       50.4%       53.1%                   
@@ -2118,13 +2118,13 @@ _____________________________________________________________________________
                               1995        2000        2005     p.overall  N   
                               N=225       N=396       N=572                   
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.4 (11.2) 55.2 (10.6)   0.351   1193 
+Age                        54.1 (11.7) 54.4 (11.2) 55.2 (10.6)   0.355   1193 
 Sex: Female                   100%        100%        100%         .     1193 
 Smoking status:                                                 &lt;0.001   1162 
     Never smoker              83.1%       79.3%       74.0%                   
     Current or former &lt; 1y    14.6%       17.8%       14.8%                   
     Former &gt;= 1y              2.28%       2.89%       11.2%                   
-Body mass index            27.2 (4.57) 28.0 (5.25) 27.3 (5.39)   0.084   1169 
+Body mass index            27.2 (4.57) 28.0 (5.25) 27.3 (5.39)   0.079   1169 
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </code></pre>
 <p>Note that the <code>compareGroups</code> object (<em>res</em>) is
 updated, selecting only “Female”” participants, and the
@@ -2145,7 +2145,7 @@ ________________________________________________________________________
                               1995        2000        2005     p.overall 
                               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age                        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                                             0.506   
     Male                   206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female                 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -2167,7 +2167,7 @@ ________________________________________________________
               1995        2000        2005     p.overall 
               N=431       N=786      N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-Age        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.078   
+Age        54.1 (11.7) 54.3 (11.2) 55.3 (10.6)   0.079   
 Sex:                                             0.506   
     Male   206 (47.8%) 390 (49.6%) 505 (46.9%)           
     Female 225 (52.2%) 396 (50.4%) 572 (53.1%)           
@@ -2324,7 +2324,7 @@ ________________________________________________________________________________
                                                          N=2294                N=431             N=786         N=1077              
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 Individual id                                    1215817624 (1339538686) 1000002914 (1242) 3000104610 (2379) 1996 (1161)   0.000   
-Age                                                    54.7 (11.0)          54.1 (11.7)       54.3 (11.2)    55.3 (10.6)   0.078   
+Age                                                    54.7 (11.0)          54.1 (11.7)       54.3 (11.2)    55.3 (10.6)   0.079   
 Sex:                                                                                                                       0.506   
     Male                                              1101 (48.0%)          206 (47.8%)       390 (49.6%)    505 (46.9%)           
     Female                                            1193 (52.0%)          225 (52.2%)       396 (50.4%)    572 (53.1%)           
@@ -2337,23 +2337,23 @@ Diastolic blood pressure                               79.7 (10.5)          77.0
 History of hypertension                                723 (31.6%)          111 (25.8%)       233 (29.6%)    379 (35.5%)  &lt;0.001   
 Hypertension treatment                                 428 (19.0%)          71 (16.5%)        127 (16.2%)    230 (22.2%)   0.002   
 Total cholesterol                                      219 (45.2)           225 (43.1)        224 (44.4)     213 (45.9)   &lt;0.001   
-HDL cholesterol                                        52.7 (14.7)          51.9 (14.5)       52.3 (15.6)    53.2 (14.2)   0.208   
-Triglycerides                                          116 (73.9)           114 (74.4)        114 (70.7)     117 (76.0)    0.582   
+HDL cholesterol                                        52.7 (14.7)          51.9 (14.5)       52.3 (15.6)    53.2 (14.2)   0.198   
+Triglycerides                                          116 (73.9)           114 (74.4)        114 (70.7)     117 (76.0)    0.583   
 LDL cholesterol                                        143 (39.7)           152 (38.4)        149 (38.6)     136 (39.7)   &lt;0.001   
 History of hyperchol.                                  709 (31.2%)          97 (22.5%)        256 (33.2%)    356 (33.2%)  &lt;0.001   
 Cholesterol treatment                                  228 (10.2%)          28 (6.50%)        68 (8.80%)     132 (12.8%)  &lt;0.001   
-Height (cm)                                            163 (9.22)           163 (9.21)        162 (9.39)     163 (9.05)    0.003   
-Weight (Kg)                                            73.4 (13.7)          72.3 (12.6)       73.8 (14.0)    73.6 (13.9)   0.150   
+Height (cm)                                            163 (9.22)           163 (9.21)        162 (9.39)     163 (9.05)    0.004   
+Weight (Kg)                                            73.4 (13.7)          72.3 (12.6)       73.8 (14.0)    73.6 (13.9)   0.120   
 Body mass index                                        27.6 (4.56)          27.0 (4.15)       28.1 (4.62)    27.6 (4.63)  &lt;0.001   
 Physical activity (Kcal/week)                           399 (388)            491 (419)         422 (377)      351 (378)   &lt;0.001   
-Physical component                                     49.6 (9.01)          49.3 (8.08)       49.0 (9.63)    50.1 (8.91)   0.032   
+Physical component                                     49.6 (9.01)          49.3 (8.08)       49.0 (9.63)    50.1 (8.91)   0.037   
 Mental component                                       48.0 (11.0)          49.2 (11.3)       48.9 (11.0)    46.9 (10.8)  &lt;0.001   
 Cardiovascular event                                   92 (4.25%)           10 (2.51%)        35 (4.72%)     47 (4.59%)    0.161   
 Days to cardiovascular event or end of follow-up       1755 (1081)          1784 (1101)       1686 (1080)    1793 (1072)   0.099   
 Overall death                                          173 (8.05%)          18 (4.65%)        81 (11.0%)     74 (7.23%)   &lt;0.001   
-Days to overall death or end of follow-up              1721 (1051)          1713 (1042)       1674 (1050)    1758 (1055)   0.252   
+Days to overall death or end of follow-up              1721 (1051)          1713 (1042)       1674 (1050)    1758 (1055)   0.254   
 Time to CV event or censoring                             4.49%                2.69%             4.70%          5.01%      0.157   
-age7gr                                                 4.03 (1.82)          3.88 (1.93)       3.95 (1.84)    4.15 (1.77)   0.012   
+age7gr                                                 4.03 (1.82)          3.88 (1.93)       3.95 (1.84)    4.15 (1.77)   0.013   
 Smoking 4 cat.:                                                                                                           &lt;0.001   
     Never smoker                                      1201 (53.8%)          234 (56.4%)       414 (54.6%)    553 (52.2%)           
     Current or former &lt; 1y                             593 (26.6%)          109 (26.3%)       267 (35.2%)    217 (20.5%)           
@@ -2511,7 +2511,7 @@ package.</li>
     \endfoot   
     \multicolumn{5}{l}{}  \\ 
     \endlastfoot 
-    Age &amp; 54.1 (11.7) &amp; 54.3 (11.2) &amp; 55.3 (10.6) &amp;   0.078  \\ 
+    Age &amp; 54.1 (11.7) &amp; 54.3 (11.2) &amp; 55.3 (10.6) &amp;   0.079  \\ 
 Sex: &amp;             &amp;             &amp;             &amp;   0.506  \\ 
 $\qquad$Male &amp; 206 (47.8\%) &amp; 390 (49.6\%) &amp; 505 (46.9\%) &amp;          \\ 
 $\qquad$Female &amp; 225 (52.2\%) &amp; 396 (50.4\%) &amp; 572 (53.1\%) &amp;          \\ 
@@ -2640,7 +2640,7 @@ Age
 55.3 (10.6)
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -2850,7 +2850,7 @@ HDL cholesterol
 53.2 (14.2)
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>
@@ -2867,7 +2867,7 @@ Triglycerides
 117 (76.0)
 </td>
 <td style="text-align:center;">
-0.582
+0.583
 </td>
 </tr>
 <tr>
@@ -2935,7 +2935,7 @@ Height (cm)
 163 (9.05)
 </td>
 <td style="text-align:center;">
-0.003
+0.004
 </td>
 </tr>
 <tr>
@@ -2952,7 +2952,7 @@ Weight (Kg)
 73.6 (13.9)
 </td>
 <td style="text-align:center;">
-0.150
+0.120
 </td>
 </tr>
 <tr>
@@ -3003,7 +3003,7 @@ Physical component
 50.1 (8.91)
 </td>
 <td style="text-align:center;">
-0.032
+0.037
 </td>
 </tr>
 <tr>
@@ -3088,7 +3088,7 @@ Days to overall death or end of follow-up
 1758 (1055)
 </td>
 <td style="text-align:center;">
-0.252
+0.254
 </td>
 </tr>
 <tr>
@@ -3122,7 +3122,7 @@ age7gr
 4.15 (1.77)
 </td>
 <td style="text-align:center;">
-0.012
+0.013
 </td>
 </tr>
 <tr>
@@ -3261,7 +3261,7 @@ Age
 55.3 (10.6)
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -3471,7 +3471,7 @@ HDL cholesterol
 53.2 (14.2)
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>
@@ -3488,7 +3488,7 @@ Triglycerides
 117 (76.0)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.582
+0.583
 </td>
 </tr>
 <tr>
@@ -3556,7 +3556,7 @@ Height (cm)
 163 (9.05)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.003
+0.004
 </td>
 </tr>
 <tr>
@@ -3573,7 +3573,7 @@ Weight (Kg)
 73.6 (13.9)
 </td>
 <td style="text-align:center;">
-0.150
+0.120
 </td>
 </tr>
 <tr>
@@ -3624,7 +3624,7 @@ Physical component
 50.1 (8.91)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.032
+0.037
 </td>
 </tr>
 <tr>
@@ -3709,7 +3709,7 @@ Days to overall death or end of follow-up
 1758 (1055)
 </td>
 <td style="text-align:center;">
-0.252
+0.254
 </td>
 </tr>
 <tr>
@@ -3743,7 +3743,7 @@ age7gr
 4.15 (1.77)
 </td>
 <td style="text-align:center;">
-0.012
+0.013
 </td>
 </tr>
 <tr>
@@ -3882,7 +3882,7 @@ Age
 55.3 (10.6)
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -4092,7 +4092,7 @@ HDL cholesterol
 53.2 (14.2)
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>
@@ -4109,7 +4109,7 @@ Triglycerides
 117 (76.0)
 </td>
 <td style="text-align:center;">
-0.582
+0.583
 </td>
 </tr>
 <tr>
@@ -4177,7 +4177,7 @@ Height (cm)
 163 (9.05)
 </td>
 <td style="text-align:center;">
-0.003
+0.004
 </td>
 </tr>
 <tr>
@@ -4194,7 +4194,7 @@ Weight (Kg)
 73.6 (13.9)
 </td>
 <td style="text-align:center;">
-0.150
+0.120
 </td>
 </tr>
 <tr>
@@ -4245,7 +4245,7 @@ Physical component
 50.1 (8.91)
 </td>
 <td style="text-align:center;">
-0.032
+0.037
 </td>
 </tr>
 <tr>
@@ -4330,7 +4330,7 @@ Days to overall death or end of follow-up
 1758 (1055)
 </td>
 <td style="text-align:center;">
-0.252
+0.254
 </td>
 </tr>
 <tr>
@@ -4364,7 +4364,7 @@ age7gr
 4.15 (1.77)
 </td>
 <td style="text-align:center;">
-0.012
+0.013
 </td>
 </tr>
 <tr>
@@ -4503,7 +4503,7 @@ Age
 55.3 (10.6)
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -4713,7 +4713,7 @@ HDL cholesterol
 53.2 (14.2)
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>
@@ -4730,7 +4730,7 @@ Triglycerides
 117 (76.0)
 </td>
 <td style="text-align:center;">
-0.582
+0.583
 </td>
 </tr>
 <tr>
@@ -4798,7 +4798,7 @@ Height (cm)
 163 (9.05)
 </td>
 <td style="text-align:center;">
-0.003
+0.004
 </td>
 </tr>
 <tr>
@@ -4815,7 +4815,7 @@ Weight (Kg)
 73.6 (13.9)
 </td>
 <td style="text-align:center;">
-0.150
+0.120
 </td>
 </tr>
 <tr>
@@ -4866,7 +4866,7 @@ Physical component
 50.1 (8.91)
 </td>
 <td style="text-align:center;">
-0.032
+0.037
 </td>
 </tr>
 <tr>
@@ -4951,7 +4951,7 @@ Days to overall death or end of follow-up
 1758 (1055)
 </td>
 <td style="text-align:center;">
-0.252
+0.254
 </td>
 </tr>
 <tr>
@@ -4985,7 +4985,7 @@ age7gr
 4.15 (1.77)
 </td>
 <td style="text-align:center;">
-0.012
+0.013
 </td>
 </tr>
 <tr>
@@ -5151,7 +5151,7 @@ Age
 55.4 (10.7)
 </td>
 <td style="text-align:center;">
-0.212
+0.211
 </td>
 <td style="text-align:center;">
 54.1 (11.7)
@@ -5163,7 +5163,7 @@ Age
 55.2 (10.6)
 </td>
 <td style="text-align:center;">
-0.351
+0.355
 </td>
 </tr>
 <tr>
@@ -5361,7 +5361,7 @@ Systolic blood pressure
 132 (18.7)
 </td>
 <td style="text-align:center;">
-0.002
+0.003
 </td>
 <td style="text-align:center;">
 132 (19.8)
@@ -5373,7 +5373,7 @@ Systolic blood pressure
 127 (20.5)
 </td>
 <td style="text-align:center;">
-0.008
+0.006
 </td>
 </tr>
 <tr>
@@ -5402,7 +5402,7 @@ Diastolic blood pressure
 78.3 (10.0)
 </td>
 <td style="text-align:center;">
-&lt;0.001
+0.001
 </td>
 </tr>
 <tr>
@@ -5602,7 +5602,7 @@ HDL cholesterol
 48.1 (12.4)
 </td>
 <td style="text-align:center;">
-0.290
+0.300
 </td>
 <td style="text-align:center;">
 56.9 (13.9)
@@ -5614,7 +5614,7 @@ HDL cholesterol
 57.8 (14.2)
 </td>
 <td style="text-align:center;">
-0.783
+0.758
 </td>
 </tr>
 <tr>
@@ -5631,7 +5631,7 @@ Triglycerides
 132 (90.3)
 </td>
 <td style="text-align:center;">
-0.817
+0.806
 </td>
 <td style="text-align:center;">
 97.8 (47.9)
@@ -5643,7 +5643,7 @@ Triglycerides
 104 (57.6)
 </td>
 <td style="text-align:center;">
-0.281
+0.260
 </td>
 </tr>
 <tr>
@@ -5843,7 +5843,7 @@ Height (cm)
 170 (7.43)
 </td>
 <td style="text-align:center;">
-0.021
+0.020
 </td>
 <td style="text-align:center;">
 158 (6.31)
@@ -5872,7 +5872,7 @@ Weight (Kg)
 80.2 (11.6)
 </td>
 <td style="text-align:center;">
-0.023
+0.021
 </td>
 <td style="text-align:center;">
 67.3 (11.3)
@@ -5884,7 +5884,7 @@ Weight (Kg)
 67.7 (13.0)
 </td>
 <td style="text-align:center;">
-0.919
+0.910
 </td>
 </tr>
 <tr>
@@ -5913,7 +5913,7 @@ Body mass index
 27.3 (5.39)
 </td>
 <td style="text-align:center;">
-0.084
+0.079
 </td>
 </tr>
 <tr>
@@ -5930,7 +5930,7 @@ Physical activity (Kcal/week)
 439 (467)
 </td>
 <td style="text-align:center;">
-0.014
+0.009
 </td>
 <td style="text-align:center;">
 553 (412)
@@ -5959,7 +5959,7 @@ Physical component
 51.5 (8.07)
 </td>
 <td style="text-align:center;">
-0.110
+0.068
 </td>
 <td style="text-align:center;">
 48.6 (9.16)
@@ -5971,7 +5971,7 @@ Physical component
 48.9 (9.45)
 </td>
 <td style="text-align:center;">
-0.027
+0.034
 </td>
 </tr>
 <tr>
@@ -6000,7 +6000,7 @@ Mental component
 44.7 (11.2)
 </td>
 <td style="text-align:center;">
-0.017
+0.016
 </td>
 </tr>
 <tr>
@@ -6094,7 +6094,7 @@ Days to cardiovascular event or end of follow-up
 1830 (1064)
 </td>
 <td style="text-align:center;">
-0.046
+0.044
 </td>
 <td style="text-align:center;">
 1848 (1075)
@@ -6200,7 +6200,7 @@ Days to overall death or end of follow-up
 1682 (1027)
 </td>
 <td style="text-align:center;">
-0.952
+0.953
 </td>
 <td style="text-align:center;">
 1735 (1055)
@@ -6212,7 +6212,7 @@ Days to overall death or end of follow-up
 1825 (1075)
 </td>
 <td style="text-align:center;">
-0.139
+0.141
 </td>
 </tr>
 <tr>
@@ -6258,7 +6258,7 @@ age7gr
 4.17 (1.77)
 </td>
 <td style="text-align:center;">
-0.091
+0.092
 </td>
 <td style="text-align:center;">
 3.86 (1.94)
@@ -6270,7 +6270,7 @@ age7gr
 4.13 (1.77)
 </td>
 <td style="text-align:center;">
-0.128
+0.135
 </td>
 </tr>
 <tr>
@@ -6766,7 +6766,7 @@ Age
 55.3 (10.6)
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -6947,7 +6947,7 @@ HDL cholesterol
 53.2 (14.2)
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>

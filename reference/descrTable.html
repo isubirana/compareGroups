@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">compareGroups</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.9.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.10.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
 <span>  ref <span class="op">=</span> <span class="fl">1</span>, ref.no <span class="op">=</span> <span class="cn">NA</span>, fact.ratio <span class="op">=</span> <span class="fl">1</span>, ref.y <span class="op">=</span> <span class="fl">1</span>, p.corrected <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>  compute.ratio <span class="op">=</span> <span class="cn">TRUE</span>, include.miss <span class="op">=</span> <span class="cn">FALSE</span>, oddsratio.method <span class="op">=</span> <span class="st">"midp"</span>, </span>
 <span>  chisq.test.perm <span class="op">=</span> <span class="cn">FALSE</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span>, chisq.test.B <span class="op">=</span> <span class="fl">2000</span>, chisq.test.seed <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  Date.format <span class="op">=</span> <span class="st">"d-mon-Y"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, surv <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  Date.format <span class="op">=</span> <span class="st">"d-mon-Y"</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, surv <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  riskratio <span class="op">=</span> <span class="cn">FALSE</span>, riskratio.method <span class="op">=</span> <span class="st">"wald"</span>, compute.prop <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>  lab.missing <span class="op">=</span> <span class="st">"'Missing'"</span>, p.trend.method <span class="op">=</span> <span class="st">"spearman"</span>,</span>
 <span>  hide <span class="op">=</span> <span class="cn">NA</span>, digits <span class="op">=</span> <span class="cn">NA</span>, type <span class="op">=</span> <span class="cn">NA</span>, show.p.overall <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -193,7 +193,7 @@
 
 
   <dt id="arg-var-equal">var.equal<a class="anchor" aria-label="anchor" href="#arg-var-equal"></a></dt>
-<dd><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></code> function is applied and <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">oneway.test</a></code> otherwise. Default value is TRUE.</p></dd>
+<dd><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables. Default value is FALSE. See details section for more information.</p></dd>
 
 
   <dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
@@ -353,8 +353,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                        1995              2000           2005     p.overall p.1995 vs 2000 p.1995 vs 2005 p.2000 vs 2005 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                        N=431             N=786         N=1077                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Individual id                                    1000002914 (1242) 3000104610 (2379) 1996 (1161)   0.000       &lt;0.001         &lt;0.001         &lt;0.001     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Age                                                 54.1 (11.7)       54.3 (11.2)    55.3 (10.6)   0.078       0.930          0.143          0.161      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Individual id                                    1000002914 (1242) 3000104610 (2379) 1996 (1161)   0.000       0.000          0.000          0.000      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Age                                                 54.1 (11.7)       54.3 (11.2)    55.3 (10.6)   0.079       0.936          0.163          0.158      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sex:                                                                                               0.506       0.794          0.794          0.792      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Male                                            206 (47.8%)       390 (49.6%)    505 (46.9%)                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Female                                          225 (52.2%)       396 (50.4%)    572 (53.1%)                                                        </span>
@@ -362,26 +362,26 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Never smoker                                    234 (56.4%)       414 (54.6%)    553 (52.2%)                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Current or former &lt; 1y                          109 (26.3%)       267 (35.2%)    217 (20.5%)                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Former &gt;= 1y                                    72 (17.3%)        77 (10.2%)     290 (27.4%)                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Systolic blood pressure                             133 (19.2)        133 (21.3)     129 (19.8)   &lt;0.001       0.934          0.011          &lt;0.001     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Diastolic blood pressure                            77.0 (10.5)       80.8 (10.3)    79.9 (10.6)  &lt;0.001       &lt;0.001         &lt;0.001         0.149      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Systolic blood pressure                             133 (19.2)        133 (21.3)     129 (19.8)   &lt;0.001       0.932          0.007          &lt;0.001     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Diastolic blood pressure                            77.0 (10.5)       80.8 (10.3)    79.9 (10.6)  &lt;0.001       &lt;0.001         &lt;0.001         0.146      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> History of hypertension                             111 (25.8%)       233 (29.6%)    379 (35.5%)  &lt;0.001       0.169          0.001          0.015      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Hypertension treatment                              71 (16.5%)        127 (16.2%)    230 (22.2%)   0.002       0.951          0.023          0.004      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total cholesterol                                   225 (43.1)        224 (44.4)     213 (45.9)   &lt;0.001       0.826          &lt;0.001         &lt;0.001     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> HDL cholesterol                                     51.9 (14.5)       52.3 (15.6)    53.2 (14.2)   0.208       0.863          0.252          0.409      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Triglycerides                                       114 (74.4)        114 (70.7)     117 (76.0)    0.582       0.999          0.750          0.611      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LDL cholesterol                                     152 (38.4)        149 (38.6)     136 (39.7)   &lt;0.001       0.521          &lt;0.001         &lt;0.001     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total cholesterol                                   225 (43.1)        224 (44.4)     213 (45.9)   &lt;0.001       0.816          &lt;0.001         &lt;0.001     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> HDL cholesterol                                     51.9 (14.5)       52.3 (15.6)    53.2 (14.2)   0.198       0.865          0.236          0.424      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Triglycerides                                       114 (74.4)        114 (70.7)     117 (76.0)    0.583       0.999          0.755          0.603      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LDL cholesterol                                     152 (38.4)        149 (38.6)     136 (39.7)   &lt;0.001       0.510          0.000          &lt;0.001     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> History of hyperchol.                               97 (22.5%)        256 (33.2%)    356 (33.2%)  &lt;0.001       &lt;0.001         &lt;0.001         1.000      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cholesterol treatment                               28 (6.50%)        68 (8.80%)     132 (12.8%)  &lt;0.001       0.193          0.002          0.015      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Height (cm)                                         163 (9.21)        162 (9.39)     163 (9.05)    0.003       0.021          0.956          0.006      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight (Kg)                                         72.3 (12.6)       73.8 (14.0)    73.6 (13.9)   0.150       0.146          0.221          0.923      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Body mass index                                     27.0 (4.15)       28.1 (4.62)    27.6 (4.63)  &lt;0.001       &lt;0.001         0.104          0.032      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Physical activity (Kcal/week)                        491 (419)         422 (377)      351 (378)   &lt;0.001       0.013          &lt;0.001         &lt;0.001     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Physical component                                  49.3 (8.08)       49.0 (9.63)    50.1 (8.91)   0.032       0.839          0.279          0.032      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mental component                                    49.2 (11.3)       48.9 (11.0)    46.9 (10.8)  &lt;0.001       0.872          0.001          0.001      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Height (cm)                                         163 (9.21)        162 (9.39)     163 (9.05)    0.004       0.022          0.955          0.006      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight (Kg)                                         72.3 (12.6)       73.8 (14.0)    73.6 (13.9)   0.120       0.124          0.188          0.926      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Body mass index                                     27.0 (4.15)       28.1 (4.62)    27.6 (4.63)  &lt;0.001       &lt;0.001         0.080          0.036      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Physical activity (Kcal/week)                        491 (419)         422 (377)      351 (378)   &lt;0.001       0.021          &lt;0.001         &lt;0.001     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Physical component                                  49.3 (8.08)       49.0 (9.63)    50.1 (8.91)   0.037       0.829          0.226          0.041      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mental component                                    49.2 (11.3)       48.9 (11.0)    46.9 (10.8)  &lt;0.001       0.877          0.001          0.001      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cardiovascular event                                10 (2.51%)        35 (4.72%)     47 (4.59%)    0.161       0.151          0.151          0.986      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Days to cardiovascular event or end of follow-up    1784 (1101)       1686 (1080)    1793 (1072)   0.099       0.310          0.987          0.097      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Days to cardiovascular event or end of follow-up    1784 (1101)       1686 (1080)    1793 (1072)   0.099       0.320          0.987          0.095      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Overall death                                       18 (4.65%)        81 (11.0%)     74 (7.23%)   &lt;0.001       0.002          0.103          0.012      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Days to overall death or end of follow-up           1713 (1042)       1674 (1050)    1758 (1055)   0.252       0.825          0.754          0.224      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Days to overall death or end of follow-up           1713 (1042)       1674 (1050)    1758 (1055)   0.254       0.823          0.752          0.225      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
