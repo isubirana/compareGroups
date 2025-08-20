@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">compareGroups</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.9.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">4.10.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
 <span>  ref <span class="op">=</span> <span class="fl">1</span>, ref.no <span class="op">=</span> <span class="cn">NA</span>, fact.ratio <span class="op">=</span> <span class="fl">1</span>, ref.y <span class="op">=</span> <span class="fl">1</span>, p.corrected <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>  compute.ratio <span class="op">=</span> <span class="cn">TRUE</span>, include.miss <span class="op">=</span> <span class="cn">FALSE</span>, oddsratio.method <span class="op">=</span> <span class="st">"midp"</span>, </span>
 <span>  chisq.test.perm <span class="op">=</span> <span class="cn">FALSE</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span>, chisq.test.B <span class="op">=</span> <span class="fl">2000</span>, chisq.test.seed <span class="op">=</span> <span class="cn">NULL</span>, </span>
-<span>  Date.format <span class="op">=</span> <span class="st">"d-mon-Y"</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, surv<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>  Date.format <span class="op">=</span> <span class="st">"d-mon-Y"</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span>, surv<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>  riskratio <span class="op">=</span> <span class="cn">FALSE</span>, riskratio.method <span class="op">=</span> <span class="st">"wald"</span>, compute.prop <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>  lab.missing <span class="op">=</span> <span class="st">"'Missing'"</span>, p.trend.method <span class="op">=</span> <span class="st">"spearman"</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for class 'compareGroups'</span></span>
@@ -191,7 +191,7 @@
 
 
   <dt id="arg-var-equal">var.equal<a class="anchor" aria-label="anchor" href="#arg-var-equal"></a></dt>
-<dd><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables on more than two groups. If TRUE <code><a href="https://rdrr.io/r/stats/anova.html" class="external-link">anova</a></code> function is applied and <code><a href="https://rdrr.io/r/stats/oneway.test.html" class="external-link">oneway.test</a></code> otherwise. Default value is TRUE.</p></dd>
+<dd><p>logical, indicating whether to consider equal variances when comparing means on normal distributed variables. Default value is FALSE. See details section for more information.</p></dd>
 
 
   <dt id="arg-conf-level">conf.level<a class="anchor" aria-label="anchor" href="#arg-conf-level"></a></dt>
@@ -265,8 +265,10 @@
   2- median, 1st and 3rd quartiles (by default), and Kruskall-Wallis test <br>
   3- or absolute and relative frequencies and chi-squared or exact Fisher test when the expected frequencies is less than 5 in some cell<br>
 Also, a row-variable can be of class 'Surv'. Then the probability of 'event' at a fixed time (set up with 'timemax' argument) is computed and a logrank test is performed.<br></p>
-<p>When there are more than 2 groups, it also performs pairwise comparisons adjusting for multiple testing (Tukey when row-variable is normal-distributed and Benjamini &amp; Hochberg method otherwise), and computes p-value for trend.
-The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. Also, for continuous non normal distributed variables, it is possible to compute the p-value for trend using the Kendall's test (<code>method='kendall'</code> from <code><a href="https://rdrr.io/r/stats/cor.test.html" class="external-link">cor.test</a></code>) or Cuzick's test (<code><a href="https://rdrr.io/pkg/PMCMRplus/man/cuzickTest.html" class="external-link">cuzickTest</a></code>).
+<p>When there are more than two groups, it also performs pairwise comparisons adjusting for multiple testing
+(Tukey or Games-Howell test when row-variable is normal-distributed and Benjamini &amp; Hochberg method otherwise), and computes p-value for trend.</p>
+<p>When variances are assumed different for normal distributed row-variables, Welch correccion is applied and Games Howell test (<code><a href="https://rpkgs.datanovia.com/rstatix/reference/games_howell_test.html" class="external-link">games_howell_test</a></code>) for pairwise comparison p-values is performed.</p>
+<p>The p-value for trend is computed from the Pearson test when row-variable is normal and from the Spearman test when it is continuous non normal. Also, for continuous non normal distributed variables, it is possible to compute the p-value for trend using the Kendall's test (<code>method='kendall'</code> from <code><a href="https://rdrr.io/r/stats/cor.test.html" class="external-link">cor.test</a></code>) or Cuzick's test (<code><a href="https://rdrr.io/pkg/PMCMRplus/man/cuzickTest.html" class="external-link">cuzickTest</a></code>).
 If row-variable is of class 'Surv', the score test is computed from a Cox model where the grouping variable is introduced as an integer variable predictor.
 If the row-variable is categorical, the p-value for trend is computed from Mantel-Haenszel test of trend.</p>
 <p>If there are two groups, the Odds Ratio or Risk Ratio is computed for each row-variable. While, if the response is of class 'Surv' (i.e. time to event) Hazard Ratios are computed.
@@ -298,6 +300,7 @@ Finally, when the response is binary and the row variable is categorical, the p-
 <p>Subjects selection criteria specified in 'selec' and 'subset' arguments are combined using '&amp;' to be applied to every row-variable.<br></p>
 <p>Through '...' argument of 'plot' method, some parameters such as figure size, multiple figures in a unique file (only for 'pdf' files), resolution, etc. are controlled. For more information about which arguments can be passed depending on the format type, see <code><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></code>, <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">bmp</a></code>, <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">jpeg</a></code>, <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">png</a></code> or <code><a href="https://rdrr.io/r/grDevices/png.html" class="external-link">tiff</a></code>.<br></p>
 <p>Since version 4.0, date variables are supported. For this kind of variables only method==2 is applied, i.e. non-parametric tests for continuous variables are applied. However, the descriptive statistics (medians and quantiles) are displayed in date format instead of numeric format.</p>
+<p>Since version 4.10, `var.equal` default value has been changed to FALSE and does not apply only when comparing three or more groups but also when comparing two groups. Therefore, p-values may change when comparing more than two groups for normal distributed row-variables with respecto to previous versions.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
