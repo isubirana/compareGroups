@@ -128,7 +128,7 @@ Age
 55.3±10.6
 </td>
 <td style="text-align:center;">
-0.078
+0.079
 </td>
 </tr>
 <tr>
@@ -338,7 +338,7 @@ HDL cholesterol
 53.2±14.2
 </td>
 <td style="text-align:center;">
-0.208
+0.198
 </td>
 </tr>
 <tr>
@@ -423,7 +423,7 @@ Height (cm)
 163±9.05
 </td>
 <td style="text-align:center;">
-0.003
+0.004
 </td>
 </tr>
 <tr>
@@ -440,7 +440,7 @@ Weight (Kg)
 73.6±13.9
 </td>
 <td style="text-align:center;">
-0.150
+0.120
 </td>
 </tr>
 <tr>
@@ -491,7 +491,7 @@ Physical component
 50.1±8.91
 </td>
 <td style="text-align:center;">
-0.032
+0.037
 </td>
 </tr>
 <tr>
@@ -680,7 +680,7 @@ Age
 55.4±10.7
 </td>
 <td style="text-align:center;">
-0.212
+0.211
 </td>
 <td style="text-align:center;">
 54.1±11.7
@@ -692,7 +692,7 @@ Age
 55.2±10.6
 </td>
 <td style="text-align:center;">
-0.351
+0.355
 </td>
 </tr>
 <tr>
@@ -813,7 +813,7 @@ Systolic blood pressure
 132±18.7
 </td>
 <td style="text-align:center;">
-0.002
+0.003
 </td>
 <td style="text-align:center;">
 132±19.8
@@ -825,7 +825,7 @@ Systolic blood pressure
 127±20.5
 </td>
 <td style="text-align:center;">
-0.008
+0.006
 </td>
 </tr>
 <tr>
@@ -854,7 +854,7 @@ Diastolic blood pressure
 78.3±10.0
 </td>
 <td style="text-align:center;">
-&lt;0.001
+0.001
 </td>
 </tr>
 <tr>
@@ -958,7 +958,7 @@ HDL cholesterol
 48.1±12.4
 </td>
 <td style="text-align:center;">
-0.290
+0.300
 </td>
 <td style="text-align:center;">
 56.9±13.9
@@ -970,7 +970,7 @@ HDL cholesterol
 57.8±14.2
 </td>
 <td style="text-align:center;">
-0.783
+0.758
 </td>
 </tr>
 <tr>
@@ -1103,7 +1103,7 @@ Height (cm)
 170±7.43
 </td>
 <td style="text-align:center;">
-0.021
+0.020
 </td>
 <td style="text-align:center;">
 158±6.31
@@ -1132,7 +1132,7 @@ Weight (Kg)
 80.2±11.6
 </td>
 <td style="text-align:center;">
-0.023
+0.021
 </td>
 <td style="text-align:center;">
 67.3±11.3
@@ -1144,7 +1144,7 @@ Weight (Kg)
 67.7±13.0
 </td>
 <td style="text-align:center;">
-0.919
+0.910
 </td>
 </tr>
 <tr>
@@ -1173,7 +1173,7 @@ Body mass index
 27.3±5.39
 </td>
 <td style="text-align:center;">
-0.084
+0.079
 </td>
 </tr>
 <tr>
@@ -1190,7 +1190,7 @@ Physical activity (Kcal/week)
 439±467
 </td>
 <td style="text-align:center;">
-0.014
+0.009
 </td>
 <td style="text-align:center;">
 553±412
@@ -1219,7 +1219,7 @@ Physical component
 51.5±8.07
 </td>
 <td style="text-align:center;">
-0.110
+0.068
 </td>
 <td style="text-align:center;">
 48.6±9.16
@@ -1231,7 +1231,7 @@ Physical component
 48.9±9.45
 </td>
 <td style="text-align:center;">
-0.027
+0.034
 </td>
 </tr>
 <tr>
@@ -1260,7 +1260,7 @@ Mental component
 44.7±11.2
 </td>
 <td style="text-align:center;">
-0.017
+0.016
 </td>
 </tr>
 <tr>

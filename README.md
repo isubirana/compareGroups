@@ -246,7 +246,7 @@ as usual in many other R funcions.
                                                           1995            2000            2005       p.overall 
                                                           N=203           N=365           N=540                
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
-    Age                                                65.0 (5.41)     64.7 (5.48)     64.3 (5.57)     0.235   
+    Age                                                65.0 (5.41)     64.7 (5.48)     64.3 (5.57)     0.232   
     Sex:                                                                                               0.613   
         Male                                           94 (46.3%)      181 (49.6%)     251 (46.5%)             
         Female                                         109 (53.7%)     184 (50.4%)     289 (53.5%)             
@@ -259,16 +259,16 @@ as usual in many other R funcions.
     History of hypertension                            80 (39.4%)      151 (41.4%)     274 (51.0%)     0.002   
     Hypertension treatment                             57 (28.1%)      101 (27.7%)     198 (38.1%)     0.002   
     Total cholesterol                                  229 (41.8)      228 (44.4)      217 (44.3)     <0.001   
-    HDL cholesterol                                    52.4 (14.5)     52.2 (15.3)     53.5 (14.2)     0.403   
+    HDL cholesterol                                    52.4 (14.5)     52.2 (15.3)     53.5 (14.2)     0.406   
     Triglycerides                                    99.0 [77.0;137] 107 [82.0;136]  104 [77.0;142]    0.491   
     LDL cholesterol                                    154 (37.5)      153 (38.3)      139 (39.6)     <0.001   
     History of hyperchol.                              52 (25.6%)      150 (42.3%)     219 (40.7%)    <0.001   
     Cholesterol treatment                              22 (10.8%)      55 (15.4%)      111 (21.3%)     0.002   
     Height (cm)                                        162 (8.72)      160 (8.98)      161 (8.54)      0.002   
-    Weight (Kg)                                        73.1 (11.8)     75.2 (12.9)     74.1 (12.4)     0.157   
+    Weight (Kg)                                        73.1 (11.8)     75.2 (12.9)     74.1 (12.4)     0.156   
     Body mass index                                    28.0 (4.40)     29.5 (4.21)     28.4 (4.39)    <0.001   
-    Physical activity (Kcal/week)                       491 (380)       429 (317)       373 (370)     <0.001   
-    Physical component                                 46.9 (8.95)     45.7 (10.8)     47.6 (9.70)     0.031   
+    Physical activity (Kcal/week)                       491 (380)       429 (317)       373 (370)      0.001   
+    Physical component                                 46.9 (8.95)     45.7 (10.8)     47.6 (9.70)     0.043   
     Mental component                                   49.2 (11.6)     49.8 (11.0)     47.6 (10.9)     0.016   
     Cardiovascular event                                6 (3.23%)      21 (6.10%)      28 (5.44%)      0.356   
     Days to cardiovascular event or end of follow-up 1710 [804;2769] 1577 [640;2564] 1752 [824;2739]   0.137   
@@ -380,7 +380,7 @@ Age
 64.3 (5.57)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.235
+0.232
 </td>
 </tr>
 <tr>
@@ -590,7 +590,7 @@ HDL cholesterol
 53.5 (14.2)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.403
+0.406
 </td>
 </tr>
 <tr>
@@ -692,7 +692,7 @@ Weight (Kg)
 74.1 (12.4)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.157
+0.156
 </td>
 </tr>
 <tr>
@@ -726,7 +726,7 @@ Physical activity (Kcal/week)
 373 (370)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-&lt;0.001
+0.001
 </td>
 </tr>
 <tr>
@@ -743,7 +743,7 @@ Physical component
 47.6 (9.70)
 </td>
 <td style="text-align:center;">
-0.031
+0.043
 </td>
 </tr>
 <tr>
@@ -855,27 +855,27 @@ women. This is very easy using the `strataTable` function:
                                                            1995            2000            2005       p.overall       1995            2000            2005       p.overall 
                                                            N=94            N=181           N=251                      N=109           N=184           N=289                
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-    Age                                                65.4 (5.36)      64.7 (5.39)     64.6 (5.62)     0.453      64.7 (5.47)     64.6 (5.58)     64.1 (5.53)     0.403   
+    Age                                                65.4 (5.36)      64.7 (5.39)     64.6 (5.62)     0.444      64.7 (5.47)     64.6 (5.58)     64.1 (5.53)     0.404   
     Smoking status:                                                                                    <0.001                                                      0.007   
         Never smoker                                    23 (25.6%)      50 (28.9%)      70 (28.6%)                 104 (96.3%)     170 (97.1%)     256 (90.1%)             
         Current or former < 1y                          25 (27.8%)      80 (46.2%)      57 (23.3%)                  4 (3.70%)       4 (2.29%)      14 (4.93%)              
         Former >= 1y                                    42 (46.7%)      43 (24.9%)      118 (48.2%)                 0 (0.00%)       1 (0.57%)      14 (4.93%)              
     Systolic blood pressure                             141 (18.0)      145 (18.8)      139 (19.3)      0.003      143 (18.6)      143 (21.1)      136 (20.4)     <0.001   
-    Diastolic blood pressure                           79.8 (8.79)      84.8 (9.50)     82.5 (10.8)    <0.001      79.3 (10.8)     82.2 (10.2)     80.0 (10.2)     0.028   
+    Diastolic blood pressure                           79.8 (8.79)      84.8 (9.50)     82.5 (10.8)    <0.001      79.3 (10.8)     82.2 (10.2)     80.0 (10.2)     0.029   
     History of hypertension                             34 (36.2%)      67 (37.0%)      126 (50.6%)     0.006      46 (42.2%)      84 (45.7%)      148 (51.4%)     0.202   
     Hypertension treatment                              25 (26.6%)      39 (21.5%)      96 (39.8%)     <0.001      32 (29.4%)      62 (33.7%)      102 (36.6%)     0.398   
-    Total cholesterol                                   221 (42.3)      222 (44.3)      207 (37.9)     <0.001      236 (40.3)      234 (43.8)      225 (47.8)      0.035   
-    HDL cholesterol                                    47.6 (14.3)      46.9 (11.9)     49.1 (12.7)     0.225      56.8 (13.4)     57.6 (16.5)     57.4 (14.4)     0.913   
+    Total cholesterol                                   221 (42.3)      222 (44.3)      207 (37.9)     <0.001      236 (40.3)      234 (43.8)      225 (47.8)      0.032   
+    HDL cholesterol                                    47.6 (14.3)      46.9 (11.9)     49.1 (12.7)     0.207      56.8 (13.4)     57.6 (16.5)     57.4 (14.4)     0.904   
     Triglycerides                                     110 [79.5;139]  112 [87.0;137]  109 [77.0;142]    0.670    95.5 [75.0;127] 104 [77.0;134]  102 [77.0;142]    0.577   
     LDL cholesterol                                     151 (38.8)      152 (39.8)      134 (34.2)     <0.001      157 (36.4)      154 (36.9)      144 (43.2)      0.006   
     History of hyperchol.                               24 (25.5%)      72 (40.4%)      90 (36.0%)      0.050      28 (25.7%)      78 (44.1%)      129 (44.8%)     0.002   
     Cholesterol treatment                               12 (12.8%)      30 (16.9%)      44 (18.1%)      0.498      10 (9.17%)      25 (14.0%)      67 (24.2%)      0.001   
-    Height (cm)                                         168 (6.78)      166 (6.36)      167 (6.92)      0.040      156 (6.27)      153 (6.27)      156 (6.36)     <0.001   
-    Weight (Kg)                                        76.6 (12.6)      81.1 (11.8)     78.8 (10.2)     0.005      70.1 (10.4)     69.2 (11.1)     69.9 (12.6)     0.773   
-    Body mass index                                    27.1 (3.97)      29.4 (3.59)     28.2 (3.25)    <0.001      28.8 (4.62)     29.6 (4.76)     28.6 (5.19)     0.141   
-    Physical activity (Kcal/week)                       499 (462)        399 (342)       492 (449)      0.054       483 (299)       458 (289)       269 (240)     <0.001   
-    Physical component                                 48.3 (7.03)      48.0 (10.2)     49.0 (9.03)     0.558      45.6 (10.3)     43.5 (11.0)     46.4 (10.1)     0.024   
-    Mental component                                   52.6 (10.3)      52.5 (9.49)     50.1 (9.94)     0.033      46.1 (11.9)     47.2 (11.8)     45.3 (11.2)     0.263   
+    Height (cm)                                         168 (6.78)      166 (6.36)      167 (6.92)      0.036      156 (6.27)      153 (6.27)      156 (6.36)     <0.001   
+    Weight (Kg)                                        76.6 (12.6)      81.1 (11.8)     78.8 (10.2)     0.011      70.1 (10.4)     69.2 (11.1)     69.9 (12.6)     0.748   
+    Body mass index                                    27.1 (3.97)      29.4 (3.59)     28.2 (3.25)    <0.001      28.8 (4.62)     29.6 (4.76)     28.6 (5.19)     0.134   
+    Physical activity (Kcal/week)                       499 (462)        399 (342)       492 (449)      0.034       483 (299)       458 (289)       269 (240)     <0.001   
+    Physical component                                 48.3 (7.03)      48.0 (10.2)     49.0 (9.03)     0.584      45.6 (10.3)     43.5 (11.0)     46.4 (10.1)     0.030   
+    Mental component                                   52.6 (10.3)      52.5 (9.49)     50.1 (9.94)     0.034      46.1 (11.9)     47.2 (11.8)     45.3 (11.2)     0.267   
     Cardiovascular event                                3 (3.33%)       14 (8.19%)      13 (5.44%)      0.257       3 (3.12%)       7 (4.05%)      15 (5.43%)      0.706   
     Days to cardiovascular event or end of follow-up 1606 [793;2735]  1608 [537;2492] 1882 [920;2827]   0.105    1739 [834;2768] 1573 [686;2655] 1723 [701;2673]   0.512   
     Overall death                                       9 (10.3%)       34 (20.0%)      16 (6.72%)     <0.001       4 (4.08%)      27 (15.8%)      30 (10.8%)      0.013   
@@ -979,7 +979,7 @@ Age
 64.6 (5.62)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.453
+0.444
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 64.7 (5.47)
@@ -991,7 +991,7 @@ Age
 64.1 (5.53)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.403
+0.404
 </td>
 </tr>
 <tr>
@@ -1230,7 +1230,7 @@ Diastolic blood pressure
 80.0 (10.2)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.028
+0.029
 </td>
 </tr>
 <tr>
@@ -1317,7 +1317,7 @@ Total cholesterol
 225 (47.8)
 </td>
 <td style="text-align:center;">
-0.035
+0.032
 </td>
 </tr>
 <tr>
@@ -1334,7 +1334,7 @@ HDL cholesterol
 49.1 (12.7)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.225
+0.207
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 56.8 (13.4)
@@ -1346,7 +1346,7 @@ HDL cholesterol
 57.4 (14.4)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.913
+0.904
 </td>
 </tr>
 <tr>
@@ -1479,7 +1479,7 @@ Height (cm)
 167 (6.92)
 </td>
 <td style="text-align:center;">
-0.040
+0.036
 </td>
 <td style="text-align:center;">
 156 (6.27)
@@ -1508,7 +1508,7 @@ Weight (Kg)
 78.8 (10.2)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.005
+0.011
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 70.1 (10.4)
@@ -1520,7 +1520,7 @@ Weight (Kg)
 69.9 (12.6)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.773
+0.748
 </td>
 </tr>
 <tr>
@@ -1549,7 +1549,7 @@ Body mass index
 28.6 (5.19)
 </td>
 <td style="text-align:center;">
-0.141
+0.134
 </td>
 </tr>
 <tr>
@@ -1566,7 +1566,7 @@ Physical activity (Kcal/week)
 492 (449)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.054
+0.034
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 483 (299)
@@ -1595,7 +1595,7 @@ Physical component
 49.0 (9.03)
 </td>
 <td style="text-align:center;">
-0.558
+0.584
 </td>
 <td style="text-align:center;">
 45.6 (10.3)
@@ -1607,7 +1607,7 @@ Physical component
 46.4 (10.1)
 </td>
 <td style="text-align:center;">
-0.024
+0.030
 </td>
 </tr>
 <tr>
@@ -1624,7 +1624,7 @@ Mental component
 50.1 (9.94)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.033
+0.034
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
 46.1 (11.9)
@@ -1636,7 +1636,7 @@ Mental component
 45.3 (11.2)
 </td>
 <td style="text-align:center;background-color: rgba(210, 210, 210, 255) !important;">
-0.263
+0.267
 </td>
 </tr>
 <tr>
