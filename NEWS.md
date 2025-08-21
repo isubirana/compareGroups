@@ -1,5 +1,6 @@
 # compareGroups 4.10.1
 - bug fixed in cGroupsWUI()
+- argument `stars` also identifies p-values < 0.01 with triple star.
 
 # compareGroups 4.10.0
 argument `var.equal` argument of `compareGroups` and `descrTable` functions:

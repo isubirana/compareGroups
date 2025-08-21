@@ -12,8 +12,9 @@ function(x,digits=NULL,stars=FALSE,...){
            ifelse(x<100,format(round(x,1),trim=TRUE,nsmall=1,...),format(round(x,0),trim=TRUE,nsmall=0,...))))
   }
   if (stars){
-    res <- ifelse(x<0.05, paste0(res, "** "), 
-           ifelse(x<0.1, paste0(res, "*  "), paste0(res,"   ")))
+    res <- ifelse(x<0.01, paste0(res, "*** "), # v4.10.1
+           ifelse(x<0.05, paste0(res, "** "), 
+           ifelse(x<0.1, paste0(res, "*  "), paste0(res,"   "))))
   }
   return(res)
 }
