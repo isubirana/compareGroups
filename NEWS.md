@@ -1,3 +1,6 @@
+# compareGroups 4.10.2
+- Shiny app ("server.R""): when reading stata files, `as_factor` is applied to work with codes instead of values.
+
 # compareGroups 4.10.1
 - bug fixed in cGroupsWUI()
 - argument `stars` also identifies p-values < 0.01 with triple star.

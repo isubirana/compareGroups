@@ -4,24 +4,24 @@ server <- function(input, output, session) {
   #   tags$style(HTML(paste0(".main-sidebar{width: ", input$sidebarwidth,"%;}")))
   # })
   
-
-  # register entrance and exit time entries
-  if (dir.exists(".secrets")){
-    observe({
-      # port <- session$clientData$url_port
-      # if (port==""){
-        nomapp <- "compareGroups" # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a isubirana o regicor respectivament 
-      # } else {
-      #   nomapp <- "compareGroups_cGroupsWUI"
-      # }  
-      dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app=nomapp)
-      googlesheets4::sheet_append(sheet_id, dd)
-      onStop(function(){
-        dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app=nomapp)
-        googlesheets4::sheet_append(sheet_id, dd)
-      })
-    })
-  }
+  # ho trec pq s'ha excedit el nombre de files de google sheet
+  # # register entrance and exit time entries
+  # if (dir.exists(".secrets")){
+  #   observe({
+  #     # port <- session$clientData$url_port
+  #     # if (port==""){
+  #       nomapp <- "compareGroups" # canviar a compareGroups/compareGroups_datarus segons si es fa el deploy a isubirana o regicor respectivament 
+  #     # } else {
+  #     #   nomapp <- "compareGroups_cGroupsWUI"
+  #     # }  
+  #     dd <- data.frame(id=session$token, start=as.character(Sys.time()),end=NA,app=nomapp)
+  #     googlesheets4::sheet_append(sheet_id, dd)
+  #     onStop(function(){
+  #       dd <- data.frame(id=session$token, start=NA,end=as.character(Sys.time()),app=nomapp)
+  #       googlesheets4::sheet_append(sheet_id, dd)
+  #     })
+  #   })
+  # }
 
   output$xxx <- renderPrint({
     # cat("summary(rv$dataset)\n")
@@ -751,6 +751,7 @@ server <- function(input, output, session) {
           return(invisible(NULL))
         }
         # fix data
+        dataset <- as_factor(dataset)
         dataset <- as.data.frame(dataset)
         # vl<-attr(dataset,"variable.labels")
         for (i in 1:ncol(dataset)){
@@ -1197,6 +1198,7 @@ server <- function(input, output, session) {
     dd <- rv$datasetorig
     if (NROW(dd)==0) return(invisible(NULL))
     validate(need(dd, "Data not loaded"))
+    
     withProgress(message="Displaying data table", min=0, max=1, {
       which.Surv <- sapply(dd, is.Surv)
       if (any(which.Surv)){
@@ -1220,6 +1222,9 @@ server <- function(input, output, session) {
         if (!identical(ll,names(dd))) nn <- paste0(nn,"<format style='color:grey;font-size:75%'><br><i>",ll,"</i></format>")
       }
   
+      print("xxx")
+      print(head(dd))
+      
       ans <- DT::datatable(dd,
                       escape=FALSE,
                       filter = "top",
