@@ -25,9 +25,9 @@
 
 ## Introduction
 
-The **`compareGroups`** package (Subirana, Sanz, and Vila 2014) allows
-users to create tables displaying results of univariate analyses,
-stratified or not by categorical variable groupings.
+The **`compareGroups`** package (Subirana et al. 2014) allows users to
+create tables displaying results of univariate analyses, stratified or
+not by categorical variable groupings.
 
 Tables can easily be exported to CSV, LaTeX, HTML, PDF, Word or Excel,
 or inserted in R-markdown files to generate reports automatically.
@@ -39,6 +39,7 @@ The **`compareGroups`** package is available on CRAN repository. To load
 the package using the **`R`** prompt, enter:
 
 ``` r
+
 library(compareGroups)
 ```
 
@@ -98,45 +99,45 @@ hospital and official registries and reports along more than 10 years.
 First of all, load REGICOR data typing:
 
 ``` r
+
 data(regicor)
 ```
 
 Variables and labels in this data frame are:
 
-| Name     | Label                                            | Codes                                                   |
-|:---------|:-------------------------------------------------|:--------------------------------------------------------|
-| id       | Individual id                                    |                                                         |
-| year     | Recruitment year                                 | 1995; 2000; 2005                                        |
-| age      | Age                                              |                                                         |
-| sex      | Sex                                              | Male; Female                                            |
-| smoker   | Smoking status                                   | Never smoker; Current or former \< 1y; Former $\geq$ 1y |
-| sbp      | Systolic blood pressure                          |                                                         |
-| dbp      | Diastolic blood pressure                         |                                                         |
-| histhtn  | History of hypertension                          | Yes; No                                                 |
-| txhtn    | Hypertension treatment                           | No; Yes                                                 |
-| chol     | Total cholesterol                                |                                                         |
-| hdl      | HDL cholesterol                                  |                                                         |
-| triglyc  | Triglycerides                                    |                                                         |
-| ldl      | LDL cholesterol                                  |                                                         |
-| histchol | History of hyperchol.                            | Yes; No                                                 |
-| txchol   | Cholesterol treatment                            | No; Yes                                                 |
-| height   | Height (cm)                                      |                                                         |
-| weight   | Weight (Kg)                                      |                                                         |
-| bmi      | Body mass index                                  |                                                         |
-| phyact   | Physical activity (Kcal/week)                    |                                                         |
-| pcs      | Physical component                               |                                                         |
-| mcs      | Mental component                                 |                                                         |
-| cv       | Cardiovascular event                             | No; Yes                                                 |
-| tocv     | Days to cardiovascular event or end of follow-up |                                                         |
-| death    | Overall death                                    | No; Yes                                                 |
-| todeath  | Days to overall death or end of follow-up        |                                                         |
+| Name | Label | Codes |
+|:---|:---|:---|
+| id | Individual id |  |
+| year | Recruitment year | 1995; 2000; 2005 |
+| age | Age |  |
+| sex | Sex | Male; Female |
+| smoker | Smoking status | Never smoker; Current or former \< 1y; Former $`\geq`$ 1y |
+| sbp | Systolic blood pressure |  |
+| dbp | Diastolic blood pressure |  |
+| histhtn | History of hypertension | Yes; No |
+| txhtn | Hypertension treatment | No; Yes |
+| chol | Total cholesterol |  |
+| hdl | HDL cholesterol |  |
+| triglyc | Triglycerides |  |
+| ldl | LDL cholesterol |  |
+| histchol | History of hyperchol. | Yes; No |
+| txchol | Cholesterol treatment | No; Yes |
+| height | Height (cm) |  |
+| weight | Weight (Kg) |  |
+| bmi | Body mass index |  |
+| phyact | Physical activity (Kcal/week) |  |
+| pcs | Physical component |  |
+| mcs | Mental component |  |
+| cv | Cardiovascular event | No; Yes |
+| tocv | Days to cardiovascular event or end of follow-up |  |
+| death | Overall death | No; Yes |
+| todeath | Days to overall death or end of follow-up |  |
 
 OBSERVATIONS:
 
 1.  It is important to note that **`compareGroups`** is not aimed to
     perform quality control of the data. Other useful packages such as
-    **`2lh`** (Genolini, Desgraupes, and Franca 2011) are available for
-    this purpose.
+    **`2lh`** (Genolini et al. 2011) are available for this purpose.
 
 2.  It is strongly recommended that the *data.frame* contain only the
     variables to be analyzed; the ones not needed in the present
@@ -156,6 +157,7 @@ A variable of class `Surv` must be created to deal with time-to-event
 variables (i.e., time to Cardiovascular event/censored in our example):
 
 ``` r
+
 library(survival)
 regicor$tmain <- with(regicor, Surv(tocv, cv == 'Yes'))
 attr(regicor$tmain,"label") <- "Time to CV event or censoring"
@@ -179,6 +181,7 @@ between *year* (“response” variable) and all other variables
 (“explanatory” variables), this formula is required:
 
 ``` r
+
 compareGroups(year ~ . , data=regicor)
 ```
 
@@ -190,6 +193,7 @@ data frame will be used.
 To remove the variable *id* from the analysis, use `-` in the formula:
 
 ``` r
+
 compareGroups(year ~ . - id, data=regicor)
 ```
 
@@ -197,9 +201,11 @@ To select some explanatory variables (e.g., *age*, *sex* and *bmi*) and
 store results in an object of class `compareGroups`:
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + bmi, data=regicor)
 res
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -231,8 +237,10 @@ To perform the analysis in a subset of participants (e.g., “female”
 participants):
 
 ``` r
+
 compareGroups(year ~ age + smoker + bmi, data=regicor, subset = sex=='Female')
 ```
+
 
 
     -------- Summary of results by groups of 'year'---------
@@ -250,8 +258,10 @@ Note that only results for female participants are shown.
 To subset specific variable/s (e.g., *age* and *bmi*):
 
 ``` r
+
 compareGroups(year ~ age + bmi + smoker, data=regicor, selec = list(age= sex=="Female", bmi = age>50 ))
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -270,8 +280,10 @@ among people older than 50 years.
 Combinations are also allowed, e.g.:
 
 ``` r
+
 compareGroups(year ~ age + smoker + bmi, data=regicor, selec = list(bmi=age>50), subset = sex=="Female")
 ```
+
 
 
     -------- Summary of results by groups of 'year'---------
@@ -287,8 +299,10 @@ compareGroups(year ~ age + smoker + bmi, data=regicor, selec = list(bmi=age>50),
 A variable can appear twice in the formula, e.g.:
 
 ``` r
+
 compareGroups(year ~ age + sex + bmi + bmi, data=regicor, selec = list(bmi.1=txhtn=='Yes'))
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -315,8 +329,10 @@ variables will be described with mean and standard deviation. To change
 default options, e.g., “tryglic” used as non-normal distributed:
 
 ``` r
+
 compareGroups(year ~ age + smoker + triglyc, data=regicor, method = c(triglyc=2))
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -348,8 +364,10 @@ Shapiro-Wilks test for normality is used to decide if the variable is
 normal or non-normal distributed. To change the significance threshold:
 
 ``` r
+
 compareGroups(year ~ age + smoker + triglyc, data=regicor, method = c(triglyc=NA), alpha= 0.01)
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -372,9 +390,11 @@ All non factor variables are considered as continuous. Exception is made
 threshold can be changed in the **min.dis** statement:
 
 ``` r
+
 regicor$age7gr<-as.integer(cut(regicor$age, breaks=c(-Inf,40,45,50,55,65,70,Inf), right=TRUE))
 compareGroups(year ~ age7gr, data=regicor, method = c(age7gr=NA))
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -386,8 +406,10 @@ compareGroups(year ~ age7gr, data=regicor, method = c(age7gr=NA))
     Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 
 
 ``` r
+
 compareGroups(year ~ age7gr, data=regicor, method = c(age7gr=NA), min.dis=8)
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -404,6 +426,7 @@ different values, the function `compareGroups` returns an error message.
 For example:
 
 ``` r
+
 regicor$var6cat <- factor(sample(1:5, nrow(regicor), replace=TRUE))
 compareGroups(age7gr ~ sex + bmi + smoker, data=regicor)
 ```
@@ -414,8 +437,10 @@ compareGroups(age7gr ~ sex + bmi + smoker, data=regicor)
 Defaults setting can be changed with the **max.ylev** statement:
 
 ``` r
+
 compareGroups(age7gr ~ sex + bmi + smoker, data=regicor, max.ylev=7)
 ```
+
 
 
     -------- Summary of results by groups of 'age7gr'---------
@@ -433,6 +458,7 @@ for an explanatory variable. If this level is exceeded, the variable is
 removed from the analysis and a warning message is printed:
 
 ``` r
+
 compareGroups(year ~ sex + age7gr, method=c(age7gr=3), data=regicor, max.xlev=5)
 ```
 
@@ -452,8 +478,10 @@ visible until the table is created with the `createTable` function
   cause variable names to be printed instead.
 
 ``` r
+
 compareGroups(year ~ age + smoker + bmi, data=regicor, include.label= FALSE)
 ```
+
 
 
     -------- Summary of results by groups of 'year'---------
@@ -472,9 +500,11 @@ compareGroups(year ~ age + smoker + bmi, data=regicor, include.label= FALSE)
   results, after applying the function `createTable` (see Section 4.2).
 
 ``` r
+
 resu1<-compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2))
 createTable(resu1)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -491,9 +521,11 @@ Note: percentiles 25 and 75 are calculated for “triglycerides”.
 To get instead percentile 2.5% and 97.5%:
 
 ``` r
+
 resu2<-compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2), Q1=0.025, Q3=0.975)
 createTable(resu2)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -508,6 +540,7 @@ createTable(resu2)
 To get minimum and maximum:
 
 ``` r
+
 compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2), Q1=0, Q3=1)
 ```
 
@@ -517,6 +550,7 @@ compareGroups(year ~ age + triglyc, data=regicor, method = c(triglyc=2), Q1=0, Q
   *smk* with a new category (“Unknown”):
 
 ``` r
+
 regicor$smk<-regicor$smoker
 levels(regicor$smk)<- c("Never smoker", "Current or former < 1y", "Former >= 1y", "Unknown")
 attr(regicor$smk,"label")<-"Smoking 4 cat."
@@ -532,8 +566,10 @@ cbind(table(regicor$smk))
 Note that this new category (“unknown”) has no individuals:
 
 ``` r
+
 compareGroups(year ~ age + smk + bmi, data=regicor)
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -556,8 +592,10 @@ To avoid using empty categories, `simplify` must be stated as `TRUE`
 (Default value).
 
 ``` r
+
 compareGroups(year ~ age + smk + bmi, data=regicor, simplify=FALSE)
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -579,9 +617,11 @@ Applying the `summary` function to an object of class `createTable` will
 obtain a more detailed output:
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + smoker + bmi + triglyc, method = c(triglyc=2), data=regicor)
 summary(res[c(1, 2, 5)])
 ```
+
 
      --- Descriptives of each row-variable by groups of 'Recruitment year' ---
 
@@ -590,7 +630,7 @@ summary(res[c(1, 2, 5)])
 
           N    mean     sd       lower    upper    p.overall p.trend  p.1995 vs 2000 p.1995 vs 2005 p.2000 vs 2005
     [ALL] 2294 54.73627 11.04926 54.28388 55.18866                                                                
-    1995  431  54.09745 11.7172  52.98813 55.20677 0.078588  0.031665 0.936          0.163          0.158         
+    1995  431  54.09745 11.7172  52.98813 55.20677 0.078588  0.031665 0.935982       0.16299        0.157618      
     2000  786  54.33715 11.21814 53.55168 55.12262                                                                
     2005  1077 55.28319 10.62606 54.64786 55.91853                                                                
 
@@ -625,6 +665,7 @@ can be seen on-screen or saved in different formats (BMP, JPG’, PNG, TIF
 or PDF). To specify the format use the argument \`type’.
 
 ``` r
+
 plot(res[c(1,2)], file="./figures/univar/", type="png")
 ```
 
@@ -636,6 +677,7 @@ Plots also can be done according to grouping variable. In this case only
 a boxplot is shown for continuous variables:
 
 ``` r
+
 plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 ```
 
@@ -648,9 +690,11 @@ plot(res[c(1,2)], bivar=TRUE, file="./figures/bivar/", type="png")
 The object from `compareGroups` can later be updated. For example:
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + smoker + bmi, data=regicor)
 res
 ```
+
 
 
     -------- Summary of results by groups of 'Recruitment year'---------
@@ -667,6 +711,7 @@ res
 The object `res` is updated using:
 
 ``` r
+
 res<-update(res, . ~. - sex + triglyc + cv + tocv, subset = sex=='Female', method = c(triglyc=2, tocv=2), selec = list(triglyc=txchol=='No'))
 res
 ```
@@ -692,6 +737,7 @@ dozens of SNPs (genetic variants) from a sample of cases and controls.
 In this case we analize five of them:
 
 ``` r
+
 data(SNPs)
 tab <- createTable(compareGroups(casco ~ snp10001 + snp10002 + snp10005 + snp10008 + snp10009, SNPs))
 pvals <- getResults(tab, "p.overall")
@@ -712,9 +758,11 @@ p-values. To obtain the same table as above with the p-values correted
 by “BH” method:
 
 ``` r
+
 cg <- compareGroups(casco ~ snp10001 + snp10002 + snp10005 + snp10008 + snp10009, SNPs)
 createTable(padjustCompareGroups(cg, method="BH"))
 ```
+
 
     --------Summary descriptives table by 'casco'---------
 
@@ -754,9 +802,11 @@ Section 3.1), the Hazard Ratio (HR) can be printed instead.
   category:
 
 ``` r
+
 res1<-compareGroups(cv ~ age + sex + bmi + smoker, data=regicor, ref=1)
 createTable(res1, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -779,9 +829,11 @@ Note that for categorical response variables the reference category is
 the first one in the statement:
 
 ``` r
+
 res2<-compareGroups(cv ~ age + sex + bmi + smoker, data=regicor, ref=c(smoker=1, sex=2))
 createTable(res2, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -808,9 +860,11 @@ Sex the second.
   category:
 
 ``` r
+
 res<-compareGroups(cv ~ age + sex + bmi + histhtn + txhtn, data=regicor, ref.no='NO')
 createTable(res, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -839,9 +893,11 @@ not case sensitive.
   statement:
 
 ``` r
+
 res<-compareGroups(cv ~ age + bmi, data=regicor)
 createTable(res, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -857,9 +913,11 @@ Here the OR is for the increase of one unit for Age and “Body mass
 index”.
 
 ``` r
+
 res<-compareGroups(cv ~ age + bmi, data=regicor, fact.ratio= c(age=10, bmi=2))
 createTable(res, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -879,9 +937,11 @@ Here the OR is for the increase of 10 years for Age and 2 units for
   category could be changed using the `ref.y` statement:
 
 ``` r
+
 res<-compareGroups(cv ~ age + sex + bmi + txhtn, data=regicor)
 createTable(res, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -903,9 +963,11 @@ Note: This output shows the OR of having a cardiovascular event.
 Therefore, having no event is the reference category.
 
 ``` r
+
 res<-compareGroups(cv ~ age + sex + bmi + txhtn, data=regicor, ref.y=2)
 createTable(res, show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Cardiovascular event'---------
 
@@ -933,6 +995,7 @@ each individual, ending with a circle for censored and with a plus sign
 for uncensored.
 
 ``` r
+
 plot(compareGroups(tmain ~ sex, data=regicor), bivar=TRUE, file="./figures/bivarsurv/", type="png")
 plot(compareGroups(tmain ~ age, data=regicor), bivar=TRUE, file="./figures/bivarsurv/", type="png")
 ```
@@ -952,6 +1015,7 @@ Kaplan-Meier, up to a stated time.
   time probability is calculated.
 
 ``` r
+
 res<-compareGroups(sex ~  age + tmain, timemax=c(tmain=3*365.25), data=regicor)
 res
 ```
@@ -964,6 +1028,7 @@ Kaplan-Meier figure. The figure can be stratified by the grouping
 variable.
 
 ``` r
+
 plot(res[2], file="./figures/univar/", type="png")
 plot(res[2], bivar=TRUE, file="./figures/bivar/", type="png")
 ```
@@ -979,6 +1044,7 @@ class, returns tables with descriptives that can be displayed on-screen
 or exported to CSV, LaTeX, HTML, Word or Excel.
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + smoker + bmi + sbp, data=regicor, selec = list(sbp=txhtn=="No"))
 restab<-createTable(res)
 ```
@@ -989,8 +1055,10 @@ applied to an object of class `createTable` prints one or both tables on
 the **`R`** console:
 
 ``` r
+
 print(restab,which.table='descr')
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1013,8 +1081,10 @@ print(restab,which.table='descr')
 Note that the option “descr” prints descriptive tables.
 
 ``` r
+
 print(restab,which.table='avail')
 ```
+
 
 
 
@@ -1043,8 +1113,10 @@ By default, only the descriptives table is shown. Stating “both” in
   male, obviously 52% are female). To hide some category, e.g., “Male”:
 
 ``` r
+
 update(restab, hide = c(sex="Male"))
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1068,9 +1140,11 @@ Note that the percentage of males is hidden.
   to be hidden for all variables:
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + histchol + histhtn, data=regicor)
 createTable(res, hide.no='no', hide = c(sex="Male"))
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1091,8 +1165,10 @@ not case sensitive.
   changed, e.g:
 
 ``` r
+
 createTable(res, digits= c(age=2, sex = 3))
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1120,8 +1196,10 @@ while percentage in sex has been set to three decimal places.
   argument:
 
 ``` r
+
 createTable(res, type=1)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1144,8 +1222,10 @@ createTable(res, type=1)
 Note that only percentages are displayed.
 
 ``` r
+
 createTable(res, type=3)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1173,8 +1253,10 @@ Value 2 or `NA` return the same results, i.e., the default option.
   available data for each variable appears in the results:
 
 ``` r
+
 createTable(res, show.n=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1198,8 +1280,10 @@ createTable(res, show.n=TRUE)
   p-values are displayed:
 
 ``` r
+
 createTable(res, show.descr=FALSE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1222,8 +1306,10 @@ createTable(res, show.descr=FALSE)
   displayed with descriptives for all data:
 
 ``` r
+
 createTable(res, show.all=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1247,8 +1333,10 @@ createTable(res, show.all=TRUE)
   p-values are omitted from the table:
 
 ``` r
+
 createTable(res, show.p.overall=FALSE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1273,8 +1361,10 @@ createTable(res, show.p.overall=FALSE)
   displayed if the `show.p.trend` argument is set to `TRUE`:
 
 ``` r
+
 createTable(res, show.p.trend=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1308,8 +1398,10 @@ p-value for trend is computed as
   `show.p.mul` argument is set to `TRUE`:
 
 ``` r
+
 createTable(res, show.p.mul=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1339,8 +1431,10 @@ normal-distributed and Benjamini & Hochberg (Benjamini and Hochberg
   show.ratio option:
 
 ``` r
+
 createTable(update(res, subset= year!=1995), show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'year'---------
 
@@ -1369,8 +1463,10 @@ Note that when response variable is of class `Surv`, Hazard Ratios are
 calculated instead of Odds Ratios.
 
 ``` r
+
 createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1392,8 +1488,10 @@ createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=T
   ratios can be changed by the `digits.ratio` argument:
 
 ``` r
+
 createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=TRUE, digits.ratio= 3)
 ```
+
 
     --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1418,9 +1516,11 @@ createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.ratio=T
   function that exports the table to pdf, plain text, etc.
 
 ``` r
+
 tab<-createTable(compareGroups(tmain ~  year + age + sex, data=regicor), show.all = TRUE)
 print(tab, header.labels = c("p.overall" = "p-value", "all" = "All"))
 ```
+
 
     --------Summary descriptives table by 'Time to CV event or censoring'---------
 
@@ -1443,10 +1543,12 @@ print(tab, header.labels = c("p.overall" = "p-value", "all" = "All"))
 Tables made with the same response variable can be combined by row:
 
 ``` r
+
 restab1 <- createTable(compareGroups(year ~ age + sex, data=regicor))
 restab2 <- createTable(compareGroups(year ~ bmi + smoker, data=regicor))
 rbind("Non-modifiable risk factors"=restab1, "Modifiable risk factors"=restab2)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1479,9 +1581,11 @@ modified:
 To select only Age and Smoking:
 
 ``` r
+
 x <- rbind("Non-modifiable"=restab1,"Modifiable"=restab2)
 rbind("Non-modifiable"=restab1,"Modifiable"=restab2)[c(1,4)]
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1501,8 +1605,10 @@ rbind("Non-modifiable"=restab1,"Modifiable"=restab2)[c(1,4)]
 To change the order:
 
 ``` r
+
 rbind("Modifiable"=restab1,"Non-modifiable"=restab2)[c(4,3,2,1)]
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1530,6 +1636,7 @@ variables but done with a different subset (i.e. “ALL”, “Male” and
 “Female”, strata) can be combined:
 
 ``` r
+
 res<-compareGroups(year ~ age +  smoker + bmi + histhtn , data=regicor)
 alltab <- createTable(res,  show.p.overall = FALSE)
 femaletab <- createTable(update(res,subset=sex=='Female'), show.p.overall = FALSE)
@@ -1537,8 +1644,10 @@ maletab <- createTable(update(res,subset=sex=='Male'), show.p.overall = FALSE)
 ```
 
 ``` r
+
 cbind("ALL"=alltab,"FEMALE"=femaletab,"MALE"=maletab)
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1562,8 +1671,10 @@ cbind("ALL"=alltab,"FEMALE"=femaletab,"MALE"=maletab)
 By default the name of the table is displayed for each set of columns.
 
 ``` r
+
 cbind(alltab,femaletab,maletab)
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1600,6 +1711,7 @@ per gender:
 1.  first build the table with descriptives by groups:
 
 ``` r
+
 res <- compareGroups(year ~ age + bmi + smoker + histchol + histhtn, regicor)
 restab <- createTable(res, hide.no="no")
 ```
@@ -1607,8 +1719,10 @@ restab <- createTable(res, hide.no="no")
 2.  and then apply the `strataTable` function on the table:
 
 ``` r
+
 strataTable(restab, "sex")
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1638,8 +1752,10 @@ discussed:
   returns data available and “both” returns both tables:
 
 ``` r
+
 print(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)), which.table='both')
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1675,8 +1791,10 @@ With the `print` method setting `nmax` argument to `FALSE`, the total
 maximum “n” in the available data is omitted in the first row.
 
 ``` r
+
 print(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)),  nmax=FALSE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1698,8 +1816,10 @@ print(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)),
   method setting `which.table='avail'`:
 
 ``` r
+
 summary(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)))
 ```
+
 
 
 
@@ -1717,10 +1837,12 @@ summary(createTable(compareGroups(year ~ age + sex + smoker + bmi, data=regicor)
 - **`update`:** An object of class `createTable` can be updated:
 
 ``` r
+
 res<-compareGroups(year ~ age + sex + smoker + bmi, data=regicor)
 restab<-createTable(res, type=1)
 restab
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1740,8 +1862,10 @@ restab
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 
 ``` r
+
 update(restab, show.n=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1764,8 +1888,10 @@ In just one statement it is possible to update an object of class
 `compareGroups` and `createTable`:
 
 ``` r
+
 update(restab, x = update(res, subset=c(sex=='Female')), show.n=TRUE)
 ```
+
 
     --------Summary descriptives table by 'year'---------
 
@@ -1791,8 +1917,10 @@ explanatory variable.
   subset using “\[”:
 
 ``` r
+
 createTable(compareGroups(year ~ age + sex + smoker + bmi + histhtn, data=regicor))
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1815,8 +1943,10 @@ createTable(compareGroups(year ~ age + sex + smoker + bmi + histhtn, data=regico
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 
 ``` r
+
 createTable(compareGroups(year ~ age + sex + smoker + bmi + histhtn, data=regicor))[1:2, ]
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -1842,8 +1972,10 @@ createTable objects (subsetting, ploting, printing, exporting, etc.)
 To describe all varaible from regicor dataset, just type:
 
 ``` r
+
 descrTable(regicor)
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1908,8 +2040,10 @@ To describe some variables, make use of formula argument (just as using
 `compareGroups` function)
 
 ``` r
+
 descrTable(~ age + sex, regicor)
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1927,8 +2061,10 @@ To hide “no” category from yes-no variables, use the `hide.no` argument
 from `createTable`:
 
 ``` r
+
 descrTable(regicor, hide.no="no")
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -1981,8 +2117,10 @@ To report descriptives by group as well as the descriptives of the
 entire cohort:
 
 ``` r
+
 descrTable(year ~ ., regicor, hide.no="no", show.all=TRUE)
 ```
+
 
     --------Summary descriptives table by 'Recruitment year'---------
 
@@ -2030,8 +2168,10 @@ descrTable(year ~ ., regicor, hide.no="no", show.all=TRUE)
 Or you can select individuals using the `subset` argument.
 
 ``` r
+
 descrTable(regicor, subset=age>65)
 ```
+
 
     --------Summary descriptives table ---------
 
@@ -2141,6 +2281,7 @@ character that can be changed in the **`R`** session.
   **`Sweave`** package.
 
 ``` r
+
 restab<-createTable(compareGroups(year ~ age + sex + smoker + bmi + histchol, data=regicor))
 export2latex(restab)
 ```
@@ -2223,6 +2364,7 @@ First create the descriptive table of REGICOR variables by recruitment
 year.
 
 ``` r
+
 res <- compareGroups(year ~ ., regicor)
 restab <- createTable(res, hide.no="no")
 ```
@@ -2230,204 +2372,220 @@ restab <- createTable(res, hide.no="no")
 - **Default export2md to HTML:**
 
 ``` r
+
 export2md(restab)
 ```
 
-|                                                  |       1995        |       2000        |    2005     | p.overall |
-|:-------------------------------------------------|:-----------------:|:-----------------:|:-----------:|:---------:|
-|                                                  |       N=431       |       N=786       |   N=1077    |           |
-| Individual id                                    | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) |   0.000   |
-| Age                                              |    54.1 (11.7)    |    54.3 (11.2)    | 55.3 (10.6) |   0.079   |
-| Sex:                                             |                   |                   |             |   0.506   |
-| Male                                             |    206 (47.8%)    |    390 (49.6%)    | 505 (46.9%) |           |
-| Female                                           |    225 (52.2%)    |    396 (50.4%)    | 572 (53.1%) |           |
-| Smoking status:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
-| Systolic blood pressure                          |    133 (19.2)     |    133 (21.3)     | 129 (19.8)  |  \<0.001  |
-| Diastolic blood pressure                         |    77.0 (10.5)    |    80.8 (10.3)    | 79.9 (10.6) |  \<0.001  |
-| History of hypertension                          |    111 (25.8%)    |    233 (29.6%)    | 379 (35.5%) |  \<0.001  |
-| Hypertension treatment                           |    71 (16.5%)     |    127 (16.2%)    | 230 (22.2%) |   0.002   |
-| Total cholesterol                                |    225 (43.1)     |    224 (44.4)     | 213 (45.9)  |  \<0.001  |
-| HDL cholesterol                                  |    51.9 (14.5)    |    52.3 (15.6)    | 53.2 (14.2) |   0.198   |
-| Triglycerides                                    |    114 (74.4)     |    114 (70.7)     | 117 (76.0)  |   0.583   |
-| LDL cholesterol                                  |    152 (38.4)     |    149 (38.6)     | 136 (39.7)  |  \<0.001  |
-| History of hyperchol.                            |    97 (22.5%)     |    256 (33.2%)    | 356 (33.2%) |  \<0.001  |
-| Cholesterol treatment                            |    28 (6.50%)     |    68 (8.80%)     | 132 (12.8%) |  \<0.001  |
-| Height (cm)                                      |    163 (9.21)     |    162 (9.39)     | 163 (9.05)  |   0.004   |
-| Weight (Kg)                                      |    72.3 (12.6)    |    73.8 (14.0)    | 73.6 (13.9) |   0.120   |
-| Body mass index                                  |    27.0 (4.15)    |    28.1 (4.62)    | 27.6 (4.63) |  \<0.001  |
-| Physical activity (Kcal/week)                    |     491 (419)     |     422 (377)     |  351 (378)  |  \<0.001  |
-| Physical component                               |    49.3 (8.08)    |    49.0 (9.63)    | 50.1 (8.91) |   0.037   |
-| Mental component                                 |    49.2 (11.3)    |    48.9 (11.0)    | 46.9 (10.8) |  \<0.001  |
-| Cardiovascular event                             |    10 (2.51%)     |    35 (4.72%)     | 47 (4.59%)  |   0.161   |
-| Days to cardiovascular event or end of follow-up |    1784 (1101)    |    1686 (1080)    | 1793 (1072) |   0.099   |
-| Overall death                                    |    18 (4.65%)     |    81 (11.0%)     | 74 (7.23%)  |  \<0.001  |
-| Days to overall death or end of follow-up        |    1713 (1042)    |    1674 (1050)    | 1758 (1055) |   0.254   |
-| Time to CV event or censoring                    |       2.69%       |       4.70%       |    5.01%    |   0.157   |
-| age7gr                                           |    3.88 (1.93)    |    3.95 (1.84)    | 4.15 (1.77) |   0.013   |
-| Smoking 4 cat.:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Individual id | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) | 0.000 |
+| Age | 54.1 (11.7) | 54.3 (11.2) | 55.3 (10.6) | 0.079 |
+| Sex: |  |  |  | 0.506 |
+| Male | 206 (47.8%) | 390 (49.6%) | 505 (46.9%) |  |
+| Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) |  |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133 (19.2) | 133 (21.3) | 129 (19.8) | \<0.001 |
+| Diastolic blood pressure | 77.0 (10.5) | 80.8 (10.3) | 79.9 (10.6) | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225 (43.1) | 224 (44.4) | 213 (45.9) | \<0.001 |
+| HDL cholesterol | 51.9 (14.5) | 52.3 (15.6) | 53.2 (14.2) | 0.198 |
+| Triglycerides | 114 (74.4) | 114 (70.7) | 117 (76.0) | 0.583 |
+| LDL cholesterol | 152 (38.4) | 149 (38.6) | 136 (39.7) | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Height (cm) | 163 (9.21) | 162 (9.39) | 163 (9.05) | 0.004 |
+| Weight (Kg) | 72.3 (12.6) | 73.8 (14.0) | 73.6 (13.9) | 0.120 |
+| Body mass index | 27.0 (4.15) | 28.1 (4.62) | 27.6 (4.63) | \<0.001 |
+| Physical activity (Kcal/week) | 491 (419) | 422 (377) | 351 (378) | \<0.001 |
+| Physical component | 49.3 (8.08) | 49.0 (9.63) | 50.1 (8.91) | 0.037 |
+| Mental component | 49.2 (11.3) | 48.9 (11.0) | 46.9 (10.8) | \<0.001 |
+| Cardiovascular event | 10 (2.51%) | 35 (4.72%) | 47 (4.59%) | 0.161 |
+| Days to cardiovascular event or end of follow-up | 1784 (1101) | 1686 (1080) | 1793 (1072) | 0.099 |
+| Overall death | 18 (4.65%) | 81 (11.0%) | 74 (7.23%) | \<0.001 |
+| Days to overall death or end of follow-up | 1713 (1042) | 1674 (1050) | 1758 (1055) | 0.254 |
+| Time to CV event or censoring | 2.69% | 4.70% | 5.01% | 0.157 |
+| age7gr | 3.88 (1.93) | 3.95 (1.84) | 4.15 (1.77) | 0.013 |
+| Smoking 4 cat.: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
 
-Summary descriptives table by groups of \`Recruitment year’
+Summary descriptives table by groups of \`Recruitment year’ {.table
+.table .table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 - **Add strip rows, colouring rows by variables:**
 
 ``` r
+
 export2md(restab, strip=TRUE, first.strip=TRUE)
 ```
 
-|                                                  |       1995        |       2000        |    2005     | p.overall |
-|:-------------------------------------------------|:-----------------:|:-----------------:|:-----------:|:---------:|
-|                                                  |       N=431       |       N=786       |   N=1077    |           |
-| Individual id                                    | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) |   0.000   |
-| Age                                              |    54.1 (11.7)    |    54.3 (11.2)    | 55.3 (10.6) |   0.079   |
-| Sex:                                             |                   |                   |             |   0.506   |
-| Male                                             |    206 (47.8%)    |    390 (49.6%)    | 505 (46.9%) |           |
-| Female                                           |    225 (52.2%)    |    396 (50.4%)    | 572 (53.1%) |           |
-| Smoking status:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
-| Systolic blood pressure                          |    133 (19.2)     |    133 (21.3)     | 129 (19.8)  |  \<0.001  |
-| Diastolic blood pressure                         |    77.0 (10.5)    |    80.8 (10.3)    | 79.9 (10.6) |  \<0.001  |
-| History of hypertension                          |    111 (25.8%)    |    233 (29.6%)    | 379 (35.5%) |  \<0.001  |
-| Hypertension treatment                           |    71 (16.5%)     |    127 (16.2%)    | 230 (22.2%) |   0.002   |
-| Total cholesterol                                |    225 (43.1)     |    224 (44.4)     | 213 (45.9)  |  \<0.001  |
-| HDL cholesterol                                  |    51.9 (14.5)    |    52.3 (15.6)    | 53.2 (14.2) |   0.198   |
-| Triglycerides                                    |    114 (74.4)     |    114 (70.7)     | 117 (76.0)  |   0.583   |
-| LDL cholesterol                                  |    152 (38.4)     |    149 (38.6)     | 136 (39.7)  |  \<0.001  |
-| History of hyperchol.                            |    97 (22.5%)     |    256 (33.2%)    | 356 (33.2%) |  \<0.001  |
-| Cholesterol treatment                            |    28 (6.50%)     |    68 (8.80%)     | 132 (12.8%) |  \<0.001  |
-| Height (cm)                                      |    163 (9.21)     |    162 (9.39)     | 163 (9.05)  |   0.004   |
-| Weight (Kg)                                      |    72.3 (12.6)    |    73.8 (14.0)    | 73.6 (13.9) |   0.120   |
-| Body mass index                                  |    27.0 (4.15)    |    28.1 (4.62)    | 27.6 (4.63) |  \<0.001  |
-| Physical activity (Kcal/week)                    |     491 (419)     |     422 (377)     |  351 (378)  |  \<0.001  |
-| Physical component                               |    49.3 (8.08)    |    49.0 (9.63)    | 50.1 (8.91) |   0.037   |
-| Mental component                                 |    49.2 (11.3)    |    48.9 (11.0)    | 46.9 (10.8) |  \<0.001  |
-| Cardiovascular event                             |    10 (2.51%)     |    35 (4.72%)     | 47 (4.59%)  |   0.161   |
-| Days to cardiovascular event or end of follow-up |    1784 (1101)    |    1686 (1080)    | 1793 (1072) |   0.099   |
-| Overall death                                    |    18 (4.65%)     |    81 (11.0%)     | 74 (7.23%)  |  \<0.001  |
-| Days to overall death or end of follow-up        |    1713 (1042)    |    1674 (1050)    | 1758 (1055) |   0.254   |
-| Time to CV event or censoring                    |       2.69%       |       4.70%       |    5.01%    |   0.157   |
-| age7gr                                           |    3.88 (1.93)    |    3.95 (1.84)    | 4.15 (1.77) |   0.013   |
-| Smoking 4 cat.:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Individual id | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) | 0.000 |
+| Age | 54.1 (11.7) | 54.3 (11.2) | 55.3 (10.6) | 0.079 |
+| Sex: |  |  |  | 0.506 |
+| Male | 206 (47.8%) | 390 (49.6%) | 505 (46.9%) |  |
+| Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) |  |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133 (19.2) | 133 (21.3) | 129 (19.8) | \<0.001 |
+| Diastolic blood pressure | 77.0 (10.5) | 80.8 (10.3) | 79.9 (10.6) | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225 (43.1) | 224 (44.4) | 213 (45.9) | \<0.001 |
+| HDL cholesterol | 51.9 (14.5) | 52.3 (15.6) | 53.2 (14.2) | 0.198 |
+| Triglycerides | 114 (74.4) | 114 (70.7) | 117 (76.0) | 0.583 |
+| LDL cholesterol | 152 (38.4) | 149 (38.6) | 136 (39.7) | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Height (cm) | 163 (9.21) | 162 (9.39) | 163 (9.05) | 0.004 |
+| Weight (Kg) | 72.3 (12.6) | 73.8 (14.0) | 73.6 (13.9) | 0.120 |
+| Body mass index | 27.0 (4.15) | 28.1 (4.62) | 27.6 (4.63) | \<0.001 |
+| Physical activity (Kcal/week) | 491 (419) | 422 (377) | 351 (378) | \<0.001 |
+| Physical component | 49.3 (8.08) | 49.0 (9.63) | 50.1 (8.91) | 0.037 |
+| Mental component | 49.2 (11.3) | 48.9 (11.0) | 46.9 (10.8) | \<0.001 |
+| Cardiovascular event | 10 (2.51%) | 35 (4.72%) | 47 (4.59%) | 0.161 |
+| Days to cardiovascular event or end of follow-up | 1784 (1101) | 1686 (1080) | 1793 (1072) | 0.099 |
+| Overall death | 18 (4.65%) | 81 (11.0%) | 74 (7.23%) | \<0.001 |
+| Days to overall death or end of follow-up | 1713 (1042) | 1674 (1050) | 1758 (1055) | 0.254 |
+| Time to CV event or censoring | 2.69% | 4.70% | 5.01% | 0.157 |
+| age7gr | 3.88 (1.93) | 3.95 (1.84) | 4.15 (1.77) | 0.013 |
+| Smoking 4 cat.: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
 
-Summary descriptives table by groups of \`Recruitment year’
+Summary descriptives table by groups of \`Recruitment year’ {.table
+.table .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 - **Change size:**
 
 ``` r
+
 export2md(restab, size=6)
 ```
 
-|                                                  |       1995        |       2000        |    2005     | p.overall |
-|:-------------------------------------------------|:-----------------:|:-----------------:|:-----------:|:---------:|
-|                                                  |       N=431       |       N=786       |   N=1077    |           |
-| Individual id                                    | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) |   0.000   |
-| Age                                              |    54.1 (11.7)    |    54.3 (11.2)    | 55.3 (10.6) |   0.079   |
-| Sex:                                             |                   |                   |             |   0.506   |
-| Male                                             |    206 (47.8%)    |    390 (49.6%)    | 505 (46.9%) |           |
-| Female                                           |    225 (52.2%)    |    396 (50.4%)    | 572 (53.1%) |           |
-| Smoking status:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
-| Systolic blood pressure                          |    133 (19.2)     |    133 (21.3)     | 129 (19.8)  |  \<0.001  |
-| Diastolic blood pressure                         |    77.0 (10.5)    |    80.8 (10.3)    | 79.9 (10.6) |  \<0.001  |
-| History of hypertension                          |    111 (25.8%)    |    233 (29.6%)    | 379 (35.5%) |  \<0.001  |
-| Hypertension treatment                           |    71 (16.5%)     |    127 (16.2%)    | 230 (22.2%) |   0.002   |
-| Total cholesterol                                |    225 (43.1)     |    224 (44.4)     | 213 (45.9)  |  \<0.001  |
-| HDL cholesterol                                  |    51.9 (14.5)    |    52.3 (15.6)    | 53.2 (14.2) |   0.198   |
-| Triglycerides                                    |    114 (74.4)     |    114 (70.7)     | 117 (76.0)  |   0.583   |
-| LDL cholesterol                                  |    152 (38.4)     |    149 (38.6)     | 136 (39.7)  |  \<0.001  |
-| History of hyperchol.                            |    97 (22.5%)     |    256 (33.2%)    | 356 (33.2%) |  \<0.001  |
-| Cholesterol treatment                            |    28 (6.50%)     |    68 (8.80%)     | 132 (12.8%) |  \<0.001  |
-| Height (cm)                                      |    163 (9.21)     |    162 (9.39)     | 163 (9.05)  |   0.004   |
-| Weight (Kg)                                      |    72.3 (12.6)    |    73.8 (14.0)    | 73.6 (13.9) |   0.120   |
-| Body mass index                                  |    27.0 (4.15)    |    28.1 (4.62)    | 27.6 (4.63) |  \<0.001  |
-| Physical activity (Kcal/week)                    |     491 (419)     |     422 (377)     |  351 (378)  |  \<0.001  |
-| Physical component                               |    49.3 (8.08)    |    49.0 (9.63)    | 50.1 (8.91) |   0.037   |
-| Mental component                                 |    49.2 (11.3)    |    48.9 (11.0)    | 46.9 (10.8) |  \<0.001  |
-| Cardiovascular event                             |    10 (2.51%)     |    35 (4.72%)     | 47 (4.59%)  |   0.161   |
-| Days to cardiovascular event or end of follow-up |    1784 (1101)    |    1686 (1080)    | 1793 (1072) |   0.099   |
-| Overall death                                    |    18 (4.65%)     |    81 (11.0%)     | 74 (7.23%)  |  \<0.001  |
-| Days to overall death or end of follow-up        |    1713 (1042)    |    1674 (1050)    | 1758 (1055) |   0.254   |
-| Time to CV event or censoring                    |       2.69%       |       4.70%       |    5.01%    |   0.157   |
-| age7gr                                           |    3.88 (1.93)    |    3.95 (1.84)    | 4.15 (1.77) |   0.013   |
-| Smoking 4 cat.:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Individual id | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) | 0.000 |
+| Age | 54.1 (11.7) | 54.3 (11.2) | 55.3 (10.6) | 0.079 |
+| Sex: |  |  |  | 0.506 |
+| Male | 206 (47.8%) | 390 (49.6%) | 505 (46.9%) |  |
+| Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) |  |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133 (19.2) | 133 (21.3) | 129 (19.8) | \<0.001 |
+| Diastolic blood pressure | 77.0 (10.5) | 80.8 (10.3) | 79.9 (10.6) | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225 (43.1) | 224 (44.4) | 213 (45.9) | \<0.001 |
+| HDL cholesterol | 51.9 (14.5) | 52.3 (15.6) | 53.2 (14.2) | 0.198 |
+| Triglycerides | 114 (74.4) | 114 (70.7) | 117 (76.0) | 0.583 |
+| LDL cholesterol | 152 (38.4) | 149 (38.6) | 136 (39.7) | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Height (cm) | 163 (9.21) | 162 (9.39) | 163 (9.05) | 0.004 |
+| Weight (Kg) | 72.3 (12.6) | 73.8 (14.0) | 73.6 (13.9) | 0.120 |
+| Body mass index | 27.0 (4.15) | 28.1 (4.62) | 27.6 (4.63) | \<0.001 |
+| Physical activity (Kcal/week) | 491 (419) | 422 (377) | 351 (378) | \<0.001 |
+| Physical component | 49.3 (8.08) | 49.0 (9.63) | 50.1 (8.91) | 0.037 |
+| Mental component | 49.2 (11.3) | 48.9 (11.0) | 46.9 (10.8) | \<0.001 |
+| Cardiovascular event | 10 (2.51%) | 35 (4.72%) | 47 (4.59%) | 0.161 |
+| Days to cardiovascular event or end of follow-up | 1784 (1101) | 1686 (1080) | 1793 (1072) | 0.099 |
+| Overall death | 18 (4.65%) | 81 (11.0%) | 74 (7.23%) | \<0.001 |
+| Days to overall death or end of follow-up | 1713 (1042) | 1674 (1050) | 1758 (1055) | 0.254 |
+| Time to CV event or censoring | 2.69% | 4.70% | 5.01% | 0.157 |
+| age7gr | 3.88 (1.93) | 3.95 (1.84) | 4.15 (1.77) | 0.013 |
+| Smoking 4 cat.: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
 
-Summary descriptives table by groups of \`Recruitment year’
+Summary descriptives table by groups of \`Recruitment year’ {.table
+.table .table-striped .table-condensed
+style="font-size: 6px; width: auto !important; margin-left: auto; margin-right: auto;"}
 
 - **Making variable names column wider:**
 
 ``` r
+
 export2md(restab, width="400px")
 ```
 
-|                                                  |       1995        |       2000        |    2005     | p.overall |
-|:-------------------------------------------------|:-----------------:|:-----------------:|:-----------:|:---------:|
-|                                                  |       N=431       |       N=786       |   N=1077    |           |
-| Individual id                                    | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) |   0.000   |
-| Age                                              |    54.1 (11.7)    |    54.3 (11.2)    | 55.3 (10.6) |   0.079   |
-| Sex:                                             |                   |                   |             |   0.506   |
-| Male                                             |    206 (47.8%)    |    390 (49.6%)    | 505 (46.9%) |           |
-| Female                                           |    225 (52.2%)    |    396 (50.4%)    | 572 (53.1%) |           |
-| Smoking status:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
-| Systolic blood pressure                          |    133 (19.2)     |    133 (21.3)     | 129 (19.8)  |  \<0.001  |
-| Diastolic blood pressure                         |    77.0 (10.5)    |    80.8 (10.3)    | 79.9 (10.6) |  \<0.001  |
-| History of hypertension                          |    111 (25.8%)    |    233 (29.6%)    | 379 (35.5%) |  \<0.001  |
-| Hypertension treatment                           |    71 (16.5%)     |    127 (16.2%)    | 230 (22.2%) |   0.002   |
-| Total cholesterol                                |    225 (43.1)     |    224 (44.4)     | 213 (45.9)  |  \<0.001  |
-| HDL cholesterol                                  |    51.9 (14.5)    |    52.3 (15.6)    | 53.2 (14.2) |   0.198   |
-| Triglycerides                                    |    114 (74.4)     |    114 (70.7)     | 117 (76.0)  |   0.583   |
-| LDL cholesterol                                  |    152 (38.4)     |    149 (38.6)     | 136 (39.7)  |  \<0.001  |
-| History of hyperchol.                            |    97 (22.5%)     |    256 (33.2%)    | 356 (33.2%) |  \<0.001  |
-| Cholesterol treatment                            |    28 (6.50%)     |    68 (8.80%)     | 132 (12.8%) |  \<0.001  |
-| Height (cm)                                      |    163 (9.21)     |    162 (9.39)     | 163 (9.05)  |   0.004   |
-| Weight (Kg)                                      |    72.3 (12.6)    |    73.8 (14.0)    | 73.6 (13.9) |   0.120   |
-| Body mass index                                  |    27.0 (4.15)    |    28.1 (4.62)    | 27.6 (4.63) |  \<0.001  |
-| Physical activity (Kcal/week)                    |     491 (419)     |     422 (377)     |  351 (378)  |  \<0.001  |
-| Physical component                               |    49.3 (8.08)    |    49.0 (9.63)    | 50.1 (8.91) |   0.037   |
-| Mental component                                 |    49.2 (11.3)    |    48.9 (11.0)    | 46.9 (10.8) |  \<0.001  |
-| Cardiovascular event                             |    10 (2.51%)     |    35 (4.72%)     | 47 (4.59%)  |   0.161   |
-| Days to cardiovascular event or end of follow-up |    1784 (1101)    |    1686 (1080)    | 1793 (1072) |   0.099   |
-| Overall death                                    |    18 (4.65%)     |    81 (11.0%)     | 74 (7.23%)  |  \<0.001  |
-| Days to overall death or end of follow-up        |    1713 (1042)    |    1674 (1050)    | 1758 (1055) |   0.254   |
-| Time to CV event or censoring                    |       2.69%       |       4.70%       |    5.01%    |   0.157   |
-| age7gr                                           |    3.88 (1.93)    |    3.95 (1.84)    | 4.15 (1.77) |   0.013   |
-| Smoking 4 cat.:                                  |                   |                   |             |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    | 553 (52.2%) |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    | 217 (20.5%) |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     | 290 (27.4%) |           |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Individual id | 1000002914 (1242) | 3000104610 (2379) | 1996 (1161) | 0.000 |
+| Age | 54.1 (11.7) | 54.3 (11.2) | 55.3 (10.6) | 0.079 |
+| Sex: |  |  |  | 0.506 |
+| Male | 206 (47.8%) | 390 (49.6%) | 505 (46.9%) |  |
+| Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) |  |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133 (19.2) | 133 (21.3) | 129 (19.8) | \<0.001 |
+| Diastolic blood pressure | 77.0 (10.5) | 80.8 (10.3) | 79.9 (10.6) | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225 (43.1) | 224 (44.4) | 213 (45.9) | \<0.001 |
+| HDL cholesterol | 51.9 (14.5) | 52.3 (15.6) | 53.2 (14.2) | 0.198 |
+| Triglycerides | 114 (74.4) | 114 (70.7) | 117 (76.0) | 0.583 |
+| LDL cholesterol | 152 (38.4) | 149 (38.6) | 136 (39.7) | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Height (cm) | 163 (9.21) | 162 (9.39) | 163 (9.05) | 0.004 |
+| Weight (Kg) | 72.3 (12.6) | 73.8 (14.0) | 73.6 (13.9) | 0.120 |
+| Body mass index | 27.0 (4.15) | 28.1 (4.62) | 27.6 (4.63) | \<0.001 |
+| Physical activity (Kcal/week) | 491 (419) | 422 (377) | 351 (378) | \<0.001 |
+| Physical component | 49.3 (8.08) | 49.0 (9.63) | 50.1 (8.91) | 0.037 |
+| Mental component | 49.2 (11.3) | 48.9 (11.0) | 46.9 (10.8) | \<0.001 |
+| Cardiovascular event | 10 (2.51%) | 35 (4.72%) | 47 (4.59%) | 0.161 |
+| Days to cardiovascular event or end of follow-up | 1784 (1101) | 1686 (1080) | 1793 (1072) | 0.099 |
+| Overall death | 18 (4.65%) | 81 (11.0%) | 74 (7.23%) | \<0.001 |
+| Days to overall death or end of follow-up | 1713 (1042) | 1674 (1050) | 1758 (1055) | 0.254 |
+| Time to CV event or censoring | 2.69% | 4.70% | 5.01% | 0.157 |
+| age7gr | 3.88 (1.93) | 3.95 (1.84) | 4.15 (1.77) | 0.013 |
+| Smoking 4 cat.: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
 
-Summary descriptives table by groups of \`Recruitment year’
+Summary descriptives table by groups of \`Recruitment year’ {.table
+.table .table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 - **Stratified table:**
 
 ``` r
+
 restab <- strataTable(descrTable(year ~ . -id, regicor), "sex")
 ```
 
 ``` r
+
 export2md(restab, size=8)
 ```
 
 [TABLE]
 
-Summary descriptive tables
+Summary descriptive tables {.table .table .table-striped
+.table-condensed
+style="font-size: 8px; width: auto !important; margin-left: auto; margin-right: auto;"}
 
 ### Generating an exhaustive report
 
@@ -2444,6 +2602,7 @@ the REGICOR data (the other example data set contained in the
 **`compareGroups`** package)
 
 ``` r
+
 # to know more about report function
 ?report
 
@@ -2471,11 +2630,13 @@ To illustrate it, we will use the REGICOR data set, comparing missing
 rates of all variables by year:
 
 ``` r
+
 # from a compareGroups object
 data(regicor)
 res <- compareGroups(year ~ .-id, regicor)
 missingTable(res)
 ```
+
 
 
     -------- Summary of results by groups of 'year'---------
@@ -2507,6 +2668,7 @@ missingTable(res)
     23 todeath  2294 0.001**  categorical ALL      
     -----
     Signif. codes:  0 '**' 0.05 '*' 0.1 ' ' 1 
+
 
     --------Missingness table by 'year'---------
 
@@ -2540,6 +2702,7 @@ missingTable(res)
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ 
 
 ``` r
+
 # or from createTable objects
 restab <- createTable(res, hide.no = 'no')
 missingTable(restab)
@@ -2557,6 +2720,7 @@ implemented which does it automatically. Let’s see an example with all
 variables from REGICOR data set by cardiovascular event.
 
 ``` r
+
 # first create time-to-cardiovascular event
 regicor$tcv<-with(regicor,Surv(tocv,cv=='Yes'))
 # create the table
@@ -2564,6 +2728,7 @@ res <- compareGroups(tcv ~ . -id-tocv-cv-todeath-death, regicor, include.miss = 
 restab <- createTable(res, hide.no = 'no')
 restab
 ```
+
 
     --------Summary descriptives table by 'tcv'---------
 
@@ -2637,6 +2802,7 @@ the `sep` argument of `compareSNPs` function (type
 for more details).
 
 ``` r
+
 data(SNPs)
 head(SNPs)
 ```
@@ -2668,6 +2834,7 @@ variables are those whose names begin with “snp”. If we want to
 summarize the first three SNPs by case control status:
 
 ``` r
+
 res<-compareSNPs(casco ~ snp10001 + snp10002 + snp10003, data=SNPs)
 res
 ```
@@ -2720,6 +2887,7 @@ by groups, leave the left side of formula in blank, as in
 no missingness test is performed.
 
 ``` r
+
 res<-compareSNPs(~ snp10001 + snp10002 + snp10003, data=SNPs)
 res
 ```
@@ -2747,28 +2915,30 @@ In this section we illustrate, step by step, how to construct a
 bivariate table containing descriptives by groups from the *regicor*
 data using the GUI:
 
-|                          |       1995        |       2000        |       2005        | p.overall |
-|:-------------------------|:-----------------:|:-----------------:|:-----------------:|:---------:|
-|                          |       N=431       |       N=786       |      N=1077       |           |
-| Age                      |    54.1 (11.7)    |    54.3 (11.2)    |    55.3 (10.6)    |   0.079   |
-| Sex: Female              |    225 (52.2%)    |    396 (50.4%)    |    572 (53.1%)    |   0.506   |
-| Smoking status:          |                   |                   |                   |  \<0.001  |
-| Never smoker             |    234 (56.4%)    |    414 (54.6%)    |    553 (52.2%)    |           |
-| Current or former \< 1y  |    109 (26.3%)    |    267 (35.2%)    |    217 (20.5%)    |           |
-| Former \>= 1y            |    72 (17.3%)     |    77 (10.2%)     |    290 (27.4%)    |           |
-| Systolic blood pressure  |    133 (19.2)     |    133 (21.3)     |    129 (19.8)     |  \<0.001  |
-| Diastolic blood pressure |    77.0 (10.5)    |    80.8 (10.3)    |    79.9 (10.6)    |  \<0.001  |
-| History of hypertension  |    111 (25.8%)    |    233 (29.6%)    |    379 (35.5%)    |  \<0.001  |
-| Hypertension treatment   |    71 (16.5%)     |    127 (16.2%)    |    230 (22.2%)    |   0.002   |
-| Total cholesterol        |    225 (43.1)     |    224 (44.4)     |    213 (45.9)     |  \<0.001  |
-| HDL cholesterol          |    51.9 (14.5)    |    52.3 (15.6)    |    53.2 (14.2)    |   0.198   |
-| Triglycerides            | 94.0 \[71.0;136\] | 98.0 \[72.0;133\] | 98.0 \[72.0;139\] |   0.762   |
-| LDL cholesterol          |    152 (38.4)     |    149 (38.6)     |    136 (39.7)     |  \<0.001  |
-| History of hyperchol.    |    97 (22.5%)     |    256 (33.2%)    |    356 (33.2%)    |  \<0.001  |
-| Cholesterol treatment    |    28 (6.50%)     |    68 (8.80%)     |    132 (12.8%)    |  \<0.001  |
-| Body mass index          |    27.0 (4.15)    |    28.1 (4.62)    |    27.6 (4.63)    |  \<0.001  |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Age | 54.1 (11.7) | 54.3 (11.2) | 55.3 (10.6) | 0.079 |
+| Sex: Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) | 0.506 |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133 (19.2) | 133 (21.3) | 129 (19.8) | \<0.001 |
+| Diastolic blood pressure | 77.0 (10.5) | 80.8 (10.3) | 79.9 (10.6) | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225 (43.1) | 224 (44.4) | 213 (45.9) | \<0.001 |
+| HDL cholesterol | 51.9 (14.5) | 52.3 (15.6) | 53.2 (14.2) | 0.198 |
+| Triglycerides | 94.0 \[71.0;136\] | 98.0 \[72.0;133\] | 98.0 \[72.0;139\] | 0.762 |
+| LDL cholesterol | 152 (38.4) | 149 (38.6) | 136 (39.7) | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Body mass index | 27.0 (4.15) | 28.1 (4.62) | 27.6 (4.63) | \<0.001 |
 
-Summary descriptives table by groups of \`Recruitment year’
+Summary descriptives table by groups of \`Recruitment year’ {.table
+.table .table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 - **Step 1.** Browse for and select the data to be loaded. Valid file
   types include SPSS or **`R`** format, CSV plain text file or a
@@ -2853,7 +3023,9 @@ Odds Ratios for cardiovascular event for each row-variable.
 | Diastolic blood pressure | 1.03 \[1.01;1.05\] |  0.002  |   0.009   |
 | Hypertension treatment   | 1.37 \[0.82;2.21\] |  0.223  |   0.270   |
 
-Summary descriptives table by groups of \`Cardiovascular event’
+Summary descriptives table by groups of \`Cardiovascular event’ {.table
+.table .table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 To build this table, as illustrated in the screens below, you would
 select *htn* variable (Hypertension status) as the factor variable,
@@ -2868,19 +3040,21 @@ table.
 In a cohort study, it may be more informative to compute hazard ratio
 taking into account time-to-event.
 
-|                   |   No event   |    Event    |         HR         | p.ratio | p.overall |
-|:------------------|:------------:|:-----------:|:------------------:|:-------:|:---------:|
-|                   |    N=2071    |    N=92     |                    |         |           |
-| Recruitment year: |              |             |                    |         |   0.157   |
-| 1995              | 388 (18.7%)  | 10 (10.9%)  |        Ref.        |  Ref.   |           |
-| 2000              | 706 (34.1%)  | 35 (38.0%)  | 1.95 \[0.96;3.93\] |  0.063  |           |
-| 2005              | 977 (47.2%)  | 47 (51.1%)  | 1.82 \[0.92;3.59\] |  0.087  |           |
-| Age               | 54.6 (11.1)  | 57.5 (11.0) | 1.02 \[1.00;1.04\] |  0.021  |   0.021   |
-| Sex:              |              |             |                    |         |   0.696   |
-| Male              | 996 (48.1%)  | 46 (50.0%)  |        Ref.        |  Ref.   |           |
-| Female            | 1075 (51.9%) | 46 (50.0%)  | 0.92 \[0.61;1.39\] |  0.696  |           |
+|  | No event | Event | HR | p.ratio | p.overall |
+|:---|:--:|:--:|:--:|:--:|:--:|
+|  | N=2071 | N=92 |  |  |  |
+| Recruitment year: |  |  |  |  | 0.157 |
+| 1995 | 388 (18.7%) | 10 (10.9%) | Ref. | Ref. |  |
+| 2000 | 706 (34.1%) | 35 (38.0%) | 1.95 \[0.96;3.93\] | 0.063 |  |
+| 2005 | 977 (47.2%) | 47 (51.1%) | 1.82 \[0.92;3.59\] | 0.087 |  |
+| Age | 54.6 (11.1) | 57.5 (11.0) | 1.02 \[1.00;1.04\] | 0.021 | 0.021 |
+| Sex: |  |  |  |  | 0.696 |
+| Male | 996 (48.1%) | 46 (50.0%) | Ref. | Ref. |  |
+| Female | 1075 (51.9%) | 46 (50.0%) | 0.92 \[0.61;1.39\] | 0.696 |  |
 
-Summary descriptives table by groups of \`tcv’
+Summary descriptives table by groups of \`tcv’ {.table .table
+.table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 To generate this table, select *tocv* variable and *cv*, indicating the
 time-to-event and the status, respectively, and select the event

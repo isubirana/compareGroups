@@ -136,6 +136,7 @@ packages:
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 require(compareGroups)

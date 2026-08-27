@@ -49,6 +49,7 @@ below.
 
 ``` r
 
+
 require(compareGroups)
 
 # load regicor data

@@ -136,6 +136,7 @@ loaded in the tex document.
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 require(compareGroups)
 data(regicor)

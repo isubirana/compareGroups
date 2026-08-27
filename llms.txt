@@ -86,39 +86,41 @@ export2md(tab, header.background = "black", header.color = "white",
           caption = "Summary by intervention group")
 ```
 
-|                                                  |       1995        |       2000        |       2005        | p.overall |
-|:-------------------------------------------------|:-----------------:|:-----------------:|:-----------------:|:---------:|
-|                                                  |       N=431       |       N=786       |      N=1077       |           |
-| Age                                              |     54.1±11.7     |     54.3±11.2     |     55.3±10.6     |   0.079   |
-| Sex:                                             |                   |                   |                   |   0.506   |
-| Male                                             |    206 (47.8%)    |    390 (49.6%)    |    505 (46.9%)    |           |
-| Female                                           |    225 (52.2%)    |    396 (50.4%)    |    572 (53.1%)    |           |
-| Smoking status:                                  |                   |                   |                   |  \<0.001  |
-| Never smoker                                     |    234 (56.4%)    |    414 (54.6%)    |    553 (52.2%)    |           |
-| Current or former \< 1y                          |    109 (26.3%)    |    267 (35.2%)    |    217 (20.5%)    |           |
-| Former \>= 1y                                    |    72 (17.3%)     |    77 (10.2%)     |    290 (27.4%)    |           |
-| Systolic blood pressure                          |     133±19.2      |     133±21.3      |     129±19.8      |  \<0.001  |
-| Diastolic blood pressure                         |     77.0±10.5     |     80.8±10.3     |     79.9±10.6     |  \<0.001  |
-| History of hypertension                          |    111 (25.8%)    |    233 (29.6%)    |    379 (35.5%)    |  \<0.001  |
-| Hypertension treatment                           |    71 (16.5%)     |    127 (16.2%)    |    230 (22.2%)    |   0.002   |
-| Total cholesterol                                |     225±43.1      |     224±44.4      |     213±45.9      |  \<0.001  |
-| HDL cholesterol                                  |     51.9±14.5     |     52.3±15.6     |     53.2±14.2     |   0.198   |
-| Triglycerides                                    | 94.0 \[71.0;136\] | 98.0 \[72.0;133\] | 98.0 \[72.0;139\] |   0.762   |
-| LDL cholesterol                                  |     152±38.4      |     149±38.6      |     136±39.7      |  \<0.001  |
-| History of hyperchol.                            |    97 (22.5%)     |    256 (33.2%)    |    356 (33.2%)    |  \<0.001  |
-| Cholesterol treatment                            |    28 (6.50%)     |    68 (8.80%)     |    132 (12.8%)    |  \<0.001  |
-| Height (cm)                                      |     163±9.21      |     162±9.39      |     163±9.05      |   0.004   |
-| Weight (Kg)                                      |     72.3±12.6     |     73.8±14.0     |     73.6±13.9     |   0.120   |
-| Body mass index                                  |     27.0±4.15     |     28.1±4.62     |     27.6±4.63     |  \<0.001  |
-| Physical activity (Kcal/week)                    |      491±419      |      422±377      |      351±378      |  \<0.001  |
-| Physical component                               |     49.3±8.08     |     49.0±9.63     |     50.1±8.91     |   0.037   |
-| Mental component                                 |     49.2±11.3     |     48.9±11.0     |     46.9±10.8     |  \<0.001  |
-| Cardiovascular event                             |    10 (2.51%)     |    35 (4.72%)     |    47 (4.59%)     |   0.161   |
-| Days to cardiovascular event or end of follow-up | 1728 \[746;2767\] | 1617 \[723;2596\] | 1775 \[835;2723\] |   0.096   |
-| Overall death                                    |    18 (4.65%)     |    81 (11.0%)     |    74 (7.23%)     |  \<0.001  |
-| Days to overall death or end of follow-up        | 1557 \[812;2689\] | 1609 \[734;2549\] | 1734 \[817;2713\] |   0.249   |
+|  | 1995 | 2000 | 2005 | p.overall |
+|:---|:--:|:--:|:--:|:--:|
+|  | N=431 | N=786 | N=1077 |  |
+| Age | 54.1±11.7 | 54.3±11.2 | 55.3±10.6 | 0.079 |
+| Sex: |  |  |  | 0.506 |
+| Male | 206 (47.8%) | 390 (49.6%) | 505 (46.9%) |  |
+| Female | 225 (52.2%) | 396 (50.4%) | 572 (53.1%) |  |
+| Smoking status: |  |  |  | \<0.001 |
+| Never smoker | 234 (56.4%) | 414 (54.6%) | 553 (52.2%) |  |
+| Current or former \< 1y | 109 (26.3%) | 267 (35.2%) | 217 (20.5%) |  |
+| Former \>= 1y | 72 (17.3%) | 77 (10.2%) | 290 (27.4%) |  |
+| Systolic blood pressure | 133±19.2 | 133±21.3 | 129±19.8 | \<0.001 |
+| Diastolic blood pressure | 77.0±10.5 | 80.8±10.3 | 79.9±10.6 | \<0.001 |
+| History of hypertension | 111 (25.8%) | 233 (29.6%) | 379 (35.5%) | \<0.001 |
+| Hypertension treatment | 71 (16.5%) | 127 (16.2%) | 230 (22.2%) | 0.002 |
+| Total cholesterol | 225±43.1 | 224±44.4 | 213±45.9 | \<0.001 |
+| HDL cholesterol | 51.9±14.5 | 52.3±15.6 | 53.2±14.2 | 0.198 |
+| Triglycerides | 94.0 \[71.0;136\] | 98.0 \[72.0;133\] | 98.0 \[72.0;139\] | 0.762 |
+| LDL cholesterol | 152±38.4 | 149±38.6 | 136±39.7 | \<0.001 |
+| History of hyperchol. | 97 (22.5%) | 256 (33.2%) | 356 (33.2%) | \<0.001 |
+| Cholesterol treatment | 28 (6.50%) | 68 (8.80%) | 132 (12.8%) | \<0.001 |
+| Height (cm) | 163±9.21 | 162±9.39 | 163±9.05 | 0.004 |
+| Weight (Kg) | 72.3±12.6 | 73.8±14.0 | 73.6±13.9 | 0.120 |
+| Body mass index | 27.0±4.15 | 28.1±4.62 | 27.6±4.63 | \<0.001 |
+| Physical activity (Kcal/week) | 491±419 | 422±377 | 351±378 | \<0.001 |
+| Physical component | 49.3±8.08 | 49.0±9.63 | 50.1±8.91 | 0.037 |
+| Mental component | 49.2±11.3 | 48.9±11.0 | 46.9±10.8 | \<0.001 |
+| Cardiovascular event | 10 (2.51%) | 35 (4.72%) | 47 (4.59%) | 0.161 |
+| Days to cardiovascular event or end of follow-up | 1728 \[746;2767\] | 1617 \[723;2596\] | 1775 \[835;2723\] | 0.096 |
+| Overall death | 18 (4.65%) | 81 (11.0%) | 74 (7.23%) | \<0.001 |
+| Days to overall death or end of follow-up | 1557 \[812;2689\] | 1609 \[734;2549\] | 1734 \[817;2713\] | 0.249 |
 
-Summary by intervention group
+Summary by intervention group {.table .table .table-striped
+.table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 ### Stratified table
 
@@ -130,13 +132,15 @@ export2md(tabstrat, header.background = "black", header.color = "white", size=9)
 
 [TABLE]
 
-Summary descriptive tables
+Summary descriptive tables {.table .table .table-striped
+.table-condensed
+style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;"}
 
 ### Visual exploration
 
-|                                                     |                                                     |
-|:---------------------------------------------------:|:---------------------------------------------------:|
-|                 `plot(tab[“sex”])`                  |                 `plot(tab[“age”])`                  |
+|  |  |
+|:--:|:--:|
+| `plot(tab[“sex”])` | `plot(tab[“age”])` |
 | ![image not found](./reference/figures/var1sex.png) | ![image not found](./reference/figures/var1age.png) |
 
 ### Computing Odds Ratios
@@ -162,7 +166,9 @@ export2md(tabor[1:4])
 | CT        |  21 (44.7%)   |  32 (29.1%)   | 0.33 \[0.04;1.43\] |  0.147  |
 | TT        |  24 (51.1%)   |  68 (61.8%)   | 0.60 \[0.08;2.55\] |  0.521  |
 
-Summary descriptives table by groups of \`casco’
+Summary descriptives table by groups of \`casco’ {.table .table
+.table-striped .table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 ### Computing Hazard Ratios
 
@@ -202,7 +208,9 @@ export2md(tabhr[1:10], header.label=c("p.ratio"="p-value"),
 | Total cholesterol        |  218 (44.5)  | 224 (50.4)  | 1.00 \[1.00;1.01\] |  0.207  |
 | HDL cholesterol          | 52.8 (14.8)  | 50.4 (13.3) | 0.99 \[0.97;1.00\] |  0.114  |
 
-Descriptives by cardiovascular event
+Descriptives by cardiovascular event {.table .table .table-striped
+.table-condensed
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 ### Web-based User Interface
 

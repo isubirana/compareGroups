@@ -31,6 +31,7 @@ changing the port number.
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 require(compareGroups)

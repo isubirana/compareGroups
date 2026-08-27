@@ -48,6 +48,7 @@ Isaac Subirana (isubirana\<at\>imim.es)
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 require(compareGroups)

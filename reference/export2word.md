@@ -97,6 +97,7 @@ function which requires pandoc to be installed.
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 
 require(compareGroups)

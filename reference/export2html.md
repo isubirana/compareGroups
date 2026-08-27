@@ -69,6 +69,7 @@ the cells withing each column (group) from the 'available data' table
 ## Examples
 
 ``` r
+
 if (FALSE) { # \dontrun{
 require(compareGroups)
 data(regicor)

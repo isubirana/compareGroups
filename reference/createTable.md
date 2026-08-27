@@ -280,6 +280,7 @@ Software, 57(12), 1-16. URL <https://www.jstatsoft.org/v57/i12/>.
 ## Examples
 
 ``` r
+
 require(compareGroups)
 require(survival)
 

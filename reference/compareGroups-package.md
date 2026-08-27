@@ -19,8 +19,8 @@ kind of data.
 |-----------|------------------------|
 | Package:  | compareGroups          |
 | Type:     | Package                |
-| Version:  | 4.10.2                 |
-| Date:     | 2026-01-07             |
+| Version:  | 4.10.3                 |
+| Date:     | 2026-08-27             |
 | License:  | GPL version 2 or newer |
 | LazyLoad: | yes                    |
 

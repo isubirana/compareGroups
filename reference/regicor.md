@@ -155,44 +155,44 @@ summary(regicor)
 #>  3rd Qu.:3.000e+09               3rd Qu.:64.00                
 #>  Max.   :3.000e+09               Max.   :74.00                
 #>                                                               
-#>                     smoker          sbp             dbp         histhtn    
-#>  Never smoker          :1201   Min.   : 80.0   Min.   : 40.00   Yes : 723  
-#>  Current or former < 1y: 593   1st Qu.:116.0   1st Qu.: 72.00   No  :1563  
-#>  Former >= 1y          : 439   Median :129.0   Median : 80.00   NA's:   8  
-#>  NA's                  :  61   Mean   :131.2   Mean   : 79.66              
-#>                                3rd Qu.:144.0   3rd Qu.: 86.00              
-#>                                Max.   :229.0   Max.   :123.00              
-#>                                NA's   :14      NA's   :14                  
-#>   txhtn           chol            hdl            triglyc           ldl       
-#>  No  :1823   Min.   : 95.0   Min.   : 19.58   Min.   : 25.0   Min.   : 36.3  
-#>  Yes : 428   1st Qu.:189.0   1st Qu.: 42.00   1st Qu.: 72.0   1st Qu.:115.8  
-#>  NA's:  43   Median :215.0   Median : 51.00   Median : 97.0   Median :140.6  
-#>              Mean   :218.8   Mean   : 52.69   Mean   :115.6   Mean   :143.2  
-#>              3rd Qu.:245.0   3rd Qu.: 61.43   3rd Qu.:136.0   3rd Qu.:168.1  
-#>              Max.   :488.0   Max.   :112.00   Max.   :960.0   Max.   :329.6  
-#>              NA's   :101     NA's   :69       NA's   :63      NA's   :168    
-#>  histchol     txchol         height          weight            bmi       
-#>  Yes : 709   No  :2011   Min.   :137.0   Min.   : 41.20   Min.   :17.15  
-#>  No  :1564   Yes : 228   1st Qu.:156.0   1st Qu.: 63.50   1st Qu.:24.38  
-#>  NA's:  21   NA's:  55   Median :162.5   Median : 73.00   Median :27.18  
-#>                          Mean   :162.9   Mean   : 73.44   Mean   :27.64  
-#>                          3rd Qu.:169.2   3rd Qu.: 82.00   3rd Qu.:30.41  
-#>                          Max.   :199.0   Max.   :127.20   Max.   :48.24  
-#>                          NA's   :35      NA's   :35       NA's   :35     
-#>      phyact            pcs             mcs            cv      
-#>  Min.   :   0.0   Min.   :13.95   Min.   : 3.424   No  :2071  
-#>  1st Qu.: 159.5   1st Qu.:45.01   1st Qu.:42.181   Yes :  92  
-#>  Median : 303.7   Median :52.27   Median :51.260   NA's: 131  
-#>  Mean   : 398.8   Mean   :49.62   Mean   :47.983              
-#>  3rd Qu.: 521.9   3rd Qu.:55.78   3rd Qu.:56.047              
-#>  Max.   :5083.2   Max.   :67.06   Max.   :69.904              
-#>  NA's   :88       NA's   :240     NA's   :240                 
-#>       tocv            death         todeath         
-#>  Min.   :   0.1151   No  :1975   Min.   :   0.2199  
-#>  1st Qu.: 782.7098   Yes : 173   1st Qu.: 787.6281  
-#>  Median :1718.0257   NA's: 146   Median :1668.4002  
-#>  Mean   :1754.6679               Mean   :1721.3051  
-#>  3rd Qu.:2690.5491               3rd Qu.:2662.5389  
-#>  Max.   :3650.6737               Max.   :3651.2599  
-#>  NA's   :131                     NA's   :146        
+#>                     smoker          sbp             dbp         histhtn   
+#>  Never smoker          :1201   Min.   : 80.0   Min.   : 40.00   Yes: 723  
+#>  Current or former < 1y: 593   1st Qu.:116.0   1st Qu.: 72.00   No :1563  
+#>  Former >= 1y          : 439   Median :129.0   Median : 80.00   NAs:   8  
+#>  NAs                   :  61   Mean   :131.2   Mean   : 79.66             
+#>                                3rd Qu.:144.0   3rd Qu.: 86.00             
+#>                                Max.   :229.0   Max.   :123.00             
+#>                                NAs    :14      NAs    :14                 
+#>  txhtn           chol            hdl            triglyc           ldl       
+#>  No :1823   Min.   : 95.0   Min.   : 19.58   Min.   : 25.0   Min.   : 36.3  
+#>  Yes: 428   1st Qu.:189.0   1st Qu.: 42.00   1st Qu.: 72.0   1st Qu.:115.8  
+#>  NAs:  43   Median :215.0   Median : 51.00   Median : 97.0   Median :140.6  
+#>             Mean   :218.8   Mean   : 52.69   Mean   :115.6   Mean   :143.2  
+#>             3rd Qu.:245.0   3rd Qu.: 61.43   3rd Qu.:136.0   3rd Qu.:168.1  
+#>             Max.   :488.0   Max.   :112.00   Max.   :960.0   Max.   :329.6  
+#>             NAs    :101     NAs    :69       NAs    :63      NAs    :168    
+#>  histchol   txchol         height          weight            bmi       
+#>  Yes: 709   No :2011   Min.   :137.0   Min.   : 41.20   Min.   :17.15  
+#>  No :1564   Yes: 228   1st Qu.:156.0   1st Qu.: 63.50   1st Qu.:24.38  
+#>  NAs:  21   NAs:  55   Median :162.5   Median : 73.00   Median :27.18  
+#>                        Mean   :162.9   Mean   : 73.44   Mean   :27.64  
+#>                        3rd Qu.:169.2   3rd Qu.: 82.00   3rd Qu.:30.41  
+#>                        Max.   :199.0   Max.   :127.20   Max.   :48.24  
+#>                        NAs    :35      NAs    :35       NAs    :35     
+#>      phyact            pcs             mcs           cv      
+#>  Min.   :   0.0   Min.   :13.95   Min.   : 3.424   No :2071  
+#>  1st Qu.: 159.5   1st Qu.:45.01   1st Qu.:42.181   Yes:  92  
+#>  Median : 303.7   Median :52.27   Median :51.260   NAs: 131  
+#>  Mean   : 398.8   Mean   :49.62   Mean   :47.983             
+#>  3rd Qu.: 521.9   3rd Qu.:55.78   3rd Qu.:56.047             
+#>  Max.   :5083.2   Max.   :67.06   Max.   :69.904             
+#>  NAs    :88       NAs    :240     NAs    :240                
+#>       tocv           death         todeath         
+#>  Min.   :   0.1151   No :1975   Min.   :   0.2199  
+#>  1st Qu.: 782.7098   Yes: 173   1st Qu.: 787.6281  
+#>  Median :1718.0257   NAs: 146   Median :1668.4002  
+#>  Mean   :1754.6679              Mean   :1721.3051  
+#>  3rd Qu.:2690.5491              3rd Qu.:2662.5389  
+#>  Max.   :3650.6737              Max.   :3651.2599  
+#>  NAs    :131                    NAs    :146        
 ```

@@ -123,6 +123,7 @@ Isaac Subirana (isubirana\<at\>imim.es)
 ## Examples
 
 ``` r
+
 require(compareGroups) 
 
 # load example data

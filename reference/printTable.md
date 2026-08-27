@@ -50,6 +50,7 @@ It has been used to print 'compareSNPs' objects.
 ## Examples
 
 ``` r
+
 require(compareGroups)
 
 data(regicor)

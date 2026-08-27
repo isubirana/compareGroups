@@ -11,6 +11,7 @@ Install **`compareGroups`** package from CRAN and then load it by
 typing:
 
 ``` r
+
 install.packages("compareGroups")
 library(compareGroups)
 ```
@@ -20,6 +21,7 @@ library(compareGroups)
 Load the REGICOR example data available in **`compareGroups`** package:
 
 ``` r
+
 data(regicor)
 ```
 
@@ -29,6 +31,7 @@ First use `compareGroups` function to store all values used to perform
 plots afterwards.
 
 ``` r
+
 res <- compareGroups(year ~ .  , data = regicor)
 ```
 
@@ -38,8 +41,10 @@ You can use `varinfo` function to recover the original name of variables
 (not labels which are displayed in the results).
 
 ``` r
+
 varinfo(res)
 ```
+
 
     --- Analyzed variable names ----
 
@@ -81,12 +86,14 @@ performed, i.e. stratifying by groups.
     groups (right plot) or not (left plot):
 
 ``` r
+
 plot(res['sex'])
 ```
 
 ![image not found](example2_files/figure-html/unnamed-chunk-6-1.png)
 
 ``` r
+
 plot(res['sex'], bivar=TRUE)
 ```
 
@@ -96,12 +103,14 @@ plot(res['sex'], bivar=TRUE)
     depending whether groups are considered or not, respectively.
 
 ``` r
+
 plot(res['bmi'])
 ```
 
 ![image not found](example2_files/figure-html/unnamed-chunk-8-1.png)
 
 ``` r
+
 plot(res['bmi'],bivar=TRUE)
 ```
 
