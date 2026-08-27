@@ -1,8 +1,8 @@
 Package: compareGroups
 Type: Package
 Title: Descriptive Analysis by Groups
-Version: 4.10.2
-Date: 2026-01-07
+Version: 4.10.3
+Date: 2026-08-27
 Depends: 
     R (>= 3.5.0)
 Imports: 

@@ -90,15 +90,11 @@ export2md<-function(x, which.table="descr", nmax=TRUE, nmax.method=1, header.lab
       for (cci in 1:length(cc)){
         if (cc[cci]!=""){
           group.label <- cc[cci]
-          inici <- 0
-          final <- 0
-        } else {
-          if (cc[cci-1]!="")
-            group.begin <- cci-1
-          if (cci==length(cc) || cc[cci+1]!=""){
-            group.end <- cci
-            ans <- group_rows(ans, group.label, group.begin+n.exists, group.end+n.exists) 
-          }
+          group.begin <- cci
+        }
+        if (cci==length(cc) || cc[cci+1]!=''){
+          group.end <- cci
+          ans <- group_rows(ans, group.label, group.begin+n.exists, group.end+n.exists)
         }
       }
     }

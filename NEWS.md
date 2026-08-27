@@ -1,3 +1,7 @@
+# compareGroups 4.10.3
+- bug fixed in internal function prepare when nmax.method=2 and show.all=TRUE comparing groups (N were missplaced)
+- bug fixed in export2md function applied to rbind.createTable object (when groups were formed by a single row no label were displayed)
+
 # compareGroups 4.10.2
 - Shiny app ("server.R""): when reading stata files, `as_factor` is applied to work with codes instead of values.
 

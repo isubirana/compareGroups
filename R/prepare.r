@@ -1,7 +1,7 @@
 prepare<-
 function (x, nmax, nmax.method, header.labels) 
 {
-  
+
     show.all <- attr(x, "show.all")
     show.descr <- attr(x, "show.descr")
     groups <- attr(x, "groups")
@@ -21,8 +21,10 @@ function (x, nmax, nmax.method, header.labels)
     if (length(nmax.avail.pos) > 0 && nmax) {
       if (nmax.method==1)
         Nmax <- apply(avail[, nmax.avail.pos, drop = FALSE],2, function(x) max(as.double(x)))
-      else
+      else {
         Nmax <- table(attr(x, "ylong"))
+        if (show.all) Nmax <- c(sum(Nmax),Nmax) # v4.10.3
+      }
     } else {
         Nmax <- NULL
         nmax <- FALSE
@@ -31,8 +33,7 @@ function (x, nmax, nmax.method, header.labels)
     dd.pos <- attr(x, "dd.pos")
     j <- 1
     table1 <- NULL
-    if (!is.null(attr(x, "caption"))) 
-        cc <- character(0)
+    if (!is.null(attr(x, "caption"))) cc <- character(0)
     for (i in 1:length(varnames)) {
         if (nr[i] == 1) {
             t.i <- desc[j, , drop = FALSE]
