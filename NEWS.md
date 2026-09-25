@@ -1,5 +1,8 @@
+# compareGroups 4.10.4
+- bug fixed in internal function `[.createTable]` function with extra.labels argument.
+
 # compareGroups 4.10.3
-- bug fixed in internal function prepare when nmax.method=2 and show.all=TRUE comparing groups (N were missplaced)
+- bug fixed in internal function `prepare` when nmax.method=2 and show.all=TRUE comparing groups (N were missplaced)
 - bug fixed in export2md function applied to rbind.createTable object (when groups were formed by a single row no label were displayed)
 
 # compareGroups 4.10.2

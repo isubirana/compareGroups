@@ -23,7 +23,7 @@
   obj.i<-attr(x,"x")[[1]][i]
   if (inherits(x, "descrTable"))
     class(x) <- class(x)[class(x)!="descrTable"]
-  ans<-eval(parse(text=paste("update(x,x=obj.i,hide=",hide,",digits=",digits,")",sep="")))
+  ans<-eval(parse(text=paste("update(x,x=obj.i,hide=",hide,",digits=",digits,", extra.labels=NULL)",sep="")))
   attr(ans,"show.descr") <- show.descr
   attr(ans,"all.last") <- all.last
   class(ans)<-class.orig
